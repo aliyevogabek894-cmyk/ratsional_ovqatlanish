@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>6-sinf Tabiiy Fanlar: Ratsional Ovqatlanish va Hazm Qilish</title>
-    <meta name="description" content="6-sinf Tabiiy fanlar uchun Ratsional ovqatlanish, Ovqat hazm qilish tizimi, Tishlar va Vitaminlar bo'yicha interaktiv milliy mobil platforma.">
+    <title>6-sinf Tabiiy Fanlar: Ratsional Ovqatlanish</title>
+    <meta name="description" content="6-sinf Tabiiy fanlar bo'yicha ixcham, bo'limlarga ajratilgan interaktiv mobil ta'lim platformasi.">
     <!-- PWA / Mobile Theme Color -->
     <meta name="theme-color" content="#10b981">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -58,10 +58,6 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-main);
@@ -69,7 +65,9 @@
             line-height: 1.5;
             transition: var(--transition);
             overflow-x: hidden;
-            padding-bottom: 75px; /* Pastki mobil menyu uchun bo'shliq */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         h1, h2, h3, h4 {
@@ -78,23 +76,22 @@
             color: var(--text-main);
         }
 
-        /* HEADER & NAVBAR */
+        /* HEADER & TOP BAR */
         .navbar {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
         }
         [data-theme="dark"] .navbar {
-            background: rgba(15, 23, 42, 0.92);
+            background: rgba(15, 23, 42, 0.95);
         }
         .nav-container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0.75rem 1rem;
+            padding: 0.7rem 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -102,38 +99,22 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             text-decoration: none;
             color: var(--text-main);
             font-weight: 800;
             font-size: 1.15rem;
         }
         .brand-icon {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 10px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-        }
-        .nav-desktop-links {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            list-style: none;
-        }
-        .nav-desktop-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 0.88rem;
-            transition: var(--transition);
-        }
-        .nav-desktop-links a:hover {
-            color: var(--primary);
+            font-size: 1.05rem;
         }
         .nav-controls {
             display: flex;
@@ -144,232 +125,198 @@
             background: var(--bg-card-subtle);
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         .icon-btn:active {
             transform: scale(0.92);
         }
 
-        /* MOBILE BOTTOM NAVIGATION BAR */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 64px;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(16px);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            z-index: 1000;
-            padding: 0 4px;
-        }
-        [data-theme="dark"] .bottom-nav {
-            background: rgba(15, 23, 42, 0.96);
-        }
-        .bottom-nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 3px;
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.72rem;
-            font-weight: 600;
-            flex: 1;
-            padding: 6px 0;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        .bottom-nav-item i {
-            font-size: 1.15rem;
-            transition: var(--transition);
-        }
-        .bottom-nav-item:active, .bottom-nav-item.active {
-            color: var(--primary);
-        }
-        .bottom-nav-item:active i {
-            transform: scale(1.15);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            position: relative;
-            background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.15), transparent 50%),
-                        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.15), transparent 50%);
-            padding: 3rem 1rem 2.2rem;
-            text-align: center;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 5px 14px;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        [data-theme="dark"] .hero-badge {
-            background: rgba(16, 185, 129, 0.2);
-            color: #34d399;
-        }
-        .hero h1 {
-            font-size: 2.1rem;
-            line-height: 1.25;
-            margin-bottom: 0.8rem;
-        }
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 0.98rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 1.5rem;
-        }
-        .hero-cta {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-        .btn-primary, .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 0.75rem 1.4rem;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            touch-action: manipulation;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3);
-        }
-        .btn-secondary {
+        /* HORIZONTAL SCROLLABLE TABS BAR (TEPADAGI BO'LIMLAR) */
+        .tabs-header-wrapper {
+            position: sticky;
+            top: 53px;
+            z-index: 999;
             background: var(--bg-card);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
+            border-bottom: 1.5px solid var(--border-color);
+            padding: 8px 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
-        .btn-primary:active, .btn-secondary:active {
-            transform: scale(0.96);
-        }
-
-        /* CONTAINER & CARDS */
-        .container {
+        .tabs-scroller {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 1rem 0.85rem;
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 1.8rem;
+        .tabs-scroller::-webkit-scrollbar {
+            display: none;
         }
-        .section-header .tag {
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-        .section-header h2 {
-            font-size: 1.65rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-        .section-header p {
+        .section-tab-btn {
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card-subtle);
             color: var(--text-muted);
-            font-size: 0.92rem;
-            max-width: 580px;
-            margin: 0 auto;
+            font-weight: 700;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: var(--transition);
+            flex-shrink: 0;
         }
+        .section-tab-btn i {
+            font-size: 0.95rem;
+        }
+        .section-tab-btn:active {
+            transform: scale(0.95);
+        }
+        .section-tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+        }
+        .section-tab-btn.active i {
+            color: white;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1.2rem 1rem;
+            flex: 1;
+        }
+
+        /* SECTION VISIBILITY (Faqat faol bo'lim ko'rinadi!) */
+        .tab-section {
+            display: none;
+            animation: fadeInTab 0.3s ease;
+        }
+        .tab-section.active {
+            display: block;
+        }
+        @keyframes fadeInTab {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .content-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
             padding: 1.4rem;
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.2rem;
             box-shadow: var(--shadow-sm);
         }
 
-        /* NUTRIENTS GRID */
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 0.78rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+        [data-theme="dark"] .section-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.25;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* PAGINATION BUTTONS (OLDINGI / KEYINGI BO'LIM) */
+        .tab-nav-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .btn-tab-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.65rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+        .btn-tab-nav.next {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            margin-left: auto;
+        }
+        .btn-tab-nav:active {
+            transform: scale(0.95);
+        }
+
+        /* GRIDS & CARDS */
         .nutrients-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
-            margin-top: 1rem;
         }
         .nutrient-card {
             background: var(--bg-card-subtle);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1.2rem;
-            position: relative;
-            overflow: hidden;
+            padding: 1.1rem;
             border-top: 4px solid var(--card-color, var(--primary));
         }
         .nutrient-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
         .nutrient-icon {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             border-radius: 10px;
             background: var(--bg-card);
             color: var(--card-color, var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-            box-shadow: var(--shadow-sm);
-        }
-        .nutrient-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        .nutrient-norm {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            background: var(--bg-card);
-            color: var(--card-color, var(--primary));
-            border: 1px solid var(--border-color);
-            margin-top: 2px;
-        }
-        .nutrient-desc {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            margin-bottom: 0.8rem;
+            font-size: 1.15rem;
         }
         .food-sources {
             font-size: 0.82rem;
@@ -378,39 +325,29 @@
             padding: 6px 10px;
             border-radius: 6px;
             border-left: 3px solid var(--card-color, var(--primary));
+            margin-top: 8px;
         }
         [data-theme="dark"] .food-sources {
             background: rgba(15, 23, 42, 0.5);
         }
 
-        /* PLATE & CALCULATOR */
+        /* TARELKA & CALC */
         .plate-calc-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.8rem;
-            margin-top: 1.2rem;
+            gap: 1.5rem;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 700px) {
             .plate-calc-grid {
                 grid-template-columns: 1fr 1fr;
                 align-items: center;
             }
         }
-        .plate-visual-box {
-            background: var(--bg-card-subtle);
-            border-radius: var(--radius-md);
-            padding: 1.4rem;
-            text-align: center;
-            border: 1px dashed var(--border-color);
-        }
         .plate-circle {
-            width: 220px;
-            height: 220px;
-            max-width: 70vw;
-            max-height: 70vw;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            margin: 0 auto 1.2rem;
-            position: relative;
+            margin: 0 auto 1rem;
             background: conic-gradient(
                 #10b981 0% 50%,
                 #f59e0b 50% 75%,
@@ -422,29 +359,23 @@
             justify-content: center;
         }
         .plate-center {
-            width: 75px;
-            height: 75px;
+            width: 70px;
+            height: 70px;
             background: white;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            font-size: 0.7rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 0.68rem;
             font-weight: 800;
             color: #1e293b;
-        }
-        .plate-center i {
-            font-size: 1.3rem;
-            color: #10b981;
-            margin-bottom: 2px;
         }
         .plate-legend {
             display: flex;
             flex-direction: column;
             gap: 6px;
-            text-align: left;
         }
         .legend-item {
             display: flex;
@@ -464,56 +395,36 @@
             margin-right: 6px;
         }
 
-        /* CALC FORM */
-        .calc-form {
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-        }
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.8rem;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            margin-bottom: 0.8rem;
         }
         .form-group label {
             font-weight: 600;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
+            display: block;
+            margin-bottom: 3px;
         }
         .form-control {
-            padding: 0.65rem 0.85rem;
+            padding: 0.65rem 0.8rem;
             border: 1.5px solid var(--border-color);
             background: var(--bg-card);
             color: var(--text-main);
             border-radius: 8px;
             font-family: inherit;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             width: 100%;
         }
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        .calc-result-box {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(59, 130, 246, 0.08));
-            border: 1px solid var(--primary-light);
-            display: none;
-        }
 
-        /* DIGESTIVE TRACK */
+        /* HAZM TIZIMI */
         .digestive-tabs {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 6px;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
         @media (min-width: 600px) {
             .digestive-tabs {
@@ -531,14 +442,9 @@
             flex-direction: column;
             align-items: center;
             gap: 4px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             color: var(--text-main);
-            transition: var(--transition);
-        }
-        .digestive-tab i {
-            font-size: 1.15rem;
-            color: var(--text-muted);
         }
         .digestive-tab.active {
             background: var(--secondary);
@@ -551,138 +457,37 @@
         .organ-detail-box {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.2rem;
+            gap: 1rem;
             background: var(--bg-card-subtle);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             padding: 1.2rem;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 700px) {
             .organ-detail-box {
                 grid-template-columns: 1fr 1fr;
                 align-items: center;
             }
         }
-        .organ-visual {
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-        .organ-visual-icon {
-            font-size: 3.8rem;
-            color: var(--secondary);
-            margin-bottom: 0.6rem;
-        }
-        .organ-timeline-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--secondary);
-            border-radius: 999px;
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
-        .organ-text-content h3 {
-            font-size: 1.35rem;
-            margin-bottom: 0.5rem;
-            color: var(--secondary-dark);
-        }
-        [data-theme="dark"] .organ-text-content h3 {
-            color: #60a5fa;
-        }
-        .organ-facts-list {
-            list-style: none;
-            margin-top: 0.8rem;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .organ-facts-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 0.88rem;
-        }
-        .organ-facts-list li i {
-            color: var(--primary);
-            margin-top: 3px;
-        }
-        .sim-actions {
-            margin-top: 1.2rem;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
 
-        /* TEETH & HYGIENE */
-        .teeth-grid {
+        /* TEETH & VITAMINS */
+        .teeth-grid, .vitamins-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 0.8rem;
-            margin-top: 1rem;
         }
-        @media (max-width: 480px) {
-            .teeth-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        .tooth-card {
+        .tooth-card, .vitamin-card {
             background: var(--bg-card-subtle);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
             padding: 1rem;
-        }
-        .tooth-card-title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-        }
-        .tooth-count-badge {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            padding: 2px 6px;
-            border-radius: 999px;
-            font-size: 0.7rem;
-            font-weight: 800;
-        }
-
-        /* VITAMINS */
-        .vitamins-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .vitamin-card {
-            background: var(--bg-card-subtle);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 1.2rem;
-        }
-        .vitamin-letter-badge {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: var(--vit-color, var(--primary));
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 0.6rem;
         }
         .deficiency-alert {
             background: rgba(239, 68, 68, 0.08);
             border: 1px solid rgba(239, 68, 68, 0.2);
             border-radius: 6px;
             padding: 6px 8px;
-            margin-top: 8px;
+            margin-top: 6px;
             font-size: 0.8rem;
             color: #b91c1c;
         }
@@ -694,10 +499,9 @@
         .comparison-cards-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.2rem;
-            margin-top: 1rem;
+            gap: 1rem;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 700px) {
             .comparison-cards-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -706,37 +510,11 @@
             background: var(--bg-card-subtle);
             border: 1.5px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1.2rem;
+            padding: 1.1rem;
             border-top: 4px solid var(--animal-color, var(--primary));
         }
-        .animal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.8rem;
-            padding-bottom: 0.6rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .animal-emoji {
-            font-size: 1.8rem;
-        }
-        .stomach-chambers-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            margin-top: 6px;
-        }
-        .chamber-chip {
-            background: var(--bg-card);
-            padding: 4px 6px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
 
-        /* MEAL PLANNER */
+        /* MEAL PLANNER & GAME */
         .planner-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -752,28 +530,14 @@
             background: var(--bg-card-subtle);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 0.9rem;
-        }
-        .meal-slot h4 {
-            font-size: 0.95rem;
-            margin-bottom: 6px;
-        }
-        .meal-select {
-            width: 100%;
-            padding: 6px 8px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            background: var(--bg-card);
-            color: var(--text-main);
-            font-size: 0.82rem;
+            padding: 0.8rem;
         }
 
-        /* GAME */
         .food-pool {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
-            margin: 1.2rem 0;
+            margin: 1rem 0;
         }
         @media (min-width: 550px) {
             .food-pool {
@@ -787,13 +551,9 @@
             border: 1.5px solid var(--border-color);
             padding: 8px 12px;
             border-radius: 10px;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
             text-align: center;
         }
         .food-item-btn.selected-healthy {
@@ -806,14 +566,6 @@
             border-color: #ef4444;
             color: #b91c1c;
         }
-        [data-theme="dark"] .food-item-btn.selected-healthy {
-            background: rgba(34, 197, 94, 0.2);
-            color: #4ade80;
-        }
-        [data-theme="dark"] .food-item-btn.selected-unhealthy {
-            background: rgba(239, 68, 68, 0.2);
-            color: #f87171;
-        }
 
         /* WATER TRACKER */
         .water-glasses-row {
@@ -821,17 +573,10 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             max-width: 320px;
-            margin: 1.2rem auto 1rem;
-        }
-        @media (min-width: 600px) {
-            .water-glasses-row {
-                display: flex;
-                justify-content: center;
-                max-width: 100%;
-            }
+            margin: 1rem auto;
         }
         .water-glass-btn {
-            height: 68px;
+            height: 65px;
             background: var(--bg-card);
             border: 2px solid var(--secondary);
             border-radius: 6px 6px 14px 14px;
@@ -841,7 +586,7 @@
             cursor: pointer;
             overflow: hidden;
             position: relative;
-            padding-bottom: 6px;
+            padding-bottom: 5px;
         }
         .water-glass-btn .water-fill {
             position: absolute;
@@ -865,43 +610,19 @@
             color: white;
         }
 
-        /* QUIZ */
+        /* QUIZ & CERTIFICATE */
         .quiz-card {
             background: var(--bg-card-subtle);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        .quiz-question {
-            font-size: 0.98rem;
-            font-weight: 700;
+            padding: 1rem;
             margin-bottom: 0.9rem;
-            display: flex;
-            gap: 8px;
-        }
-        .quiz-question-num {
-            background: var(--primary);
-            color: white;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            flex-shrink: 0;
-        }
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
         }
         .quiz-opt-btn {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 10px 14px;
+            padding: 10px 12px;
             text-align: left;
             font-size: 0.88rem;
             cursor: pointer;
@@ -909,6 +630,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-top: 6px;
+            width: 100%;
         }
         .quiz-opt-btn.correct {
             background: #dcfce7 !important;
@@ -921,66 +644,30 @@
             border-color: #ef4444 !important;
             color: #b91c1c !important;
         }
-        [data-theme="dark"] .quiz-opt-btn.correct {
-            background: rgba(34, 197, 94, 0.25) !important;
-            color: #86efac !important;
-        }
-        [data-theme="dark"] .quiz-opt-btn.incorrect {
-            background: rgba(239, 68, 68, 0.25) !important;
-            color: #fca5a5 !important;
-        }
-        .quiz-feedback {
-            margin-top: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: none;
-            padding: 6px 10px;
-            border-radius: 6px;
-        }
-
-        /* CERTIFICATE */
         .certificate-container {
             display: none;
             margin-top: 1.5rem;
             background: white;
-            color: #1e293b;
+            color: #1e3a8a;
             border: 8px solid #d97706;
             border-radius: 14px;
-            padding: 1.8rem 1rem;
+            padding: 1.5rem 1rem;
             text-align: center;
         }
-        .certificate-seal {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-            display: flex;
+
+        .btn-primary {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 0.8rem;
-            font-size: 1.8rem;
-        }
-        .cert-name-input-box {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            max-width: 400px;
-            margin: 1.2rem auto 0;
-        }
-        @media (min-width: 480px) {
-            .cert-name-input-box {
-                flex-direction: row;
-            }
-        }
-
-        /* DESKTOP / MOBILE RESPONSIVE TWEAKS */
-        @media (max-width: 768px) {
-            .nav-desktop-links { display: none; }
-        }
-        @media (min-width: 769px) {
-            .bottom-nav { display: none; }
-            body { padding-bottom: 0; }
+            gap: 6px;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -995,16 +682,6 @@
                 </div>
                 <span>BioTa'lim 6</span>
             </a>
-            <ul class="nav-desktop-links">
-                <li><a href="#ratsion"><i class="fa-solid fa-utensils"></i> Ratsion</a></li>
-                <li><a href="#tarelka"><i class="fa-solid fa-pie-chart"></i> Tarelka & BJU</a></li>
-                <li><a href="#hazm-tizimi"><i class="fa-solid fa-route"></i> Hazm</a></li>
-                <li><a href="#tishlar"><i class="fa-solid fa-teeth"></i> Tishlar</a></li>
-                <li><a href="#vitaminlar"><i class="fa-solid fa-pills"></i> Vitaminlar</a></li>
-                <li><a href="#hayvonlar"><i class="fa-solid fa-paw"></i> Hayvonlar</a></li>
-                <li><a href="#taomnoma"><i class="fa-solid fa-clipboard-list"></i> Taomnoma</a></li>
-                <li><a href="#testlar"><i class="fa-solid fa-award"></i> Test</a></li>
-            </ul>
             <div class="nav-controls">
                 <button class="icon-btn" id="theme-toggle" title="Mavzu" onclick="toggleTheme()">
                     <i class="fa-solid fa-moon"></i>
@@ -1016,563 +693,519 @@
         </div>
     </header>
 
-    <!-- MOBILE BOTTOM NAVIGATION -->
-    <nav class="bottom-nav">
-        <a href="#ratsion" class="bottom-nav-item">
-            <i class="fa-solid fa-utensils"></i>
-            <span>Ratsion</span>
-        </a>
-        <a href="#tarelka" class="bottom-nav-item">
-            <i class="fa-solid fa-pie-chart"></i>
-            <span>Tarelka</span>
-        </a>
-        <a href="#hazm-tizimi" class="bottom-nav-item">
-            <i class="fa-solid fa-route"></i>
-            <span>Hazm</span>
-        </a>
-        <a href="#oyin" class="bottom-nav-item">
-            <i class="fa-solid fa-gamepad"></i>
-            <span>O'yin</span>
-        </a>
-        <a href="#testlar" class="bottom-nav-item">
-            <i class="fa-solid fa-award"></i>
-            <span>Test</span>
-        </a>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-badge">
-            <i class="fa-solid fa-graduation-cap"></i> 6-sinf Tabiiy Fanlar Darsligi
-        </div>
-        <h1>
-            Ratsional Ovqatlanish va <span>Hazm Qilish Tizimi</span>
-        </h1>
-        <p>
-            Smartfoningizda interaktiv biologiya: ozuqa moddalari, sogʻlom tarelka, tishlar va vitaminlar sirlarini oʻrganing!
-        </p>
-        <div class="hero-cta">
-            <a href="#tarelka" class="btn-primary">
-                <i class="fa-solid fa-play"></i> Kalkulyator & Tarelka
-            </a>
-            <a href="#testlar" class="btn-secondary">
+    <!-- HORIZONTAL SCROLLABLE TABS (TEPADAGI BO'LIMLAR) -->
+    <div class="tabs-header-wrapper">
+        <div class="tabs-scroller" id="tabs-scroller">
+            <button class="section-tab-btn active" onclick="showTab(0)">
+                <i class="fa-solid fa-utensils"></i> Ratsion
+            </button>
+            <button class="section-tab-btn" onclick="showTab(1)">
+                <i class="fa-solid fa-pie-chart"></i> Tarelka & BJU
+            </button>
+            <button class="section-tab-btn" onclick="showTab(2)">
+                <i class="fa-solid fa-route"></i> Hazm Tizimi
+            </button>
+            <button class="section-tab-btn" onclick="showTab(3)">
+                <i class="fa-solid fa-teeth"></i> Tishlar
+            </button>
+            <button class="section-tab-btn" onclick="showTab(4)">
+                <i class="fa-solid fa-pills"></i> Vitaminlar
+            </button>
+            <button class="section-tab-btn" onclick="showTab(5)">
+                <i class="fa-solid fa-paw"></i> Hayvonlar
+            </button>
+            <button class="section-tab-btn" onclick="showTab(6)">
+                <i class="fa-solid fa-clipboard-list"></i> Taomnoma & Suv
+            </button>
+            <button class="section-tab-btn" onclick="showTab(7)">
+                <i class="fa-solid fa-gamepad"></i> O'yin
+            </button>
+            <button class="section-tab-btn" onclick="showTab(8)">
                 <i class="fa-solid fa-award"></i> Test & Sertifikat
-            </a>
+            </button>
         </div>
-    </section>
+    </div>
 
-    <!-- MAIN CONTAINER -->
+    <!-- MAIN CONTAINER (HAR BIR BO'LIM ALOHIDA SAHIFADEK KO'RINADI!) -->
     <main class="container">
 
-        <!-- 1-BO'LIM: MUVOZATLASHTIRILGAN RATSION -->
-        <section id="ratsion" class="content-card">
-            <div class="section-header">
-                <span class="tag">1-Mavzu</span>
-                <h2>Muvozatlashgan Ratsion Nima?</h2>
-                <p>Oʻquvchi organizmi sogʻlom oʻsishi va quvvatga toʻlishi uchun zarur moddalar:</p>
-            </div>
-
-            <div class="nutrients-grid">
-                <div class="nutrient-card" style="--card-color: #ef4444;">
-                    <div class="nutrient-header">
-                        <div class="nutrient-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
-                        <div>
-                            <div class="nutrient-title">Oqsillar</div>
-                            <span class="nutrient-norm">15% - 20%</span>
-                        </div>
-                    </div>
-                    <p class="nutrient-desc">Hujayra va toʻqimalarning asosiy qurilish materiali. Muskullar va boʻy oʻsishini taʼminlaydi.</p>
-                    <div class="food-sources"><strong>Manbalari:</strong> Goʻsht, tuxum, baliq, tvorog, mosh, loviya.</div>
-                </div>
-
-                <div class="nutrient-card" style="--card-color: #f59e0b;">
-                    <div class="nutrient-header">
-                        <div class="nutrient-icon"><i class="fa-solid fa-bread-slice"></i></div>
-                        <div>
-                            <div class="nutrient-title">Uglevodlar</div>
-                            <span class="nutrient-norm">50% - 60%</span>
-                        </div>
-                    </div>
-                    <p class="nutrient-desc">Miya va jismoniy harakatlar uchun asosiy tezkor quvvat xazinasi.</p>
-                    <div class="food-sources"><strong>Manbalari:</strong> Bugʻdoy noni, guruch, suli yormasi, mevalar.</div>
-                </div>
-
-                <div class="nutrient-card" style="--card-color: #3b82f6;">
-                    <div class="nutrient-header">
-                        <div class="nutrient-icon"><i class="fa-solid fa-bottle-droplet"></i></div>
-                        <div>
-                            <div class="nutrient-title">Yogʻlar</div>
-                            <span class="nutrient-norm">20% - 30%</span>
-                        </div>
-                    </div>
-                    <p class="nutrient-desc">Zaxira energiya manbai, ichki organlarni himoyalaydi va vitaminlarni oʻzlashtiradi.</p>
-                    <div class="food-sources"><strong>Manbalari:</strong> Zaytun yogʻi, yongʻoq, bodom, sariyogʻ.</div>
-                </div>
-
-                <div class="nutrient-card" style="--card-color: #10b981;">
-                    <div class="nutrient-header">
-                        <div class="nutrient-icon"><i class="fa-solid fa-droplet"></i></div>
-                        <div>
-                            <div class="nutrient-title">Suv & Minerallar</div>
-                            <span class="nutrient-norm">Har kuni</span>
-                        </div>
-                    </div>
-                    <p class="nutrient-desc">Suyaklar mustahkamligi, qon aylanishi va immunitetni boshqaradi.</p>
-                    <div class="food-sources"><strong>Manbalari:</strong> Toza ichimlik suvi, koʻkatlar, olma, sut.</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 2-BO'LIM: SOG'LOM TARELKA & BJU KALKULYATORI -->
-        <section id="tarelka" class="content-card">
-            <div class="section-header">
-                <span class="tag">Interaktiv Asbob</span>
-                <h2>"Sogʻlom Tarelka" va Shaxsiy BJU Hisoblagich</h2>
-                <p>Kunlik toʻgʻri tarelka taqsimoti va yoshga mos kaloriya meʼyori.</p>
-            </div>
-
-            <div class="plate-calc-grid">
-                <div class="plate-visual-box">
-                    <h3 style="margin-bottom: 1rem; font-size:1.15rem;">🍽️ Garvard Sogʻlom Tarelkasi</h3>
-                    <div class="plate-circle">
-                        <div class="plate-center">
-                            <i class="fa-solid fa-heart-pulse"></i>
-                            <span>MEʼYOR</span>
-                        </div>
-                    </div>
-                    <div class="plate-legend">
-                        <div class="legend-item">
-                            <div><span class="legend-color" style="background:#10b981;"></span> <strong>Sabzavot & meva:</strong></div>
-                            <span>50% (Yarmi)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div><span class="legend-color" style="background:#f59e0b;"></span> <strong>Don mahsulotlari:</strong></div>
-                            <span>25% (Chorak)</span>
-                        </div>
-                        <div class="legend-item">
-                            <div><span class="legend-color" style="background:#ef4444;"></span> <strong>Sogʻlom oqsillar:</strong></div>
-                            <span>25% (Chorak)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 style="margin-bottom: 0.8rem; font-size:1.15rem;"><i class="fa-solid fa-calculator" style="color:var(--primary);"></i> Shaxsiy Kaloriya Hisoblash</h3>
-                    <form class="calc-form" onsubmit="calculateNutrition(event)">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="calc-age">Yosh</label>
-                                <input type="number" id="calc-age" class="form-control" value="12" min="8" max="18" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="calc-gender">Jinsi</label>
-                                <select id="calc-gender" class="form-control">
-                                    <option value="male">Oʻgʻil bola</option>
-                                    <option value="female">Qiz bola</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="calc-weight">Vazn (kg)</label>
-                                <input type="number" id="calc-weight" class="form-control" value="42" min="20" max="100" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="calc-activity">Faollik</label>
-                                <select id="calc-activity" class="form-control">
-                                    <option value="1.3">Oʻrtacha (Maktab)</option>
-                                    <option value="1.55">Faol (Sportchi)</option>
-                                    <option value="1.2">Kamharakat</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn-primary" style="width:100%; margin-top:4px;">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i> Hisoblash
-                        </button>
-                    </form>
-
-                    <div id="calc-result" class="calc-result-box">
-                        <div style="font-weight: 800; font-size: 1.05rem; color: var(--primary-dark); margin-bottom: 6px;" id="calc-calories">
-                            ⚡ Kunlik ehtiyoj: 2150 kkal
-                        </div>
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; text-align: center;">
-                            <div style="background:var(--bg-card); padding:6px; border-radius:6px;">
-                                <strong style="color:#ef4444;" id="calc-prot">65 g</strong><br><small>Oqsil</small>
-                            </div>
-                            <div style="background:var(--bg-card); padding:6px; border-radius:6px;">
-                                <strong style="color:#3b82f6;" id="calc-fat">60 g</strong><br><small>Yogʻ</small>
-                            </div>
-                            <div style="background:var(--bg-card); padding:6px; border-radius:6px;">
-                                <strong style="color:#f59e0b;" id="calc-carb">295 g</strong><br><small>Uglevod</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3-BO'LIM: INSON HAZM TIZIMI -->
-        <section id="hazm-tizimi" class="content-card">
-            <div class="section-header">
-                <span class="tag">2-Mavzu</span>
-                <h2>Insonning Ovqat Hazm Qilish Sistemasi</h2>
-                <p>Bosqichlarni bosing va ozuqa yoʻlini kuzating:</p>
-            </div>
-
-            <div class="digestive-tabs">
-                <button class="digestive-tab active" onclick="switchOrgan(0)">
-                    <i class="fa-solid fa-teeth-open"></i>
-                    <span>1. Ogʻiz</span>
-                </button>
-                <button class="digestive-tab" onclick="switchOrgan(1)">
-                    <i class="fa-solid fa-arrows-down-to-line"></i>
-                    <span>2. Qiziloʻngach</span>
-                </button>
-                <button class="digestive-tab" onclick="switchOrgan(2)">
-                    <i class="fa-solid fa-flask"></i>
-                    <span>3. Oshqozon</span>
-                </button>
-                <button class="digestive-tab" onclick="switchOrgan(3)">
-                    <i class="fa-solid fa-dna"></i>
-                    <span>4. Ingichka ichak</span>
-                </button>
-                <button class="digestive-tab" onclick="switchOrgan(4)">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <span>5. Jigar/Bezlar</span>
-                </button>
-                <button class="digestive-tab" onclick="switchOrgan(5)">
-                    <i class="fa-solid fa-filter"></i>
-                    <span>6. Yoʻgʻon ichak</span>
-                </button>
-            </div>
-
-            <div class="organ-detail-box">
-                <div class="organ-visual">
-                    <div class="organ-timeline-badge" id="organ-step-badge">1-Bosqich</div>
-                    <div class="organ-visual-icon" id="organ-icon"><i class="fa-solid fa-teeth-open"></i></div>
-                    <h4 id="organ-name" style="font-size: 1.2rem;">Ogʻiz boʻshligʻi</h4>
-                    <p id="organ-time" style="color:var(--text-muted); font-size:0.8rem; margin-top:3px;">Vaqt: ~1 daqiqa</p>
-                </div>
-
-                <div class="organ-text-content">
-                    <h3 id="organ-title">Boshlangʻich maydalash</h3>
-                    <p id="organ-description" style="color:var(--text-muted); font-size:0.92rem;">
-                        Tishlar ovqatni maydalaydi, til aralashtiradi. Soʻlakdagi <strong>ptialin (amilaza)</strong> fermenti uglevodlarni parchalashni boshlaydi.
-                    </p>
-                    <ul class="organ-facts-list" id="organ-facts">
-                        <li><i class="fa-solid fa-circle-check"></i> Til shirin, shoʻr, nordon va achchiq taʼmni sezadi.</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Soʻlakdagi lizotsim bakteriyalarni zararsizlantiradi.</li>
-                    </ul>
-                    <div class="sim-actions">
-                        <button class="btn-primary" onclick="nextOrgan()">
-                            Keyingi ➔
-                        </button>
-                        <button class="btn-secondary" onclick="speakOrganInfo()">
-                            <i class="fa-solid fa-volume-high"></i> Tinglash
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4-BO'LIM: TISHLAR TUZILISHI -->
-        <section id="tishlar" class="content-card">
-            <div class="section-header">
-                <span class="tag">Anatomiya</span>
-                <h2>🦷 Tishlarning Turlari va Vazifalari</h2>
-                <p>Katta odamda jami <strong>32 ta</strong> doimiy tish boʻladi:</p>
-            </div>
-
-            <div class="teeth-grid">
-                <div class="tooth-card">
-                    <div class="tooth-card-title">
-                        <span>✂️ Kesuvchi tishlar</span>
-                        <span class="tooth-count-badge">8 ta</span>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">
-                        Oldingi oʻtkir qirrali tishlar, luqmani tishlab olish va kesish uchun.
-                    </p>
-                </div>
-
-                <div class="tooth-card">
-                    <div class="tooth-card-title">
-                        <span>🗡️ Qoziq tishlar</span>
-                        <span class="tooth-count-badge">4 ta</span>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">
-                        Uchli mustahkam tishlar, qattiq ozuqalarni uzish va yulish uchun.
-                    </p>
-                </div>
-
-                <div class="tooth-card">
-                    <div class="tooth-card-title">
-                        <span>⚙️ Kichik oziq tishlar</span>
-                        <span class="tooth-count-badge">8 ta</span>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">
-                        Tekis yuzali, luqmani dastlabki ezish va maydalash uchun.
-                    </p>
-                </div>
-
-                <div class="tooth-card">
-                    <div class="tooth-card-title">
-                        <span>🪨 Katta oziq tishlar</span>
-                        <span class="tooth-count-badge">12 ta</span>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">
-                        Eng baquvvat tishlar, ovqatni boʻtqa holatiga keltirib maydalaydi.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5-BO'LIM: VITAMINLAR VA AVITAMINOZ -->
-        <section id="vitaminlar" class="content-card">
-            <div class="section-header">
-                <span class="tag">Biologiya</span>
-                <h2>💊 Vitaminlar va Avitaminoz Kasalliklari</h2>
-                <p>Vitaminlar yetishmasa inson organizmida nima yuz beradi?</p>
-            </div>
-
-            <div class="vitamins-grid">
-                <div class="vitamin-card" style="--vit-color: #f97316;">
-                    <div class="vitamin-letter-badge">A</div>
-                    <h4>A Vitamini (Retinol)</h4>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Koʻz oʻtkirligi, teri va boʻy oʻsishi uchun zarur. Sabzi, jigarda koʻp.</p>
-                    <div class="deficiency-alert"><strong>Yetishmasa:</strong> Shabkoʻrlik (oqshomda koʻrmaslik).</div>
-                </div>
-
-                <div class="vitamin-card" style="--vit-color: #3b82f6;">
-                    <div class="vitamin-letter-badge">B</div>
-                    <h4>B Guruhi Vitaminlari</h4>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Asab tizimi, miya va qon hosil boʻlishi. Non, tuxum, jigarda koʻp.</p>
-                    <div class="deficiency-alert"><strong>Yetishmasa:</strong> Beri-beri kasalligi, kamqonlik.</div>
-                </div>
-
-                <div class="vitamin-card" style="--vit-color: #10b981;">
-                    <div class="vitamin-letter-badge">C</div>
-                    <h4>C Vitamini (Askorbin)</h4>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Kuchli immunitet va qon tomirlar pishiqligi. Naʼmatak, limonda koʻp.</p>
-                    <div class="deficiency-alert"><strong>Yetishmasa:</strong> Singa (milklar qonashi, holsizlik).</div>
-                </div>
-
-                <div class="vitamin-card" style="--vit-color: #eab308;">
-                    <div class="vitamin-letter-badge">D</div>
-                    <h4>D Vitamini (Kalsiferol)</h4>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Kalsiyning suyakka singishi. Quyosh nuri, baliq yogʻida koʻp.</p>
-                    <div class="deficiency-alert"><strong>Yetishmasa:</strong> Raxit (suyaklarning qiyshayishi).</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6-BO'LIM: HAYVONLAR HAZM TIZIMI -->
-        <section id="hayvonlar" class="content-card">
-            <div class="section-header">
-                <span class="tag">3-Mavzu</span>
-                <h2>Hayvonlarning Hazm Sistemasi Farqlari</h2>
-                <p>Oʻtxor sigir va yirtqich sherning hazm qilish moslashuvi:</p>
-            </div>
-
-            <div class="comparison-cards-grid">
-                <div class="animal-card" style="--animal-color: #10b981;">
-                    <div class="animal-header">
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <span class="animal-emoji">🐮</span>
-                            <strong>Oʻtxorlar (Sigir)</strong>
-                        </div>
-                        <small style="color:var(--primary); font-weight:700;">4 xonali</small>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Kletchatkani hazm qilish uchun 4 xonali oshqozon:</p>
-                    <div class="stomach-chambers-grid">
-                        <div class="chamber-chip">1. Kaltak</div>
-                        <div class="chamber-chip">2. Toʻr</div>
-                        <div class="chamber-chip">3. Qatqorin</div>
-                        <div class="chamber-chip">4. Shirdon</div>
-                    </div>
-                    <p style="font-size:0.82rem; margin-top:8px;">* Ichagi tana uzunligidan 20-25 barobar uzun!</p>
-                </div>
-
-                <div class="animal-card" style="--animal-color: #ef4444;">
-                    <div class="animal-header">
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <span class="animal-emoji">🦁</span>
-                            <strong>Goʻshtxorlar (Sher)</strong>
-                        </div>
-                        <small style="color:#ef4444; font-weight:700;">1 xonali</small>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Goʻsht tez eriydi, kislotasi (pH 1-2) oʻta kuchli. Suyaklarni ham eritadi.</p>
-                    <p style="font-size:0.82rem; margin-top:8px;">* Oʻtkir qoziq tishlar, qisqa ichak (tana uzunligidan 4-6 barobar).</p>
-                </div>
-
-                <div class="animal-card" style="--animal-color: #3b82f6;">
-                    <div class="animal-header">
-                        <div style="display:flex; align-items:center; gap:8px;">
-                            <span class="animal-emoji">🐻</span>
-                            <strong>Hammaxorlar (Inson)</strong>
-                        </div>
-                        <small style="color:#3b82f6; font-weight:700;">Universal</small>
-                    </div>
-                    <p style="font-size:0.85rem; color:var(--text-muted);">Ham oʻsimlik, ham hayvonot ozuqasini hazm qila oluvchi universal fermentlar.</p>
-                    <p style="font-size:0.82rem; margin-top:8px;">* Oʻrtacha ichak uzunligi (tana uzunligidan 8-10 barobar).</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7-BO'LIM: TAOMNOMA TUZUVCHI -->
-        <section id="taomnoma" class="content-card">
-            <div class="section-header">
-                <span class="tag">Amaliy</span>
-                <h2>📋 Kunlik Taomnoma Tuzuvchi</h2>
-                <p>Vaqtlar boʻyicha taomlarni tanlang va umumiy kaloriyani tekshiring:</p>
-            </div>
-
-            <div class="planner-grid">
-                <div class="meal-slot">
-                    <h4>🌅 Nonushta</h4>
-                    <select id="meal-b" class="meal-select" onchange="updateMealPlanner()">
-                        <option value="450">Suli boʻtqasi, tuxum (450 kkal)</option>
-                        <option value="350">Tvorog, asal, non (350 kkal)</option>
-                        <option value="600">Qovurilgan kolbasa (600 kkal)</option>
-                    </select>
-                </div>
-
-                <div class="meal-slot">
-                    <h4>☀️ Tushlik</h4>
-                    <select id="meal-l" class="meal-select" onchange="updateMealPlanner()">
-                        <option value="800">Moshxoʻrda, dimlangan tovuq (800 kkal)</option>
-                        <option value="950">Yogʻli palov, salat (950 kkal)</option>
-                        <option value="650">Sabzavotli shoʻrva, baliq (650 kkal)</option>
-                    </select>
-                </div>
-
-                <div class="meal-slot">
-                    <h4>🍎 Peshinlik</h4>
-                    <select id="meal-s" class="meal-select" onchange="updateMealPlanner()">
-                        <option value="200">Olma, yongʻoq, qatiq (200 kkal)</option>
-                        <option value="350">Shokoladli pishiriq (350 kkal)</option>
-                        <option value="150">Yangi mevalar (150 kkal)</option>
-                    </select>
-                </div>
-
-                <div class="meal-slot">
-                    <h4>🌙 Kechki ovqat</h4>
-                    <select id="meal-d" class="meal-select" onchange="updateMealPlanner()">
-                        <option value="550">Bugʻda pishgan manti (550 kkal)</option>
-                        <option value="400">Yengil sabzavotli ragu (400 kkal)</option>
-                        <option value="750">Qovurma goʻsht, non (750 kkal)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div style="text-align:center; padding:0.8rem; background:var(--bg-card-subtle); border-radius:10px; border:1px dashed var(--primary);">
-                <h3 id="planner-total" style="color:var(--primary-dark); font-size:1.2rem;">Jami: 2000 kkal</h3>
-                <p id="planner-verdict" style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-top:2px;">
-                    ✅ Aʼlo darajada muvozatlashgan sogʻlom taomnoma!
-                </p>
-            </div>
-        </section>
-
-        <!-- 8-BO'LIM: MINI-O'YIN -->
-        <section id="oyin" class="content-card">
-            <div class="section-header">
-                <span class="tag">🎮 Oʻyin</span>
-                <h2>"Sogʻlom Tarelkani Shakllantir"</h2>
-                <p>Faqat <strong>foydali va tabiiy</strong> mahsulotlarni tanlang:</p>
-            </div>
-
-            <div class="food-pool" id="food-pool">
-                <!-- JS orqali generatsiya -->
-            </div>
-
-            <div style="text-align:center; padding:0.8rem; background:var(--bg-card-subtle); border-radius:10px;">
-                <div style="font-size: 1.1rem; font-weight: 800;">
-                    Ball: <span id="game-score" style="color:var(--primary);">0</span> / 60
-                </div>
-                <p id="game-feedback" style="color:var(--text-muted); font-size:0.85rem; margin: 4px 0 8px;">
-                    Boshlash uchun mahsulotlarni bosing!
-                </p>
-                <button class="btn-secondary" onclick="resetGame()" style="padding:0.5rem 1rem; font-size:0.82rem;">
-                    <i class="fa-solid fa-rotate-right"></i> Qaytadan
-                </button>
-            </div>
-        </section>
-
-        <!-- SUV TREKERI -->
-        <div class="content-card" style="text-align:center;">
-            <span class="hero-badge"><i class="fa-solid fa-droplet"></i> Suv — Hayot Manbai</span>
-            <h2 style="font-size:1.4rem; margin:0.4rem 0;">Kunlik Suv Balansi (8 Stakan)</h2>
-            <p style="color:var(--text-muted); font-size:0.85rem;">Har safar suv ichganda stakanni bosing:</p>
-            <div class="water-glasses-row" id="water-row">
-                <!-- JS orqali 8 stakan -->
-            </div>
-            <div style="font-weight:700; font-size:1rem; color:var(--secondary-dark);" id="water-status">
-                Ichildi: 0 / 8 stakan (0 ml)
-            </div>
-        </div>
-
-        <!-- 9-BO'LIM: 10 TA TEST VA SERTIFIKAT -->
-        <section id="testlar" class="content-card">
-            <div class="section-header">
-                <span class="tag">Sinov</span>
-                <h2>6-sinf Tabiiy Fanlar Testi (10 ta Savol)</h2>
-                <p>Savollarga toʻgʻri javob bering va <strong>"Yosh Biolog"</strong> sertifikatini oling!</p>
-            </div>
-
-            <div style="height:6px; background:var(--bg-card-subtle); border-radius:3px; overflow:hidden; margin-bottom:1rem;">
-                <div id="quiz-progress" style="height:100%; width:0%; background:var(--primary); transition:width 0.3s ease;"></div>
-            </div>
-
-            <div id="quiz-list">
-                <!-- JS orqali 10 ta savol -->
-            </div>
-
-            <div id="quiz-final-box" style="display:none; text-align:center; padding:1.5rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); margin-top:1.5rem;">
-                <div style="font-size:2.8rem; margin-bottom:0.5rem;" id="quiz-medal">🏆</div>
-                <h3 id="quiz-final-title" style="font-size:1.4rem;">Ajoyib natija!</h3>
-                <p id="quiz-final-score" style="font-size:1.1rem; font-weight:700; color:var(--primary); margin: 0.4rem 0 1rem;"></p>
+        <!-- BO'LIM 0: RATSION -->
+        <section class="tab-section active" id="tab-0">
+            <div class="content-card">
+                <span class="section-badge">1-Mavzu</span>
+                <h2 class="section-title">Muvozatlashgan Ratsion Nima?</h2>
+                <p class="section-desc">Oʻquvchi organizmi sogʻlom oʻsishi va quvvatga toʻlishi uchun asosiy ozuqa moddalari:</p>
                 
-                <div class="cert-name-input-box">
-                    <input type="text" id="student-name" class="form-control" placeholder="Ism va familiyangizni yozing...">
-                    <button class="btn-primary" onclick="generateCertificate()">
-                        <i class="fa-solid fa-award"></i> Sertifikatni Olish
+                <div class="nutrients-grid">
+                    <div class="nutrient-card" style="--card-color: #ef4444;">
+                        <div class="nutrient-header">
+                            <div class="nutrient-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
+                            <div><strong>Oqsillar</strong><br><small style="color:var(--text-muted);">15% - 20%</small></div>
+                        </div>
+                        <p style="font-size:0.86rem; color:var(--text-muted);">Hujayralarning qurilish materiali. Muskullar va boʻy oʻsishini taʼminlaydi.</p>
+                        <div class="food-sources">Goʻsht, tuxum, baliq, tvorog, mosh, loviya.</div>
+                    </div>
+
+                    <div class="nutrient-card" style="--card-color: #f59e0b;">
+                        <div class="nutrient-header">
+                            <div class="nutrient-icon"><i class="fa-solid fa-bread-slice"></i></div>
+                            <div><strong>Uglevodlar</strong><br><small style="color:var(--text-muted);">50% - 60%</small></div>
+                        </div>
+                        <p style="font-size:0.86rem; color:var(--text-muted);">Miya va jismoniy harakatlar uchun asosiy tezkor energiya manbai.</p>
+                        <div class="food-sources">Bugʻdoy noni, guruch, suli yormasi, mevalar.</div>
+                    </div>
+
+                    <div class="nutrient-card" style="--card-color: #3b82f6;">
+                        <div class="nutrient-header">
+                            <div class="nutrient-icon"><i class="fa-solid fa-bottle-droplet"></i></div>
+                            <div><strong>Yogʻlar</strong><br><small style="color:var(--text-muted);">20% - 30%</small></div>
+                        </div>
+                        <p style="font-size:0.86rem; color:var(--text-muted);">Zaxira energiya, ichki aʼzolarni himoyalaydi va vitaminlarni oʻzlashtiradi.</p>
+                        <div class="food-sources">Zaytun yogʻi, yongʻoq, bodom, sariyogʻ.</div>
+                    </div>
+
+                    <div class="nutrient-card" style="--card-color: #10b981;">
+                        <div class="nutrient-header">
+                            <div class="nutrient-icon"><i class="fa-solid fa-droplet"></i></div>
+                            <div><strong>Suv & Minerallar</strong><br><small style="color:var(--text-muted);">Har kuni</small></div>
+                        </div>
+                        <p style="font-size:0.86rem; color:var(--text-muted);">Suyaklar mustahkamligi, qon aylanishi va toʻqimalar salomatligi.</p>
+                        <div class="food-sources">Toza ichimlik suvi, koʻkatlar, sut, olma.</div>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <span>1 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav next" onclick="showTab(1)">
+                        Keyingi boʻlim (Tarelka) ➔
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BO'LIM 1: TARELKA & BJU -->
+        <section class="tab-section" id="tab-1">
+            <div class="content-card">
+                <span class="section-badge">Interaktiv Asbob</span>
+                <h2 class="section-title">Sogʻlom Tarelka & Kalkulyator</h2>
+                <p class="section-desc">Toʻgʻri tarelka modeli va yoshga mos kunlik kaloriya meʼyori:</p>
+
+                <div class="plate-calc-grid">
+                    <div style="background:var(--bg-card-subtle); padding:1rem; border-radius:12px; text-align:center;">
+                        <h4 style="margin-bottom:0.8rem;">🍽️ Garvard Sogʻlom Tarelkasi</h4>
+                        <div class="plate-circle">
+                            <div class="plate-center">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                                <span>MEʼYOR</span>
+                            </div>
+                        </div>
+                        <div class="plate-legend">
+                            <div class="legend-item">
+                                <div><span class="legend-color" style="background:#10b981;"></span> <strong>Sabzavot & meva:</strong></div>
+                                <span>50% (Yarmi)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div><span class="legend-color" style="background:#f59e0b;"></span> <strong>Don mahsulotlari:</strong></div>
+                                <span>25% (Chorak)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div><span class="legend-color" style="background:#ef4444;"></span> <strong>Sogʻlom oqsillar:</strong></div>
+                                <span>25% (Chorak)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 style="margin-bottom:0.8rem;"><i class="fa-solid fa-calculator" style="color:var(--primary);"></i> Shaxsiy Kaloriya Hisoblagich</h4>
+                        <form onsubmit="calculateNutrition(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Yosh</label>
+                                    <input type="number" id="calc-age" class="form-control" value="12" min="8" max="18" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Jinsi</label>
+                                    <select id="calc-gender" class="form-control">
+                                        <option value="male">Oʻgʻil bola</option>
+                                        <option value="female">Qiz bola</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Vazn (kg)</label>
+                                    <input type="number" id="calc-weight" class="form-control" value="42" min="20" max="100" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Faollik</label>
+                                    <select id="calc-activity" class="form-control">
+                                        <option value="1.3">Oʻrtacha</option>
+                                        <option value="1.55">Faol</option>
+                                        <option value="1.2">Kamharakat</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary" style="width:100%; margin-top:4px;">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Hisoblash
+                            </button>
+                        </form>
+
+                        <div id="calc-result" style="display:none; margin-top:1rem; padding:0.8rem; background:rgba(16,185,129,0.08); border-radius:10px; border:1px solid var(--primary-light);">
+                            <div style="font-weight:800; font-size:1.05rem; color:var(--primary-dark);" id="calc-calories">⚡ 2150 kkal</div>
+                            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-top:6px; text-align:center;">
+                                <div style="background:var(--bg-card); padding:4px; border-radius:6px;"><strong style="color:#ef4444;" id="calc-prot">65g</strong><br><small>Oqsil</small></div>
+                                <div style="background:var(--bg-card); padding:4px; border-radius:6px;"><strong style="color:#3b82f6;" id="calc-fat">60g</strong><br><small>Yogʻ</small></div>
+                                <div style="background:var(--bg-card); padding:4px; border-radius:6px;"><strong style="color:#f59e0b;" id="calc-carb">295g</strong><br><small>Uglevod</small></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(0)">⬅️ Orqaga</button>
+                    <span>2 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav next" onclick="showTab(2)">Keyingi (Hazm) ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BO'LIM 2: HAZM TIZIMI -->
+        <section class="tab-section" id="tab-2">
+            <div class="content-card">
+                <span class="section-badge">2-Mavzu</span>
+                <h2 class="section-title">Inson Ovqat Hazm Qilish Tizimi</h2>
+                <p class="section-desc">Aʼzoni bosing va ozuqa yoʻlini oʻrganing:</p>
+
+                <div class="digestive-tabs">
+                    <button class="digestive-tab active" onclick="switchOrgan(0)"><i class="fa-solid fa-teeth-open"></i>1. Ogʻiz</button>
+                    <button class="digestive-tab" onclick="switchOrgan(1)"><i class="fa-solid fa-arrows-down-to-line"></i>2. Qiziloʻngach</button>
+                    <button class="digestive-tab" onclick="switchOrgan(2)"><i class="fa-solid fa-flask"></i>3. Oshqozon</button>
+                    <button class="digestive-tab" onclick="switchOrgan(3)"><i class="fa-solid fa-dna"></i>4. Ingichka ichak</button>
+                    <button class="digestive-tab" onclick="switchOrgan(4)"><i class="fa-solid fa-shield-halved"></i>5. Jigar/Bez</button>
+                    <button class="digestive-tab" onclick="switchOrgan(5)"><i class="fa-solid fa-filter"></i>6. Yoʻgʻon ichak</button>
+                </div>
+
+                <div class="organ-detail-box">
+                    <div style="background:var(--bg-card); padding:1rem; border-radius:12px; text-align:center;">
+                        <span id="organ-step-badge" style="font-size:0.75rem; font-weight:700; background:rgba(59,130,246,0.1); color:var(--secondary); padding:2px 8px; border-radius:99px;">1-Bosqich</span>
+                        <div id="organ-icon" style="font-size:3.5rem; color:var(--secondary); margin:0.5rem 0;"><i class="fa-solid fa-teeth-open"></i></div>
+                        <h4 id="organ-name">Ogʻiz boʻshligʻi</h4>
+                        <small id="organ-time" style="color:var(--text-muted);">Vaqt: ~1 daqiqa</small>
+                    </div>
+
+                    <div>
+                        <h3 id="organ-title" style="font-size:1.25rem; color:var(--secondary-dark); margin-bottom:6px;">Boshlangʻich maydalash</h3>
+                        <p id="organ-description" style="font-size:0.9rem; color:var(--text-muted);">
+                            Tishlar ovqatni maydalaydi, soʻlakdagi ptialin (amilaza) fermenti kraxmalni parchalashni boshlaydi.
+                        </p>
+                        <ul id="organ-facts" style="list-style:none; margin-top:8px; font-size:0.85rem; display:flex; flex-direction:column; gap:4px;">
+                            <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Til taʼmlarni sezadi va luqma hosil qiladi.</li>
+                            <li><i class="fa-solid fa-check" style="color:var(--primary);"></i> Soʻlakdagi lizotsim bakteriyalarni oʻldiradi.</li>
+                        </ul>
+                        <div style="margin-top:1rem; display:flex; gap:8px;">
+                            <button class="btn-primary" onclick="nextOrgan()">Keyingi aʼzo ➔</button>
+                            <button class="btn-tab-nav" onclick="speakOrganInfo()"><i class="fa-solid fa-volume-high"></i> Tinglash</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(1)">⬅️ Orqaga</button>
+                    <span>3 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav next" onclick="showTab(3)">Keyingi (Tishlar) ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BO'LIM 3: TISHLAR -->
+        <section class="tab-section" id="tab-3">
+            <div class="content-card">
+                <span class="section-badge">Anatomiya</span>
+                <h2 class="section-title">🦷 Tishlarning Turlari va Gigiyenasi</h2>
+                <p class="section-desc">Katta odamda jami <strong>32 ta</strong> doimiy tish mavjud:</p>
+
+                <div class="teeth-grid">
+                    <div class="tooth-card">
+                        <div style="display:flex; justify-content:space-between; font-weight:700;">
+                            <span>✂️ Kesuvchi tishlar</span>
+                            <span style="color:var(--primary); font-size:0.8rem;">8 ta</span>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">Luqmani tishlab olish va kesish uchun.</p>
+                    </div>
+
+                    <div class="tooth-card">
+                        <div style="display:flex; justify-content:space-between; font-weight:700;">
+                            <span>🗡️ Qoziq tishlar</span>
+                            <span style="color:var(--primary); font-size:0.8rem;">4 ta</span>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">Qattiq ozuqalarni uzish va yulish uchun.</p>
+                    </div>
+
+                    <div class="tooth-card">
+                        <div style="display:flex; justify-content:space-between; font-weight:700;">
+                            <span>⚙️ Kichik oziq tishlar</span>
+                            <span style="color:var(--primary); font-size:0.8rem;">8 ta</span>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">Dastlabki ezish va maydalash uchun.</p>
+                    </div>
+
+                    <div class="tooth-card">
+                        <div style="display:flex; justify-content:space-between; font-weight:700;">
+                            <span>🪨 Katta oziq tishlar</span>
+                            <span style="color:var(--primary); font-size:0.8rem;">12 ta</span>
+                        </div>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">Ovqatni boʻtqa holatigacha maydalaydi.</p>
+                    </div>
+                </div>
+
+                <div style="background:linear-gradient(135deg,rgba(16,185,129,0.06),rgba(59,130,246,0.06)); padding:1rem; border-radius:10px; margin-top:1rem; border-left:4px solid var(--primary);">
+                    <strong style="font-size:0.9rem; color:var(--primary-dark);">🦷 Tish parvarishi qoidalari:</strong>
+                    <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">
+                        1. Kuniga 2 marta 2-3 daqiqa tozalash. <br>
+                        2. Issiq ovqat ortidan birdan muzdek suv ichmaslik (emal darz ketadi).
+                    </p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(2)">⬅️ Orqaga</button>
+                    <span>4 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav next" onclick="showTab(4)">Keyingi (Vitaminlar) ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BO'LIM 4: VITAMINLAR -->
+        <section class="tab-section" id="tab-4">
+            <div class="content-card">
+                <span class="section-badge">Biologiya</span>
+                <h2 class="section-title">💊 Vitaminlar va Avitaminoz</h2>
+                <p class="section-desc">Vitaminlar yetishmasligi oqibatida kelib chiqadigan kasalliklar:</p>
+
+                <div class="vitamins-grid">
+                    <div class="vitamin-card">
+                        <h4>🥕 A Vitamini (Retinol)</h4>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">Koʻz oʻtkirligi, teri va boʻy oʻsishi uchun zarur.</p>
+                        <div class="deficiency-alert"><strong>Yetishmasa:</strong> Shabkoʻrlik (oqshomda koʻrmaslik).</div>
+                    </div>
+
+                    <div class="vitamin-card">
+                        <h4>🌾 B Guruhi Vitaminlari</h4>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">Asab tizimi va qon hosil boʻlishi uchun zarur.</p>
+                        <div class="deficiency-alert"><strong>Yetishmasa:</strong> Beri-beri kasalligi, kamqonlik.</div>
+                    </div>
+
+                    <div class="vitamin-card">
+                        <h4>🍋 C Vitamini (Askorbin)</h4>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">Immunitet va qon tomirlar pishiqligi.</p>
+                        <div class="deficiency-alert"><strong>Yetishmasa:</strong> Singa (milklar qonashi, holsizlik).</div>
+                    </div>
+
+                    <div class="vitamin-card">
+                        <h4>☀️ D Vitamini (Kalsiferol)</h4>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:2px;">Kalsiyning suyakka singishi va suyak mustahkamligi.</p>
+                        <div class="deficiency-alert"><strong>Yetishmasa:</strong> Raxit (suyaklarning qiyshayishi).</div>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(3)">⬅️ Orqaga</button>
+                    <span>5 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav next" onclick="showTab(5)">Keyingi (Hayvonlar) ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BO'LIM 5: HAYVONLAR -->
+        <section class="tab-section" id="tab-5">
+            <div class="content-card">
+                <span class="section-badge">3-Mavzu</span>
+                <h2 class="section-title">Hayvonlar Hazm Tizimi Farqlari</h2>
+                <p class="section-desc">Oʻtxor sigir va goʻshtxor sherning hazm qilish moslashuvlari:</p>
+
+                <div class="comparison-cards-grid">
+                    <div class="animal-card" style="--animal-color: #10b981;">
+                        <h4 style="margin-bottom:6px;">🐮 Oʻtxorlar (Sigir)</h4>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">Qattiq oʻsimlik kletchatkasini parchalash uchun <strong>4 xonali oshqozon</strong>:</p>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px; margin:8px 0; font-size:0.78rem; text-align:center;">
+                            <div style="background:var(--bg-card); padding:4px; border-radius:4px;">1. Kaltak</div>
+                            <div style="background:var(--bg-card); padding:4px; border-radius:4px;">2. Toʻr</div>
+                            <div style="background:var(--bg-card); padding:4px; border-radius:4px;">3. Qatqorin</div>
+                            <div style="background:var(--bg-card); padding:4px; border-radius:4px;">4. Shirdon</div>
+                        </div>
+                        <small style="color:var(--primary); font-weight:700;">* Ichagi tana uzunligidan 20-25 barobar uzun!</small>
+                    </div>
+
+                    <div class="animal-card" style="--animal-color: #ef4444;">
+                        <h4 style="margin-bottom:6px;">🦁 Goʻshtxorlar (Sher)</h4>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">Goʻsht tez eriydi, shuning uchun <strong>1 xonali oshqozon</strong> va oʻtkir kislota (pH 1-2).</p>
+                        <small style="color:#ef4444; font-weight:700; display:block; margin-top:8px;">* Kalta ichak trakti (tana uzunligidan 4-6 barobar).</small>
+                    </div>
+
+                    <div class="animal-card" style="--animal-color: #3b82f6;">
+                        <h4 style="margin-bottom:6px;">🐻 Hammaxorlar (Inson)</h4>
+                        <p style="font-size:0.84rem; color:var(--text-muted);">Ham oʻsimlik, ham goʻshtni hazm qiluvchi universal fermentlar va 1 xonali oshqozon.</p>
+                        <small style="color:#3b82f6; font-weight:700; display:block; margin-top:8px;">* Oʻrtacha ichak uzunligi (8-10 barobar).</small>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(4)">⬅️ Orqaga</button>
+                    <span>6 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav next" onclick="showTab(6)">Keyingi (Taomnoma) ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BO'LIM 6: TAOMNOMA & SUV -->
+        <section class="tab-section" id="tab-6">
+            <div class="content-card">
+                <span class="section-badge">Amaliy Mashq</span>
+                <h2 class="section-title">Kunlik Taomnoma & Suv Balansi</h2>
+                
+                <h4 style="margin-top:0.5rem;">📋 Taomlarni tanlang:</h4>
+                <div class="planner-grid">
+                    <div class="meal-slot">
+                        <strong>🌅 Nonushta:</strong>
+                        <select id="meal-b" class="form-control" style="margin-top:4px;" onchange="updateMealPlanner()">
+                            <option value="450">Suli boʻtqasi, tuxum (450 kkal)</option>
+                            <option value="350">Tvorog, asal, non (350 kkal)</option>
+                            <option value="600">Qovurilgan kolbasa (600 kkal)</option>
+                        </select>
+                    </div>
+                    <div class="meal-slot">
+                        <strong>☀️ Tushlik:</strong>
+                        <select id="meal-l" class="form-control" style="margin-top:4px;" onchange="updateMealPlanner()">
+                            <option value="800">Moshxoʻrda, dimlangan tovuq (800 kkal)</option>
+                            <option value="950">Yogʻli palov, salat (950 kkal)</option>
+                            <option value="650">Sabzavotli shoʻrva, baliq (650 kkal)</option>
+                        </select>
+                    </div>
+                    <div class="meal-slot">
+                        <strong>🍎 Peshinlik:</strong>
+                        <select id="meal-s" class="form-control" style="margin-top:4px;" onchange="updateMealPlanner()">
+                            <option value="200">Olma, yongʻoq, qatiq (200 kkal)</option>
+                            <option value="350">Shirin pishiriq (350 kkal)</option>
+                            <option value="150">Yangi mevalar (150 kkal)</option>
+                        </select>
+                    </div>
+                    <div class="meal-slot">
+                        <strong>🌙 Kechki ovqat:</strong>
+                        <select id="meal-d" class="form-control" style="margin-top:4px;" onchange="updateMealPlanner()">
+                            <option value="550">Bugʻda pishgan manti (550 kkal)</option>
+                            <option value="400">Yengil ragu, kefir (400 kkal)</option>
+                            <option value="750">Qovurma goʻsht (750 kkal)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="text-align:center; padding:0.8rem; background:var(--bg-card-subtle); border-radius:10px; margin-bottom:1.5rem; border:1px dashed var(--primary);">
+                    <h3 id="planner-total" style="color:var(--primary-dark); font-size:1.15rem;">Jami: 2000 kkal</h3>
+                    <p id="planner-verdict" style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-top:2px;">
+                        ✅ Aʼlo darajada muvozatlashgan taomnoma!
+                    </p>
+                </div>
+
+                <h4>💧 8 Stakan Suv Balansi:</h4>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Har safar suv ichganda stakanni bosing:</p>
+                <div class="water-glasses-row" id="water-row"></div>
+                <div style="text-align:center; font-weight:700; font-size:0.95rem; color:var(--secondary-dark);" id="water-status">
+                    Ichildi: 0 / 8 stakan (0 ml)
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(5)">⬅️ Orqaga</button>
+                    <span>7 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav next" onclick="showTab(7)">Keyingi (Oʻyin) ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BO'LIM 7: O'YIN -->
+        <section class="tab-section" id="tab-7">
+            <div class="content-card">
+                <span class="section-badge">🎮 Mini-Oʻyin</span>
+                <h2 class="section-title">"Sogʻlom Tarelkani Shakllantir"</h2>
+                <p class="section-desc">Faqat <strong>foydali va tabiiy</strong> mahsulotlarni tanlang:</p>
+
+                <div class="food-pool" id="food-pool"></div>
+
+                <div style="text-align:center; padding:0.8rem; background:var(--bg-card-subtle); border-radius:10px;">
+                    <div style="font-size: 1.15rem; font-weight: 800;">
+                        Ball: <span id="game-score" style="color:var(--primary);">0</span> / 60
+                    </div>
+                    <p id="game-feedback" style="color:var(--text-muted); font-size:0.85rem; margin: 4px 0 8px;">
+                        Boshlash uchun mahsulotlarni bosing!
+                    </p>
+                    <button class="btn-tab-nav" onclick="resetGame()">
+                        <i class="fa-solid fa-rotate-right"></i> Qaytadan boshlash
                     </button>
                 </div>
 
-                <button class="btn-secondary" onclick="restartQuiz()" style="margin-top: 1rem; font-size:0.85rem;">
-                    <i class="fa-solid fa-rotate-left"></i> Qaytadan topshirish
-                </button>
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(6)">⬅️ Orqaga</button>
+                    <span>8 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav next" onclick="showTab(8)">Keyingi (Test) ➔</button>
+                </div>
             </div>
+        </section>
 
-            <!-- SERTIFIKAT -->
-            <div id="cert-view" class="certificate-container">
-                <div class="certificate-seal">
-                    <i class="fa-solid fa-award"></i>
+        <!-- BO'LIM 8: TEST & SERTIFIKAT -->
+        <section class="tab-section" id="tab-8">
+            <div class="content-card">
+                <span class="section-badge">Bilimni Tekshirish</span>
+                <h2 class="section-title">6-sinf Tabiiy Fanlar Testi</h2>
+                <p class="section-desc">10 ta savolga javob bering va <strong>"Yosh Biolog"</strong> sertifikatini oling!</p>
+
+                <div style="height:6px; background:var(--bg-card-subtle); border-radius:3px; overflow:hidden; margin-bottom:1rem;">
+                    <div id="quiz-progress" style="height:100%; width:0%; background:var(--primary); transition:width 0.3s ease;"></div>
                 </div>
-                <h2 style="font-size: 1.6rem; color: #1e3a8a; letter-spacing: 1px;">FAXRIIY SERTIFIKAT</h2>
-                <p style="text-transform: uppercase; font-size: 0.72rem; font-weight: 700; color: #d97706; letter-spacing: 1px;">
-                    Oʻzbekiston Respublikasi Xalq Taʼlimi Fani
-                </p>
-                <div style="height: 2px; width: 60px; background: #d97706; margin: 10px auto;"></div>
-                <p style="font-size: 0.9rem; color: #475569;">Ushbu sertifikat bilan taqdirlanadi:</p>
-                <h3 id="cert-student-name" style="font-size: 1.8rem; color: #0f172a; margin: 8px 0; border-bottom: 2px dashed #cbd5e1; display: inline-block; padding-bottom: 2px;">
-                    Aliyev Ogʻabek
-                </h3>
-                <p style="font-size: 0.9rem; color: #334155; margin: 10px auto;">
-                    6-sinf Tabiiy Fanlar kursi boʻyicha <strong>"Ratsional Ovqatlanish va Hazm Qilish"</strong> sinovidan muvaffaqiyatli oʻtib, <strong>"Yosh Biolog"</strong> darajasini egalladi.
-                </p>
-                <div style="display: flex; justify-content: space-around; margin-top: 1.2rem; border-top: 1px solid #e2e8f0; padding-top: 1rem; font-size: 0.85rem;">
-                    <div>
-                        <small style="color: #64748b;">Sana:</small><br>
-                        <strong id="cert-date">2026-yil</strong>
+
+                <div id="quiz-list"></div>
+
+                <div id="quiz-final-box" style="display:none; text-align:center; padding:1.2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); margin-top:1rem;">
+                    <div style="font-size:2.8rem; margin-bottom:0.4rem;" id="quiz-medal">🏆</div>
+                    <h3 id="quiz-final-title" style="font-size:1.35rem;">Ajoyib natija!</h3>
+                    <p id="quiz-final-score" style="font-size:1.1rem; font-weight:700; color:var(--primary); margin: 0.3rem 0 0.8rem;"></p>
+                    
+                    <div class="form-group" style="max-width:350px; margin:0 auto 10px;">
+                        <input type="text" id="student-name" class="form-control" placeholder="Ism va familiyangiz...">
                     </div>
-                    <div>
-                        <small style="color: #64748b;">Ball:</small><br>
-                        <strong style="color: #10b981;" id="cert-score">10 / 10</strong>
-                    </div>
+                    <button class="btn-primary" onclick="generateCertificate()">
+                        <i class="fa-solid fa-award"></i> Sertifikatni Koʻrish
+                    </button>
+                    <br>
+                    <button class="btn-tab-nav" onclick="restartQuiz()" style="margin-top:0.8rem; font-size:0.8rem;">
+                        <i class="fa-solid fa-rotate-left"></i> Qayta topshirish
+                    </button>
                 </div>
-                <button class="btn-primary" onclick="window.print()" style="margin-top: 1.2rem; width:100%; max-width:260px;">
-                    <i class="fa-solid fa-print"></i> Chop Etish (Print/PDF)
-                </button>
+
+                <!-- SERTIFIKAT -->
+                <div id="cert-view" class="certificate-container">
+                    <div style="font-size:2.5rem; color:#d97706; margin-bottom:4px;">🎖️</div>
+                    <h2 style="font-size: 1.5rem; color: #1e3a8a;">FAXRIIY SERTIFIKAT</h2>
+                    <p style="font-size: 0.72rem; font-weight: 700; color: #d97706; letter-spacing: 1px;">6-SINF TABIIY FANLAR FANI</p>
+                    <div style="height: 2px; width: 60px; background: #d97706; margin: 8px auto;"></div>
+                    <p style="font-size: 0.85rem; color: #475569;">Ushbu sertifikat berildi:</p>
+                    <h3 id="cert-student-name" style="font-size: 1.6rem; color: #0f172a; margin: 6px 0; border-bottom: 2px dashed #cbd5e1; display: inline-block;">
+                        Aliyev Ogʻabek
+                    </h3>
+                    <p style="font-size: 0.85rem; color: #334155; margin: 8px auto;">
+                        <strong>"Ratsional Ovqatlanish va Hazm Qilish"</strong> mavzusini aʼlo darajada oʻzlashtirib, <strong>"Yosh Biolog"</strong> darajasini egalladi.
+                    </p>
+                    <div style="display:flex; justify-content:space-around; margin-top:1rem; border-top:1px solid #e2e8f0; padding-top:0.8rem; font-size:0.85rem;">
+                        <div><small>Sana:</small><br><strong id="cert-date">2026-yil</strong></div>
+                        <div><small>Ball:</small><br><strong style="color:#10b981;" id="cert-score">10 / 10</strong></div>
+                    </div>
+                    <button class="btn-primary" onclick="window.print()" style="margin-top:1rem; width:100%; max-width:240px;">
+                        <i class="fa-solid fa-print"></i> Chop Etish (Print/PDF)
+                    </button>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(7)">⬅️ Orqaga (Oʻyin)</button>
+                    <span>9 / 9 Boʻlim</span>
+                    <button class="btn-tab-nav" onclick="showTab(0)">Boshiga qaytish 🔝</button>
+                </div>
             </div>
         </section>
 
@@ -1585,6 +1218,35 @@
             if ('vibrate' in navigator) {
                 try { navigator.vibrate(duration); } catch(e) {}
             }
+        }
+
+        // TAB SWITCHER LOGIC (Bo'limlarni almashtirish)
+        let currentTab = 0;
+        const totalTabs = 9;
+
+        function showTab(tabIndex) {
+            triggerHaptic(30);
+            currentTab = tabIndex;
+
+            // Barcha bo'limlarni yashirish, faqat tanlanganni ko'rsatish
+            document.querySelectorAll('.tab-section').forEach((sec, idx) => {
+                sec.classList.toggle('active', idx === tabIndex);
+            });
+
+            // Tepada tugmachalarni yangilash
+            const tabButtons = document.querySelectorAll('.section-tab-btn');
+            tabButtons.forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === tabIndex);
+            });
+
+            // Faol tab tugmasini ko'rinadigan joyga avtomatik skroll qilish
+            if (tabButtons[tabIndex]) {
+                tabButtons[tabIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+
+            // Sahifa tepasiga silliq chiqarish
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            playTone(600 + tabIndex * 30, 0.08);
         }
 
         // THEME TOGGLE
@@ -1618,7 +1280,7 @@
             if (btn) btn.className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
         }
 
-        function playTone(freq = 600, duration = 0.12) {
+        function playTone(freq = 600, duration = 0.1) {
             if (!soundEnabled) return;
             try {
                 if (!audioCtx) {
@@ -1631,7 +1293,7 @@
                 const gain = audioCtx.createGain();
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
@@ -1640,10 +1302,10 @@
             } catch(e) {}
         }
 
-        // 1. CALORIE & BJU CALCULATOR
+        // 1. CALORIE & BJU
         function calculateNutrition(e) {
             e.preventDefault();
-            triggerHaptic(50);
+            triggerHaptic(40);
             const age = parseInt(document.getElementById('calc-age').value) || 12;
             const gender = document.getElementById('calc-gender').value;
             const weight = parseFloat(document.getElementById('calc-weight').value) || 42;
@@ -1662,88 +1324,52 @@
             document.getElementById('calc-carb').innerText = carbGrams + ' g';
 
             document.getElementById('calc-result').style.display = 'block';
-            playTone(750, 0.15);
+            playTone(750, 0.12);
         }
 
-        // 2. DIGESTIVE SYSTEM DATA & SWITCHER
+        // 2. DIGESTIVE SYSTEM DATA
         const organList = [
             {
-                step: "1-Bosqich",
-                icon: "fa-solid fa-teeth-open",
-                name: "Ogʻiz boʻshligʻi",
-                time: "Vaqt: ~1 daqiqa",
+                step: "1-Bosqich", icon: "fa-solid fa-teeth-open", name: "Ogʻiz boʻshligʻi", time: "Vaqt: ~1 daqiqa",
                 title: "Boshlangʻich maydalash",
-                desc: "Tishlar ovqatni maydalaydi, til aralashtiradi. Soʻlakdagi ptialin (amilaza) uglevodlarni kraxmaldan oddiy shakargacha parchalaydi.",
-                facts: [
-                    "Kattalarda 32 ta, 6-sinf oʻquvchilarida 28 ta tish boʻladi.",
-                    "Soʻlakdagi lizotsim bakteriyalarni zararsizlantiradi."
-                ]
+                desc: "Tishlar ovqatni maydalaydi, soʻlakdagi ptialin uglevodlarni kraxmaldan oddiyroq shakargacha parchalaydi.",
+                facts: ["Kattalarda 32 ta, 6-sinfda 28 ta tish.", "Soʻlakdagi lizotsim bakteriyalarni oʻldiradi."]
             },
             {
-                step: "2-Bosqich",
-                icon: "fa-solid fa-arrows-down-to-line",
-                name: "Qiziloʻngach",
-                time: "Vaqt: ~5-10 soniya",
+                step: "2-Bosqich", icon: "fa-solid fa-arrows-down-to-line", name: "Qiziloʻngach", time: "Vaqt: ~5-10 soniya",
                 title: "Luqmaning tezkor yoʻli",
                 desc: "25 sm li muskul naychasi. Toʻlqinsimon qisqarishlar bilan ovqatni oshqozonga suradi.",
-                facts: [
-                    "Qiziloʻngachda ovqat kimyoviy parchalanmaydi, faqat transport vazifasida.",
-                    "Xiqildoq usti togʻayi ovqat nafas yoʻliga ketib qolishini toʻsadi."
-                ]
+                facts: ["Ovqat kimyoviy parchalanmaydi, faqat transport.", "Xiqildoq usti togʻayi nafas yoʻlini toʻsadi."]
             },
             {
-                step: "3-Bosqich",
-                icon: "fa-solid fa-flask",
-                name: "Oshqozon",
-                time: "Vaqt: ~2-4 soat",
+                step: "3-Bosqich", icon: "fa-solid fa-flask", name: "Oshqozon", time: "Vaqt: ~2-4 soat",
                 title: "Kislotali eritish",
-                desc: "1.5 - 2.5 litrli muskul xaltasi. Xlorid kislotasi (HCl) va pepsin fermenti bilan oqsillar parchalanadi.",
-                facts: [
-                    "Xlorid kislotasi kuchli, ammo oshqozon shilliq qavat bilan oʻzini himoyalaydi.",
-                    "Bu yerda asosan oqsillar maydalanadi."
-                ]
+                desc: "1.5 - 2.5 litrli muskul xaltasi. HCl kislotasi va pepsin fermenti bilan oqsillar parchalanadi.",
+                facts: ["Kislotasi kuchli, devori shilliq bilan himoyalangan.", "Asosan oqsillar maydalanadi."]
             },
             {
-                step: "4-Bosqich",
-                icon: "fa-solid fa-dna",
-                name: "Ingichka ichak",
-                time: "Vaqt: ~4-6 soat",
-                title: "Hazm markazi va qonga soʻrilish",
-                desc: "Uzunligi 5-6 metr. Oqsil, yogʻ, uglevodlar maydalanib, vorsinkalar orqali qonga va limfaga soʻriladi.",
-                facts: [
-                    "Vorsinkalar yuzasi 200 m² ga (tennis korti) teng!",
-                    "Ozuqa moddalarining 90% dan ortigʻi aynan shu yerda qonga soʻriladi."
-                ]
+                step: "4-Bosqich", icon: "fa-solid fa-dna", name: "Ingichka ichak", time: "Vaqt: ~4-6 soat",
+                title: "Hazm markazi va soʻrilish",
+                desc: "Uzunligi 5-6 metr. Oqsil, yogʻ, uglevodlar maydalanib, vorsinkalar orqali qonga soʻriladi.",
+                facts: ["Vorsinkalar yuzasi 200 m² (tennis korti) ga teng!", "Moddalarning 90% dan ortigʻi shu yerda soʻriladi."]
             },
             {
-                step: "5-Bosqich",
-                icon: "fa-solid fa-shield-halved",
-                name: "Jigar va Bezlar",
-                time: "Vaqt: Doimiy",
+                step: "5-Bosqich", icon: "fa-solid fa-shield-halved", name: "Jigar va Bezlar", time: "Vaqt: Doimiy",
                 title: "Kimyoviy laboratoriya",
-                desc: "Jigar oʻt suyuqligi ishlab chiqaradi (yogʻlarni mayda tomchilarga boʻladi). Oshqozon osti bezi kuchli fermentlar quyadi.",
-                facts: [
-                    "Jigar organizmga tushgan barcha zaharli moddalarni filtrlaydi.",
-                    "Oʻt pufagi oʻt suyuqligini saqlab turadi."
-                ]
+                desc: "Jigar oʻt ishlab chiqaradi (yogʻlarni mayda tomchilarga boʻladi). Oshqozon osti bezi kuchli fermentlar beradi.",
+                facts: ["Jigar barcha zaharli moddalarni filtrlaydi.", "Oʻt pufagi oʻt suyuqligini saqlaydi."]
             },
             {
-                step: "6-Bosqich",
-                icon: "fa-solid fa-filter",
-                name: "Yoʻgʻon ichak",
-                time: "Vaqt: ~10-15 soat",
+                step: "6-Bosqich", icon: "fa-solid fa-filter", name: "Yoʻgʻon ichak", time: "Vaqt: ~10-15 soat",
                 title: "Suvni tejash",
                 desc: "Uzunligi 1.5-2 metr. Suv va minerallar qayta qonga soʻriladi, qoldiqlar chiqariladi.",
-                facts: [
-                    "Mikrobioma bakteriyalari K va B vitaminlarini sintez qiladi.",
-                    "Suv kam ichilsa, ich qotishi yuzaga keladi."
-                ]
+                facts: ["Mikrobioma bakteriyalari K va B vitaminlarini sintez qiladi.", "Suv kam ichilsa, ich qotadi."]
             }
         ];
 
         let curOrganIndex = 0;
         function switchOrgan(idx) {
-            triggerHaptic(30);
+            triggerHaptic(25);
             curOrganIndex = idx;
             const data = organList[idx];
 
@@ -1761,10 +1387,10 @@
             const factsList = document.getElementById('organ-facts');
             factsList.innerHTML = '';
             data.facts.forEach(f => {
-                factsList.innerHTML += `<li><i class="fa-solid fa-circle-check"></i> ${f}</li>`;
+                factsList.innerHTML += `<li><i class="fa-solid fa-check" style="color:var(--primary);"></i> ${f}</li>`;
             });
 
-            playTone(500 + idx * 50, 0.1);
+            playTone(500 + idx * 40, 0.08);
         }
 
         function nextOrgan() {
@@ -1773,7 +1399,7 @@
         }
 
         function speakOrganInfo() {
-            triggerHaptic(40);
+            triggerHaptic(35);
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const data = organList[curOrganIndex];
@@ -1781,14 +1407,12 @@
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.rate = 1.0;
                 window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Brauzeringiz ovozli oʻqishni qoʻllab-quvvatlamaydi.");
             }
         }
 
         // 3. MEAL PLANNER
         function updateMealPlanner() {
-            triggerHaptic(30);
+            triggerHaptic(25);
             const b = parseInt(document.getElementById('meal-b').value);
             const l = parseInt(document.getElementById('meal-l').value);
             const s = parseInt(document.getElementById('meal-s').value);
@@ -1800,7 +1424,7 @@
 
             if (total >= 1900 && total <= 2400) {
                 verdict.style.color = '#10b981';
-                verdict.innerHTML = '✅ Aʼlo darajada muvozatlashgan sogʻlom taomnoma!';
+                verdict.innerHTML = '✅ Aʼlo darajada muvozatlashgan taomnoma!';
             } else if (total < 1900) {
                 verdict.style.color = '#f59e0b';
                 verdict.innerHTML = '⚠️ Energiya kamroq. Meva yoki yongʻoq qoʻshing.';
@@ -1808,14 +1432,13 @@
                 verdict.style.color = '#ef4444';
                 verdict.innerHTML = '⚠️ Ortiqcha kaloriya! Yengilroq taom tanlang.';
             }
-            playTone(650, 0.1);
         }
 
         // 4. MINI-GAME
         const gameItems = [
             { name: "🍎 Qizil olma", healthy: true, pts: 10, msg: "Ajoyib! Mevalar vitamin va kletchatkaga boy." },
             { name: "🍟 Kartoshka fri", healthy: false, pts: -5, msg: "Zararli! Transyogʻlar va ortiqcha tuz yurakka ogʻir." },
-            { name: "🥦 Brokkoli", healthy: true, pts: 10, msg: "Ofarin! Sabzavotlar hazmni yengillashtiradi." },
+            { name: "🥦 Brokkoli", healthy: true, pts: 10, msg: "Ofarin! Sabzavotlar ichaklar tozaligini taʼminlaydi." },
             { name: "🥤 Gazli kola", healthy: false, pts: -5, msg: "Zararli! Ortiqcha shakar tish va oshqozon dushmani." },
             { name: "🐟 Baliq", healthy: true, pts: 10, msg: "Zoʻr! Omega-3 va eng toza oqsil manbai." },
             { name: "🍩 Ponchik", healthy: false, pts: -5, msg: "Zararli! Boʻsh kaloriyalar va semirish sababchisi." },
@@ -1855,13 +1478,13 @@
                 btn.classList.add('selected-healthy');
                 btn.innerHTML = `✅ ${item.name}`;
                 gameScore += item.pts;
-                playTone(850, 0.15);
+                playTone(850, 0.12);
             } else {
                 triggerHaptic(80);
                 btn.classList.add('selected-unhealthy');
                 btn.innerHTML = `❌ ${item.name}`;
                 gameScore = Math.max(0, gameScore + item.pts);
-                playTone(250, 0.25);
+                playTone(250, 0.2);
             }
 
             document.getElementById('game-score').innerText = gameScore;
@@ -1874,7 +1497,7 @@
         }
 
         function resetGame() {
-            triggerHaptic(30);
+            triggerHaptic(25);
             initGame();
         }
 
@@ -1897,7 +1520,7 @@
         }
 
         function toggleGlass(num) {
-            triggerHaptic(40);
+            triggerHaptic(35);
             drankGlasses = (drankGlasses >= num) ? (num - 1) : num;
 
             for (let i = 1; i <= 8; i++) {
@@ -1911,16 +1534,16 @@
 
             const ml = drankGlasses * 250;
             document.getElementById('water-status').innerText = `Ichildi: ${drankGlasses} / 8 stakan (${ml} ml)`;
-            playTone(600 + drankGlasses * 40, 0.1);
+            playTone(600 + drankGlasses * 40, 0.08);
         }
 
-        // 6. QUIZ SECTION (10 SAVOL)
+        // 6. QUIZ (10 TA SAVOL)
         const quizData = [
             {
                 q: "Inson organizmi uchun asosiy va eng tezkor energiya manbai qaysi?",
                 opts: ["Oqsillar", "Uglevodlar", "Vitaminlar", "Minerallar"],
                 ans: 1,
-                exp: "Uglevodlar parchalanganda glyukozaga aylanib 50-60% energiyani tez beradi."
+                exp: "Uglevodlar glyukozaga aylanib 50-60% energiyani tez beradi."
             },
             {
                 q: "Oqsillarni xlorid kislota ishtirokida parchalovchi asosiy organ qaysi?",
@@ -1932,13 +1555,13 @@
                 q: "Ozuqa moddalarining qonga soʻrilishi asosan qayerda sodir boʻladi?",
                 opts: ["Ingichka ichak vorsinkalarida", "Oshqozon devorida", "Yoʻgʻon ichakda", "Jigarda"],
                 ans: 0,
-                exp: "Ingichka ichakdagi millionlab vorsinkalar barcha oziqni qonga soʻradi."
+                exp: "Ingichka ichakdagi vorsinkalar barcha oziqni qonga soʻradi."
             },
             {
                 q: "Sigir va qoʻy kabi oʻtxor hayvonlarning oshqozoni necha xonadan iborat?",
                 opts: ["1 xonali", "2 xonali", "3 xonali", "4 xonali (Kaltak, toʻr, qatqorin, shirdon)"],
                 ans: 3,
-                exp: "Qattiq oʻsimlik kletchatkasini parchalash uchun 4 xonali oshqozon kerak."
+                exp: "Kletchatkani mikrobli parchalash uchun 4 xonali oshqozon kerak."
             },
             {
                 q: "Garvard sogʻlom tarelka qoidasiga koʻra tarelkaning yarmini (50%) nimalar tashkil qilishi shart?",
@@ -1956,19 +1579,19 @@
                 q: "C vitamini yetishmasligi oqibatida milklar qonashi bilan kechuvchi kasallik qaysi?",
                 opts: ["Grip", "Singa (Tsinga)", "Pnevmoniya", "Anemiya"],
                 ans: 1,
-                exp: "C vitamini yetishmaganda qon tomirlar zaiflashib singa (tsinga) paydo boʻladi."
+                exp: "C vitamini yetishmaganda qon tomirlar zaiflashib singa paydo boʻladi."
             },
             {
                 q: "Bolalarda suyaklarning qiyshayishi (Raxit) qaysi vitamin yetishmaganda sodir boʻladi?",
                 opts: ["A vitamini", "B vitamini", "C vitamini", "D vitamini"],
                 ans: 3,
-                exp: "D vitamini kalsiyning suyakka singishini taʼminlaydi, yetishmasa suyak qiyshayadi."
+                exp: "D vitamini kalsiyning suyakka singishini taʼminlaydi."
             },
             {
                 q: "Katta yoshli insonlarda jami nechta doimiy tish boʻladi?",
                 opts: ["20 ta", "28 ta", "32 ta", "36 ta"],
                 ans: 2,
-                exp: "Katta odamda 32 ta (8 kesuvchi, 4 qoziq, 8 kichik oziq, 12 katta oziq tish) boʻladi."
+                exp: "Katta odamda 32 ta tish (8 kesuvchi, 4 qoziq, 8 kichik, 12 katta oziq) boʻladi."
             },
             {
                 q: "Hazm boʻlmagan qoldiqlardan suvni qayta qonga soʻrib oluvchi oxirgi ichak qaysi?",
@@ -2001,14 +1624,12 @@
                 });
 
                 qBox.innerHTML = `
-                    <div class="quiz-question">
-                        <span class="quiz-question-num">${qIdx + 1}</span>
-                        <div>${qItem.q}</div>
+                    <div style="font-weight:700; font-size:0.95rem; margin-bottom:8px;">
+                        <span style="background:var(--primary); color:white; padding:2px 8px; border-radius:50%; font-size:0.8rem; margin-right:6px;">${qIdx + 1}</span>
+                        ${qItem.q}
                     </div>
-                    <div class="quiz-options">
-                        ${optsHtml}
-                    </div>
-                    <div class="quiz-feedback" id="qfeed-${qIdx}"></div>
+                    <div class="quiz-options">${optsHtml}</div>
+                    <div class="quiz-feedback" id="qfeed-${qIdx}" style="display:none; margin-top:6px; font-size:0.82rem; padding:6px; border-radius:6px;"></div>
                 `;
                 container.appendChild(qBox);
             });
@@ -2038,16 +1659,16 @@
                 feed.style.background = '#dcfce7';
                 feed.style.color = '#15803d';
                 feed.innerHTML = `✅ <strong>Toʻgʻri!</strong> ${qItem.exp}`;
-                playTone(850, 0.2);
+                playTone(850, 0.15);
             } else {
-                triggerHaptic(90);
+                triggerHaptic(80);
                 btn.classList.add('incorrect');
                 btn.querySelector('i').className = 'fa-solid fa-circle-xmark';
                 feed.style.display = 'block';
                 feed.style.background = '#fee2e2';
                 feed.style.color = '#b91c1c';
                 feed.innerHTML = `❌ <strong>Notoʻgʻri!</strong> ${qItem.exp}`;
-                playTone(280, 0.3);
+                playTone(280, 0.2);
             }
 
             const answeredCount = Object.keys(userAnswers).length;
@@ -2087,7 +1708,7 @@
         }
 
         function generateCertificate() {
-            triggerHaptic(50);
+            triggerHaptic(40);
             const name = document.getElementById('student-name').value.trim() || 'Hurmatli Oʻquvchi';
             let correctCount = 0;
             quizData.forEach((item, idx) => {
@@ -2102,11 +1723,11 @@
             const certView = document.getElementById('cert-view');
             certView.style.display = 'block';
             certView.scrollIntoView({ behavior: 'smooth' });
-            playTone(900, 0.25);
+            playTone(900, 0.2);
         }
 
         function restartQuiz() {
-            triggerHaptic(30);
+            triggerHaptic(25);
             userAnswers = {};
             document.getElementById('quiz-final-box').style.display = 'none';
             document.getElementById('cert-view').style.display = 'none';
