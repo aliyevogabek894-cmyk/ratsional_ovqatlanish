@@ -31,26 +31,27 @@ Har bir mavzu o'z ichida ixcham gorizontal suriluvchi tablar va pagination orqal
 ---
 
 ## 🫁 2-Mavzu: Nafas Olish va Qon Aylanish Tizimi Bo'limlari
-1. **🌬️ Inson Nafas Olish A'zolari:** 
-   - Burun bo'shlig'i, hiqildoq, traxeya, bronxlar, o'pka va 300+ million alveolalar tuzilishi va vazifalari.
-2. **🔄 Interaktiv Diafragma Simulyatori (Nafas olish / Chiqarish):**
-   - Nafas olganda diafragma pastga tushadi, qovurg'alar ko'tariladi, o'pka kengayadi.
-   - Nafas chiqarganda diafragma gumbaz shaklida ko'tariladi, havo tashqariga siqib chiqariladi.
-   - SVG animatsiyasi va havo tarkibidagi O₂ / CO₂ nisbati (21% vs 16%).
-3. **🐾 Hayvonlar Nafas Olish Tizimlari Taqqoslovi:**
-   - Teri orqali (Yomg'ir chuvalchangi).
-   - Traxeyalar orqali (Hasharotlar — chigirtka, ari).
-   - Jabralar orqali (Baliqlar).
-   - Murakkab havo xaltalari orqali (Qushlar — qo'sh nafas olish).
-   - O'pka orqali (Sutemizuvchilar).
-4. **❤️ Qon Tarkibi va Yurak Anatomiyasi:**
-   - 4 xonali yurak (2 ta bo'lmacha, 2 ta qorincha).
-   - Katta va kichik qon aylanish doiralari.
-   - Qon tarkibi: Eritrotsitlar (gemoglobin), Leykotsitlar (immunitet), Trombotsitlar (ivish), Plazma.
-5. **⏱️ Interaktiv Puls / Yurak Urib Turishi O'lchagichi:**
-   - Telefon yoki kompyuterda barmoq bilan ritmga qarab ekranga bosib (tap-tap), o'z yurak urish tezligini (BPM) o'lchash interfeysi!
-6. **📝 10 Talik Maxsus Test & Kardiologiya Sertifikati:**
-   - Nafas va qon bo'yicha bilimlarni tekshirish, ballarni hisoblash va sertifikat olish.
+1. **🌬️ Inson Nafas A'zolari & Alveola Mikroskopi:** 
+   - Burun bo'shlig'i, hiqildoq, traxeya, bronxlar, o'pka va 300+ mln alveolalar.
+   - **🔬 Alveola va Kapillyar Gaz Almashinuvi Simulyatori**: Kislorod ($O_2$) qonga o'tib qonni qizil rangga aylantirishi, karbonat angidrid ($CO_2$) alveolaga chiqishini interaktiv kuzatish.
+2. **🔄 Diafragma & O'pka Sig'imi (Spirometr):**
+   - Nafas olish / chiqarishda diafragma va ko'krak qafasining real vaqtli SVG animatsiyasi.
+   - **🫁 Shaxsiy Spirometr Kalkulyatori**: O'quvchining bo'yi va sport faolligiga qarab OHS (O'pka hayotiy sig'imi) hamda havo hajmlari (500 ml tinch nafas, 1500 ml qo'shimcha nafas, 1200 ml qoldiq havo) shkalasi.
+3. **🐾 Hayvonlar Nafas Olish Tizimlari:**
+   - Teri (chuvalchang), Traxeya (hasharotlar), Jabra (baliqlar), Qo'sh nafas va havo xaltalari (qushlar).
+4. **❤️ Yurak, Doiralar & Virtual Stetoskop:**
+   - 4 xonali yurak, Katta va Kichik qon aylanish doiralari.
+   - **🎧 Virtual Stetoskop**: Haqiqiy yurak klapanlari yopilish sadosi ("Tup-Tup" / Lub-Dub) audiosi bilan 3 xil ritm (Sokin uyqu: 55 BPM, Me'yoriy: 72 BPM, Sport: 135 BPM) va yurak pulsi vizualizatsiyasi.
+5. **🩸 Qon Guruhlari & Transfuziya (Qon Quyish) Laboratoriyasi:**
+   - I (O), II (A), III (B), IV (AB) guruhlari o'rtasida qon quyish xavfsizligini tekshirish.
+   - Aglyutinatsiya xavfi va Universal Donor/Retsipiyent qoidasini amalda sinash.
+   - Qon hujayralari: Eritrotsitlar, Leykotsitlar, Trombotsitlar va Plazma.
+6. **🧠 "Rostmi yoki Yolg'on?" Blits Viktorinasi & "Bilasizmi?" Hayratlanarli Faktlar:**
+   - 6 ta intellektual biologik savollar (osminog ko'k qoni, yurak avtomatiyasi, o'pkadagi tennis korti yuzasi, tomirlarning 100,000 km uzunligi va boshqalar).
+7. **⏱️ Interaktiv Puls (Tomir Urishi) O'lchagich:**
+   - Bilakdagi tomir urishiga moslab ekrandagi yurakka bosish (tap-tap) orqali shaxsiy yurak tezligini (BPM) o'lchash.
+8. **📝 2-Mavzu Bo'yicha Test & Rasmiy Faxriy Diplom:**
+   - Kardiologiya va pulmonologiya bo'yicha maxsus test va ism yoziluvchi oltin muhrli diplom.
 
 ---
 
