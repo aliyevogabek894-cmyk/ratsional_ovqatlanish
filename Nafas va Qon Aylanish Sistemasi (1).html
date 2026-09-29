@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-sinf Tabiiy Fanlar: Nafas olish va Qon aylanish sistemasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes breathe {
+            0% { transform: scale(0.85); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(0.85); }
+        }
+        @keyframes diaphragm-move {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(25px); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes blood-flow {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+        .lung-animation {
+            animation: breathe 4s ease-in-out infinite;
+            transform-origin: center;
+        }
+        .diaphragm-animation {
+            animation: diaphragm-move 4s ease-in-out infinite;
+        }
+        .blood-path {
+            stroke-dasharray: 10;
+            animation: blood-flow 2s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 shadow-md">
+        <div class="container mx-auto px-4">
+            <span class="text-blue-200 text-sm font-semibold uppercase tracking-wider">6-sinf Tabiiy Fanlar • 2-mavzu</span>
+            <h1 class="text-3xl font-bold mt-1">Nafas olish va qon aylanish sistemasi</h1>
+            <p class="text-blue-100 text-sm mt-1">Interaktiv oʻquv materiali va simulyatsiya xabari</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 space-y-10 max-w-5xl">
+
+        <!-- Navigatsiya tugmalari -->
+        <div class="flex flex-wrap gap-2 border-b pb-4">
+            <a href="#inson-nafas" class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium hover:bg-blue-200 transition">1. Inson nafas sistemasi</a>
+            <a href="#simulyatsiya" class="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition">⚙️ Interaktiv Simulyatsiya</a>
+            <a href="#hayvonlar-nafas" class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium hover:bg-blue-200 transition">2. Hayvonlar nafas sistemasi</a>
+            <a href="#qon-aylanish" class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium hover:bg-blue-200 transition">3. Qon aylanish sistemasi</a>
+            <a href="#test" class="px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition">📝 Bilimni sinash</a>
+        </div>
+
+        <!-- 1-Bo'lim: Inson nafas sistemasi -->
+        <section id="inson-nafas" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
+                <span class="bg-blue-100 text-blue-600 p-2 rounded-lg text-lg">🫁</span> 1. Insonlarda nafas olish sistemasi
+            </h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Inson nafas olganda havodagi kislorod ($\text{O}_2$) oʻpka orqali qonga oʻtadi, organizmda hosil boʻlgan karbonat angidrid ($\text{CO}_2$) esa tashqariga chiqariladi.
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Nafas yollari -->
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-indigo-900 text-lg mb-2">Nafas yoʻllari</h3>
+                    <div class="flex flex-col gap-2 text-sm text-slate-700">
+                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">1. Burun boʻshligʻi</div>
+                        <div class="text-center text-slate-400">↓</div>
+                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">2. Halqum</div>
+                        <div class="text-center text-slate-400">↓</div>
+                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">3. Kekirdak (traxeya)</div>
+                        <div class="text-center text-slate-400">↓</div>
+                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">4. Bronxlar</div>
+                        <div class="text-center text-slate-400">↓</div>
+                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">5. Oʻpka</div>
+                    </div>
+                </div>
+
+                <!-- Alveolalar -->
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-indigo-900 text-lg mb-2">Alveolalar</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Bronxiallarning uchida joylashgan pufakchalar boʻlib, precisely (aynan) shu yerda gazlar almashinuvi sodir boʻladi. 
+                        Alveolalar atrofida koʻplab kapillar qon tomirlari joylashgan.
+                    </p>
+                    <div class="mt-4 bg-blue-50 p-3 rounded-lg border border-blue-100 text-xs text-blue-800">
+                        💡 <strong>Gazlar almashinuvi:</strong> Kislorod alveoladan qonga, karbonat angidrid esa qondan alveolaga oʻtadi.
+                    </div>
+                </div>
+
+                <!-- Diafragma -->
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-indigo-900 text-lg mb-2">Diafragma</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Koʻkrak boʻshligʻi ostidagi keng mushak boʻlib, nafas olish jarayonida asosiy rolni oʻynaydi:
+                    </p>
+                    <ul class="text-sm text-slate-700 mt-2 space-y-2">
+                        <li class="bg-green-50 p-2 rounded border border-green-200">
+                            <strong>Nafas olganda:</strong> Pastga tushadi, koʻkrak qafasi kengayadi, oʻpka havo bilan toʻladi.
+                        </li>
+                        <li class="bg-amber-50 p-2 rounded border border-amber-200">
+                            <strong>Nafas chiqarganda:</strong> Yuqoriga koʻtariladi, oʻpka qisqaradi, havo tashqariga chiqadi.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulyatsiya Bo'limi -->
+        <section id="simulyatsiya" class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white rounded-xl shadow-xl p-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-indigo-700 pb-4 mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold flex items-center gap-2">
+                        ⚙️ Nafas olish va Diafragma Simulyatsiyasi
+                    </h2>
+                    <p class="text-indigo-200 text-sm">Nafas olish dinamikasini koʻrish uchun rejimlarni almashtiring</p>
+                </div>
+                <div class="mt-4 md:mt-0 space-x-2">
+                    <button id="btn-auto" onclick="setMode('auto')" class="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-indigo-500 transition">Avto Harakat</button>
+                    <button id="btn-in" onclick="setMode('in')" class="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-500 transition">Nafas olish (Inhale)</button>
+                    <button id="btn-out" onclick="setMode('out')" class="px-4 py-2 bg-amber-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-amber-500 transition">Nafas chiqarish (Exhale)</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <!-- SVG Vizualizatsiyasi -->
+                <div class="bg-slate-800/80 rounded-xl p-6 border border-indigo-500/30 flex justify-center">
+                    <svg width="280" height="300" viewBox="0 0 280 300" class="w-full max-w-[280px]">
+                        <!-- Traxeya va Bronxlar -->
+                        <path d="M 140 30 L 140 120" stroke="#CBD5E1" stroke-width="12" stroke-linecap="round"/>
+                        <path d="M 140 120 L 100 160" stroke="#CBD5E1" stroke-width="8" stroke-linecap="round"/>
+                        <path d="M 140 120 L 180 160" stroke="#CBD5E1" stroke-width="8" stroke-linecap="round"/>
+
+                        <!-- Chap va O'ng O'pka -->
+                        <g id="lungs" class="lung-animation">
+                            <!-- Chap O'pka -->
+                            <path d="M 95 165 C 50 170, 50 240, 100 240 C 120 240, 115 180, 95 165 Z" fill="#EF4444" opacity="0.85"/>
+                            <!-- O'ng O'pka -->
+                            <path d="M 185 165 C 230 170, 230 240, 180 240 C 160 240, 165 180, 185 165 Z" fill="#EF4444" opacity="0.85"/>
+                        </g>
+
+                        <!-- Diafragma -->
+                        <path id="diaphragm" class="diaphragm-animation" d="M 40 250 Q 140 220 240 250" stroke="#38BDF8" stroke-width="10" stroke-linecap="round" fill="transparent"/>
+
+                        <!-- Havo oqimi ko'rsatkichi -->
+                        <g id="air-flow" opacity="0.7">
+                            <circle cx="140" cy="50" r="4" fill="#38BDF8"/>
+                            <circle cx="140" cy="80" r="4" fill="#38BDF8"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Holat Tushuntirishi -->
+                <div class="space-y-4">
+                    <div id="status-card" class="bg-slate-800 p-5 rounded-xl border border-indigo-500/30">
+                        <h3 id="status-title" class="text-xl font-bold text-indigo-300 mb-2">Avto Rejim: Nafas Sikli</h3>
+                        <p id="status-desc" class="text-sm text-slate-300 leading-relaxed">
+                            Diafragma pastga tushganda oʻpka hajmi kengayib, havo ichkariga soʻriladi. Diafragma koʻtarilganda esa havo tashqariga siqib chiqariladi.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-xs">
+                        <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                            <span class="text-green-400 font-bold block mb-1">🔵 Kislorod ($\text{O}_2$)</span>
+                            Oʻpka alveolalaridan qonga va toʻqimalarga uzatiladi.
+                        </div>
+                        <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                            <span class="text-amber-400 font-bold block mb-1">🔴 Karbonat angidrid ($\text{CO}_2$)</span>
+                            Toʻqimalardan oʻpkaga qaytarilib, tashqariga chiqariladi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2-Bo'lim: Hayvonlarning nafas olish sistemasi -->
+        <section id="hayvonlar-nafas" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
+                <span class="bg-blue-100 text-blue-600 p-2 rounded-lg text-lg">🐟</span> 2. Hayvonlarning nafas olish sistemasi
+            </h2>
+            <p class="text-slate-700 leading-relaxed mb-4">
+                Har xil hayvonlar oʻz yashash muhitiga va tuzilishiga moslashgan holda turlicha nafas olish a'zolariga ega:
+            </p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
+                            <th class="p-3 font-semibold">Hayvon guruhi</th>
+                            <th class="p-3 font-semibold">Nafas olish a'zosi</th>
+                            <th class="p-3 font-semibold">Xususiyati va Moslashishi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-medium text-slate-900">Baliqlar</td>
+                            <td class="p-3"><span class="bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full font-medium">Jabralar</span></td>
+                            <td class="p-3 text-slate-600">Suvda erigan kislorod bilan nafas oladi. Suv jabra orqali oʻtganda gaz almashinuvi sodir boʻladi.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-medium text-slate-900">Sutemizuvchilar, Sudralib yuruvchilar va Qushlar</td>
+                            <td class="p-3"><span class="bg-red-100 text-red-800 px-2.5 py-1 rounded-full font-medium">Oʻpka</span></td>
+                            <td class="p-3 text-slate-600">Havodagi kislorodni oʻpka orqali oʻzlashtiradi. Qushlarda qoʻshimcha havo xaltachalari ham bor.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-medium text-slate-900">Hasharotlar</td>
+                            <td class="p-3"><span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-medium">Traxeyalar</span></td>
+                            <td class="p-3 text-slate-600">Tanasi boʻylab tarqalgan juda mayda naychalar (traxeyalar) orqali toʻgʻridan-toʻgʻri nafas oladi.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-medium text-slate-900">Suvda hamda quruqlikda yashovchilar (Masalan: Qurbagʻalar)</td>
+                            <td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium">Oʻpka va teri</span></td>
+                            <td class="p-3 text-slate-600">Qurbagʻalar voyaga yetgach oʻpka va doimiy nam terisi orqali gaz almashinuvini bajaradi.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3-Bo'lim: Qon aylanish sistemasi -->
+        <section id="qon-aylanish" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
+                <span class="bg-red-100 text-red-600 p-2 rounded-lg text-lg">❤️</span> 3. Qon aylanish sistemasi haqida tushuncha
+            </h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Qon aylanish sistemasi organizm boʻylab kislorod, ozuqa moddalarni tashiydi va moddalar almashinuvi natijasida hosil boʻlgan chiqindi moddalarni olib ketadi.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Yurak -->
+                <div class="bg-gradient-to-br from-red-50 to-rose-50 p-5 rounded-xl border border-red-100 flex items-start gap-4">
+                    <div class="text-4xl">❤️</div>
+                    <div>
+                        <h3 class="font-bold text-red-900 text-lg">Yurak</h3>
+                        <p class="text-sm text-slate-700 mt-1">
+                            Qonni toʻxtovsiz tomirlarga haydab beruvchi va organizm boʻylab harakatlantiruvchi mushakli nasosdir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Qon tomirlari turlari -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Qon tomirlari turlari:</h3>
+                    
+                    <div class="flex items-start gap-3">
+                        <span class="w-3 h-3 rounded-full bg-red-500 mt-1.5 shrink-0"></span>
+                        <div>
+                            <strong class="text-red-700">Arteriyalar:</strong>
+                            <span class="text-sm text-slate-600"> Yurakdan a'zolarga kislorodga ($\text{O}_2$) boy qonni olib boradi.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="w-3 h-3 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
+                        <div>
+                            <strong class="text-blue-700">Venalar:</strong>
+                            <span class="text-sm text-slate-600"> A'zolardan yurakka karbonat angidridga ($\text{CO}_2$) boy qonni qaytaradi.</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <span class="w-3 h-3 rounded-full bg-purple-500 mt-1.5 shrink-0"></span>
+                        <div>
+                            <strong class="text-purple-700">Kapillarlar:</strong>
+                            <span class="text-sm text-slate-600"> Eng mayda tomirlar boʻlib, hujayra va qon oʻrtasida moddalar va gazlar almashinuvi sodir boʻladi.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test va Bilimni Sinash -->
+        <section id="test" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
+                <span class="bg-green-100 text-green-600 p-2 rounded-lg text-lg">📝</span> Bilimni mustahkamlash uchun mini-test
+            </h2>
+
+            <div class="space-y-6">
+                <!-- 1-savol -->
+                <div class="bg-slate-50 p-4 rounded-lg">
+                    <p class="font-semibold text-slate-800 mb-3">1. Gazlar almashinuvi bevosita nafas sistemasining qaysi qismida sodir boʻladi?</p>
+                    <div class="space-y-2">
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">A) Kekirdakda</button>
+                        <button onclick="checkAnswer(this, true)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">B) Alveolalarda</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">C) Halqumda</button>
+                    </div>
+                </div>
+
+                <!-- 2-savol -->
+                <div class="bg-slate-50 p-4 rounded-lg">
+                    <p class="font-semibold text-slate-800 mb-3">2. Yurakdan a'zolarga kislorodga boy qonni olib boruvchi tomirlar nima deyiladi?</p>
+                    <div class="space-y-2">
+                        <button onclick="checkAnswer(this, true)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">A) Arteriyalar</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">B) Venalar</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">C) Traxeyalar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 py-6 text-center text-sm border-t border-slate-700">
+        <p>6-sinf Tabiiy fanlar darsligi asosida tayyorlandi.</p>
+    </footer>
+
+    <script>
+        function setMode(mode) {
+            const lungs = document.getElementById('lungs');
+            const diaphragm = document.getElementById('diaphragm');
+            const title = document.getElementById('status-title');
+            const desc = document.getElementById('status-desc');
+
+            // Reset animations
+            lungs.style.animation = 'none';
+            diaphragm.style.animation = 'none';
+
+            if (mode === 'auto') {
+                lungs.style.animation = 'breathe 4s ease-in-out infinite';
+                diaphragm.style.animation = 'diaphragm-move 4s ease-in-out infinite';
+                title.textContent = "Avto Rejim: Nafas Sikli";
+                title.className = "text-xl font-bold text-indigo-300 mb-2";
+                desc.textContent = "Diafragma pastga tushganda oʻpka hajmi kengayib, havo ichkariga soʻriladi. Diafragma koʻtarilganda esa havo tashqariga siqib chiqariladi.";
+            } else if (mode === 'in') {
+                lungs.style.transform = 'scale(1.1)';
+                diaphragm.style.transform = 'translateY(25px)';
+                title.textContent = "Nafas olish (Inhale)";
+                title.className = "text-xl font-bold text-green-400 mb-2";
+                desc.textContent = "Diafragma pastga tushadi (qisqaradi). Koʻkrak qafasi hajmi ortadi. Havodagi kislorod (O₂) oʻpkaga va alveolalar orqali qonga oʻtadi.";
+            } else if (mode === 'out') {
+                lungs.style.transform = 'scale(0.85)';
+                diaphragm.style.transform = 'translateY(0px)';
+                title.textContent = "Nafas chiqarish (Exhale)";
+                title.className = "text-xl font-bold text-amber-400 mb-2";
+                desc.textContent = "Diafragma yuqoriga koʻtariladi (boʻshashadi). Koʻkrak qafasi torayadi. Karbonat angidrid (CO₂) ga boy havo oʻpkadan tashqariga chiqadi.";
+            }
+        }
+
+        function checkAnswer(button, isCorrect) {
+            const parent = button.parentElement;
+            const buttons = parent.querySelectorAll('button');
+            
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-slate-100');
+            });
+
+            if (isCorrect) {
+                button.classList.add('bg-green-100', 'border-green-500', 'text-green-800', 'font-bold');
+            } else {
+                button.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+            }
+        }
+    </script>
+</body>
+</html>
