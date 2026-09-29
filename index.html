@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-sinf Tabiiy Fanlar: Ratsional Ovqatlanish va Hazm Qilish Sistemasi</title>
+    <meta name="description" content="6-sinf Tabiiy fanlar fani uchun Ratsional ovqatlanish va Ovqat hazm qilish sistemasi mavzusidagi zamonaviy, interaktiv ta'limiy veb-platforma.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --secondary: #3b82f6;
+            --secondary-dark: #1d4ed8;
+            --accent-orange: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --accent-rose: #f43f5e;
+            
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-subtle: #f1f5f9;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #0b1120;
+            --bg-card: #1e293b;
+            --bg-card-subtle: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* HEADER & NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        [data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .icon-btn {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .icon-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.15), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.15), transparent 50%);
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        [data-theme="dark"] .hero-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto 2.5rem;
+        }
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.85rem 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(16, 185, 129, 0.4);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.85rem 1.8rem;
+            background: var(--bg-card);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* CONTAINER & CARDS */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-header .tag {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        .content-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        /* MACRONUTRIENTS GRID */
+        .nutrients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .nutrient-card {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .nutrient-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--card-color, var(--primary));
+            box-shadow: var(--shadow-md);
+        }
+        .nutrient-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--card-color, var(--primary));
+        }
+        .nutrient-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .nutrient-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: white;
+            color: var(--card-color, var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        [data-theme="dark"] .nutrient-icon {
+            background: var(--bg-card);
+        }
+        .nutrient-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .nutrient-norm {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: white;
+            color: var(--card-color, var(--primary));
+            margin-top: 4px;
+            border: 1px solid var(--border-color);
+        }
+        [data-theme="dark"] .nutrient-norm {
+            background: #1e293b;
+        }
+        .nutrient-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .food-sources {
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--card-color, var(--primary));
+        }
+        [data-theme="dark"] .food-sources {
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        /* HEALTHY PLATE & CALCULATOR */
+        .plate-calc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        @media (max-width: 900px) {
+            .plate-calc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .plate-visual-box {
+            background: var(--bg-card-subtle);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            border: 1px dashed var(--border-color);
+        }
+        .plate-circle {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            background: conic-gradient(
+                #10b981 0% 50%,    /* Sabzavot va mevalar (50%) */
+                #f59e0b 50% 75%,   /* Donli mahsulotlar (25%) */
+                #ef4444 75% 100%   /* Oqsil mahsulotlari (25%) */
+            );
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), inset 0 0 0 12px rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease;
+        }
+        .plate-circle:hover {
+            transform: scale(1.03) rotate(5deg);
+        }
+        .plate-center {
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #1e293b;
+        }
+        .plate-center i {
+            font-size: 1.5rem;
+            color: #10b981;
+            margin-bottom: 2px;
+        }
+        .plate-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .legend-color {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        /* CALC FORM */
+        .calc-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .form-control {
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-main);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+        .calc-result-box {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(59, 130, 246, 0.08));
+            border: 1px solid var(--primary-light);
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* DIGESTIVE TRACK INTERACTIVE SIMULATION */
+        .digestive-container {
+            margin-top: 2rem;
+        }
+        .digestive-tabs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        .digestive-tab {
+            padding: 1rem 0.8rem;
+            text-align: center;
+            border-radius: 12px;
+            border: 1.5px solid var(--border-color);
+            background: var(--bg-card-subtle);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .digestive-tab i {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .digestive-tab span {
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .digestive-tab:hover {
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        .digestive-tab.active {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            color: white;
+            box-shadow: 0 8px 18px rgba(59, 130, 246, 0.35);
+        }
+        .digestive-tab.active i {
+            color: white;
+            transform: scale(1.15);
+        }
+
+        .organ-detail-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            align-items: center;
+        }
+        @media (max-width: 800px) {
+            .organ-detail-box {
+                grid-template-columns: 1fr;
+            }
+        }
+        .organ-visual {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+        .organ-visual-icon {
+            font-size: 5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            animation: pulseSlow 3s infinite ease-in-out;
+        }
+        @keyframes pulseSlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+        .organ-timeline-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .organ-text-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary-dark);
+        }
+        [data-theme="dark"] .organ-text-content h3 {
+            color: #60a5fa;
+        }
+        .organ-facts-list {
+            list-style: none;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .organ-facts-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        .organ-facts-list li i {
+            color: var(--primary);
+            margin-top: 4px;
+        }
+        .sim-actions {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* ANIMAL DIGESTION COMPARISON */
+        .comparison-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .animal-card {
+            background: var(--bg-card-subtle);
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .animal-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--animal-color, var(--primary));
+            box-shadow: var(--shadow-md);
+        }
+        .animal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .animal-title-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .animal-emoji {
+            font-size: 2.2rem;
+        }
+        .animal-badge {
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: white;
+            color: var(--animal-color, var(--primary));
+            border: 1px solid var(--border-color);
+        }
+        [data-theme="dark"] .animal-badge {
+            background: var(--bg-card);
+        }
+        .ruminant-stomach-box {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-orange);
+        }
+        .stomach-chambers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .chamber-chip {
+            background: var(--bg-card-subtle);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        /* INTERACTIVE MINI GAME: SOG'LOM TARELKA */
+        .game-board {
+            background: var(--bg-card-subtle);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+        .food-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+        .food-item-btn {
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-color);
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            user-select: none;
+        }
+        .food-item-btn:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+        .food-item-btn.selected-healthy {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #15803d;
+        }
+        .food-item-btn.selected-unhealthy {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #b91c1c;
+        }
+        [data-theme="dark"] .food-item-btn.selected-healthy {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+        [data-theme="dark"] .food-item-btn.selected-unhealthy {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+        .game-score-box {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* WATER TRACKER */
+        .water-tracker-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(16, 185, 129, 0.08));
+            border: 1.5px solid rgba(59, 130, 246, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .water-glasses-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 2rem 0 1.5rem;
+            flex-wrap: wrap;
+        }
+        .water-glass-btn {
+            width: 55px;
+            height: 75px;
+            background: var(--bg-card);
+            border: 2px solid var(--secondary);
+            border-radius: 6px 6px 16px 16px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 8px;
+        }
+        .water-glass-btn:hover {
+            transform: scale(1.1);
+        }
+        .water-glass-btn .water-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0%;
+            background: linear-gradient(to top, #3b82f6, #60a5fa);
+            transition: height 0.4s ease;
+            z-index: 1;
+        }
+        .water-glass-btn.drank .water-fill {
+            height: 100%;
+        }
+        .water-glass-btn i {
+            position: relative;
+            z-index: 2;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .water-glass-btn.drank i {
+            color: white;
+        }
+
+        /* QUIZ SECTION */
+        .quiz-container {
+            margin-top: 2rem;
+        }
+        .quiz-card {
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        .quiz-card:hover {
+            border-color: var(--primary);
+        }
+        .quiz-question {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            display: flex;
+            gap: 10px;
+        }
+        .quiz-question-num {
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .quiz-opt-btn {
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px 18px;
+            text-align: left;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .quiz-opt-btn:hover:not(:disabled) {
+            border-color: var(--primary);
+            background: rgba(16, 185, 129, 0.05);
+            transform: translateX(4px);
+        }
+        .quiz-opt-btn.correct {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #15803d !important;
+            font-weight: 700;
+        }
+        .quiz-opt-btn.incorrect {
+            background: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #b91c1c !important;
+        }
+        [data-theme="dark"] .quiz-opt-btn.correct {
+            background: rgba(34, 197, 94, 0.25) !important;
+            color: #86efac !important;
+        }
+        [data-theme="dark"] .quiz-opt-btn.incorrect {
+            background: rgba(239, 68, 68, 0.25) !important;
+            color: #fca5a5 !important;
+        }
+        .quiz-feedback {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--bg-card-subtle);
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .content-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-apple-whole"></i>
+                </div>
+                <span>BioTa'lim 6</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#ratsion"><i class="fa-solid fa-utensils"></i> Ratsion</a></li>
+                <li><a href="#tarelka"><i class="fa-solid fa-pie-chart"></i> Tarelka & Kalkulyator</a></li>
+                <li><a href="#hazm-tizimi"><i class="fa-solid fa-route"></i> Hazm Qilish</a></li>
+                <li><a href="#hayvonlar"><i class="fa-solid fa-paw"></i> Hayvonlar</a></li>
+                <li><a href="#oyin"><i class="fa-solid fa-gamepad"></i> O'yin</a></li>
+                <li><a href="#testlar"><i class="fa-solid fa-clipboard-check"></i> Test</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="icon-btn" id="theme-toggle" title="Mavzuni almashtirish (Tun/Kun)" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="icon-btn" id="sound-btn" title="Tovush effekti" onclick="toggleSound()">
+                    <i class="fa-solid fa-volume-high"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-badge">
+            <i class="fa-solid fa-graduation-cap"></i> 6-sinf Tabiiy Fanlar Darsligi
+        </div>
+        <h1>
+            Ratsional Ovqatlanish va <span>Hazm Qilish Tizimi</span>
+        </h1>
+        <p>
+            Tanamiz qanday qilib ozuqani quvvatga aylantiradi? Sogʻlom ratsion siri nimada va nima uchun hayvonlarning oshqozoni turlicha tuzilgan? Interaktiv simulyatsiyalar orqali kashf eting!
+        </p>
+        <div class="hero-cta">
+            <a href="#tarelka" class="btn-primary">
+                <i class="fa-solid fa-play"></i> Amaliy Simulyatsiyalar
+            </a>
+            <a href="#testlar" class="btn-secondary">
+                <i class="fa-solid fa-award"></i> Bilimni Sinash (Test)
+            </a>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- 1-BO'LIM: MUVOZATLASHTIRILGAN RATSION -->
+        <section id="ratsion" class="content-card">
+            <div class="section-header">
+                <span class="tag">1-Mavzu</span>
+                <h2>Muvozatlashgan (Ratsional) Ratsion Nima?</h2>
+                <p>
+                    <strong>Ratsional ovqatlanish</strong> — organizmning oʻsishi, sogʻlom rivojlanishi va quvvat bilan taʼminlanishi uchun barcha ozuqa moddalarini kerakli nisbatda qabul qilishdir.
+                </p>
+            </div>
+
+            <div class="nutrients-grid">
+                <!-- Oqsillar -->
+                <div class="nutrient-card" style="--card-color: #ef4444;">
+                    <div class="nutrient-header">
+                        <div class="nutrient-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
+                        <div>
+                            <div class="nutrient-title">Oqsillar (Proteins)</div>
+                            <span class="nutrient-norm">15% - 20% ratsion</span>
+                        </div>
+                    </div>
+                    <p class="nutrient-desc">Hujayra va toʻqimalarning asosiy qurilish materiali. Muskullar, suyaklar va immun tizimi shakllanishida beqiyos oʻrin tutadi.</p>
+                    <div class="food-sources">
+                        <strong>Manbalari:</strong> Goʻsht, tuxum, baliq, tvorog, mosh, loviya, noʻxat.
+                    </div>
+                </div>
+
+                <!-- Uglevodlar -->
+                <div class="nutrient-card" style="--card-color: #f59e0b;">
+                    <div class="nutrient-header">
+                        <div class="nutrient-icon"><i class="fa-solid fa-bread-slice"></i></div>
+                        <div>
+                            <div class="nutrient-title">Uglevodlar</div>
+                            <span class="nutrient-norm">50% - 60% ratsion</span>
+                        </div>
+                    </div>
+                    <p class="nutrient-desc">Organizm va miya faoliyati uchun 1-raqamli tezkor energiya manbai. Jismoniy harakatlar kuchini taʼminlaydi.</p>
+                    <div class="food-sources">
+                        <strong>Manbalari:</strong> Bugʻdoy noni, guruch, grechka, suli yormasi, mevalar.
+                    </div>
+                </div>
+
+                <!-- Yog'lar -->
+                <div class="nutrient-card" style="--card-color: #3b82f6;">
+                    <div class="nutrient-header">
+                        <div class="nutrient-icon"><i class="fa-solid fa-bottle-droplet"></i></div>
+                        <div>
+                            <div class="nutrient-title">Yogʻlar (Lipidlar)</div>
+                            <span class="nutrient-norm">20% - 30% ratsion</span>
+                        </div>
+                    </div>
+                    <p class="nutrient-desc">Zaxira energiya xazinasi, ichki organlarni himoyalaydi va A, D, E, K vitaminlarining soʻrilishini kafolatlaydi.</p>
+                    <div class="food-sources">
+                        <strong>Manbalari:</strong> Zaytun yogʻi, yongʻoqlar, sariyogʻ, zigʻir yogʻi.
+                    </div>
+                </div>
+
+                <!-- Vitamin va Minerallar -->
+                <div class="nutrient-card" style="--card-color: #10b981;">
+                    <div class="nutrient-header">
+                        <div class="nutrient-icon"><i class="fa-solid fa-carrot"></i></div>
+                        <div>
+                            <div class="nutrient-title">Vitamin & Minerallar</div>
+                            <span class="nutrient-norm">Har kuni zarur</span>
+                        </div>
+                    </div>
+                    <p class="nutrient-desc">Moddalar almashinuvini boshqaradi, suyaklarni mustahkamlaydi va kasalliklarga qarshi kuchli immunitet yaratadi.</p>
+                    <div class="food-sources">
+                        <strong>Manbalari:</strong> Yangi mevalar, koʻkatlar, sabzi, pomidor, sut mahsulotlari.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2-BO'LIM: SOG'LOM TARELKA & SHAXSIY KALKULYATOR -->
+        <section id="tarelka" class="content-card">
+            <div class="section-header">
+                <span class="tag">Interaktiv Asbob</span>
+                <h2>"Sogʻlom Tarelka" Modeli va Ratsion Kalkulyatori</h2>
+                <p>Zamonaviy jahon parhezshunosligi qoidasi boʻyicha kunlik ovqat likopchasining taqsimoti.</p>
+            </div>
+
+            <div class="plate-calc-grid">
+                <!-- Tarelka Grafiki -->
+                <div class="plate-visual-box">
+                    <h3 style="margin-bottom: 1.5rem;">🍽️ Garvard Sogʻlom Tarelkasi</h3>
+                    <div class="plate-circle">
+                        <div class="plate-center">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <span>BALANS</span>
+                        </div>
+                    </div>
+                    <div class="plate-legend">
+                        <div class="legend-item">
+                            <div><span class="legend-color" style="background:#10b981;"></span> <strong>Sabzavot va mevalar:</strong></div>
+                            <span>50% (Yarmi)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div><span class="legend-color" style="background:#f59e0b;"></span> <strong>Donli mahsulotlar:</strong></div>
+                            <span>25% (Chorak)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div><span class="legend-color" style="background:#ef4444;"></span> <strong>Sogʻlom oqsillar:</strong></div>
+                            <span>25% (Chorak)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kalkulyator -->
+                <div>
+                    <h3 style="margin-bottom: 1rem;"><i class="fa-solid fa-calculator" style="color:var(--primary);"></i> Shaxsiy Kaloriya va BJU Hisoblagich</h3>
+                    <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">
+                        Oʻquvchining jismoniy parametrlarini kiriting va tavsiya etilgan meʼyorlarni bilib oling:
+                    </p>
+                    <form class="calc-form" onsubmit="calculateNutrition(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="calc-age">Yosh (6-sinf uchun: 11-13)</label>
+                                <input type="number" id="calc-age" class="form-control" value="12" min="8" max="18" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="calc-gender">Jinsi</label>
+                                <select id="calc-gender" class="form-control">
+                                    <option value="male">Oʻgʻil bola</option>
+                                    <option value="female">Qiz bola</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="calc-weight">Vazn (kg)</label>
+                                <input type="number" id="calc-weight" class="form-control" value="40" min="20" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="calc-activity">Jismoniy faollik</label>
+                                <select id="calc-activity" class="form-control">
+                                    <option value="1.3">Oʻrtacha (Maktab, sayr)</option>
+                                    <option value="1.5">Faol (Sport toʻgaraklari bor)</option>
+                                    <option value="1.2">Kamharakat</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary" style="justify-content: center; width:100%;">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Meʼyorni Hisoblash
+                        </button>
+                    </form>
+
+                    <div id="calc-result" class="calc-result-box">
+                        <div style="font-weight: 800; font-size: 1.15rem; color: var(--primary-dark); margin-bottom: 8px;" id="calc-calories">
+                            ⚡ Kunlik ehtiyoj: 2100 kkal
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center; margin-top: 10px;">
+                            <div style="background:var(--bg-card); padding:8px; border-radius:8px;">
+                                <strong style="color:#ef4444;" id="calc-prot">65 g</strong><br><small>Oqsil</small>
+                            </div>
+                            <div style="background:var(--bg-card); padding:8px; border-radius:8px;">
+                                <strong style="color:#3b82f6;" id="calc-fat">60 g</strong><br><small>Yogʻ</small>
+                            </div>
+                            <div style="background:var(--bg-card); padding:8px; border-radius:8px;">
+                                <strong style="color:#f59e0b;" id="calc-carb">290 g</strong><br><small>Uglevod</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3-BO'LIM: INSON OVQAT HAZM QILISH TIZIMI -->
+        <section id="hazm-tizimi" class="content-card">
+            <div class="section-header">
+                <span class="tag">2-Mavzu</span>
+                <h2>Insonning Ovqat Hazm Qilish Sistemasi</h2>
+                <p>Ozuqa ogʻizga tushgandan to toʻliq soʻrilgunga qadar qanday ajoyib yoʻlni bosib oʻtadi? Bosqichlarni tanlang!</p>
+            </div>
+
+            <div class="digestive-container">
+                <div class="digestive-tabs">
+                    <button class="digestive-tab active" onclick="switchOrgan(0)">
+                        <i class="fa-solid fa-teeth-open"></i>
+                        <span>1. Ogʻiz boʻshligʻi</span>
+                    </button>
+                    <button class="digestive-tab" onclick="switchOrgan(1)">
+                        <i class="fa-solid fa-arrows-down-to-line"></i>
+                        <span>2. Qiziloʻngach</span>
+                    </button>
+                    <button class="digestive-tab" onclick="switchOrgan(2)">
+                        <i class="fa-solid fa-flask"></i>
+                        <span>3. Oshqozon</span>
+                    </button>
+                    <button class="digestive-tab" onclick="switchOrgan(3)">
+                        <i class="fa-solid fa-dna"></i>
+                        <span>4. Ingichka ichak</span>
+                    </button>
+                    <button class="digestive-tab" onclick="switchOrgan(4)">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>5. Jigar & Bezlar</span>
+                    </button>
+                    <button class="digestive-tab" onclick="switchOrgan(5)">
+                        <i class="fa-solid fa-filter"></i>
+                        <span>6. Yoʻgʻon ichak</span>
+                    </button>
+                </div>
+
+                <div class="organ-detail-box">
+                    <div class="organ-visual">
+                        <div class="organ-timeline-badge" id="organ-step-badge">1-Bosqich</div>
+                        <div class="organ-visual-icon" id="organ-icon"><i class="fa-solid fa-teeth-open"></i></div>
+                        <h4 id="organ-name" style="font-size: 1.3rem;">Ogʻiz boʻshligʻi</h4>
+                        <p id="organ-time" style="color:var(--text-muted); font-size:0.85rem; margin-top:5px;">Vaqt: ~1 daqiqa</p>
+                    </div>
+
+                    <div class="organ-text-content">
+                        <h3 id="organ-title">Boshlangʻich maydalash va kimyoviy ishlov</h3>
+                        <p id="organ-description" style="color:var(--text-muted); font-size:1.05rem;">
+                            Tishlar yordamida ovqat mexanik maydalanadi va soʻlak bezlari suyuqligi bilan aralashadi. Soʻlak tarkibidagi <strong>ptialin (amilaza)</strong> fermenti uglevodlarni kraxmaldan oddiy shakargacha parchalashni boshlaydi.
+                        </p>
+                        <ul class="organ-facts-list" id="organ-facts">
+                            <li><i class="fa-solid fa-circle-check"></i> Tillar taʼmni sezadi va luqma hosil qiladi.</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Soʻlakdagi lizotsim bakteriyalarni zararsizlantiradi.</li>
+                        </ul>
+                        <div class="sim-actions">
+                            <button class="btn-primary" onclick="nextOrgan()">
+                                Keyingi aʼzo ➔
+                            </button>
+                            <button class="btn-secondary" onclick="speakOrganInfo()">
+                                <i class="fa-solid fa-volume-high"></i> Ovozli tinglash
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4-BO'LIM: HAYVONLAR HAZM QILISH TIZIMI TAQQOSLOVI -->
+        <section id="hayvonlar" class="content-card">
+            <div class="section-header">
+                <span class="tag">3-Mavzu</span>
+                <h2>Hayvonlarning Ovqat Hazm Qilish Sistemasi</h2>
+                <p>Nega sigir tinimsiz kovshaydi, sher esa oʻljasini darrov yutadi? Ularning biologik moslashuvini taqqoslaymiz.</p>
+            </div>
+
+            <div class="comparison-cards-grid">
+                <!-- O'TXORLAR -->
+                <div class="animal-card" style="--animal-color: #10b981;">
+                    <div class="animal-header">
+                        <div class="animal-title-wrap">
+                            <span class="animal-emoji">🐮</span>
+                            <div>
+                                <h3>Oʻtxor Hayvonlar</h3>
+                                <small style="color:var(--text-muted);">Masalan: Qoramol, Qoʻy, Katta tuyoqlar</small>
+                            </div>
+                        </div>
+                        <span class="animal-badge">Murakkab hazm</span>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        Oʻsimlik hujayralari qobigʻi (kletchatka/sellyuloza) qattiq boʻlgani sababli ularni parchalash oʻta murakkab.
+                    </p>
+                    <div class="ruminant-stomach-box">
+                        <strong style="color:var(--accent-orange); font-size:0.9rem;">4 xonali murakkab oshqozon:</strong>
+                        <div class="stomach-chambers-grid">
+                            <div class="chamber-chip">1. Kaltak (Rumen)</div>
+                            <div class="chamber-chip">2. Toʻr (Reticulum)</div>
+                            <div class="chamber-chip">3. Qatqorin (Omasum)</div>
+                            <div class="chamber-chip">4. Shirdon (Abomasum)</div>
+                        </div>
+                    </div>
+                    <ul class="organ-facts-list">
+                        <li><i class="fa-solid fa-arrow-right" style="color:#10b981;"></i> <strong>Kovshash:</strong> Ovqat toʻrdan qayta ogʻizga qaytadi va ikkinchi bor yaxshilab chaynaydi.</li>
+                        <li><i class="fa-solid fa-arrow-right" style="color:#10b981;"></i> <strong>Ichak uzunligi:</strong> Tana uzunligidan 20-25 barobar uzun!</li>
+                    </ul>
+                </div>
+
+                <!-- GO'SHTXORLAR -->
+                <div class="animal-card" style="--animal-color: #ef4444;">
+                    <div class="animal-header">
+                        <div class="animal-title-wrap">
+                            <span class="animal-emoji">🦁</span>
+                            <div>
+                                <h3>Goʻshtxor Hayvonlar</h3>
+                                <small style="color:var(--text-muted);">Masalan: Sher, Boʻri, Yoʻlbars</small>
+                            </div>
+                        </div>
+                        <span class="animal-badge">Tezkor hazm</span>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        Goʻsht va yogʻ moddalari oʻsimliklarga qaraganda ancha oson eriydi va toʻyimli oqsilga boy boʻladi.
+                    </p>
+                    <div class="ruminant-stomach-box" style="border-left-color: #ef4444;">
+                        <strong style="color:#ef4444; font-size:0.9rem;">Sodda 1 xonali oshqozon:</strong>
+                        <p style="font-size:0.85rem; margin-top:6px; color:var(--text-muted);">
+                            Kislotasi juda kuchli (pH 1-2). Suyaklar va paylarni erita oladi.
+                        </p>
+                    </div>
+                    <ul class="organ-facts-list">
+                        <li><i class="fa-solid fa-arrow-right" style="color:#ef4444;"></i> <strong>Tishlar:</strong> Oʻtkir qoziq tishlar oʻljani yulish va parchalash uchun moʻljallangan.</li>
+                        <li><i class="fa-solid fa-arrow-right" style="color:#ef4444;"></i> <strong>Ichak uzunligi:</strong> Kalta trakt (tana uzunligidan bor-yoʻgʻi 4-6 barobar).</li>
+                    </ul>
+                </div>
+
+                <!-- HAMMAXORLAR -->
+                <div class="animal-card" style="--animal-color: #3b82f6;">
+                    <div class="animal-header">
+                        <div class="animal-title-wrap">
+                            <span class="animal-emoji">🐻</span>
+                            <div>
+                                <h3>Hammaxor Hayvonlar</h3>
+                                <small style="color:var(--text-muted);">Masalan: Ayiq, Choʻchqa, Inson</small>
+                            </div>
+                        </div>
+                        <span class="animal-badge">Universal hazm</span>
+                    </div>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">
+                        Ham oʻsimlik, ham hayvonot ozuqalarini teng qabul qila oladi. Har ikki turdagi fermentlarga ega.
+                    </p>
+                    <div class="ruminant-stomach-box" style="border-left-color: #3b82f6;">
+                        <strong style="color:#3b82f6; font-size:0.9rem;">Oʻrtacha tuzilish:</strong>
+                        <p style="font-size:0.85rem; margin-top:6px; color:var(--text-muted);">
+                            Bir xonali oshqozon va oʻrtacha uzunlikdagi (tana uzunligidan 8-10 barobar) ichaklar.
+                        </p>
+                    </div>
+                    <ul class="organ-facts-list">
+                        <li><i class="fa-solid fa-arrow-right" style="color:#3b82f6;"></i> <strong>Tishlar:</strong> Ham kesuvchi, ham yirtuvchi, ham maydalovchi oziq tishlar bor.</li>
+                        <li><i class="fa-solid fa-arrow-right" style="color:#3b82f6;"></i> <strong>Moslashuv:</strong> Yil mavsumiga qarab oziqlanish turini osongina oʻzgartira oladi.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5-BO'LIM: MINI-O'YIN: SOG'LOM TARELKANI TO'LDIR -->
+        <section id="oyin" class="content-card">
+            <div class="section-header">
+                <span class="tag">🎮 Interaktiv Oʻyin</span>
+                <h2>"Sogʻlom Tarelkani Shakllantir"</h2>
+                <p>Faqat <strong>foydali va tabiiy</strong> mahsulotlarni tanlang! Zararli va ortiqcha shakarli mahsulotlardan saqlaning.</p>
+            </div>
+
+            <div class="game-board">
+                <div class="food-pool" id="food-pool">
+                    <!-- JavaScript bilan generatsiya qilinadi -->
+                </div>
+                <div class="game-score-box">
+                    <div style="font-size: 1.2rem; font-weight: 800; margin-bottom: 5px;">
+                        Toʻplangan ball: <span id="game-score" style="color:var(--primary);">0</span> / 60
+                    </div>
+                    <p id="game-feedback" style="color:var(--text-muted); font-size:0.95rem;">
+                        Boshlash uchun yuqoridagi mahsulotlarni bosing!
+                    </p>
+                    <button class="btn-secondary" onclick="resetGame()" style="margin-top: 10px;">
+                        <i class="fa-solid fa-rotate-right"></i> Qaytadan boshlash
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- KUNLIK SUV ME'YORI TREKERI -->
+        <div class="water-tracker-card">
+            <span class="hero-badge"><i class="fa-solid fa-droplet"></i> Suv — Hayot Manbai</span>
+            <h2 style="margin: 0.8rem 0;">Kunlik Suv Balansi (6-8 stakan)</h2>
+            <p style="color:var(--text-muted); max-width:600px; margin: 0 auto;">
+                Suv barcha ozuqa moddalarining hujayralarga yetib borishini taʼminlaydi. Har safar suv ichganda stakanni bosing!
+            </p>
+            <div class="water-glasses-row" id="water-row">
+                <!-- 8 stakan -->
+            </div>
+            <div style="font-weight: 700; font-size: 1.1rem; color: var(--secondary-dark);" id="water-status">
+                Bugun ichildi: 0 / 8 stakan (0 ml)
+            </div>
+        </div>
+
+        <!-- 6-BO'LIM: BILIMNI MUSTAHKAMLASH TESTI -->
+        <section id="testlar" class="content-card">
+            <div class="section-header">
+                <span class="tag">Bilimni Tekshirish</span>
+                <h2>6-sinf Biologiya va Tabiiy Fanlar Testi</h2>
+                <p>Mavzuni qanchalik yaxshi oʻzlashtirganingizni tekshirib koʻring. Har bir savolga bittadan javob bering.</p>
+            </div>
+
+            <div class="quiz-container" id="quiz-list">
+                <!-- Savollar JS orqali to'ldiriladi -->
+            </div>
+
+            <div id="quiz-final-box" style="display:none; text-align:center; padding:2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); margin-top:2rem;">
+                <div style="font-size:3rem; margin-bottom:1rem;" id="quiz-medal">🏆</div>
+                <h3 id="quiz-final-title">Ajoyib natija!</h3>
+                <p id="quiz-final-score" style="font-size:1.2rem; font-weight:700; color:var(--primary); margin: 0.5rem 0 1.5rem;"></p>
+                <button class="btn-primary" onclick="restartQuiz()">
+                    <i class="fa-solid fa-rotate-left"></i> Testni qaytadan yechish
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-badge">
+                <i class="fa-solid fa-book-open"></i> Oʻzbekiston Respublikasi Xalq Taʼlimi Standarti
+            </div>
+            <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                6-sinf Tabiiy Fanlar: Ratsional Ovqatlanish Platformasi
+            </p>
+            <p style="color:var(--text-muted); font-size:0.9rem;">
+                Taʼlimiy, interaktiv va koʻrgazmali raqamli resurs. GitHub Pages orqali ochiq taʼlim uchun ishlab chiqildi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // THEME TOGGLE
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            const icon = document.querySelector('#theme-toggle i');
+            icon.className = newTheme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // LOAD SAVED THEME
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved) {
+                document.documentElement.setAttribute('data-theme', saved);
+                const icon = document.querySelector('#theme-toggle i');
+                if (icon) icon.className = saved === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+        })();
+
+        // SOUND EFFECTS
+        let soundEnabled = true;
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.querySelector('#sound-btn i');
+            btn.className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+        }
+
+        function playTone(freq = 600, duration = 0.15) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        // 1. CALORIE & NUTRITION CALCULATOR
+        function calculateNutrition(e) {
+            e.preventDefault();
+            const age = parseInt(document.getElementById('calc-age').value) || 12;
+            const gender = document.getElementById('calc-gender').value;
+            const weight = parseFloat(document.getElementById('calc-weight').value) || 40;
+            const activity = parseFloat(document.getElementById('calc-activity').value) || 1.3;
+
+            // BMR estimation for children/teens
+            let bmr = (gender === 'male') ? (17.5 * weight + 651) : (12.2 * weight + 746);
+            let totalKcal = Math.round(bmr * activity);
+
+            // BJU grams
+            // Protein: 1.5g per kg weight
+            let protGrams = Math.round(weight * 1.5);
+            // Fat: ~25% of calories (9 kcal/g)
+            let fatGrams = Math.round((totalKcal * 0.25) / 9);
+            // Carb: remaining calories (4 kcal/g)
+            let carbGrams = Math.round((totalKcal - (protGrams * 4 + fatGrams * 9)) / 4);
+
+            document.getElementById('calc-calories').innerHTML = `⚡ Kunlik energiya ehtiyoji: <strong>${totalKcal} kkal</strong>`;
+            document.getElementById('calc-prot').innerText = protGrams + ' g';
+            document.getElementById('calc-fat').innerText = fatGrams + ' g';
+            document.getElementById('calc-carb').innerText = carbGrams + ' g';
+
+            document.getElementById('calc-result').style.display = 'block';
+            playTone(700, 0.2);
+        }
+
+        // 2. DIGESTIVE SYSTEM DATA & SWITCHER
+        const organList = [
+            {
+                step: "1-Bosqich",
+                icon: "fa-solid fa-teeth-open",
+                name: "Ogʻiz boʻshligʻi",
+                time: "Vaqt: ~1 daqiqa",
+                title: "Boshlangʻich maydalash va kimyoviy ishlov",
+                desc: "Tishlar ovqatni maydalaydi, til aralashtiradi. Soʻlak tarkibidagi amilaza (ptialin) fermenti uglevodlarni kraxmaldan oddiyroq qandlargacha parchalaydi.",
+                facts: [
+                    "Kattalarda 32 ta tish, 6-sinf oʻquvchilarida esa 28 ta tish boʻladi.",
+                    "Soʻlak tarkibidagi lizotsim moddasi ozuqa bilan kirgan bakteriyalarni zararsizlantiradi."
+                ]
+            },
+            {
+                step: "2-Bosqich",
+                icon: "fa-solid fa-arrows-down-to-line",
+                name: "Qiziloʻngach (Oesophagus)",
+                time: "Vaqt: ~5-10 soniya",
+                title: "Luqmaning tezkor harakat yoʻli",
+                desc: "Uzunligi 25 sm atrofidagi muskul naychasi. U oʻzining toʻlqinsimon peristaltik harakatlari bilan ovqatni hatto teskari turgan holatda ham oshqozonga sura oladi.",
+                facts: [
+                    "Qiziloʻngachda ovqat kimyoviy parchalanmaydi, u faqat transport vazifasini bajaradi.",
+                    "Xiqildoq usti togʻayi ovqat nafas yoʻliga (traxeyaga) ketib qolishiga yoʻl qoʻymaydi."
+                ]
+            },
+            {
+                step: "3-Bosqich",
+                icon: "fa-solid fa-flask",
+                name: "Oshqozon (Gaster)",
+                time: "Vaqt: ~2-4 soat",
+                title: "Kislotali vannada oqsillarni eritish",
+                desc: "Hajmi 1.5 - 2.5 litrli muskul xaltasi. Oshqozon shirasi va xlorid kislotasi (HCl) yordamida oqsillar pepsin fermenti bilan parchalanadi, ovqat boʻtqaga (ximusga) aylanadi.",
+                facts: [
+                    "Oshqozondagi xlorid kislota kuchliligi metallni eritishga qodir, ammo oshqozon devori shilliq qavat bilan oʻzini himoyalaydi.",
+                    "Bu yerda yogʻlar va kraxmallar deyarli hazm boʻlmaydi, asosan oqsillar maydalanadi."
+                ]
+            },
+            {
+                step: "4-Bosqich",
+                icon: "fa-solid fa-dna",
+                name: "Ingichka ichak (Enteron)",
+                time: "Vaqt: ~4-6 soat",
+                title: "Hazmning markazi va qonga soʻrilish moʻjizasi",
+                desc: "Uzunligi 5-6 metr boʻlib, oʻn ikki barmoqli ichakdan boshlanadi. Barcha moddalar (oqsil, yogʻ, uglevod) mayda molekulalargacha parchalanib, vorsinkalar (tukchalar) orqali toʻgʻridan-toʻgʻri qonga va limfaga soʻriladi.",
+                facts: [
+                    "Ichki devoridagi millionlab vorsinkalar tufayli uning soʻrilish maydoni tennis korti kattaligiga (200 m²) teng keladi!",
+                    "Foydali moddalarning 90% dan ortigʻi aynan ingichka ichakda oʻzlashtiriladi."
+                ]
+            },
+            {
+                step: "5-Bosqich",
+                icon: "fa-solid fa-shield-halved",
+                name: "Jigar va Oshqozon osti bezi",
+                time: "Vaqt: Doimiy faol",
+                title: "Organizmning kimyoviy laboratoriyasi",
+                desc: "Jigar oʻt suyuqligi ishlab chiqaradi (u yogʻlarni mayda tomchilarga parchalaydi). Oshqozon osti bezi esa tripsin, lipaza va amilaza kabi eng kuchli fermentlarni oʻn ikki barmoqli ichakka quyadi.",
+                facts: [
+                    "Jigar organizmga tushgan barcha zaharli moddalarni filtrlaydi va tozalaydi.",
+                    "Oʻt pufagi jigarda ishlab chiqarilgan oʻt suyuqligini saqlab turadigan ombordir."
+                ]
+            },
+            {
+                step: "6-Bosqich",
+                icon: "fa-solid fa-filter",
+                name: "Yoʻgʻon ichak (Colon)",
+                time: "Vaqt: ~10-15 soat",
+                title: "Suvni tejash va chiqindilarni tayyorlash",
+                desc: "Uzunligi 1.5-2 metr. Bu yerda hazm boʻlmagan ximus tarkibidagi suv va foydali minerallar qayta qonga soʻriladi. Chiqindi najasga aylanadi va toʻgʻri ichak orqali tashqariga chiqariladi.",
+                facts: [
+                    "Yoʻgʻon ichakda trillionlab foydali bakteriyalar (mikrobioma) yashaydi, ular K va B guruhi vitaminlarini sintez qiladi.",
+                    "Yetarli suv ichilmasa va kletchatka yeyilmasa, ich qotishi yuzaga keladi."
+                ]
+            }
+        ];
+
+        let curOrganIndex = 0;
+        function switchOrgan(idx) {
+            curOrganIndex = idx;
+            const data = organList[idx];
+
+            document.querySelectorAll('.digestive-tab').forEach((tab, i) => {
+                tab.classList.toggle('active', i === idx);
+            });
+
+            document.getElementById('organ-step-badge').innerText = data.step;
+            document.getElementById('organ-icon').innerHTML = `<i class="${data.icon}"></i>`;
+            document.getElementById('organ-name').innerText = data.name;
+            document.getElementById('organ-time').innerText = data.time;
+            document.getElementById('organ-title').innerText = data.title;
+            document.getElementById('organ-description').innerHTML = data.desc;
+
+            const factsList = document.getElementById('organ-facts');
+            factsList.innerHTML = '';
+            data.facts.forEach(f => {
+                factsList.innerHTML += `<li><i class="fa-solid fa-circle-check"></i> ${f}</li>`;
+            });
+
+            playTone(500 + idx * 50, 0.1);
+        }
+
+        function nextOrgan() {
+            const nextIdx = (curOrganIndex + 1) % organList.length;
+            switchOrgan(nextIdx);
+        }
+
+        function speakOrganInfo() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const data = organList[curOrganIndex];
+                const text = `${data.name}. ${data.title}. ${data.desc}`;
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'uz-UZ';
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Brauzeringiz nutq sintezini qoʻllab-quvvatlamaydi.");
+            }
+        }
+
+        // 3. INTERACTIVE GAME: SOG'LOM TARELKA
+        const gameItems = [
+            { name: "🍎 Qizil olma", healthy: true, pts: 10, msg: "Ajoyib! Mevalar vitamin va kletchatkaga boy." },
+            { name: "🍟 Kartoshka fri", healthy: false, pts: -5, msg: "Zararli! Transyogʻlar va ortiqcha tuz yurakka ogʻir." },
+            { name: "🥦 Yangi brokkoli", healthy: true, pts: 10, msg: "Ofarin! Sabzavotlar hazmni yengillashtiradi." },
+            { name: "🥤 Gazli shirin ichimlik", healthy: false, pts: -5, msg: "Zararli! Ortiqcha shakar va boʻyoqlar tish va oshqozon dushmani." },
+            { name: "🐟 Qaynatilgan baliq", healthy: true, pts: 10, msg: "Zoʻr! Omega-3 va eng toza oqsil manbai." },
+            { name: "🍩 Shakarli ponchik", healthy: false, pts: -5, msg: "Zararli! Boʻsh kaloriyalar va ortiqcha vazn sababchisi." },
+            { name: "🥚 Qaynatilgan tuxum", healthy: true, pts: 10, msg: "Aʼlo! Oqsil va miya uchun xolin moddasi." },
+            { name: "🍔 Tez tayyor fastfud", healthy: false, pts: -5, msg: "Zararli! Yogʻli va hazm qilishga juda qiyin mahsulot." },
+            { name: "🥜 Yongʻoq & bodom", healthy: true, pts: 10, msg: "Foydali! Miya ishlashi uchun toza oʻsimlik yogʻlari." },
+            { name: "🥣 Suli yormasi (ovsyanka)", healthy: true, pts: 10, msg: "Super! Uzoq vaqt toʻqlik beruvchi murakkab uglevod." }
+        ];
+
+        let gameScore = 0;
+        let selectedCount = 0;
+
+        function initGame() {
+            const pool = document.getElementById('food-pool');
+            pool.innerHTML = '';
+            gameScore = 0;
+            selectedCount = 0;
+            document.getElementById('game-score').innerText = '0';
+            document.getElementById('game-feedback').innerText = 'Boshlash uchun yuqoridagi mahsulotlarni bosing!';
+
+            gameItems.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'food-item-btn';
+                btn.id = `food-${index}`;
+                btn.innerHTML = item.name;
+                btn.onclick = () => selectFood(index, btn);
+                pool.appendChild(btn);
+            });
+        }
+
+        function selectFood(idx, btn) {
+            if (btn.classList.contains('selected-healthy') || btn.classList.contains('selected-unhealthy')) return;
+
+            const item = gameItems[idx];
+            if (item.healthy) {
+                btn.classList.add('selected-healthy');
+                btn.innerHTML = `✅ ${item.name}`;
+                gameScore += item.pts;
+                playTone(800, 0.15);
+            } else {
+                btn.classList.add('selected-unhealthy');
+                btn.innerHTML = `❌ ${item.name}`;
+                gameScore = Math.max(0, gameScore + item.pts);
+                playTone(250, 0.25);
+            }
+
+            document.getElementById('game-score').innerText = gameScore;
+            document.getElementById('game-feedback').innerHTML = item.msg;
+            selectedCount++;
+
+            if (selectedCount === gameItems.length) {
+                document.getElementById('game-feedback').innerHTML = `🎉 <strong>Oʻyin tugadi!</strong> Yakuniy balingiz: ${gameScore} / 60!`;
+            }
+        }
+
+        function resetGame() {
+            initGame();
+        }
+
+        // 4. WATER TRACKER
+        let drankGlasses = 0;
+        function initWaterTracker() {
+            const row = document.getElementById('water-row');
+            row.innerHTML = '';
+            for (let i = 1; i <= 8; i++) {
+                const btn = document.createElement('div');
+                btn.className = 'water-glass-btn';
+                btn.id = `glass-${i}`;
+                btn.onclick = () => toggleGlass(i);
+                btn.innerHTML = `
+                    <div class="water-fill"></div>
+                    <i class="fa-solid fa-droplet"></i>
+                `;
+                row.appendChild(btn);
+            }
+        }
+
+        function toggleGlass(num) {
+            if (drankGlasses >= num) {
+                drankGlasses = num - 1;
+            } else {
+                drankGlasses = num;
+            }
+
+            for (let i = 1; i <= 8; i++) {
+                const glass = document.getElementById(`glass-${i}`);
+                if (i <= drankGlasses) {
+                    glass.classList.add('drank');
+                } else {
+                    glass.classList.remove('drank');
+                }
+            }
+
+            const ml = drankGlasses * 250;
+            document.getElementById('water-status').innerText = `Bugun ichildi: ${drankGlasses} / 8 stakan (${ml} ml)`;
+            playTone(600 + drankGlasses * 40, 0.1);
+        }
+
+        // 5. QUIZ SECTION
+        const quizData = [
+            {
+                q: "Inson organizmi uchun asosiy va tezkor energiya manbai boʻlib nima xizmat qiladi?",
+                opts: ["Oqsillar", "Uglevodlar", "Vitaminlar", "Minerallar"],
+                ans: 1,
+                exp: "Uglevodlar (non, mevalar, yormalar) glyukozaga aylanib, organizmga 55-60% energiyani yetkazib beradi."
+            },
+            {
+                q: "Oqsillarni xlorid kislota ishtirokida parchalovchi asosiy organ qaysi?",
+                opts: ["Ogʻiz boʻshligʻi", "Qiziloʻngach", "Oshqozon", "Yoʻgʻon ichak"],
+                ans: 2,
+                exp: "Oshqozonda pepsin fermenti va xlorid kislotasi kuchli muhit hosil qilib, oqsillarni parchalaydi."
+            },
+            {
+                q: "Hazm boʻlgan barcha ozuqa moddalarining qonga soʻrilishi asosan qayerda sodir boʻladi?",
+                opts: ["Ingichka ichakdagi vorsinkalarda", "Oshqozon devorida", "Yoʻgʻon ichakda", "Jigarda"],
+                ans: 0,
+                exp: "Ingichka ichak ichki yuzasidagi millionlab vorsinkalar barcha oziq moddalarni qonga va limfaga soʻradi."
+            },
+            {
+                q: "Nima sababdan sigir va qoʻylarning oshqozoni 4 xonadan iborat?",
+                opts: ["Ular goʻsht yegani sababli", "Kletchatkaga boy oʻsimliklarni mikrobli parchalash va kovshash uchun", "Suvni koʻp saqlash uchun", "Zaharlarni tozalash uchun"],
+                ans: 1,
+                exp: "Oʻsimlik hujayrasi (sellyuloza) qattiq boʻlib, uni hazm qilish uchun kaltak, toʻr, qatqorin va shirdon kerak."
+            },
+            {
+                q: "Garvard sogʻlom tarelka qoidasiga koʻra tarelkaning yarmini (50%) nimalar tashkil etishi kerak?",
+                opts: ["Goʻsht va tuxum", "Non va shirinliklar", "Sabzavot va mevalar", "Faqat sut mahsulotlari"],
+                ans: 2,
+                exp: "Toʻgʻri ratsionning 50% qismini turli xil yangi sabzavotlar, mevalar va koʻkatlar tashkil qilishi shart."
+            }
+        ];
+
+        let userAnswers = {};
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-list');
+            container.innerHTML = '';
+            quizData.forEach((qItem, qIdx) => {
+                const qBox = document.createElement('div');
+                qBox.className = 'quiz-card';
+                qBox.id = `qcard-${qIdx}`;
+
+                let optsHtml = '';
+                qItem.opts.forEach((opt, optIdx) => {
+                    optsHtml += `
+                        <button class="quiz-opt-btn" onclick="selectAnswer(${qIdx}, ${optIdx}, this)">
+                            <span><strong>${String.fromCharCode(65 + optIdx)})</strong> ${opt}</span>
+                            <i class="fa-regular fa-circle"></i>
+                        </button>
+                    `;
+                });
+
+                qBox.innerHTML = `
+                    <div class="quiz-question">
+                        <span class="quiz-question-num">${qIdx + 1}</span>
+                        <div>${qItem.q}</div>
+                    </div>
+                    <div class="quiz-options">
+                        ${optsHtml}
+                    </div>
+                    <div class="quiz-feedback" id="qfeed-${qIdx}"></div>
+                `;
+                container.appendChild(qBox);
+            });
+        }
+
+        function selectAnswer(qIdx, optIdx, btn) {
+            if (userAnswers[qIdx] !== undefined) return; // Allaqachon javob berilgan
+
+            userAnswers[qIdx] = optIdx;
+            const qItem = quizData[qIdx];
+            const card = document.getElementById(`qcard-${qIdx}`);
+            const buttons = card.querySelectorAll('.quiz-opt-btn');
+            const feed = document.getElementById(`qfeed-${qIdx}`);
+
+            buttons.forEach((b, idx) => {
+                b.disabled = true;
+                if (idx === qItem.ans) {
+                    b.classList.add('correct');
+                    b.querySelector('i').className = 'fa-solid fa-circle-check';
+                }
+            });
+
+            if (optIdx === qItem.ans) {
+                btn.classList.add('correct');
+                feed.style.display = 'block';
+                feed.style.background = '#dcfce7';
+                feed.style.color = '#15803d';
+                feed.innerHTML = `✅ <strong>Toʻgʻri!</strong> ${qItem.exp}`;
+                playTone(850, 0.2);
+            } else {
+                btn.classList.add('incorrect');
+                btn.querySelector('i').className = 'fa-solid fa-circle-xmark';
+                feed.style.display = 'block';
+                feed.style.background = '#fee2e2';
+                feed.style.color = '#b91c1c';
+                feed.innerHTML = `❌ <strong>Notoʻgʻri!</strong> ${qItem.exp}`;
+                playTone(280, 0.3);
+            }
+
+            // Test tugashini tekshirish
+            if (Object.keys(userAnswers).length === quizData.length) {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            let correctCount = 0;
+            quizData.forEach((item, idx) => {
+                if (userAnswers[idx] === item.ans) correctCount++;
+            });
+
+            const finalBox = document.getElementById('quiz-final-box');
+            finalBox.style.display = 'block';
+
+            const scoreEl = document.getElementById('quiz-final-score');
+            const titleEl = document.getElementById('quiz-final-title');
+            const medalEl = document.getElementById('quiz-final-medal');
+
+            scoreEl.innerText = `${quizData.length} tadan ${correctCount} tasiga toʻgʻri javob berdingiz!`;
+
+            if (correctCount === 5) {
+                medalEl.innerText = '🥇';
+                titleEl.innerText = "Mukammal! Siz haqiqiy yosh biologsiz!";
+            } else if (correctCount >= 3) {
+                medalEl.innerText = '🥈';
+                titleEl.innerText = "Yaxshi natija! Mavzuni yaxshi oʻzlashtiribsiz.";
+            } else {
+                medalEl.innerText = '📚';
+                titleEl.innerText = "Yana bir bor oʻrganib, qayta urinib koʻring!";
+            }
+        }
+
+        function restartQuiz() {
+            userAnswers = {};
+            document.getElementById('quiz-final-box').style.display = 'none';
+            renderQuiz();
+        }
+
+        // INITIALIZE ON LOAD
+        window.onload = function() {
+            initGame();
+            initWaterTracker();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
