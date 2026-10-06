@@ -209,6 +209,10 @@
             0%, 100% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.1); opacity: 0.85; }
         }
+        @keyframes floatMicrobe {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(6deg); }
+        }
 
         /* HORIZONTAL SCROLL TABS BAR */
         .tabs-header-wrapper {
@@ -1460,68 +1464,123 @@
                     <button class="btn-tab-nav next" onclick="switchMainTopic(1)">1-Mavzuga qaytish 🥗 🔝</button>
                 </div>
         <!-- ========================================== -->
-        <!--             3-MAVZU BO'LIMLARI             -->
+        <!--     3-MAVZU: KASALLIKLAR VA MUDOFAA        -->
         <!-- ========================================== -->
 
-        <!-- TAB 17: MIKROORGANIZMLAR & YUQISH YO'LLARI -->
+        <!-- TAB 17: VIRTUAL MIKROSKOP VA PATOGENLAR LABORATORIYASI -->
         <section class="tab-section" id="tab-17">
             <div class="content-card">
-                <span class="section-badge" style="color:#0f766e; background:rgba(15,118,110,0.15);">3-Mavzu • Infeksiyalar</span>
+                <span class="section-badge" style="color:#0f766e; background:rgba(15,118,110,0.15);">3-Mavzu • Virtual Laboratoriya</span>
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                    <h2 class="section-title" style="margin-bottom:0;">🦠 Mikroorganizmlar va Yuqumli Kasalliklar</h2>
+                    <h2 class="section-title" style="margin-bottom:0;">🔬 "Mikrob Ovchisi" Virtual Mikroskop Laboratoriyasi</h2>
                     <a href="Kasalliklar%20va%20Ularning%20Oldini%20Olish.html" target="_blank" class="btn-tab-nav" style="background:#0f766e; color:white; font-size:0.8rem; text-decoration:none;">
-                        Alohida toʻliq sahifada ochish ↗
+                        Alohida Toʻliq Sahifa ↗
                     </a>
                 </div>
-                <p class="section-desc" style="margin-top:10px;">Yuqumli kasalliklar mikroskopik patogenlar orqali odamdan odamga yuqadi:</p>
+                <p class="section-desc">Preparat slaydini tanlang va mikroskop ostida mikroorganizmlarning tuzilishini 2500x kattalashtirishda oʻrganing:</p>
 
-                <div class="nutrients-grid" style="margin-top:1rem;">
-                    <div class="nutrient-card" style="--card-color: #16a34a;">
-                        <div class="nutrient-header"><div class="nutrient-icon">🧫</div><div><strong>Bakteriyalar</strong><br><small style="color:var(--text-muted);">Bir hujayrali</small></div></div>
-                        <p style="font-size:0.85rem; color:var(--text-muted);">Angina, vabo, sil va ichburugʻ kasalliklarini qoʻzgʻatadi. Antibiotiklar taʼsirida nobud boʻladi.</p>
-                        <div class="food-sources">Chora: Toza suv, shaxsiy gigiyena, oziq-ovqat xavfsizligi.</div>
+                <!-- Mikroskop interfeysi -->
+                <div style="background:#020617; border-radius:16px; padding:20px; color:white; border:2px solid #1e293b; margin:16px 0;">
+                    <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:15px;">
+                        <button class="btn-tab-nav active" id="btn-prep-bac" style="font-size:0.85rem;" onclick="loadMicrobe('bac')">🧫 1. Bakteriya (Batsilla)</button>
+                        <button class="btn-tab-nav" id="btn-prep-vir" style="font-size:0.85rem;" onclick="loadMicrobe('vir')">🧬 2. Virus (Gripp/Korona)</button>
+                        <button class="btn-tab-nav" id="btn-prep-fun" style="font-size:0.85rem;" onclick="loadMicrobe('fun')">🍄 3. Zamburugʻ (Kandida)</button>
+                        <button class="btn-tab-nav" id="btn-prep-pro" style="font-size:0.85rem;" onclick="loadMicrobe('pro')">🦠 4. Bir hujayrali (Amyoba)</button>
                     </div>
-                    <div class="nutrient-card" style="--card-color: #7c3aed;">
-                        <div class="nutrient-header"><div class="nutrient-icon">🧬</div><div><strong>Viruslar</strong><br><small style="color:var(--text-muted);">Hujayrasiz zarracha</small></div></div>
-                        <p style="font-size:0.85rem; color:var(--text-muted);">Faqat tirik hujayra ichida koʻpayadi: Gripp, OʻRVI, qizamiq, suvchechak, COVID-19.</p>
-                        <div class="food-sources">Chora: Vaksinalar, tibbiy niqob, xonani shamollatish.</div>
-                    </div>
-                    <div class="nutrient-card" style="--card-color: #ea580c;">
-                        <div class="nutrient-header"><div class="nutrient-icon">🍄</div><div><strong>Zamburugʻlar</strong><br><small style="color:var(--text-muted);">Mikoz va temiratki</small></div></div>
-                        <p style="font-size:0.85rem; color:var(--text-muted);">Teri, soch va tirnoqlarni zararlaydi. Nam va iliq sharoitda tez tarqaladi.</p>
-                        <div class="food-sources">Chora: Boshqaning poyabzali va sochiqlaridan foydalanmaslik.</div>
-                    </div>
-                    <div class="nutrient-card" style="--card-color: #0284c7;">
-                        <div class="nutrient-header"><div class="nutrient-icon">🔬</div><div><strong>Sodda hayvonlar</strong><br><small style="color:var(--text-muted);">Parazit bir hujayralilar</small></div></div>
-                        <p style="font-size:0.85rem; color:var(--text-muted);">Bezgak (plazmodiy), dizenteriya amyobasi, lyambliya kabi xavfli kasalliklarni chaqiradi.</p>
-                        <div class="food-sources">Chora: Qaynatilmagan suv ichmaslik, mevalarni yuvish.</div>
+
+                    <div style="display:grid; grid-template-columns:260px 1fr; gap:20px; align-items:center;">
+                        <!-- Okulyar / Ob'yektiv -->
+                        <div style="text-align:center;">
+                            <div style="width:200px; height:200px; border-radius:50%; border:8px solid #334155; margin:0 auto; background:radial-gradient(circle, #0f172a 10%, #020617 80%); box-shadow:0 0 25px rgba(56,189,248,0.35); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                                <div id="microbe-lens-graphic" style="font-size:5rem; transition:transform 0.4s ease; animation:floatMicrobe 3s infinite ease-in-out;">🧫</div>
+                            </div>
+                            <div style="margin-top:10px;">
+                                <span style="font-size:0.8rem; color:#94a3b8;">Kattalashtirish darajasi:</span>
+                                <div style="display:flex; justify-content:center; gap:6px; margin-top:4px;">
+                                    <button class="btn-tab-nav" style="padding:4px 10px; font-size:0.75rem;" onclick="setZoom(400)">400x</button>
+                                    <button class="btn-tab-nav" style="padding:4px 10px; font-size:0.75rem;" onclick="setZoom(1000)">1000x</button>
+                                    <button class="btn-tab-nav active" id="btn-zoom-max" style="padding:4px 10px; font-size:0.75rem; background:#0284c7;" onclick="setZoom(2500)">2500x</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mikrob Tafsilotlari -->
+                        <div style="background:#0f172a; border-radius:12px; padding:18px; border:1px solid #1e293b;">
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <h3 id="microbe-title" style="color:#38bdf8; font-size:1.3rem;">Bakteriyalar (Tuberkulyoz batsillasi)</h3>
+                                <span id="microbe-danger" style="background:#ef4444; color:white; font-size:0.75rem; padding:3px 8px; border-radius:6px; font-weight:800;">XAVFLI</span>
+                            </div>
+                            <p id="microbe-desc" style="font-size:0.9rem; color:#cbd5e1; margin:8px 0; line-height:1.6;">
+                                Bir hujayrali tirik mikroorganizm. Oʻz mustaqil metabolizmiga ega va qulay sharoitda har 20 daqiqada ikkiga boʻlinib koʻpayadi.
+                            </p>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; font-size:0.85rem;">
+                                <div style="background:#1e293b; padding:10px; border-radius:8px;">
+                                    <strong style="color:#f59e0b;">Qoʻzgʻatadigan kasalliklari:</strong>
+                                    <div id="microbe-diseases" style="color:#e2e8f0; margin-top:3px;">Angina, sil (tuberkulyoz), vabo, difteriya.</div>
+                                </div>
+                                <div style="background:#1e293b; padding:10px; border-radius:8px;">
+                                    <strong style="color:#10b981;">Qanday yoʻq qilinadi?</strong>
+                                    <div id="microbe-cure" style="color:#e2e8f0; margin-top:3px;">Antibiotiklar, xlorlash, qaynatish (100°C), spirtli antiseptik.</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="tab-nav-footer">
                     <button class="btn-tab-nav" onclick="switchMainTopic(2)">⬅️ 2-Mavzuga</button>
-                    <button class="btn-tab-nav next" onclick="showTab(18)">Immunitet Simulyatori ➔</button>
+                    <button class="btn-tab-nav next" onclick="showTab(18)">Immunitet Arena Oʻyini ➔</button>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 18: IMMUNITET & FAGOTSITOZ SIMULYATORI -->
+        <!-- TAB 18: IMMUNITET ARENA INTERAKTIV JANG SIMULYATORI -->
         <section class="tab-section" id="tab-18">
             <div class="content-card">
-                <span class="section-badge" style="color:#0f766e; background:rgba(15,118,110,0.15);">3-Mavzu • Mudofaa</span>
-                <h2 class="section-title">🛡️ Organizmning 3 Bosqichli Himoya Tizimi</h2>
-                <p class="section-desc">Organizm mikroblar bilan toʻqnashganda navbati bilan quyidagi himoya qalqonlarini ishga soladi:</p>
+                <span class="section-badge" style="color:#0f766e; background:rgba(15,118,110,0.15);">3-Mavzu • Interaktiv Simulyator</span>
+                <h2 class="section-title">🛡️ "Immunitet Arena": Tanani Mikroblardan Himoya Qil!</h2>
+                <p class="section-desc">Organizm mudofaa chiziqlarini boshqaring va mikroblar bosqinini qaytaring:</p>
 
-                <div style="background:#0f172a; color:white; border-radius:14px; padding:20px; margin:15px 0; text-align:center;">
-                    <h3 style="color:#38bdf8; font-size:1.2rem; margin-bottom:8px;">⚔️ Interaktiv Himoya Bosqichlari</h3>
-                    <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
-                        <button class="btn-tab-nav" id="btn-imm-1" style="background:#065f46; color:white;" onclick="setImmunityStage(1)">1. Tashqi Toʻsiq (Teri)</button>
-                        <button class="btn-tab-nav" id="btn-imm-2" style="background:#334155; color:white;" onclick="setImmunityStage(2)">2. Fagotsitoz (Leykotsitlar)</button>
-                        <button class="btn-tab-nav" id="btn-imm-3" style="background:#334155; color:white;" onclick="setImmunityStage(3)">3. Maxsus Antitanachalar</button>
+                <!-- Arena Simulyator Maydoni -->
+                <div style="background:linear-gradient(145deg, #0f172a, #1e1b4b); border-radius:16px; padding:22px; color:white; border:2px solid #334155; margin:16px 0; text-align:center;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-bottom:1px solid #334155; padding-bottom:12px;">
+                        <div>
+                            <span style="font-size:0.85rem; color:#94a3b8;">Mikroblar soni:</span>
+                            <span id="arena-microbe-count" style="font-size:1.3rem; font-weight:800; color:#ef4444; margin-left:6px;">100 ta</span>
+                        </div>
+                        <div>
+                            <span style="font-size:0.85rem; color:#94a3b8;">Tana salomatligi:</span>
+                            <span id="arena-health" style="font-size:1.3rem; font-weight:800; color:#10b981; margin-left:6px;">100% ❤️</span>
+                        </div>
+                        <div>
+                            <button class="btn-tab-nav" style="background:#dc2626; color:white; font-size:0.85rem;" onclick="startMicrobeInvasion()">
+                                🦠 Hujumni Boshlash!
+                            </button>
+                        </div>
                     </div>
-                    <div style="font-size:3rem; margin:12px 0;" id="imm-visual">🛡️👤🛡️</div>
-                    <div id="imm-desc" style="background:#1e293b; padding:12px; border-radius:8px; font-size:0.9rem; color:#cbd5e1; text-align:left;">
-                        <strong>1-bosqich:</strong> Teri va shilliq qavatlar butun boʻlsa, mikroblar ichkariga kira olmaydi. Koʻz yoshi va soʻlakdagi lizotsim fermenti mikroblarni parchalaydi.
+
+                    <!-- Jang maydoni vizualizatsiyasi -->
+                    <div id="arena-battleground" style="min-height:160px; background:rgba(0,0,0,0.3); border-radius:12px; margin:16px 0; padding:15px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:space-around;">
+                        <div id="arena-invaders" style="font-size:2rem; letter-spacing:5px;">🦠🦠🦠🦠🦠</div>
+                        <div id="arena-defense-wall" style="width:12px; height:120px; background:#22c55e; border-radius:6px; box-shadow:0 0 15px #22c55e; transition:all 0.3s;"></div>
+                        <div id="arena-leuko" style="font-size:2.8rem; transition:transform 0.3s;">🛡️🧑‍⚕️</div>
+                    </div>
+
+                    <!-- Boshqaruv tugmalari (3 ta mudofaa quroli) -->
+                    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-top:14px;">
+                        <button class="btn-tab-nav" id="btn-def-skin" style="background:#047857; color:white; padding:12px 6px;" onclick="deployDefense(1)">
+                            🧱 1. Teri Qalqoni (Toʻsiq)
+                        </button>
+                        <button class="btn-tab-nav" id="btn-def-phago" style="background:#0284c7; color:white; padding:12px 6px;" onclick="deployDefense(2)">
+                            ⚔️ 2. Fagotsitoz (Yutish!)
+                        </button>
+                        <button class="btn-tab-nav" id="btn-def-anti" style="background:#7c3aed; color:white; padding:12px 6px;" onclick="deployDefense(3)">
+                            🧬 3. Antitanachalar Zarbasi
+                        </button>
+                    </div>
+
+                    <div id="arena-battle-log" style="background:#0b1120; border-radius:8px; padding:10px; margin-top:12px; font-size:0.85rem; color:#38bdf8; text-align:left;">
+                        💬 <strong>Harbiy shtab xabari:</strong> Organizm xotirjam. Mikroblar hujumini boshlash tugmasini bosing!
                     </div>
                 </div>
 
@@ -1532,42 +1591,67 @@
             </div>
         </section>
 
-        <!-- TAB 19: PROFILAKTIKA (VAKSINALAR VA KARANTIN) -->
+        <!-- TAB 19: VAKSINALAR LABORATORIYASI VA KARANTIN EGRI CHIZIG'I -->
         <section class="tab-section" id="tab-19">
             <div class="content-card">
-                <span class="section-badge" style="color:#0f766e; background:rgba(15,118,110,0.15);">3-Mavzu • Profilaktika</span>
-                <h2 class="section-title">💉 Vaksinatsiya va Karantin Tadbirlari</h2>
-                <p class="section-desc">Kasallikni davolashdan koʻra uning oldini olish ming chandon oson va samaralidir:</p>
+                <span class="section-badge" style="color:#0f766e; background:rgba(15,118,110,0.15);">3-Mavzu • Profilaktika Ilmi</span>
+                <h2 class="section-title">💉 Vaksina Konstruktori va Epidemiya Simulyatori</h2>
+                <p class="section-desc">Vaksina qanday tayyorlanishi va karantin qanday qilib hayotni saqlab qolishini koʻring:</p>
 
-                <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:14px;">
-                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:12px; border-left:4px solid #8b5cf6;">
-                        <h4 style="color:#6d28d9; font-size:1.1rem; margin-bottom:6px;"><i class="fa-solid fa-syringe"></i> Vaksinatsiya fani</h4>
-                        <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
-                            Vaksina orqali organizmga zararsizlantirilgan mikrob yuboriladi. Leykotsitlar unga qarshi antitanachalar va <strong>xotira hujayralari</strong>ni yaratadi. Keyinchalik haqiqiy mikrob tushganda organizm uni bir zumda yengadi.
-                        </p>
+                <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:15px;">
+                    <!-- Vaksina Konstruktori -->
+                    <div style="background:var(--bg-card-subtle); border-radius:14px; padding:20px; border:1px solid var(--border-color);">
+                        <h3 style="color:#0f766e; font-size:1.15rem; margin-bottom:10px;"><i class="fa-solid fa-flask-vial"></i> Interaktiv Vaksina Tayyorlash</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Bosqichma-bosqich vaksina tayyorlang:</p>
+
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button class="btn-tab-nav active" id="btn-vac-step-1" onclick="stepVaccine(1)">1. Zaiflashtirilgan patogen tanlash 🧪</button>
+                            <button class="btn-tab-nav" id="btn-vac-step-2" onclick="stepVaccine(2)">2. Antigenlarni ajratish 🧬</button>
+                            <button class="btn-tab-nav" id="btn-vac-step-3" onclick="stepVaccine(3)">3. Emlash va Immun Xotira hosil qilish 💉</button>
+                        </div>
+
+                        <div id="vac-status-box" style="margin-top:14px; background:white; border-left:4px solid #10b981; padding:12px; border-radius:6px; font-size:0.88rem;">
+                            <strong>1-qadam:</strong> Mikrob laboratoriyada termik yoki kimyoviy ishlov berilib, kasallik chaqirish xususiyatidan mahrum qilinadi (inaktivatsiya).
+                        </div>
                     </div>
 
-                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:12px; border-left:4px solid #ea580c;">
-                        <h4 style="color:#c2410c; font-size:1.1rem; margin-bottom:6px;"><i class="fa-solid fa-house-medical-flag"></i> Karantin choralari</h4>
-                        <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6;">
-                            Yuqumli kasallik tarqalganda bemorlarni vaqtincha jamiyatdan ajratish (izolyatsiya) infeksiya zanjirini uzadi. Masofa saqlash va sanitariya vositalaridan toʻgʻri foydalanish ommaviy epidemiyani toʻxtatadi.
-                        </p>
+                    <!-- Karantin Chizig'i Simulyatori -->
+                    <div style="background:var(--bg-card-subtle); border-radius:14px; padding:20px; border:1px solid var(--border-color);">
+                        <h3 style="color:#ea580c; font-size:1.15rem; margin-bottom:10px;"><i class="fa-solid fa-chart-line"></i> Epidemiya Egri Chizigʻi (Simulyatsiya)</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Qoidaga amal qilinmaganda va karantinda kasallanish farqi:</p>
+
+                        <div style="display:flex; gap:8px; margin-bottom:12px;">
+                            <button class="btn-tab-nav active" id="btn-curve-no" onclick="setCurve(false)">❌ Karantinsiz (Portlash)</button>
+                            <button class="btn-tab-nav" id="btn-curve-yes" onclick="setCurve(true)">✅ Karantin & Niqob (Tekislanish)</button>
+                        </div>
+
+                        <div style="background:#0f172a; border-radius:10px; padding:15px; text-align:center; color:white;">
+                            <div style="font-size:0.8rem; color:#94a3b8; margin-bottom:6px;">Kasalxonalar sigʻimi chegarasi: --- -- ---</div>
+                            <div id="curve-graph-visual" style="height:90px; display:flex; align-items:flex-end; justify-content:center; gap:8px;">
+                                <div style="width:25px; height:85px; background:#ef4444; border-radius:4px;" title="Bemorlar keskin ko'paydi"></div>
+                                <div style="width:25px; height:60px; background:#f97316; border-radius:4px;"></div>
+                                <div style="width:25px; height:30px; background:#eab308; border-radius:4px;"></div>
+                            </div>
+                            <span id="curve-status-text" style="color:#ef4444; font-weight:700; font-size:0.85rem; display:block; margin-top:8px;">
+                                Xavf! Kasalxonalarda joy yetishmaydi, kasallik bir zumda hamma joyga tarqaldi!
+                            </span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="tab-nav-footer">
                     <button class="btn-tab-nav" onclick="showTab(18)">⬅️ Orqaga</button>
-                    <button class="btn-tab-nav next" onclick="showTab(20)">3-Mavzu Testi ➔</button>
+                    <button class="btn-tab-nav next" onclick="showTab(20)">3-Mavzu Testi & Sertifikat ➔</button>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 20: 3-MAVZU TESTI & SERTIFIKAT -->
+        <!-- TAB 20: 3-MAVZU IMTIHONI & FAXRIY SERTIFIKAT -->
         <section class="tab-section" id="tab-20">
             <div class="content-card">
-                <span class="section-badge" style="color:#0f766e; background:rgba(15,118,110,0.15);">3-Mavzu • Sinov</span>
+                <span class="section-badge" style="color:#0f766e; background:rgba(15,118,110,0.15);">3-Mavzu • Yakuniy Imtihon</span>
                 <h2 class="section-title">📝 3-Mavzu: Kasalliklar va Immunitet Testi</h2>
-                <p class="section-desc">Savollarga toʻgʻri javob bering va Faxriy Immunologiya sertifikatini oling:</p>
+                <p class="section-desc">Savollarga toʻgʻri javob bering va rasmiy Faxriy Immunologiya sertifikatiga ega boʻling:</p>
 
                 <div id="quiz-list-3"></div>
 
@@ -1575,7 +1659,7 @@
                     <h3 style="color:#0f766e;">🎉 Barakalla! 3-Mavzu Testini Muvaffaqiyatli Tugatdingiz!</h3>
                     <p id="quiz-final-score-3" style="margin:6px 0; font-weight:700;"></p>
                     <div style="margin-top:10px;">
-                        <input type="text" id="student-name-3" placeholder="Ism va Familiyangiz" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <input type="text" id="student-name-3" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
                         <br>
                         <button class="btn-tab-nav next" onclick="generateCertificate(3)" style="margin:0 auto; background:linear-gradient(135deg, #0f766e, #0d9488);">Sertifikatni Olish 🎓</button>
                     </div>
@@ -1596,136 +1680,172 @@
         </section>
 
         <!-- ========================================== -->
-        <!--             4-MAVZU BO'LIMLARI             -->
+        <!--     4-MAVZU: ZAMONAVIY XAVFLAR & GIGIYA    -->
         <!-- ========================================== -->
 
-        <!-- TAB 21: YUQUMSIZ XAVFLAR & KO'Z GIMNASTIKASI -->
+        <!-- TAB 21: QOMAT VA KO'Z SALOMATLIGI LAB -->
         <section class="tab-section" id="tab-21">
             <div class="content-card">
-                <span class="section-badge" style="color:#ea580c; background:rgba(234,88,12,0.15);">4-Mavzu • Zamonaviy Xavflar</span>
-                <h2 class="section-title">🛋️ Yuqumsiz Kasalliklar va Koʻz Salomatligi</h2>
-                <p class="section-desc">Zamonaviy gadjetlar va kamharakat hayot tarzi keltirib chiqaradigan muammolar:</p>
+                <span class="section-badge" style="color:#ea580c; background:rgba(234,88,12,0.15);">4-Mavzu • Ergonomika va Koʻz</span>
+                <h2 class="section-title">🛋️ Partada Toʻgʻri Oʻtirish & Koʻz Gimnastikasi Trenajyori</h2>
+                <p class="section-desc">Partada notoʻgʻri oʻtirish umurtqani qiyshaytiradi (skolioz), ekranga termilish esa koʻzni toliqtiradi:</p>
 
-                <div class="nutrients-grid" style="margin-top:1rem;">
-                    <div class="nutrient-card" style="--card-color: #ef4444;">
-                        <div class="nutrient-header"><div class="nutrient-icon">🪑</div><div><strong>Gipodinamiya</strong><br><small style="color:var(--text-muted);">Kamharakatlik</small></div></div>
-                        <p style="font-size:0.85rem; color:var(--text-muted);">Yurak-qon tomir tizimini zaiflashtiradi va qon quyilishiga moyillikni oshiradi.</p>
-                        <div class="food-sources">🛡️ Chora: Kuniga kamida 1 soat faol harakatlanish va yurish.</div>
+                <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:15px;">
+                    <!-- Qomat Simulyatori -->
+                    <div style="background:var(--bg-card-subtle); border-radius:14px; padding:20px; border:1px solid var(--border-color);">
+                        <h3 style="color:#b91c1c; font-size:1.15rem; margin-bottom:10px;"><i class="fa-solid fa-child"></i> Qomat va Umurtqa Bosimi</h3>
+                        <div style="display:flex; gap:8px; margin-bottom:12px;">
+                            <button class="btn-tab-nav active" id="btn-posture-good" onclick="setPosture(true)">✅ Toʻgʻri Qomat</button>
+                            <button class="btn-tab-nav" id="btn-posture-bad" onclick="setPosture(false)">❌ Bukilib Oʻtirish</button>
+                        </div>
+                        <div style="background:white; border-radius:12px; padding:15px; border:1px solid var(--border-color); text-align:center;">
+                            <div id="posture-icon" style="font-size:3.5rem;">🧘‍♂️</div>
+                            <div id="posture-load" style="font-size:1.2rem; font-weight:800; color:#10b981; margin:6px 0;">Umurtqaga yuk: 4-5 kg (Meʼyor)</div>
+                            <p id="posture-desc" style="font-size:0.85rem; color:var(--text-muted);">
+                                Koʻkrak qafasi erkin, oʻpka toʻliq nafas oladi, umurtqa pogʻonasi tabiiy S-shaklida saqlanadi.
+                            </p>
+                        </div>
                     </div>
-                    <div class="nutrient-card" style="--card-color: #f59e0b;">
-                        <div class="nutrient-header"><div class="nutrient-icon">📱</div><div><strong>Koʻz toliqishi (Miopiya)</strong><br><small style="color:var(--text-muted);">Ekran zoʻriqishi</small></div></div>
-                        <p style="font-size:0.85rem; color:var(--text-muted);">Telefon ekraniga yaqindan uzoq qarash koʻz mushaklarini zoʻriqtirib xiralashtiradi.</p>
-                        <div class="food-sources">🛡️ Chora: Har 20 daqiqada uzoqqa (5 metrga) qarab dam olish.</div>
-                    </div>
-                </div>
 
-                <!-- Interaktiv Ko'z Mashqi -->
-                <div style="background:#1e1b4b; color:white; border-radius:14px; padding:20px; margin-top:18px; text-align:center;">
-                    <h3 style="color:#38bdf8; font-size:1.2rem;"><i class="fa-solid fa-stopwatch"></i> Interaktiv Koʻz Mashqi Taymeri</h3>
-                    <p style="font-size:0.85rem; color:#bae6fd;">Quyidagi nuqtaga boshingizni qimirlatmasdan koʻzingiz bilan qarab turing:</p>
-                    <div id="eye-ball-target" style="width:36px; height:36px; background:#f43f5e; border-radius:50%; margin:12px auto; box-shadow:0 0 15px #f43f5e; transition:transform 2s ease;"></div>
-                    <div id="eye-timer-num" style="font-size:2rem; font-weight:800; color:#38bdf8;">00:20</div>
-                    <button class="btn-tab-nav" style="background:#0284c7; color:white; margin-top:8px;" onclick="runEyeExercise()">Mashqni Boshlash ▶️</button>
-                    <p id="eye-status-text" style="font-size:0.8rem; color:#93c5fd; margin-top:6px;"></p>
+                    <!-- 4 Rejimli Ko'z Gimnastikasi -->
+                    <div style="background:#1e1b4b; border-radius:14px; padding:20px; color:white; text-align:center;">
+                        <h3 style="color:#38bdf8; font-size:1.15rem; margin-bottom:6px;"><i class="fa-solid fa-eye"></i> 4 Bosqichli Koʻz Trenajyori</h3>
+                        <div style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap; margin-bottom:10px;">
+                            <button class="btn-tab-nav active" id="btn-eye-m1" style="font-size:0.75rem; padding:4px 8px;" onclick="setEyePattern(1)">Gorizontal ↔️</button>
+                            <button class="btn-tab-nav" id="btn-eye-m2" style="font-size:0.75rem; padding:4px 8px;" onclick="setEyePattern(2)">Vertikal ↕️</button>
+                            <button class="btn-tab-nav" id="btn-eye-m3" style="font-size:0.75rem; padding:4px 8px;" onclick="setEyePattern(3)">Doiraviy 🔄</button>
+                            <button class="btn-tab-nav" id="btn-eye-m4" style="font-size:0.75rem; padding:4px 8px;" onclick="setEyePattern(4)">Miltillash 👁️</button>
+                        </div>
+
+                        <div style="height:90px; display:flex; align-items:center; justify-content:center; position:relative;">
+                            <div id="eye-ball-target" style="width:34px; height:34px; background:#f43f5e; border-radius:50%; box-shadow:0 0 20px #f43f5e; transition:transform 1s ease;"></div>
+                        </div>
+
+                        <div id="eye-timer-num" style="font-size:1.8rem; font-weight:800; color:#38bdf8; margin:4px 0;">00:20</div>
+                        <button class="btn-tab-nav" style="background:#0284c7; color:white; font-size:0.85rem;" onclick="runEyeExercise()">Mashqni Boshlash ▶️</button>
+                    </div>
                 </div>
 
                 <div class="tab-nav-footer">
                     <button class="btn-tab-nav" onclick="switchMainTopic(3)">⬅️ 3-Mavzuga</button>
-                    <button class="btn-tab-nav next" onclick="showTab(22)">Tezkor Birinchi Yordam ➔</button>
+                    <button class="btn-tab-nav next" onclick="showTab(22)">Favqulodda Yordam 103 ➔</button>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 22: TEZKOR BIRINCHI YORDAM -->
+        <!-- TAB 22: FAVQULODDA BIRINCHI YORDAM 103 MINI-O'YINI -->
         <section class="tab-section" id="tab-22">
             <div class="content-card">
-                <span class="section-badge" style="color:#ea580c; background:rgba(234,88,12,0.15);">4-Mavzu • Birinchi Yordam</span>
-                <h2 class="section-title">🩹 Tezkor Birinchi Yordam Laboratoriyasi</h2>
-                <p class="section-desc">Kutilmagan favqulodda vaziyatda toʻgʻri harakat qilish koʻnikmalari:</p>
+                <span class="section-badge" style="color:#ea580c; background:rgba(234,88,12,0.15);">4-Mavzu • Tez Yordam 103</span>
+                <h2 class="section-title">🚑 "Tezkor Qutqaruvchi" Interaktiv Birinchi Yordam Simulyatori</h2>
+                <p class="section-desc">Kutilmagan vaziyatlarda toʻgʻri qadamlarni tanlang va xatolardan saqlaning:</p>
 
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin:12px 0;">
-                    <button class="btn-tab-nav active" id="btn-aid-cut" onclick="pickAid('cut')">🩹 Kesilish</button>
-                    <button class="btn-tab-nav" id="btn-aid-burn" onclick="pickAid('burn')">🔥 Kuyish</button>
-                    <button class="btn-tab-nav" id="btn-aid-poison" onclick="pickAid('poison')">🤢 Zaharlanish</button>
-                    <button class="btn-tab-nav" id="btn-aid-sun" onclick="pickAid('sun')">☀️ Quyosh urishi</button>
+                <!-- Vaziyat tanlash -->
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin:14px 0;">
+                    <button class="btn-tab-nav active" id="btn-aid-cut" onclick="pickAidScenario('cut')">🩸 1. Barmoq Kesilishi</button>
+                    <button class="btn-tab-nav" id="btn-aid-burn" onclick="pickAidScenario('burn')">🔥 2. Issiq Suvdan Kuyish</button>
+                    <button class="btn-tab-nav" id="btn-aid-poison" onclick="pickAidScenario('poison')">🤢 3. Ovqatdan Zaharlanish</button>
+                    <button class="btn-tab-nav" id="btn-aid-sun" onclick="pickAidScenario('sun')">☀️ 4. Quyosh Urishi</button>
                 </div>
 
-                <div id="aid-content-box" style="background:var(--bg-card-subtle); border:2px dashed #0d9488; border-radius:12px; padding:18px; margin-top:10px;">
-                    <h4 id="aid-title-text" style="color:#0f766e; font-size:1.15rem; margin-bottom:8px;">🩹 Barmoq kesilganda qilinadigan ishlar:</h4>
-                    <ol id="aid-steps-list" style="margin-left:22px; line-height:1.7; font-size:0.9rem; color:var(--text-main);">
-                        <li>Jarohatni toza oqar sovuq suvda yuvib tozalang.</li>
-                        <li>Jarohat atrofini 3% li vodorod peroksidi yoki antiseptik bilan arting.</li>
-                        <li>Qonni toʻxtatish uchun toza bint yoki paxta bilan bir necha daqiqa bosib turing.</li>
-                        <li>Bakteritsid leykoplastir yoki steril bint bogʻlang.</li>
-                    </ol>
+                <!-- Interaktiv Ssenariy Kartasi -->
+                <div style="background:var(--bg-card-subtle); border-radius:16px; padding:22px; border:2px dashed #0d9488; margin-top:12px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+                        <h3 id="scenario-title" style="color:#0f766e; font-size:1.25rem;">🩸 Vaziyat: Mehnat darsida barmoq kesilib qon ketmoqda</h3>
+                        <span id="scenario-badge" style="background:#ef4444; color:white; font-size:0.75rem; padding:4px 10px; border-radius:6px; font-weight:800;">QON OQMOQDA</span>
+                    </div>
+
+                    <p style="font-size:0.9rem; margin:10px 0; color:var(--text-main);">
+                        <strong>Sizning dastlabki harakatingiz qanday boʻladi?</strong>
+                    </p>
+
+                    <div id="scenario-options" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                        <button class="btn-tab-nav" style="padding:12px; text-align:left;" onclick="checkScenarioChoice(false, '❌ XATO! Kesilgan joyga toʻgʻridan-toʻgʻri yod quyilsa toʻqimalar kuyadi. Yod faqat jarohat atrofiga surtiladi.')">
+                            A) Jarohat ichiga koʻp yod quyish
+                        </button>
+                        <button class="btn-tab-nav" style="padding:12px; text-align:left;" onclick="checkScenarioChoice(true, '✅ BARAKALLA! Avval toza sovuq suvda yuvib, toza bint bilan 3-5 daqiqa bosib turilsa qon toʻxtaydi.')">
+                            B) Toza sovuq suvda yuvib, toza bint bilan bosib turish
+                        </button>
+                    </div>
+
+                    <div id="scenario-feedback" style="display:none; margin-top:14px; padding:12px; border-radius:8px; font-weight:600; font-size:0.9rem;"></div>
                 </div>
 
                 <div class="tab-nav-footer">
                     <button class="btn-tab-nav" onclick="showTab(21)">⬅️ Orqaga</button>
-                    <button class="btn-tab-nav next" onclick="showTab(23)">Gigiyena Cheklisti ➔</button>
+                    <button class="btn-tab-nav next" onclick="showTab(23)">JSST Qoʻl Yuvish & Gigiyena ➔</button>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 23: KUNLIK GIGIYA CHEKLISTI -->
+        <!-- TAB 23: JSST QO'L YUVISH TRENAJYORI & KUNLIK TOZALIK REYTINGI -->
         <section class="tab-section" id="tab-23">
             <div class="content-card">
-                <span class="section-badge" style="color:#ea580c; background:rgba(234,88,12,0.15);">4-Mavzu • Odatlar</span>
-                <h2 class="section-title">🧼 Kunlik Shaxsiy Gigiyena va Immunitet Cheklisti</h2>
-                <p class="section-desc">Bugun bajargan foydali gigiyena amallaringizni belgilab, oʻz himoya darajangizni hisoblang:</p>
+                <span class="section-badge" style="color:#ea580c; background:rgba(234,88,12,0.15);">4-Mavzu • Jahon Standarti</span>
+                <h2 class="section-title">🧼 JSST 6 Bosqichli Qoʻl Yuvish Trenajyori va Gigiyena Trekeri</h2>
+                <p class="section-desc">Qoʻllarni toʻgʻri yuvish mikroblarning 95% ini daf etadi. 20 soniyalik trenajyorni sinab koʻring:</p>
 
-                <div style="background:var(--bg-card-subtle); padding:18px; border-radius:14px; border:1px solid var(--border-color); margin-top:12px;">
-                    <div style="display:flex; flex-direction:column; gap:10px;" id="daily-checklist-container">
-                        <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                            <input type="checkbox" checked onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
-                            <span>Ertalab va kechqurun tishlarni 2 daqiqa tozalash</span>
-                        </label>
-                        <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                            <input type="checkbox" checked onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
-                            <span>Koʻchadan kelganda va ovqatdan oldin qoʻlni sovunlab yuvish</span>
-                        </label>
-                        <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                            <input type="checkbox" onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
-                            <span>Xonani kuniga kamida 2 marta 10 daqiqa shamollatish</span>
-                        </label>
-                        <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                            <input type="checkbox" onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
-                            <span>Kamida 1.5 - 2 litr toza suv ichish</span>
-                        </label>
-                        <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                            <input type="checkbox" onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
-                            <span>Kamida 8 soat yetarli va tinch uxlash</span>
-                        </label>
-                        <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                            <input type="checkbox" onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
-                            <span>Ertalabki badantarbiya mashqlarini bajarish</span>
-                        </label>
+                <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:15px;">
+                    <!-- JSST Qo'l yuvish trenajyori -->
+                    <div style="background:#0284c7; color:white; border-radius:16px; padding:20px; text-align:center;">
+                        <h3 style="font-size:1.2rem; margin-bottom:6px;"><i class="fa-solid fa-pump-soap"></i> 20 Soniyalik Qoʻl Yuvish Qoidasi</h3>
+                        <div id="wash-step-icon" style="font-size:3.5rem; margin:10px 0;">🤲</div>
+                        <div id="wash-step-title" style="font-size:1.1rem; font-weight:800; color:#e0f2fe;">1-bosqich: Kaftni kaftga sovunlash</div>
+                        <div id="wash-timer-circle" style="font-size:2rem; font-weight:900; margin:8px 0; color:#38bdf8;">00:20</div>
+                        <button class="btn-tab-nav" style="background:#0f172a; color:white; margin-top:6px;" onclick="startWashTrainer()">Trenajyorni Boshlash 🧼</button>
                     </div>
 
-                    <div style="margin-top:18px; padding:14px; background:white; border-radius:10px; border:1px solid #bbf7d0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                        <div>
-                            <span style="font-size:0.85rem; color:var(--text-muted);">Sizning himoya darajangiz:</span>
-                            <div id="check-score-percent" style="font-size:1.8rem; font-weight:800; color:#10b981;">33%</div>
+                    <!-- Kunlik Tozalik Cheklisti -->
+                    <div style="background:var(--bg-card-subtle); border-radius:16px; padding:20px; border:1px solid var(--border-color);">
+                        <h3 style="color:#0f766e; font-size:1.2rem; margin-bottom:8px;"><i class="fa-solid fa-clipboard-check"></i> Kunlik Shaxsiy Tozalik Trekeri</h3>
+                        <div style="display:flex; flex-direction:column; gap:8px;" id="daily-checklist-container">
+                            <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                <input type="checkbox" checked onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
+                                <span>Ertalab va kechqurun tishlarni 2 daqiqa tozalash</span>
+                            </label>
+                            <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                <input type="checkbox" checked onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
+                                <span>Ovqatdan oldin va hojatdan soʻng qoʻlni sovunlab yuvish</span>
+                            </label>
+                            <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                <input type="checkbox" onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
+                                <span>Xonani kuniga kamida 2-3 marta 10 daqiqa shamollatish</span>
+                            </label>
+                            <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                <input type="checkbox" onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
+                                <span>Kamida 1.5 - 2 litr toza qaynatilgan suv ichish</span>
+                            </label>
+                            <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                <input type="checkbox" onchange="calcDailyChecklist()" style="width:20px; height:20px; accent-color:#10b981;">
+                                <span>Kamida 8 soat yetarli va tinch uxlash</span>
+                            </label>
                         </div>
-                        <div id="check-score-status" style="font-size:0.9rem; font-weight:700; color:#065f46;">
-                            Yaxshi boshlanish! Barcha katakchalarni toʻldirib 100% ga yetkazing!
+
+                        <div style="margin-top:14px; padding:12px; background:white; border-radius:10px; border:1px solid #bbf7d0; display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <span style="font-size:0.8rem; color:var(--text-muted);">Sizning himoyangiz:</span>
+                                <div id="check-score-percent" style="font-size:1.6rem; font-weight:800; color:#10b981;">40%</div>
+                            </div>
+                            <div id="check-score-status" style="font-size:0.85rem; font-weight:700; color:#065f46;">
+                                Yaxshi! Qolgan amallarni ham bajaring!
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="tab-nav-footer">
                     <button class="btn-tab-nav" onclick="showTab(22)">⬅️ Orqaga</button>
-                    <button class="btn-tab-nav next" onclick="showTab(24)">4-Mavzu Testi & Diplom ➔</button>
+                    <button class="btn-tab-nav next" onclick="showTab(24)">4-Mavzu Testi & Oliy Diplom ➔</button>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 24: 4-MAVZU TESTI & DIPLOM -->
+        <!-- TAB 24: 4-MAVZU IMTIHONI & BOSHQARUVNING OLIY DIPLOMI -->
         <section class="tab-section" id="tab-24">
             <div class="content-card">
-                <span class="section-badge" style="color:#ea580c; background:rgba(234,88,12,0.15);">4-Mavzu • Yakuniy Diplom</span>
-                <h2 class="section-title">🏆 4-Mavzu Testi va Bosh Diplom</h2>
-                <p class="section-desc">Testni yeching va 6-sinf Tabiiy Fanlar boʻyicha Bosh Faxriy Diplomga ega boʻling:</p>
+                <span class="section-badge" style="color:#ea580c; background:rgba(234,88,12,0.15);">4-Mavzu • Oliy Diplom</span>
+                <h2 class="section-title">🏆 4-Mavzu Testi va 6-Sinf Tabiiy Fanlar Oliy Diplomi</h2>
+                <p class="section-desc">Yakuniy savollarga javob bering va 6-sinf Tabiiy Fanlar (barcha 4 ta mavzu) boʻyicha Bosh Diplomni qoʻlga kiriting:</p>
 
                 <div id="quiz-list-4"></div>
 
@@ -1733,7 +1853,7 @@
                     <h3 style="color:#ea580c;">🎉 Tabriklaymiz! Barcha 4 ta Katta Mavzularni Oʻzlashtirdingiz!</h3>
                     <p id="quiz-final-score-4" style="margin:6px 0; font-weight:700;"></p>
                     <div style="margin-top:10px;">
-                        <input type="text" id="student-name-4" placeholder="Ism va Familiyangiz" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <input type="text" id="student-name-4" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
                         <br>
                         <button class="btn-tab-nav next" onclick="generateCertificate(4)" style="margin:0 auto; background:linear-gradient(135deg, #ea580c, #c2410c);">Oliy Diplomni Olish 🎖️</button>
                     </div>
@@ -1743,7 +1863,7 @@
                     <h2>🌟 6-SINF TABIIY FANLAR BOSHQARUVI OLIY DIPLOMI</h2>
                     <p style="margin:8px 0; font-size:1.1rem;">Ushbu diplom sohibi:</p>
                     <h1 id="cert-student-name-4" style="color:#7c2d12; text-decoration:underline; margin-bottom:8px;">Aʼlochi Oʻquvchi</h1>
-                    <p style="font-size:0.85rem;">1-Mavzu (Hazm), 2-Mavzu (Nafas & Qon), 3-Mavzu (Kasalliklar) va 4-Mavzu (Birinchi Yordam)ni toʻliq va aʼlo darajada tugatdi!</p>
+                    <p style="font-size:0.85rem;">1-Mavzu (Hazm & Ratsion), 2-Mavzu (Nafas & Qon Aylanish), 3-Mavzu (Kasalliklar & Immunitet) va 4-Mavzu (Birinchi Yordam & Gigiyena)ni toʻliq va aʼlo darajada tugatdi!</p>
                 </div>
 
                 <div class="tab-nav-footer">
@@ -2465,7 +2585,208 @@
             }
         }
 
-        // 4-MAVZU: KO'Z GIMNASTIKASI
+        // ==========================================
+        // 3-MAVZU: VIRTUAL MIKROSKOP LABORATORIYASI
+        // ==========================================
+        const microbeCatalog = {
+            bac: {
+                icon: "🧫",
+                title: "Bakteriyalar (Tuberkulyoz batsillasi)",
+                danger: "YUQORI XAVF",
+                dangerColor: "#ef4444",
+                desc: "Bir hujayrali prokariot tirik organizm. Qulay iliq sharoitda har 20 daqiqada boʻlinib koʻpayadi va toʻqimalarga toksinlar chiqaradi.",
+                diseases: "Angina, sil (tuberkulyoz), vabo, ichburugʻ, difteriya.",
+                cure: "Antibiotiklar, xlorli eritmalar, qaynatish (100°C), spirtli antiseptik."
+            },
+            vir: {
+                icon: "🧬",
+                title: "Viruslar (Gripp va Koronavirus)",
+                danger: "EKSTREMAL XAVF",
+                dangerColor: "#dc2626",
+                desc: "Hujayraviy tuzilishga ega boʻlmagan nuklein kislota va oqsil qobigʻi. Faqat tirik organizm hujayrasi ichiga kirib oʻzini nusxalaydi.",
+                diseases: "Mavsumiy Gripp, OʻRVI, qizamiq, poliomiyelit, COVID-19.",
+                cure: "Vaksinatsiya, shaxsiy gigiyena, xonani shamollatish, antivirus preparatlar."
+            },
+            fun: {
+                icon: "🍄",
+                title: "Zamburugʻlar (Kandida va Mikoz)",
+                danger: "OʻRTACHA XAVF",
+                dangerColor: "#ea580c",
+                desc: "Eukariot mikroorganizmlar. Teri, soch, tirnoq va shilliq qavatlarda spora hosil qilib jiddiy qichishish va toshmalar chaqiradi.",
+                diseases: "Terining zamburugʻli kasalligi (mikoz), temiratki, kandidoz.",
+                cure: "Antifungal malhamlar, quruqlik va tozalik, shaxsiy poyabzaldan foydalanish."
+            },
+            pro: {
+                icon: "🦠",
+                title: "Sodda Hayvonlar (Dizenteriya Amyobasi)",
+                danger: "YUQORI XAVF",
+                dangerColor: "#ef4444",
+                desc: "Bir hujayrali parazit hayvonlar. Soxta oyoqlari yoki xivchinlari bilan harakatlanib, ichak va qon hujayralarini yemirishi mumkin.",
+                diseases: "Dizenteriya, bezgak (bezgak plazmodiysi), lyamblioz.",
+                cure: "Qaynatilgan yoki filtrlangan suv ichish, meva va sabzavotlarni toza yuvish."
+            }
+        };
+
+        function loadMicrobe(type) {
+            triggerHaptic(30);
+            ['bac', 'vir', 'fun', 'pro'].forEach(t => {
+                const b = document.getElementById('btn-prep-' + t);
+                if (b) b.classList.toggle('active', t === type);
+            });
+
+            const data = microbeCatalog[type];
+            const lens = document.getElementById('microbe-lens-graphic');
+            lens.innerText = data.icon;
+            document.getElementById('microbe-title').innerText = data.title;
+            const danger = document.getElementById('microbe-danger');
+            danger.innerText = data.danger;
+            danger.style.background = data.dangerColor;
+            document.getElementById('microbe-desc').innerText = data.desc;
+            document.getElementById('microbe-diseases').innerText = data.diseases;
+            document.getElementById('microbe-cure').innerText = data.cure;
+            playTone(550, 0.08);
+        }
+
+        function setZoom(level) {
+            triggerHaptic(30);
+            const lens = document.getElementById('microbe-lens-graphic');
+            const scale = level === 400 ? 0.7 : level === 1000 ? 1.0 : 1.45;
+            lens.style.transform = `scale(${scale})`;
+            playTone(level / 3, 0.1);
+        }
+
+        // ==========================================
+        // 3-MAVZU: IMMUNITET ARENA JANGI
+        // ==========================================
+        let arenaCount = 100;
+        let arenaHp = 100;
+
+        function startMicrobeInvasion() {
+            triggerHaptic(45);
+            arenaCount = 100;
+            arenaHp = 100;
+            document.getElementById('arena-microbe-count').innerText = "100 ta 🦠";
+            document.getElementById('arena-health').innerText = "100% ❤️";
+            document.getElementById('arena-invaders').innerText = "🦠🦠🦠🦠🦠🦠🦠";
+            document.getElementById('arena-battle-log').innerHTML = "🚨 <strong>DIQQAT!</strong> 100 ta xavfli mikrob organizmga hujum qildi! Mudofaa qurollarini (1, 2, 3) navbati bilan ishga soling!";
+            playTone(300, 0.25);
+        }
+
+        function deployDefense(step) {
+            triggerHaptic(40);
+            const log = document.getElementById('arena-battle-log');
+            const cnt = document.getElementById('arena-microbe-count');
+            const inv = document.getElementById('arena-invaders');
+
+            if (step === 1) {
+                arenaCount = Math.max(0, arenaCount - 50);
+                cnt.innerText = arenaCount + " ta 🦠";
+                inv.innerText = "🦠🦠🦠🦠";
+                log.innerHTML = "🧱 <strong>1-Qalqon: Teri va Lizotsim toʻsigʻi</strong> mikroblarning 50 tasini nobud qildi va toʻxtatib qoldi!";
+                playTone(600, 0.15);
+            } else if (step === 2) {
+                arenaCount = Math.max(0, arenaCount - 35);
+                cnt.innerText = arenaCount + " ta 🦠";
+                inv.innerText = "🦠🦠";
+                log.innerHTML = "⚔️ <strong>2-Qalqon: Leykotsitlar (Fagotsitoz)</strong> faollashdi! Ular kirgan mikroblarni oʻrab olib yutib yubordi!";
+                playTone(750, 0.18);
+            } else if (step === 3) {
+                arenaCount = 0;
+                cnt.innerText = "0 ta ✅";
+                inv.innerText = "✨🎯 GʻALABA! ✨";
+                log.innerHTML = "🧬 <strong>3-Qalqon: Maxsus Antitanachalar</strong> zarbasi barcha qolgan mikroblarni yoʻq qildi! Organizm toʻliq sogʻaydi va gʻalaba qozondi!";
+                playTone(950, 0.3);
+            }
+        }
+
+        // ==========================================
+        // 3-MAVZU: VAKSINA & KARANTIN
+        // ==========================================
+        function stepVaccine(step) {
+            triggerHaptic(35);
+            [1, 2, 3].forEach(s => {
+                const b = document.getElementById('btn-vac-step-' + s);
+                if (b) b.classList.toggle('active', s === step);
+            });
+            const box = document.getElementById('vac-status-box');
+            if (step === 1) {
+                box.innerHTML = "<strong>1-qadam (Inaktivatsiya):</strong> Mikrob laboratoriyada termik yoki kimyoviy ishlov berilib, uning kasallik chaqirish qobiliyati butunlay zararsizlantiriladi.";
+                playTone(600, 0.1);
+            } else if (step === 2) {
+                box.innerHTML = "<strong>2-qadam (Antigen ajratish):</strong> Faqat organizm tanib olishi kerak boʻlgan yuzaki xavfsiz oqsil (antigen) ajratib olinadi va preparatga qoʻshiladi.";
+                playTone(720, 0.12);
+            } else if (step === 3) {
+                box.innerHTML = "<strong>3-qadam (Immun Xotira):</strong> Organizmga vaksina kiritilgach, limfotsitlar kasal boʻlmasdan antitanacha va xotira hujayralarini hosil qiladi. Endi odam bu kasallikdan toʻliq himoyalangan!";
+                playTone(880, 0.2);
+            }
+        }
+
+        function setCurve(hasQuarantine) {
+            triggerHaptic(35);
+            document.getElementById('btn-curve-no').classList.toggle('active', !hasQuarantine);
+            document.getElementById('btn-curve-yes').classList.toggle('active', hasQuarantine);
+            const visual = document.getElementById('curve-graph-visual');
+            const txt = document.getElementById('curve-status-text');
+
+            if (hasQuarantine) {
+                visual.innerHTML = `
+                    <div style="width:25px; height:25px; background:#10b981; border-radius:4px;" title="Kasalxona bardosh bera oladi"></div>
+                    <div style="width:25px; height:28px; background:#10b981; border-radius:4px;"></div>
+                    <div style="width:25px; height:22px; background:#10b981; border-radius:4px;"></div>
+                    <div style="width:25px; height:18px; background:#10b981; border-radius:4px;"></div>
+                `;
+                txt.style.color = "#10b981";
+                txt.innerText = "✅ Ajoyib! Karantin va niqob tufayli kasallanish surʼati pasaydi (Flatten the Curve), har bir bemorga shifokor va dori yetarli boʻldi!";
+                playTone(850, 0.15);
+            } else {
+                visual.innerHTML = `
+                    <div style="width:25px; height:85px; background:#ef4444; border-radius:4px;"></div>
+                    <div style="width:25px; height:60px; background:#f97316; border-radius:4px;"></div>
+                    <div style="width:25px; height:30px; background:#eab308; border-radius:4px;"></div>
+                `;
+                txt.style.color = "#ef4444";
+                txt.innerText = "❌ Xavf! Karantinsiz bemorlar soni bir kunda portlab oʻsdi, kasalxonalarda oʻrin qolmadi!";
+                playTone(280, 0.2);
+            }
+        }
+
+        // ==========================================
+        // 4-MAVZU: QOMAT VA 4 REJIMLI KO'Z MASHQI
+        // ==========================================
+        function setPosture(isGood) {
+            triggerHaptic(30);
+            document.getElementById('btn-posture-good').classList.toggle('active', isGood);
+            document.getElementById('btn-posture-bad').classList.toggle('active', !isGood);
+            const icon = document.getElementById('posture-icon');
+            const load = document.getElementById('posture-load');
+            const desc = document.getElementById('posture-desc');
+
+            if (isGood) {
+                icon.innerText = "🧘‍♂️";
+                load.innerText = "Umurtqaga yuk: 4-5 kg (Tabiiy meʼyor)";
+                load.style.color = "#10b981";
+                desc.innerText = "Koʻkrak qafasi keng yoyilgan, oʻpka toʻliq kislorod bilan toʻladi, umurtqa pogʻonasi qiyshaymaydi.";
+                playTone(800, 0.1);
+            } else {
+                icon.innerText = "🙇‍♂️";
+                load.innerText = "Umurtqaga yuk: 22-27 kg (XAVFLI ZOʻRIQISH!)";
+                load.style.color = "#ef4444";
+                desc.innerText = "Bosh 45-60 gradusga egilganda boʻyin va umurtqa disklariga ogʻir yuk tushadi, skolioz va tez toliqish kelib chiqadi!";
+                playTone(250, 0.2);
+            }
+        }
+
+        let eyePattern = 1;
+        function setEyePattern(pat) {
+            triggerHaptic(25);
+            eyePattern = pat;
+            [1, 2, 3, 4].forEach(p => {
+                const b = document.getElementById('btn-eye-m' + p);
+                if (b) b.classList.toggle('active', p === pat);
+            });
+            playTone(600 + pat * 40, 0.08);
+        }
+
         let eyeTimer = null;
         function runEyeExercise() {
             triggerHaptic(35);
@@ -2473,79 +2794,144 @@
             let s = 20;
             const num = document.getElementById('eye-timer-num');
             const target = document.getElementById('eye-ball-target');
-            const status = document.getElementById('eye-status-text');
-            status.innerText = "Koʻzingiz bilan nuqtaning harakatiga ergashing...";
 
             let step = 0;
             eyeTimer = setInterval(() => {
                 s--;
                 num.innerText = "00:" + (s < 10 ? '0' + s : s);
                 step = (step + 1) % 4;
-                if (step === 0) target.style.transform = 'translate(-60px, 0)';
-                else if (step === 1) target.style.transform = 'translate(60px, 0)';
-                else if (step === 2) target.style.transform = 'translate(0, -25px)';
-                else target.style.transform = 'translate(0, 0)';
+
+                if (eyePattern === 1) { // Gorizontal
+                    target.style.transform = step % 2 === 0 ? 'translateX(-80px)' : 'translateX(80px)';
+                } else if (eyePattern === 2) { // Vertikal
+                    target.style.transform = step % 2 === 0 ? 'translateY(-28px)' : 'translateY(28px)';
+                } else if (eyePattern === 3) { // Doiraviy
+                    const angles = [0, 90, 180, 270];
+                    const rad = angles[step] * (Math.PI / 180);
+                    const x = Math.cos(rad) * 60;
+                    const y = Math.sin(rad) * 25;
+                    target.style.transform = `translate(${x}px, ${y}px)`;
+                } else { // Miltillash
+                    target.style.transform = step % 2 === 0 ? 'scale(1.5)' : 'scale(0.3)';
+                }
 
                 if (s <= 0) {
                     clearInterval(eyeTimer);
                     num.innerText = "00:00";
                     target.style.transform = 'translate(0, 0)';
-                    status.innerHTML = "🎉 <strong style='color:#38bdf8'>Barakalla!</strong> Koʻz charchogʻi tarqaldi.";
-                    playTone(850, 0.2);
+                    playTone(900, 0.25);
                 }
             }, 1000);
         }
 
-        // 4-MAVZU: BIRINCHI YORDAM
-        const aids = {
+        // ==========================================
+        // 4-MAVZU: TEZ YORDAM 103 SSENARIY O'YINI
+        // ==========================================
+        const scenarios = {
             cut: {
-                title: "🩹 Barmoq kesilganda qilinadigan ishlar:",
-                steps: [
-                    "Jarohatni toza oqar sovuq suvda yuvib tozalang.",
-                    "Jarohat atrofini 3% li vodorod peroksidi yoki antiseptik bilan arting.",
-                    "Qonni toʻxtatish uchun toza bint yoki paxta bilan bir necha daqiqa bosib turing.",
-                    "Bakteritsid leykoplastir yoki steril bint bogʻlang."
+                title: "🩸 Vaziyat: Mehnat darsida barmoq kesilib qon ketmoqda",
+                badge: "QON KETMOQDA",
+                q: "Sizning dastlabki harakatingiz qanday boʻladi?",
+                opts: [
+                    { t: "A) Jarohat ichiga koʻp yod quyish", ok: false, exp: "❌ XATO! Kesilgan joy ichiga yod quyilsa toʻqimalar kuyadi. Yod faqat jarohat chetiga surtiladi." },
+                    { t: "B) Toza sovuq suvda yuvib, toza bint bilan 3-5 daqiqa bosib turish", ok: true, exp: "✅ TOʻGʻRI! Toza suv mikroblarni yuvadi, toza bint bilan bosib turish esa qon tomirini berkitib qonni toʻxtatadi." }
                 ]
             },
             burn: {
-                title: "🔥 Issiq suv yoki buyumdan kuyganda birinchi yordam:",
-                steps: [
-                    "Kuygan sohani zudlik bilan 10-15 daqiqa sovuq oqar suv ostida tutib turing.",
-                    "Kuygan joyga yogʻ, qatiq, tish pastasi yoki spirt surtmang!",
-                    "Hosil boʻlgan pufakchalarni aslo yormang.",
-                    "Steril quruq bogʻlam qoʻyib, shifokorga murojaat qiling."
+                title: "🔥 Vaziyat: Choynakdan qaynoq suv qoʻlga toʻkildi va qizardi",
+                badge: "1-2 DARAJA KUYISH",
+                q: "Kuygan joyga zudlik bilan nima qilasiz?",
+                opts: [
+                    { t: "A) 10-15 daqiqa sovuq oqar suv ostida tutish", ok: true, exp: "✅ AʼLO! Sovuq suv toʻqimalarning chuqur qizib yemirilishini toʻxtatadi va ogʻriqni qoldiradi." },
+                    { t: "B) Darhol oʻsimlik yogʻi yoki tish pastasi surtish", ok: false, exp: "❌ KATTA XATO! Yogʻ plyonka hosil qilib issiqlikni ichkariga qamaydi va infeksiya kiritadi!" }
                 ]
             },
             poison: {
-                title: "🤢 Oziq-ovqatdan zaharlanganda qilinadigan ishlar:",
-                steps: [
-                    "Koʻp miqdorda toza qaynatilgan iliq suv ichiring.",
-                    "Faollashtirilgan koʻmir (ugol) yoki sorbent dorisini iching.",
-                    "Oshqozonni tozalashga yordam bering.",
-                    "Zudlik bilan '103' tez yordamga qoʻngʻiroq qiling."
+                title: "🤢 Vaziyat: Eskirgan ovqatdan soʻng qorin ogʻrib koʻngil aynidi",
+                badge: "ZAHARLANISH",
+                q: "Birinchi yordam chorasi sifatida nima ichiriladi?",
+                opts: [
+                    { t: "A) Koʻp iliq suv ichirib, aktivlashgan koʻmir berish", ok: true, exp: "✅ TOʻGʻRI! Suv oshqozonni tozalaydi, koʻmir esa zaharli toksinlarni oʻziga yutadi." },
+                    { t: "B) Gazlangan shirin kola ichirish", ok: false, exp: "❌ XATO! Gazlangan shirin ichimliklar yalligʻlangan oshqozonni battar buzadi." }
                 ]
             },
             sun: {
-                title: "☀️ Quyosh urishi va jaziramada yordam:",
-                steps: [
-                    "Bemor zudlik bilan salqin va soyali joyga olib oʻting.",
-                    "Peshonasiga sovuq suvda hoʻllangan sochiq qoʻying.",
-                    "Kiyim tugmalarini yechib, toza havo kiring.",
-                    "Kichik qultumlar bilan toza suv ichiring."
+                title: "☀️ Vaziyat: Quyosh ostida uzoq yurib bosh aylandi va tana qizidi",
+                badge: "QUYOSH URISHI",
+                q: "Bemorga qanday yordam koʻrsatiladi?",
+                opts: [
+                    { t: "A) Salqin soyaga olib oʻtib, peshonasiga sovuq hoʻl sochiq qoʻyish", ok: true, exp: "✅ TOʻGʻRI! Soyada tanani sovitish va oz-ozdan toza suv ichirish zarur." },
+                    { t: "B) Bemorni issiq kiyimga oʻrab yotqizish", ok: false, exp: "❌ XATO! Tananing qizib ketishi (gipertermiya) xavfli, uni zudlik bilan sovitish lozim." }
                 ]
             }
         };
 
-        function pickAid(type) {
+        function pickAidScenario(type) {
             triggerHaptic(30);
             ['cut', 'burn', 'poison', 'sun'].forEach(t => {
                 const b = document.getElementById('btn-aid-' + t);
                 if (b) b.classList.toggle('active', t === type);
             });
-            const data = aids[type];
-            document.getElementById('aid-title-text').innerText = data.title;
-            document.getElementById('aid-steps-list').innerHTML = data.steps.map(s => `<li>${s}</li>`).join('');
-            playTone(650, 0.08);
+
+            const sc = scenarios[type];
+            document.getElementById('scenario-title').innerText = sc.title;
+            document.getElementById('scenario-badge').innerText = sc.badge;
+            const optBox = document.getElementById('scenario-options');
+            optBox.innerHTML = sc.opts.map(o => `
+                <button class="btn-tab-nav" style="padding:12px; text-align:left;" onclick="checkScenarioChoice(${o.ok}, '${o.exp}')">
+                    ${o.t}
+                </button>
+            `).join('');
+            document.getElementById('scenario-feedback').style.display = 'none';
+            playTone(600, 0.08);
+        }
+
+        function checkScenarioChoice(isOk, text) {
+            triggerHaptic(isOk ? 45 : 20);
+            const fb = document.getElementById('scenario-feedback');
+            fb.style.display = 'block';
+            fb.style.background = isOk ? '#dcfce7' : '#fee2e2';
+            fb.style.color = isOk ? '#15803d' : '#991b1b';
+            fb.innerHTML = text;
+            playTone(isOk ? 850 : 250, 0.15);
+        }
+
+        // ==========================================
+        // 4-MAVZU: JSST 20 SONIYALIK QO'L YUVISH TRENAJYORI
+        // ==========================================
+        const washSteps = [
+            { icon: "🤲", title: "1-bosqich: Kaftni kaftga sovun bilan ishqash" },
+            { icon: "👐", title: "2-bosqich: Oʻng kaft bilan chap qoʻl ustini yuvish" },
+            { icon: "🤞", title: "3-bosqich: Barmoqlar orasini bir-biriga qorishtirish" },
+            { icon: "✊", title: "4-bosqich: Bosh barmoqni aylantirib tozalash" },
+            { icon: "🧼", title: "5-bosqich: Tirnoq uchlarini kaftga ishqash" },
+            { icon: "✨", title: "6-bosqich: Suvda chayib, toza sochiqda quritish!" }
+        ];
+
+        let washTimer = null;
+        function startWashTrainer() {
+            triggerHaptic(40);
+            if (washTimer) clearInterval(washTimer);
+            let s = 20;
+            const circle = document.getElementById('wash-timer-circle');
+            const icon = document.getElementById('wash-step-icon');
+            const title = document.getElementById('wash-step-title');
+
+            washTimer = setInterval(() => {
+                s--;
+                circle.innerText = "00:" + (s < 10 ? '0' + s : s);
+                const stepIdx = Math.min(5, Math.floor((20 - s) / 3.5));
+                icon.innerText = washSteps[stepIdx].icon;
+                title.innerText = washSteps[stepIdx].title;
+
+                if (s <= 0) {
+                    clearInterval(washTimer);
+                    circle.innerText = "00:00";
+                    icon.innerText = "🏆✨";
+                    title.innerText = "Qoʻllar 99.9% mikroblardan tozalandi!";
+                    playTone(950, 0.3);
+                }
+            }, 1000);
         }
 
         // 4-MAVZU: KUNLIK GIGIYA CHEKLISTI
@@ -2559,13 +2945,13 @@
 
             const st = document.getElementById('check-score-status');
             if (pct >= 80) {
-                st.innerText = "🌟 Ajoyib himoya! Siz sogʻlom turmush qoidalariga namunali amal qilyapsiz.";
+                st.innerText = "🌟 Namunali daraja! Siz mikroblarga hech qanday imkon bermayapsiz.";
                 st.style.color = "#15803d";
             } else if (pct >= 50) {
-                st.innerText = "👍 Yaxshi boshlanish! Barcha katakchalarni toʻldirib 100% ga yetkazing.";
+                st.innerText = "👍 Yaxshi! Qolgan odatlarni ham toʻliq bajaring.";
                 st.style.color = "#0369a1";
             } else {
-                st.innerText = "⚠️ Eʼtibor bering! Sogʻlom boʻlish uchun gigiyena qoidalariga rioya qiling.";
+                st.innerText = "⚠️ Eʼtibor bering! Sogʻlom boʻlish uchun gigiyenaga rioya qiling.";
                 st.style.color = "#c2410c";
             }
         }
