@@ -1461,8 +1461,11 @@
 
                 <div class="tab-nav-footer">
                     <button class="btn-tab-nav" onclick="showTab(15)">⬅️ Orqaga</button>
-                    <button class="btn-tab-nav next" onclick="switchMainTopic(1)">1-Mavzuga qaytish 🥗 🔝</button>
+                    <button class="btn-tab-nav next" onclick="switchMainTopic(3)">3-Mavzuga oʻtish 🛡️ ➔</button>
                 </div>
+            </div>
+        </section>
+
         <!-- ========================================== -->
         <!--     3-MAVZU: KASALLIKLAR VA MUDOFAA        -->
         <!-- ========================================== -->
@@ -1904,6 +1907,19 @@
         function showTab(idx) {
             triggerHaptic(30);
             currentTab = idx;
+
+            // Mavzu guruhini aniqlash va scrollerlarni moslash
+            let topic = 1;
+            if (idx >= 21) topic = 4;
+            else if (idx >= 17) topic = 3;
+            else if (idx >= 9) topic = 2;
+
+            for (let i = 1; i <= 4; i++) {
+                const b = document.getElementById('btn-topic-' + i);
+                if (b) b.classList.toggle('active', i === topic);
+                const scr = document.getElementById('scroller-topic-' + i);
+                if (scr) scr.style.display = (i === topic) ? 'flex' : 'none';
+            }
 
             document.querySelectorAll('.tab-section').forEach(sec => {
                 sec.classList.remove('active');
