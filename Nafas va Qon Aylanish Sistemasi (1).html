@@ -1,361 +1,1260 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6-sinf Tabiiy Fanlar: Nafas olish va Qon aylanish sistemasi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes breathe {
-            0% { transform: scale(0.85); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(0.85); }
-        }
-        @keyframes diaphragm-move {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(25px); }
-            100% { transform: translateY(0); }
-        }
-        @keyframes blood-flow {
-            0% { stroke-dashoffset: 100; }
-            100% { stroke-dashoffset: 0; }
-        }
-        .lung-animation {
-            animation: breathe 4s ease-in-out infinite;
-            transform-origin: center;
-        }
-        .diaphragm-animation {
-            animation: diaphragm-move 4s ease-in-out infinite;
-        }
-        .blood-path {
-            stroke-dasharray: 10;
-            animation: blood-flow 2s linear infinite;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nafas va Qon Aylanish Sistemasi — 6-sinf Tabiiy Fanlar</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #dc2626;
+      --blue: #2563eb;
+      --blue-light: #dbeafe;
+      --sky: #0284c7;
+      --green: #16a34a;
+      --emerald: #10b981;
+      --dark: #0f172a;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 30px -10px rgba(15, 23, 42, 0.15);
+      --radius: 16px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+    body {
+      background: #f0f7ff;
+      background-image: radial-gradient(#bae6fd 0.8px, transparent 0.8px), radial-gradient(#cbd5e1 0.8px, #f8fafc 0.8px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+      color: #1e293b;
+      line-height: 1.65;
+      padding-bottom: 60px;
+    }
+    
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #b91c1c 100%);
+      color: #fff;
+      padding: 45px 20px 35px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(30, 58, 138, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 140%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 10%, transparent 60%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* NAV PILLS */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    .nav-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 25px 0 15px;
+    }
+    .nav-pills a {
+      text-decoration: none;
+      background: white;
+      color: var(--slate-700);
+      padding: 9px 18px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .nav-pills a:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(30,58,138,0.25);
+    }
+
+    /* CARDS */
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 26px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+    }
+    .card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 2px solid var(--slate-100);
+      padding-bottom: 12px;
+    }
+    .card-title i {
+      color: var(--secondary);
+      background: #fee2e2;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 1.15rem;
+    }
+    .badge-new {
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      color: white;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-left: auto;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* GRIDS */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 360px 1fr; gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    @media(max-width: 950px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.9rem; }
+      .card { padding: 20px; }
+    }
+
+    /* SIMULATION PANEL */
+    .simulation-container {
+      position: relative;
+      background: linear-gradient(145deg, #091223, #0f172a);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      min-height: 440px;
+      color: white;
+      box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
+      border: 1px solid #1e293b;
+    }
+    .controls-panel {
+      background: var(--slate-50);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .control-group {
+      margin-bottom: 20px;
+    }
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--dark);
+      font-size: 0.95rem;
+    }
+    .slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: #cbd5e1;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--secondary);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+      transition: transform 0.1s ease;
+    }
+    .slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .btn {
+      flex: 1;
+      padding: 10px 14px;
+      border: 0;
+      border-radius: 8px;
+      background: #e2e8f0;
+      color: var(--dark);
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    .btn:hover, .btn.active {
+      background: var(--blue);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+    }
+
+    /* SVG ANIMATION ELEMENTS */
+    .organ-system {
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+    }
+    .heart-shape {
+      transform-origin: 200px 240px;
+      animation: heartBeat 0.85s infinite ease-in-out;
+    }
+    .lung-left {
+      transform-origin: 120px 190px;
+      animation: breatheLeft 3.75s infinite ease-in-out;
+    }
+    .lung-right {
+      transform-origin: 280px 190px;
+      animation: breatheRight 3.75s infinite ease-in-out;
+    }
+    @keyframes heartBeat {
+      0% { transform: scale(1); }
+      14% { transform: scale(1.12); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.18); }
+      70% { transform: scale(1); }
+    }
+    @keyframes breatheLeft {
+      0%, 100% { transform: scale(0.94); opacity: 0.82; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+    @keyframes breatheRight {
+      0%, 100% { transform: scale(0.94); opacity: 0.82; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+
+    /* TABS */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid var(--slate-200);
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      padding: 12px 20px;
+      border: 0;
+      background: none;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #64748b;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      color: var(--blue);
+    }
+    .tab-btn.active {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+    .tab-content { display: none; animation: fadeIn 0.3s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    ul.info-list { list-style: none; }
+    ul.info-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      color: var(--slate-700);
+    }
+    ul.info-list li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 0.9rem;
+    }
+    .system-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .tag-o2 { background: #3b82f6; }
+    .tag-co2 { background: #64748b; }
+
+    .alveoli-box {
+      background: #0f172a;
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-top: 15px;
+      color: #fff;
+      text-align: center;
+      border: 1px solid #334155;
+    }
+
+    /* QUIZ */
+    .quiz-option {
+      background: var(--slate-50);
+      border: 2px solid var(--slate-200);
+      padding: 12px 18px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .quiz-option:hover {
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+      transform: translateX(4px);
+    }
+    .quiz-option.correct {
+      background: #dcfce7 !important;
+      border-color: #22c55e !important;
+      color: #15803d !important;
+    }
+    .quiz-option.incorrect {
+      background: #fee2e2 !important;
+      border-color: #ef4444 !important;
+      color: #b91c1c !important;
+    }
+
+    /* ========================================================
+       YANGI BO'LIM 1: QON LABORATORIYASI VA QON GURUHLARI
+       ======================================================== */
+    .blood-cell-card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+    .blood-cell-card:hover, .blood-cell-card.active {
+      border-color: var(--blue);
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+      background: #eff6ff;
+    }
+    .blood-cell-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    .microscope-viewer {
+      background: #020617;
+      border-radius: 16px;
+      padding: 24px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 2px solid #1e293b;
+      margin-top: 15px;
+    }
+    .microscope-lens {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 8px solid #334155;
+      background: radial-gradient(circle, #1e293b 0%, #020617 80%);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3), inset 0 0 20px rgba(0,0,0,0.8);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cell-graphic {
+      font-size: 4rem;
+      animation: floatCell 4s infinite ease-in-out;
+    }
+    @keyframes floatCell {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.15) rotate(10deg); }
+    }
+
+    /* QON GURUHI MOSLIGI */
+    .blood-compat-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 0.92rem;
+    }
+    .blood-compat-table th, .blood-compat-table td {
+      border: 1px solid var(--slate-200);
+      padding: 10px 14px;
+      text-align: center;
+    }
+    .blood-compat-table th {
+      background: #f1f5f9;
+      color: var(--slate-800);
+      font-weight: 700;
+    }
+    .compat-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .compat-yes { background: #dcfce7; color: #166534; }
+    .compat-no { background: #fee2e2; color: #991b1b; }
+
+    /* ========================================================
+       YANGI BO'LIM 2: SPIROMETRIYA & PULS VA SPORT KALKULYATORI
+       ======================================================== */
+    .calc-box {
+      background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+      border: 1px solid #bbf7d0;
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .breath-pacer {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #38bdf8 30%, #0284c7 100%);
+      margin: 15px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(2, 132, 199, 0.4);
+      transition: transform 4s ease-in-out;
+    }
+    .pacer-expand {
+      transform: scale(1.35);
+    }
+    .pacer-shrink {
+      transform: scale(0.85);
+    }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      padding: 30px 20px;
+      font-size: 0.95rem;
+      border-top: 1px solid var(--slate-200);
+      margin-top: 40px;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body>
 
-    <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-6 shadow-md">
-        <div class="container mx-auto px-4">
-            <span class="text-blue-200 text-sm font-semibold uppercase tracking-wider">6-sinf Tabiiy Fanlar • 2-mavzu</span>
-            <h1 class="text-3xl font-bold mt-1">Nafas olish va qon aylanish sistemasi</h1>
-            <p class="text-blue-100 text-sm mt-1">Interaktiv oʻquv materiali va simulyatsiya xabari</p>
+<header>
+  <div class="container">
+    <span class="badge"><i class="fa-solid fa-graduation-cap"></i> 6-Sinf Tabiiy Fanlar • 2-Mavzu</span>
+    <h1>Nafas va Qon Aylanish Sistemasi</h1>
+    <p>Interaktiv SVG simulyatori, qon mikroskop laboratoriyasi, o‘pka sig‘imi (spirometriya) va bilim testi</p>
+    
+    <div class="nav-pills">
+      <a href="#simulyator"><i class="fa-solid fa-heart-pulse"></i> 1. Jonli Simulyator</a>
+      <a href="#nazariya"><i class="fa-solid fa-book-open"></i> 2. Nafas & Qon Aylanish</a>
+      <a href="#qon-laboratoriya"><i class="fa-solid fa-microscope"></i> 3. Qon Tarkibi & Mikroskop</a>
+      <a href="#spirometriya"><i class="fa-solid fa-lungs"></i> 4. Spirometriya & Puls Mashqi</a>
+      <a href="#hayvonlar"><i class="fa-solid fa-fish"></i> 5. Hayvonlarda Nafas</a>
+      <a href="#test"><i class="fa-solid fa-clipboard-question"></i> 6. Bilim Testi</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- 1. JONLI INTERAKTIV SIMULYATOR -->
+<div class="card" id="simulyator">
+  <h2 class="card-title"><i class="fa-solid fa-heart-pulse"></i> Jonli Interaktiv Simulyator</h2>
+  <div class="grid grid-3">
+    <div class="controls-panel">
+      <h3 style="margin-bottom:15px; font-size:1.15rem; color:var(--dark);">Organizm Holatini Boshqarish</h3>
+      
+      <div class="control-group">
+        <label>Jismoniy Holat:</label>
+        <div class="btn-group">
+          <button class="btn active" onclick="setPreset('rest',this)"><i class="fa-solid fa-bed"></i> Tinch</button>
+          <button class="btn" onclick="setPreset('walk',this)"><i class="fa-solid fa-person-walking"></i> Yurish</button>
+          <button class="btn" onclick="setPreset('run',this)"><i class="fa-solid fa-person-running"></i> Yugurish</button>
         </div>
-    </header>
+      </div>
 
-    <main class="container mx-auto px-4 py-8 space-y-10 max-w-5xl">
+      <div class="control-group">
+        <label>
+          <span>Yurak urishi (Puls):</span>
+          <span id="heartRateVal" style="color:var(--secondary)">70 ta/min</span>
+        </label>
+        <input type="range" id="heartRateSlider" class="slider" min="50" max="160" value="70" oninput="updateSimulation()">
+      </div>
 
-        <!-- Navigatsiya tugmalari -->
-        <div class="flex flex-wrap gap-2 border-b pb-4">
-            <a href="#inson-nafas" class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium hover:bg-blue-200 transition">1. Inson nafas sistemasi</a>
-            <a href="#simulyatsiya" class="px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition">⚙️ Interaktiv Simulyatsiya</a>
-            <a href="#hayvonlar-nafas" class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium hover:bg-blue-200 transition">2. Hayvonlar nafas sistemasi</a>
-            <a href="#qon-aylanish" class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-medium hover:bg-blue-200 transition">3. Qon aylanish sistemasi</a>
-            <a href="#test" class="px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition">📝 Bilimni sinash</a>
+      <div class="control-group">
+        <label>
+          <span>Nafas chastotasi:</span>
+          <span id="breathRateVal" style="color:var(--blue)">16 ta/min</span>
+        </label>
+        <input type="range" id="breathRateSlider" class="slider" min="10" max="45" value="16" oninput="updateSimulation()">
+      </div>
+
+      <div style="background:#e0f2fe; padding:14px; border-radius:10px; font-size:0.88rem; color:#0369a1; border-left:4px solid var(--blue)">
+        <i class="fa-solid fa-lightbulb"></i> <strong>Fiziologik qoida:</strong> Jismoniy harakat vaqtida mushaklar energiyaga muhtoj bo‘lib, ko‘proq <span class="system-tag tag-o2">O₂</span> talab qiladi. Shu sababli yurak urishi va nafas olish tezlashadi!
+      </div>
+    </div>
+
+    <div class="simulation-container">
+      <svg class="organ-system" viewBox="0 0 400 400">
+        <!-- Chap va O'ng o'pka -->
+        <g class="lung-left" id="lungLeft">
+          <path d="M130 120 C80 120 70 220 110 260 C140 290 160 220 150 150 Z" fill="#f87171" opacity=".75"/>
+        </g>
+        <g class="lung-right" id="lungRight">
+          <path d="M270 120 C320 120 330 220 290 260 C260 290 240 220 250 150 Z" fill="#f87171" opacity=".75"/>
+        </g>
+
+        <!-- Kekirdak va Bronxlar -->
+        <path d="M200 60 L200 130 L140 170 M200 130 L260 170" stroke="#cbd5e1" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+        <!-- Yurak -->
+        <g class="heart-shape" id="heartGraphic">
+          <path d="M200 210 C200 210 170 170 150 190 C130 210 160 240 200 270 C240 240 270 210 250 190 C230 170 200 210 200 210 Z" fill="#dc2626"/>
+        </g>
+
+        <!-- Qon tomirlari (Kichik va Katta doira) -->
+        <path d="M190 210 Q130 180 140 160" stroke="#3b82f6" stroke-width="4" fill="none" stroke-dasharray="4 4"/>
+        <path d="M210 210 Q270 180 260 160" stroke="#ef4444" stroke-width="4" fill="none" stroke-dasharray="4 4"/>
+        <path d="M200 260 C140 330 80 330 80 370" stroke="#ef4444" stroke-width="4" fill="none"/>
+        <path d="M200 260 C260 330 320 330 320 370" stroke="#3b82f6" stroke-width="4" fill="none"/>
+
+        <!-- Havo kirish oqimi zarrachalari -->
+        <circle cx="200" cy="80" r="4" fill="#38bdf8">
+          <animate attributeName="cy" values="60;130;170" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="200;200;140" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="80" r="4" fill="#38bdf8">
+          <animate attributeName="cy" values="60;130;170" dur="2s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="cx" values="200;200;260" dur="2s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Matn yorliqlari -->
+        <text x="200" y="45" fill="white" font-size="12" font-weight="bold" text-anchor="middle">Havo yo‘li (Traxeya)</text>
+        <text x="100" y="140" fill="#fca5a5" font-size="12" font-weight="bold" text-anchor="middle">Chap O‘pka</text>
+        <text x="300" y="140" fill="#fca5a5" font-size="12" font-weight="bold" text-anchor="middle">O‘ng O‘pka</text>
+        <text x="200" y="290" fill="#fecaca" font-size="12" font-weight="bold" text-anchor="middle">Yurak</text>
+        <text x="80" y="388" fill="#94a3b8" font-size="11" text-anchor="middle">Tana a'zolari (Arteriya)</text>
+        <text x="320" y="388" fill="#94a3b8" font-size="11" text-anchor="middle">Tana a'zolari (Vena)</text>
+      </svg>
+
+      <div style="position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,0.75); backdrop-filter:blur(5px); padding:8px 14px; border-radius:8px; font-size:0.8rem; border:1px solid rgba(255,255,255,0.1)">
+        <div><i class="fa-solid fa-circle" style="color:#ef4444"></i> O₂ ga boy qon (Arteriya)</div>
+        <div><i class="fa-solid fa-circle" style="color:#3b82f6"></i> CO₂ ga boy qon (Vena)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. NAZARIY MA'LUMOTLAR -->
+<div class="card" id="nazariya">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('tab1',this)"><i class="fa-solid fa-lungs"></i> 1. Nafas Olish Sistemasi</button>
+    <button class="tab-btn" onclick="switchTab('tab2',this)"><i class="fa-solid fa-arrows-spin"></i> 2. Qon Aylanish Doiralari</button>
+    <button class="tab-btn" onclick="switchTab('tab3',this)"><i class="fa-solid fa-link"></i> 3. Sistemalar Bog‘liqligi</button>
+  </div>
+
+  <div id="tab1" class="tab-content active">
+    <h3 style="color:var(--primary); margin-bottom:10px; font-size:1.3rem;">Nafas Olish Sistemasi va Alveolada Gaz Almashinuvi</h3>
+    <p style="color:var(--slate-700)">Nafas olish sistemasi havodan kislorodni (<span class="system-tag tag-o2">O₂</span>) qabul qilib, organizmda hosil bo‘lgan karbonat angidridni (<span class="system-tag tag-co2">CO₂</span>) tashqi muhitga chiqarib yuboradi.</p>
+    
+    <div class="grid grid-2" style="margin-top:18px">
+      <div>
+        <ul class="info-list">
+          <li><strong>Burun bo‘shlig‘i va hiqildoq:</strong> Kirayotgan havo iliydi, namlanadi va chang-mikroblardan filtrlanadi.</li>
+          <li><strong>Traxeya va bronxlar:</strong> Havoni o‘pkalarga to‘siqsiz yetkazuvchi tog‘ay halqalardan iborat yo‘llar.</li>
+          <li><strong>O‘pka va alveolalar:</strong> Har bir o‘pkada 300 milliondan ortiq mayda pufakchalar (alveolalar) mavjud. Ularning umumiy yuzasi 100 m² ga yetadi!</li>
+        </ul>
+      </div>
+
+      <div class="alveoli-box">
+        <h4 style="font-size:1.05rem; margin-bottom:6px;"><i class="fa-solid fa-magnifying-glass"></i> Alveolada Gaz Almashinuvi Sxemasi</h4>
+        <svg width="100%" height="130" viewBox="0 0 300 120">
+          <defs>
+            <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/>
+            </marker>
+          </defs>
+          <circle cx="150" cy="50" r="40" fill="#fecdd3" stroke="#f43f5e" stroke-width="3"/>
+          <path d="M50 100 Q150 80 250 100" stroke="#3b82f6" stroke-width="12" fill="none"/>
+          <path d="M140 55 L140 85" stroke="#22c55e" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="110" y="75" fill="#22c55e" font-size="11" font-weight="bold">O₂ → Qonga</text>
+          <path d="M160 85 L160 55" stroke="#ef4444" stroke-width="3"/>
+          <text x="170" y="75" fill="#ef4444" font-size="11" font-weight="bold">CO₂ → O‘pkaga</text>
+        </svg>
+        <p style="font-size:0.82rem; color:#cbd5e1; margin-top:4px;">
+          Alveolani o‘rab turgan ingichka kapillarlar devoridan kislorod qondagi gemoglobinga o‘tadi, karbonat angidrid esa nafas chiqarish orqali tashqariga haydaladi.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab2" class="tab-content">
+    <h3 style="color:var(--primary); margin-bottom:10px; font-size:1.3rem;">Qon Aylanish Sistemasi: Kichik va Katta Doiralar</h3>
+    <p style="color:var(--slate-700)">Qon tomirlar yopiq tizim bo‘lib, yurak uning doimiy ishlovchi markaziy nasosidir.</p>
+    <div class="grid grid-2" style="margin-top:16px">
+      <div style="background:#f8fafc; padding:20px; border-radius:12px; border-left:5px solid #dc2626;">
+        <h4 style="color:#dc2626; font-size:1.15rem;"><i class="fa-solid fa-arrows-spin"></i> Kichik Qon Aylanish Doirasi</h4>
+        <p style="font-size:0.92rem; margin-top:8px; color:var(--slate-700)">
+          <strong>Yo‘nalishi:</strong> Yurak (o‘ng qorincha) → O‘pka arteriyasi → O‘pka kapillarlari → O‘pka venasi → Yurak (chap bo‘lmacha).<br>
+          <strong>Vazifasi:</strong> Karbonat angidridga to‘la venoz qonni o‘pkaga olib borib, tozalash va kislorodga to‘yintirish.
+        </p>
+      </div>
+
+      <div style="background:#f8fafc; padding:20px; border-radius:12px; border-left:5px solid #2563eb;">
+        <h4 style="color:#2563eb; font-size:1.15rem;"><i class="fa-solid fa-circle-notch"></i> Katta Qon Aylanish Doirasi</h4>
+        <p style="font-size:0.92rem; margin-top:8px; color:var(--slate-700)">
+          <strong>Yo‘nalishi:</strong> Yurak (chap qorincha) → Aorta → Barcha a'zo va to‘qimalar → Kovak venalar → Yurak (o‘ng bo‘lmacha).<br>
+          <strong>Vazifasi:</strong> Kislorod va ozuqa moddalarga boy qonni butun vujudga tarqatish hamda moddalar almashinuv chiqindilarini yig‘ib kelish.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab3" class="tab-content">
+    <h3 style="color:var(--primary); margin-bottom:10px; font-size:1.3rem;">Nafas va Qon Aylanishining Ajralmas Hamkorligi</h3>
+    <p style="color:var(--slate-700)">Bu ikki sistema tiriklikning asosi bo‘lgan energetik jarayonlarni birgalikda ta'minlaydi:</p>
+    <ol style="margin-left:22px; margin-top:12px; line-height:1.9; color:var(--slate-700);">
+      <li>Nafas olganda o‘pkaga kelgan kislorod alveolalar orqali qonga diffuziyalanadi.</li>
+      <li>Qizil qon tanachalari (eritrotsitlar)dagi <strong>gemoglobin</strong> oqsili kislorodni o‘ziga biriktirib oladi.</li>
+      <li>Yurak kuchli zarb bilan bu kislorodli qonni butun tanaga jo‘natadi.</li>
+      <li>Hujayralar kislorod yordamida ozuqa moddalarni parchalab hayotiy energiya hosil qiladi.</li>
+      <li>Ajralib chiqqan $CO_2$ gazi yana venalar orqali o‘pkaga qaytariladi va tashqariga chiqariladi.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========================================================
+     YANGI BO'LIM 1: QON LABORATORIYASI VA QON GURUHLARI
+     ======================================================== -->
+<div class="card" id="qon-laboratoriya">
+  <div style="display:flex; align-items:center;">
+    <h2 class="card-title" style="margin-bottom:0; border:none; padding-bottom:0;">
+      <i class="fa-solid fa-microscope" style="color:#7c3aed; background:#ede9fe;"></i> 3. Qon Tarkibi Laboratoriyasi va Qon Guruhlari
+    </h2>
+    <span class="badge-new">Yangi bo‘lim</span>
+  </div>
+  <p style="color:var(--slate-700); margin: 15px 0 20px;">
+    Inson tanasida o‘rtacha 4.5 – 5 litr qon aylanadi. U suyuq qism (plazma — 55%) va shaklli elementlar (45%)dan iborat. Quyidagi elementlarni tanlab, virtual mikroskopda o‘rganing:
+  </p>
+
+  <div class="grid grid-4">
+    <div class="blood-cell-card active" onclick="selectCell('rbc', this)">
+      <div class="blood-cell-icon" style="background:#fee2e2; color:#dc2626;">🔴</div>
+      <h4 style="font-size:1.05rem; color:#991b1b;">Eritrotsitlar</h4>
+      <p style="font-size:0.8rem; color:#64748b;">Qizil qon tanachalari</p>
+    </div>
+    <div class="blood-cell-card" onclick="selectCell('wbc', this)">
+      <div class="blood-cell-icon" style="background:#ede9fe; color:#7c3aed;">⚪</div>
+      <h4 style="font-size:1.05rem; color:#5b21b6;">Leykotsitlar</h4>
+      <p style="font-size:0.8rem; color:#64748b;">Oq qon tanachalari</p>
+    </div>
+    <div class="blood-cell-card" onclick="selectCell('plt', this)">
+      <div class="blood-cell-icon" style="background:#fef3c7; color:#d97706;">🟡</div>
+      <h4 style="font-size:1.05rem; color:#92400e;">Trombotsitlar</h4>
+      <p style="font-size:0.8rem; color:#64748b;">Qon plastinkalari</p>
+    </div>
+    <div class="blood-cell-card" onclick="selectCell('plz', this)">
+      <div class="blood-cell-icon" style="background:#e0f2fe; color:#0284c7;">💧</div>
+      <h4 style="font-size:1.05rem; color:#0369a1;">Qon Plazmasi</h4>
+      <p style="font-size:0.8rem; color:#64748b;">Suyuq qism (90% suv)</p>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:20px; align-items:center;">
+    <!-- Virtual Mikroskop Ko'rinishi -->
+    <div class="microscope-viewer">
+      <span style="font-size:0.85rem; color:#94a3b8; margin-bottom:8px;">🔬 Virtual Mikroskop Kattalashtirishi: 1200x</span>
+      <div class="microscope-lens">
+        <div class="cell-graphic" id="microscopeCell">🔴</div>
+      </div>
+      <span id="microscopeLabel" style="margin-top:12px; font-weight:700; color:#38bdf8; font-size:1.1rem;">Eritrotsit (Qizil qon tanachasi)</span>
+    </div>
+
+    <!-- Element Tafsiloti -->
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:22px;">
+      <h3 id="cellDetailTitle" style="color:#dc2626; font-size:1.25rem; margin-bottom:8px;">Eritrotsitlar (Qizil qon tanachalari)</h3>
+      <div style="font-size:0.92rem; color:var(--slate-700); line-height:1.7;" id="cellDetailDesc">
+        <p><strong>Tuzilishi:</strong> Ikki tomoni botiq disk shaklida, yetilganlarida yadro bo‘lmaydi. Bu shakl gaz almashinuv maydonini oshiradi.</p>
+        <p style="margin-top:6px;"><strong>Asosiy vazifasi:</strong> Tarkibidagi temirli <strong>gemoglobin</strong> oqsili yordamida o‘pkadan to‘qimalarga kislorod ($O_2$), to‘qimalardan esa $CO_2$ tashiydi.</p>
+        <p style="margin-top:6px;"><strong>Miqdori:</strong> 1 mm³ qonda taxminan <strong>4.5 – 5 million</strong> dona bo‘ladi. Umri — 120 kun.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Qon guruhlari va Donorlik sxemasi -->
+  <div style="margin-top:25px; background:#fafafa; border:1px solid #e2e8f0; border-radius:14px; padding:22px;">
+    <h3 style="color:var(--dark); font-size:1.2rem; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+      <i class="fa-solid fa-droplet" style="color:#dc2626;"></i> Inson Qon Guruhlari va Qon Quyish Qoidalari
+    </h3>
+    <p style="font-size:0.9rem; color:var(--slate-700); margin-bottom:12px;">
+      Karl Landshtayner tomonidan kashf etilgan AB0 tizimi bo‘yicha inson qoni 4 guruhga bo‘linadi:
+    </p>
+
+    <div style="overflow-x:auto;">
+      <table class="blood-compat-table">
+        <thead>
+          <tr>
+            <th>Qon guruhi</th>
+            <th>Eritrotsitdagi antigen</th>
+            <th>Qaysi guruhga bera oladi (Donor)?</th>
+            <th>Qaysi guruhdan qon ola oladi (Retsipiyent)?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>I (O)</strong></td>
+            <td>Yo‘q</td>
+            <td><span class="compat-badge compat-yes">Barcha guruhlarga (Universal donor)</span></td>
+            <td><span class="compat-badge compat-no">Faqat I (O) guruhdan</span></td>
+          </tr>
+          <tr>
+            <td><strong>II (A)</strong></td>
+            <td>A antigenga ega</td>
+            <td>II va IV guruhlarga</td>
+            <td>I va II guruhlardan</td>
+          </tr>
+          <tr>
+            <td><strong>III (B)</strong></td>
+            <td>B antigenga ega</td>
+            <td>III va IV guruhlarga</td>
+            <td>I va III guruhlardan</td>
+          </tr>
+          <tr>
+            <td><strong>IV (AB)</strong></td>
+            <td>A va B antigenlarga ega</td>
+            <td><span class="compat-badge compat-no">Faqat IV guruhga</span></td>
+            <td><span class="compat-badge compat-yes">Barcha guruhlardan (Universal retsipiyent)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     YANGI BO'LIM 2: SPIROMETRIYA VA PULS TAYMERI
+     ======================================================== -->
+<div class="card" id="spirometriya">
+  <div style="display:flex; align-items:center;">
+    <h2 class="card-title" style="margin-bottom:0; border:none; padding-bottom:0;">
+      <i class="fa-solid fa-lungs" style="color:#0284c7; background:#e0f2fe;"></i> 4. Spirometriya (O‘pka Sig‘imi) & Sog‘lom Puls Kalkulyatori
+    </h2>
+    <span class="badge-new">Yangi bo‘lim</span>
+  </div>
+  <p style="color:var(--slate-700); margin: 15px 0 20px;">
+    O‘pkaning tiriklik sig‘imi (O‘TS) — chuqur nafas olib, so‘ng bor kuch bilan chiqarilgan maksimal havo hajmidir. Sport bilan shug‘ullangan sari bu ko‘rsatkich ortadi!
+  </p>
+
+  <div class="grid grid-2">
+    <!-- Spirometriya Kalkulyatori -->
+    <div class="calc-box">
+      <h3 style="color:#166534; font-size:1.2rem; margin-bottom:12px;">
+        <i class="fa-solid fa-calculator"></i> O‘pka Tiriklik Sig‘imini Hisoblash
+      </h3>
+      <div style="margin-bottom:12px;">
+        <label style="font-weight:600; font-size:0.9rem;">Jinsingiz:</label>
+        <div style="display:flex; gap:12px; margin-top:6px;">
+          <label><input type="radio" name="gender" value="male" checked onchange="calcCapacity()"> O‘g‘il bola</label>
+          <label><input type="radio" name="gender" value="female" onchange="calcCapacity()"> Qiz bola</label>
         </div>
+      </div>
 
-        <!-- 1-Bo'lim: Inson nafas sistemasi -->
-        <section id="inson-nafas" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
-                <span class="bg-blue-100 text-blue-600 p-2 rounded-lg text-lg">🫁</span> 1. Insonlarda nafas olish sistemasi
-            </h2>
-            <p class="text-slate-700 leading-relaxed mb-6">
-                Inson nafas olganda havodagi kislorod ($\text{O}_2$) oʻpka orqali qonga oʻtadi, organizmda hosil boʻlgan karbonat angidrid ($\text{CO}_2$) esa tashqariga chiqariladi.
-            </p>
+      <div style="margin-bottom:12px;">
+        <label style="display:flex; justify-content:space-between; font-weight:600; font-size:0.9rem;">
+          <span>Bo‘yingiz (sm):</span>
+          <span id="heightVal" style="color:#16a34a; font-weight:800;">145 sm</span>
+        </label>
+        <input type="range" id="heightSlider" class="slider" min="120" max="185" value="145" oninput="calcCapacity()">
+      </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Nafas yollari -->
-                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                    <h3 class="font-bold text-indigo-900 text-lg mb-2">Nafas yoʻllari</h3>
-                    <div class="flex flex-col gap-2 text-sm text-slate-700">
-                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">1. Burun boʻshligʻi</div>
-                        <div class="text-center text-slate-400">↓</div>
-                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">2. Halqum</div>
-                        <div class="text-center text-slate-400">↓</div>
-                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">3. Kekirdak (traxeya)</div>
-                        <div class="text-center text-slate-400">↓</div>
-                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">4. Bronxlar</div>
-                        <div class="text-center text-slate-400">↓</div>
-                        <div class="bg-white p-2 rounded shadow-sm border-l-4 border-blue-500">5. Oʻpka</div>
-                    </div>
-                </div>
+      <div style="background:#ffffff; border-radius:12px; padding:16px; border:1px solid #bbf7d0; text-align:center;">
+        <span style="font-size:0.85rem; color:#64748b;">Sizning taxminiy o‘pka sig‘imingiz:</span>
+        <div id="capacityResult" style="font-family:'Outfit',sans-serif; font-size:2rem; font-weight:800; color:#15803d; margin:6px 0;">
+          2100 ml (2.1 litr)
+        </div>
+        <p id="capacityNote" style="font-size:0.82rem; color:#166534;">
+          6-sinf o‘quvchisi uchun a'lo me'yor! Suzish va yugurish bilan shug‘ullanish sig‘imni yanada oshiradi.
+        </p>
+      </div>
+    </div>
 
-                <!-- Alveolalar -->
-                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                    <h3 class="font-bold text-indigo-900 text-lg mb-2">Alveolalar</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        Bronxiallarning uchida joylashgan pufakchalar boʻlib, precisely (aynan) shu yerda gazlar almashinuvi sodir boʻladi. 
-                        Alveolalar atrofida koʻplab kapillar qon tomirlari joylashgan.
-                    </p>
-                    <div class="mt-4 bg-blue-50 p-3 rounded-lg border border-blue-100 text-xs text-blue-800">
-                        💡 <strong>Gazlar almashinuvi:</strong> Kislorod alveoladan qonga, karbonat angidrid esa qondan alveolaga oʻtadi.
-                    </div>
-                </div>
+    <!-- Chuqur Nafas Mashqi (Breath Pacer) -->
+    <div style="background:#0f172a; border-radius:16px; padding:22px; color:white; text-align:center;">
+      <h3 style="color:#38bdf8; font-size:1.2rem; margin-bottom:4px;">
+        <i class="fa-solid fa-spa"></i> Tinchlantiruvchi Chuqur Nafas Mashqi
+      </h3>
+      <p style="font-size:0.85rem; color:#94a3b8; margin-bottom:14px;">
+        Yurak urishini me'yorga keltirish va o‘pkani kislorodga to‘yintirish uchun doiraga mos ravishda nafas oling:
+      </p>
 
-                <!-- Diafragma -->
-                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                    <h3 class="font-bold text-indigo-900 text-lg mb-2">Diafragma</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        Koʻkrak boʻshligʻi ostidagi keng mushak boʻlib, nafas olish jarayonida asosiy rolni oʻynaydi:
-                    </p>
-                    <ul class="text-sm text-slate-700 mt-2 space-y-2">
-                        <li class="bg-green-50 p-2 rounded border border-green-200">
-                            <strong>Nafas olganda:</strong> Pastga tushadi, koʻkrak qafasi kengayadi, oʻpka havo bilan toʻladi.
-                        </li>
-                        <li class="bg-amber-50 p-2 rounded border border-amber-200">
-                            <strong>Nafas chiqarganda:</strong> Yuqoriga koʻtariladi, oʻpka qisqaradi, havo tashqariga chiqadi.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+      <div class="breath-pacer" id="breathPacer">
+        <span id="pacerText">Nafas Oling... (Inhale)</span>
+      </div>
 
-        <!-- Simulyatsiya Bo'limi -->
-        <section id="simulyatsiya" class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white rounded-xl shadow-xl p-6">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-indigo-700 pb-4 mb-6">
-                <div>
-                    <h2 class="text-2xl font-bold flex items-center gap-2">
-                        ⚙️ Nafas olish va Diafragma Simulyatsiyasi
-                    </h2>
-                    <p class="text-indigo-200 text-sm">Nafas olish dinamikasini koʻrish uchun rejimlarni almashtiring</p>
-                </div>
-                <div class="mt-4 md:mt-0 space-x-2">
-                    <button id="btn-auto" onclick="setMode('auto')" class="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-indigo-500 transition">Avto Harakat</button>
-                    <button id="btn-in" onclick="setMode('in')" class="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-green-500 transition">Nafas olish (Inhale)</button>
-                    <button id="btn-out" onclick="setMode('out')" class="px-4 py-2 bg-amber-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-amber-500 transition">Nafas chiqarish (Exhale)</button>
-                </div>
-            </div>
+      <div style="display:flex; justify-content:center; gap:10px; margin-top:14px;">
+        <button class="btn" style="background:#0284c7; color:white;" onclick="startBreathing()"><i class="fa-solid fa-play"></i> Mashqni boshlash</button>
+        <button class="btn" style="background:#334155; color:white;" onclick="stopBreathing()"><i class="fa-solid fa-stop"></i> To‘xtatish</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-                <!-- SVG Vizualizatsiyasi -->
-                <div class="bg-slate-800/80 rounded-xl p-6 border border-indigo-500/30 flex justify-center">
-                    <svg width="280" height="300" viewBox="0 0 280 300" class="w-full max-w-[280px]">
-                        <!-- Traxeya va Bronxlar -->
-                        <path d="M 140 30 L 140 120" stroke="#CBD5E1" stroke-width="12" stroke-linecap="round"/>
-                        <path d="M 140 120 L 100 160" stroke="#CBD5E1" stroke-width="8" stroke-linecap="round"/>
-                        <path d="M 140 120 L 180 160" stroke="#CBD5E1" stroke-width="8" stroke-linecap="round"/>
+<!-- 5. HAYVONLARNING NAFAS OLISH SISTEMASI JADVALI -->
+<div class="card" id="hayvonlar">
+  <h2 class="card-title"><i class="fa-solid fa-fish"></i> 5. Turli Hayvonlarning Nafas Olish Organlari</h2>
+  <p style="color:var(--slate-700); margin-bottom:16px;">
+    Turli muhitda yashovchi hayvonlar o‘ziga xos nafas olish a'zolariga ega:
+  </p>
+  <div style="overflow-x:auto;">
+    <table class="blood-compat-table">
+      <thead>
+        <tr>
+          <th>Hayvon guruhi</th>
+          <th>Nafas olish a'zosi</th>
+          <th>Moslashuv mexanizmi va xususiyati</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Baliqlar</strong></td>
+          <td><span style="background:#dbeafe; color:#1e40af; padding:3px 10px; border-radius:6px; font-weight:700;">Jabralar</span></td>
+          <td style="text-align:left;">Suvda erigan kislorodni qabul qiladi. Suv og‘iz orqali kirib, jabralardan o‘tganda gaz almashinuvi kechadi.</td>
+        </tr>
+        <tr>
+          <td><strong>Hasharotlar</strong></td>
+          <td><span style="background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:6px; font-weight:700;">Traxeyalar</span></td>
+          <td style="text-align:left;">Tanasi bo‘ylab tarqalgan mikroskopik naychalar to‘ri orqali kislorodni to‘g‘ridan-to‘g‘ri hujayralarga yetkazadi.</td>
+        </tr>
+        <tr>
+          <td><strong>Qurbag‘alar (Amfibiyalar)</strong></td>
+          <td><span style="background:#dcfce7; color:#166534; padding:3px 10px; border-radius:6px; font-weight:700;">O‘pka va teri</span></td>
+          <td style="text-align:left;">Suvda bo‘lganda nam terisi orqali, quruqlikda esa oddiy xaltasimon o‘pkasi orqali nafas oladi.</td>
+        </tr>
+        <tr>
+          <td><strong>Qushlar</strong></td>
+          <td><span style="background:#fee2e2; color:#991b1b; padding:3px 10px; border-radius:6px; font-weight:700;">O‘pka va havo xaltachalari</span></td>
+          <td style="text-align:left;">Uchish vaqtida ko‘p energiya talab qilingani sababli "qo‘shaloq nafas olish" tizimiga ega.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-                        <!-- Chap va O'ng O'pka -->
-                        <g id="lungs" class="lung-animation">
-                            <!-- Chap O'pka -->
-                            <path d="M 95 165 C 50 170, 50 240, 100 240 C 120 240, 115 180, 95 165 Z" fill="#EF4444" opacity="0.85"/>
-                            <!-- O'ng O'pka -->
-                            <path d="M 185 165 C 230 170, 230 240, 180 240 C 160 240, 165 180, 185 165 Z" fill="#EF4444" opacity="0.85"/>
-                        </g>
+<!-- 6. BILIMNI MUSTAHKAMLASH TESTI -->
+<div class="card" id="test">
+  <h2 class="card-title"><i class="fa-solid fa-graduation-cap"></i> 6. Bilimni Mustahkamlash Testi</h2>
+  <div id="quizContainer">
+    <div style="margin-bottom:15px">
+      <p id="quizQuestion" style="font-weight:700; font-size:1.1rem; color:var(--dark);">
+        1. Gazlar almashinuvi o‘pkaning qaysi qismida bevosita sodir bo‘ladi?
+      </p>
+    </div>
+    <div id="quizOptions">
+      <div class="quiz-option" onclick="checkAnswer(this,false)">A) Kekirdakda (Traxeya)</div>
+      <div class="quiz-option" onclick="checkAnswer(this,true)">B) Alveolalarda</div>
+      <div class="quiz-option" onclick="checkAnswer(this,false)">C) Bronx shoxlarida</div>
+      <div class="quiz-option" onclick="checkAnswer(this,false)">D) Yurak qorinchasida</div>
+    </div>
+    <div id="quizFeedback" style="margin-top:12px; font-weight:bold; font-size:1.05rem;"></div>
+    <button id="btnNextQuiz" style="display:none; margin-top:15px; padding:10px 20px; border:0; background:var(--blue); color:white; border-radius:8px; font-weight:700; cursor:pointer;" onclick="nextQuestion()">
+      Keyingi savol <i class="fa-solid fa-arrow-right"></i>
+    </button>
+  </div>
+</div>
 
-                        <!-- Diafragma -->
-                        <path id="diaphragm" class="diaphragm-animation" d="M 40 250 Q 140 220 240 250" stroke="#38BDF8" stroke-width="10" stroke-linecap="round" fill="transparent"/>
+</div>
 
-                        <!-- Havo oqimi ko'rsatkichi -->
-                        <g id="air-flow" opacity="0.7">
-                            <circle cx="140" cy="50" r="4" fill="#38BDF8"/>
-                            <circle cx="140" cy="80" r="4" fill="#38BDF8"/>
-                        </g>
-                    </svg>
-                </div>
+<footer>
+  <div class="container">
+    <p><strong>6-sinf Tabiiy Fanlar</strong> • Nafas olish va Qon aylanish sistemasi interaktiv o‘quv platformasi</p>
+    <p style="margin-top:6px; font-size:0.85rem;">Zamonaviy SVG modellar va fiziologik kalkulyatorlar bilan boyitilgan.</p>
+  </div>
+</footer>
 
-                <!-- Holat Tushuntirishi -->
-                <div class="space-y-4">
-                    <div id="status-card" class="bg-slate-800 p-5 rounded-xl border border-indigo-500/30">
-                        <h3 id="status-title" class="text-xl font-bold text-indigo-300 mb-2">Avto Rejim: Nafas Sikli</h3>
-                        <p id="status-desc" class="text-sm text-slate-300 leading-relaxed">
-                            Diafragma pastga tushganda oʻpka hajmi kengayib, havo ichkariga soʻriladi. Diafragma koʻtarilganda esa havo tashqariga siqib chiqariladi.
-                        </p>
-                    </div>
+<script>
+// WEB AUDIO SOUND EFFECTS
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function playBeep(type) {
+  try {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    const now = audioCtx.currentTime;
+    if (type === 'click') {
+      osc.frequency.setValueAtTime(400, now);
+      gain.gain.setValueAtTime(0.04, now);
+      osc.start(now);
+      osc.stop(now + 0.04);
+    } else if (type === 'correct') {
+      osc.frequency.setValueAtTime(523.25, now);
+      osc.frequency.setValueAtTime(659.25, now + 0.1);
+      gain.gain.setValueAtTime(0.08, now);
+      osc.start(now);
+      osc.stop(now + 0.25);
+    } else if (type === 'wrong') {
+      osc.frequency.setValueAtTime(220, now);
+      osc.frequency.setValueAtTime(180, now + 0.1);
+      gain.gain.setValueAtTime(0.08, now);
+      osc.start(now);
+      osc.stop(now + 0.25);
+    }
+  } catch(e){}
+}
 
-                    <div class="grid grid-cols-2 gap-4 text-xs">
-                        <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
-                            <span class="text-green-400 font-bold block mb-1">🔵 Kislorod ($\text{O}_2$)</span>
-                            Oʻpka alveolalaridan qonga va toʻqimalarga uzatiladi.
-                        </div>
-                        <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
-                            <span class="text-amber-400 font-bold block mb-1">🔴 Karbonat angidrid ($\text{CO}_2$)</span>
-                            Toʻqimalardan oʻpkaga qaytarilib, tashqariga chiqariladi.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+// TABS
+function switchTab(tabId, btn) {
+  playBeep('click');
+  document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('active');
+}
 
-        <!-- 2-Bo'lim: Hayvonlarning nafas olish sistemasi -->
-        <section id="hayvonlar-nafas" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
-                <span class="bg-blue-100 text-blue-600 p-2 rounded-lg text-lg">🐟</span> 2. Hayvonlarning nafas olish sistemasi
-            </h2>
-            <p class="text-slate-700 leading-relaxed mb-4">
-                Har xil hayvonlar oʻz yashash muhitiga va tuzilishiga moslashgan holda turlicha nafas olish a'zolariga ega:
-            </p>
+// SIMULATOR CONTROLS
+const heartRateSlider = document.getElementById('heartRateSlider');
+const breathRateSlider = document.getElementById('breathRateSlider');
+const heartRateVal = document.getElementById('heartRateVal');
+const breathRateVal = document.getElementById('breathRateVal');
+const heartGraphic = document.getElementById('heartGraphic');
+const lungLeft = document.getElementById('lungLeft');
+const lungRight = document.getElementById('lungRight');
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="bg-indigo-50 text-indigo-900 border-b border-indigo-100">
-                            <th class="p-3 font-semibold">Hayvon guruhi</th>
-                            <th class="p-3 font-semibold">Nafas olish a'zosi</th>
-                            <th class="p-3 font-semibold">Xususiyati va Moslashishi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 text-sm">
-                        <tr class="hover:bg-slate-50">
-                            <td class="p-3 font-medium text-slate-900">Baliqlar</td>
-                            <td class="p-3"><span class="bg-blue-100 text-blue-800 px-2.5 py-1 rounded-full font-medium">Jabralar</span></td>
-                            <td class="p-3 text-slate-600">Suvda erigan kislorod bilan nafas oladi. Suv jabra orqali oʻtganda gaz almashinuvi sodir boʻladi.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="p-3 font-medium text-slate-900">Sutemizuvchilar, Sudralib yuruvchilar va Qushlar</td>
-                            <td class="p-3"><span class="bg-red-100 text-red-800 px-2.5 py-1 rounded-full font-medium">Oʻpka</span></td>
-                            <td class="p-3 text-slate-600">Havodagi kislorodni oʻpka orqali oʻzlashtiradi. Qushlarda qoʻshimcha havo xaltachalari ham bor.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="p-3 font-medium text-slate-900">Hasharotlar</td>
-                            <td class="p-3"><span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-medium">Traxeyalar</span></td>
-                            <td class="p-3 text-slate-600">Tanasi boʻylab tarqalgan juda mayda naychalar (traxeyalar) orqali toʻgʻridan-toʻgʻri nafas oladi.</td>
-                        </tr>
-                        <tr class="hover:bg-slate-50">
-                            <td class="p-3 font-medium text-slate-900">Suvda hamda quruqlikda yashovchilar (Masalan: Qurbagʻalar)</td>
-                            <td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-medium">Oʻpka va teri</span></td>
-                            <td class="p-3 text-slate-600">Qurbagʻalar voyaga yetgach oʻpka va doimiy nam terisi orqali gaz almashinuvini bajaradi.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+function updateSimulation() {
+  const hr = heartRateSlider.value;
+  const br = breathRateSlider.value;
+  heartRateVal.innerText = hr + " ta/min";
+  breathRateVal.innerText = br + " ta/min";
+  heartGraphic.style.animationDuration = (60 / hr) + "s";
+  lungLeft.style.animationDuration = (60 / br) + "s";
+  lungRight.style.animationDuration = (60 / br) + "s";
+}
 
-        <!-- 3-Bo'lim: Qon aylanish sistemasi -->
-        <section id="qon-aylanish" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
-                <span class="bg-red-100 text-red-600 p-2 rounded-lg text-lg">❤️</span> 3. Qon aylanish sistemasi haqida tushuncha
-            </h2>
-            <p class="text-slate-700 leading-relaxed mb-6">
-                Qon aylanish sistemasi organizm boʻylab kislorod, ozuqa moddalarni tashiydi va moddalar almashinuvi natijasida hosil boʻlgan chiqindi moddalarni olib ketadi.
-            </p>
+function setPreset(type, btn) {
+  playBeep('click');
+  document.querySelectorAll('.btn-group .btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (type === 'rest') {
+    heartRateSlider.value = 70;
+    breathRateSlider.value = 16;
+  } else if (type === 'walk') {
+    heartRateSlider.value = 100;
+    breathRateSlider.value = 24;
+  } else {
+    heartRateSlider.value = 145;
+    breathRateSlider.value = 38;
+  }
+  updateSimulation();
+}
 
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- Yurak -->
-                <div class="bg-gradient-to-br from-red-50 to-rose-50 p-5 rounded-xl border border-red-100 flex items-start gap-4">
-                    <div class="text-4xl">❤️</div>
-                    <div>
-                        <h3 class="font-bold text-red-900 text-lg">Yurak</h3>
-                        <p class="text-sm text-slate-700 mt-1">
-                            Qonni toʻxtovsiz tomirlarga haydab beruvchi va organizm boʻylab harakatlantiruvchi mushakli nasosdir.
-                        </p>
-                    </div>
-                </div>
+// QON LABORATORIYASI (VIRTUAL MIKROSKOP)
+const cellData = {
+  rbc: {
+    icon: "🔴",
+    label: "Eritrotsit (Qizil qon tanachasi)",
+    title: "Eritrotsitlar (Qizil qon tanachalari)",
+    color: "#dc2626",
+    desc: `
+      <p><strong>Tuzilishi:</strong> Ikki tomoni botiq disk shaklida, yetilgan holatida yadro bo‘lmaydi. Bu shakl gaz almashinuv maydonini sezilarli darajada kengaytiradi.</p>
+      <p style="margin-top:6px;"><strong>Asosiy vazifasi:</strong> Tarkibidagi qizil temirli <strong>gemoglobin</strong> oqsili orqali o‘pkadan hujayralarga kislorod ($O_2$), ulardan esa $CO_2$ tashiydi.</p>
+      <p style="margin-top:6px;"><strong>Miqdori:</strong> 1 mm³ qonda taxminan <strong>4.5 – 5 million</strong> dona bo‘ladi. Yashash davomiyligi 120 kun.</p>
+    `
+  },
+  wbc: {
+    icon: "⚪",
+    label: "Leykotsit (Oq qon tanachasi)",
+    title: "Leykotsitlar (Oq qon tanachalari)",
+    color: "#7c3aed",
+    desc: `
+      <p><strong>Tuzilishi:</strong> Shakli o‘zgaruvchan, yadroga ega va qon tomir devoridan to‘qimalarga soxta oyoqlari bilan o‘ta oladi.</p>
+      <p style="margin-top:6px;"><strong>Asosiy vazifasi:</strong> Organizmning qalqoni. Mikroblarni yutib yuboradi (fagotsitoz) va kasalliklarga qarshi <strong>antitanachalar</strong> ishlab chiqaradi.</p>
+      <p style="margin-top:6px;"><strong>Miqdori:</strong> 1 mm³ qonda taxminan <strong>6 000 – 8 000</strong> dona bo‘ladi. Kasallik vaqtida soni keskin ortadi.</p>
+    `
+  },
+  plt: {
+    icon: "🟡",
+    label: "Trombotsit (Qon plastinkasi)",
+    title: "Trombotsitlar (Qon plastinkalari)",
+    color: "#d97706",
+    desc: `
+      <p><strong>Tuzilishi:</strong> Qizil ilikdagi yirik hujayralarning yadrosiz mayda bo‘lakchalari.</p>
+      <p style="margin-top:6px;"><strong>Asosiy vazifasi:</strong> Qon tomir shikastlanganda darhol u yerga yopishib, <strong>qon ivishini</strong> (tromb hosil bo‘lishini) ta'minlaydi va odamni ko‘p qon yo‘qotishdan asraydi.</p>
+      <p style="margin-top:6px;"><strong>Miqdori:</strong> 1 mm³ qonda taxminan <strong>200 000 – 400 000</strong> dona bo‘ladi.</p>
+    `
+  },
+  plz: {
+    icon: "💧",
+    label: "Qon Plazmasi (Suyuq qism)",
+    title: "Qon Plazmasi (Sariq-tiniq suyuqlik)",
+    color: "#0284c7",
+    desc: `
+      <p><strong>Tarkibi:</strong> Qonning 55% ini tashkil etadi. Uning 90-92% i suv, 7-8% i oqsillar, qolgani esa erigan glyukoza, vitaminlar va mineral tuzlardir.</p>
+      <p style="margin-top:6px;"><strong>Asosiy vazifasi:</strong> Shaklli elementlarni suzdirib yuradi, ichakdan so‘rilgan ozuqa moddalarni hujayralarga yetkazadi va moddalar almashinuv mahsulotlarini ayirish organlariga tashiydi.</p>
+    `
+  }
+};
 
-                <!-- Qon tomirlari turlari -->
-                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
-                    <h3 class="font-bold text-slate-900 text-lg mb-2">Qon tomirlari turlari:</h3>
-                    
-                    <div class="flex items-start gap-3">
-                        <span class="w-3 h-3 rounded-full bg-red-500 mt-1.5 shrink-0"></span>
-                        <div>
-                            <strong class="text-red-700">Arteriyalar:</strong>
-                            <span class="text-sm text-slate-600"> Yurakdan a'zolarga kislorodga ($\text{O}_2$) boy qonni olib boradi.</span>
-                        </div>
-                    </div>
+function selectCell(type, el) {
+  playBeep('click');
+  document.querySelectorAll('.blood-cell-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  const d = cellData[type];
+  document.getElementById('microscopeCell').innerText = d.icon;
+  document.getElementById('microscopeLabel').innerText = d.label;
+  document.getElementById('cellDetailTitle').innerText = d.title;
+  document.getElementById('cellDetailTitle').style.color = d.color;
+  document.getElementById('cellDetailDesc').innerHTML = d.desc;
+}
 
-                    <div class="flex items-start gap-3">
-                        <span class="w-3 h-3 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
-                        <div>
-                            <strong class="text-blue-700">Venalar:</strong>
-                            <span class="text-sm text-slate-600"> A'zolardan yurakka karbonat angidridga ($\text{CO}_2$) boy qonni qaytaradi.</span>
-                        </div>
-                    </div>
+// SPIROMETRIYA KALKULYATORI
+function calcCapacity() {
+  const gender = document.querySelector('input[name="gender"]:checked').value;
+  const height = parseInt(document.getElementById('heightSlider').value);
+  document.getElementById('heightVal').innerText = height + " sm";
 
-                    <div class="flex items-start gap-3">
-                        <span class="w-3 h-3 rounded-full bg-purple-500 mt-1.5 shrink-0"></span>
-                        <div>
-                            <strong class="text-purple-700">Kapillarlar:</strong>
-                            <span class="text-sm text-slate-600"> Eng mayda tomirlar boʻlib, hujayra va qon oʻrtasida moddalar va gazlar almashinuvi sodir boʻladi.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  let capacity = 0;
+  if (gender === 'male') {
+    // Bolalar formulasi (taxminiy me'yor)
+    capacity = Math.round((height * 20) - 800);
+  } else {
+    capacity = Math.round((height * 18) - 700);
+  }
+  if (capacity < 1400) capacity = 1400;
 
-        <!-- Test va Bilimni Sinash -->
-        <section id="test" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-            <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
-                <span class="bg-green-100 text-green-600 p-2 rounded-lg text-lg">📝</span> Bilimni mustahkamlash uchun mini-test
-            </h2>
+  document.getElementById('capacityResult').innerText = `${capacity} ml (${(capacity / 1000).toFixed(1)} litr)`;
+}
 
-            <div class="space-y-6">
-                <!-- 1-savol -->
-                <div class="bg-slate-50 p-4 rounded-lg">
-                    <p class="font-semibold text-slate-800 mb-3">1. Gazlar almashinuvi bevosita nafas sistemasining qaysi qismida sodir boʻladi?</p>
-                    <div class="space-y-2">
-                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">A) Kekirdakda</button>
-                        <button onclick="checkAnswer(this, true)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">B) Alveolalarda</button>
-                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">C) Halqumda</button>
-                    </div>
-                </div>
+// BREATH PACER ANIMATION
+let breathInterval = null;
+let isInhale = true;
 
-                <!-- 2-savol -->
-                <div class="bg-slate-50 p-4 rounded-lg">
-                    <p class="font-semibold text-slate-800 mb-3">2. Yurakdan a'zolarga kislorodga boy qonni olib boruvchi tomirlar nima deyiladi?</p>
-                    <div class="space-y-2">
-                        <button onclick="checkAnswer(this, true)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">A) Arteriyalar</button>
-                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">B) Venalar</button>
-                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-2.5 bg-white border border-slate-200 rounded hover:bg-slate-100 transition">C) Traxeyalar</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+function startBreathing() {
+  playBeep('click');
+  if (breathInterval) clearInterval(breathInterval);
+  const pacer = document.getElementById('breathPacer');
+  const text = document.getElementById('pacerText');
+  
+  isInhale = true;
+  pacer.classList.add('pacer-expand');
+  pacer.classList.remove('pacer-shrink');
+  text.innerText = "Chuqur nafas oling... (4 sek)";
 
-    </main>
+  breathInterval = setInterval(() => {
+    isInhale = !isInhale;
+    if (isInhale) {
+      pacer.classList.add('pacer-expand');
+      pacer.classList.remove('pacer-shrink');
+      text.innerText = "Nafas oling... (Inhale)";
+    } else {
+      pacer.classList.remove('pacer-expand');
+      pacer.classList.add('pacer-shrink');
+      text.innerText = "Sekin chiqaring... (Exhale)";
+    }
+  }, 4000);
+}
 
-    <footer class="bg-slate-800 text-slate-400 py-6 text-center text-sm border-t border-slate-700">
-        <p>6-sinf Tabiiy fanlar darsligi asosida tayyorlandi.</p>
-    </footer>
+function stopBreathing() {
+  playBeep('click');
+  if (breathInterval) clearInterval(breathInterval);
+  const pacer = document.getElementById('breathPacer');
+  const text = document.getElementById('pacerText');
+  pacer.classList.remove('pacer-expand', 'pacer-shrink');
+  text.innerText = "Nafas Oling... (Inhale)";
+}
 
-    <script>
-        function setMode(mode) {
-            const lungs = document.getElementById('lungs');
-            const diaphragm = document.getElementById('diaphragm');
-            const title = document.getElementById('status-title');
-            const desc = document.getElementById('status-desc');
+// KENGAYTIRILGAN QUIZ
+const quizList = [
+  {
+    q: "1. Gazlar almashinuvi o‘pkaning qaysi qismida bevosita sodir bo‘ladi?",
+    a: ["Kekirdakda (Traxeya)", "Alveolalarda", "Bronx shoxlarida", "Yurak qorinchasida"],
+    c: 1,
+    exp: "Gazlar almashinuvi alveolalarni o‘rab olgan mayda kapillarlarda diffuziya yo‘li bilan kechadi."
+  },
+  {
+    q: "2. Kislorodga boyigan qonni butun tanaga tarqatuvchi doira qaysi?",
+    a: ["Katta qon aylanish doirasi", "Kichik qon aylanish doirasi", "Faqat limfa doirasi", "O‘pka doirasi"],
+    c: 0,
+    exp: "Katta qon aylanish doirasi chap qorinchadan boshlanib, kislorodni butun vujudga yetkazadi."
+  },
+  {
+    q: "3. Qondagi qaysi element kislorod tashish uchun javobgar?",
+    a: ["Leykotsitlar", "Eritrotsitlar (Gemoglobin)", "Trombotsitlar", "Faqat suv"],
+    c: 1,
+    exp: "Eritrotsitlar tarkibidagi temirli gemoglobin oqsili kislorodni bog‘lab tashiydi."
+  },
+  {
+    q: "4. Qon tomirlari kesilganda qon ivishini ta'minlovchi element qaysi?",
+    a: ["Trombotsitlar", "Eritrotsitlar", "Plazma fermentlari", "Alveolalar"],
+    c: 0,
+    exp: "Trombotsitlar qon tomiri shikastlangan joyga yopishib, tromb hosil qiladi."
+  },
+  {
+    q: "5. Baliqlar suvda erigan kislorod bilan qaysi organ orqali nafas oladi?",
+    a: ["Traxeyalar", "O‘pka", "Jabralar", "Teri pufaklari"],
+    c: 2,
+    exp: "Baliqlar suvda erigan kislorodni jabralaridagi kapillyarlar orqali o‘zlashtiradi."
+  }
+];
 
-            // Reset animations
-            lungs.style.animation = 'none';
-            diaphragm.style.animation = 'none';
+let qIndex = 0;
+let qScore = 0;
 
-            if (mode === 'auto') {
-                lungs.style.animation = 'breathe 4s ease-in-out infinite';
-                diaphragm.style.animation = 'diaphragm-move 4s ease-in-out infinite';
-                title.textContent = "Avto Rejim: Nafas Sikli";
-                title.className = "text-xl font-bold text-indigo-300 mb-2";
-                desc.textContent = "Diafragma pastga tushganda oʻpka hajmi kengayib, havo ichkariga soʻriladi. Diafragma koʻtarilganda esa havo tashqariga siqib chiqariladi.";
-            } else if (mode === 'in') {
-                lungs.style.transform = 'scale(1.1)';
-                diaphragm.style.transform = 'translateY(25px)';
-                title.textContent = "Nafas olish (Inhale)";
-                title.className = "text-xl font-bold text-green-400 mb-2";
-                desc.textContent = "Diafragma pastga tushadi (qisqaradi). Koʻkrak qafasi hajmi ortadi. Havodagi kislorod (O₂) oʻpkaga va alveolalar orqali qonga oʻtadi.";
-            } else if (mode === 'out') {
-                lungs.style.transform = 'scale(0.85)';
-                diaphragm.style.transform = 'translateY(0px)';
-                title.textContent = "Nafas chiqarish (Exhale)";
-                title.className = "text-xl font-bold text-amber-400 mb-2";
-                desc.textContent = "Diafragma yuqoriga koʻtariladi (boʻshashadi). Koʻkrak qafasi torayadi. Karbonat angidrid (CO₂) ga boy havo oʻpkadan tashqariga chiqadi.";
-            }
-        }
+function checkAnswer(element, isCorrect) {
+  document.querySelectorAll('.quiz-option').forEach(opt => opt.onclick = null);
+  const feedback = document.getElementById('quizFeedback');
+  const btnNext = document.getElementById('btnNextQuiz');
 
-        function checkAnswer(button, isCorrect) {
-            const parent = button.parentElement;
-            const buttons = parent.querySelectorAll('button');
-            
-            buttons.forEach(btn => {
-                btn.disabled = true;
-                btn.classList.remove('hover:bg-slate-100');
-            });
+  if (isCorrect) {
+    playBeep('correct');
+    element.classList.add('correct');
+    feedback.style.color = '#16a34a';
+    feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> Barakalla! To‘g‘ri javob. ${quizList[qIndex].exp}`;
+    qScore++;
+  } else {
+    playBeep('wrong');
+    element.classList.add('incorrect');
+    feedback.style.color = '#dc2626';
+    feedback.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Noto‘g‘ri. To‘g‘ri javob: <strong>${quizList[qIndex].a[quizList[qIndex].c]}</strong>. ${quizList[qIndex].exp}`;
+    document.querySelectorAll('.quiz-option')[quizList[qIndex].c].classList.add('correct');
+  }
 
-            if (isCorrect) {
-                button.classList.add('bg-green-100', 'border-green-500', 'text-green-800', 'font-bold');
-            } else {
-                button.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
-            }
-        }
-    </script>
+  btnNext.style.display = 'inline-block';
+}
+
+function nextQuestion() {
+  playBeep('click');
+  qIndex++;
+  const btnNext = document.getElementById('btnNextQuiz');
+  const qContainer = document.getElementById('quizContainer');
+
+  if (qIndex >= quizList.length) {
+    qContainer.innerHTML = `
+      <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:14px; padding:24px; text-align:center;">
+        <h3 style="color:#166534; font-size:1.4rem;">🎉 Sinov muvaffaqiyatli yakunlandi!</h3>
+        <p style="font-size:1.1rem; color:#15803d; margin:10px 0;">Sizning natijangiz: <strong>${qScore} / ${quizList.length}</strong></p>
+        <p style="color:#166534; font-size:0.95rem;">${qScore >= 4 ? 'Ajoyib natija! Siz nafas va qon aylanish tizimini mukammal o‘zlashtirdingiz.' : 'Yaxshi, ammo mavzuni yana bir bor qaytarib ko‘rish foydali bo‘ladi.'}</p>
+        <button onclick="restartTest()" style="margin-top:16px; padding:10px 22px; background:var(--blue); color:white; border:0; border-radius:8px; font-weight:700; cursor:pointer;"><i class="fa-solid fa-rotate-left"></i> Qayta topshirish</button>
+      </div>
+    `;
+    return;
+  }
+
+  document.getElementById('quizQuestion').innerText = quizList[qIndex].q;
+  document.getElementById('quizOptions').innerHTML = quizList[qIndex].a.map((opt, i) => 
+    `<div class="quiz-option" onclick="checkAnswer(this, ${i === quizList[qIndex].c})">${String.fromCharCode(65 + i)}) ${opt}</div>`
+  ).join('');
+  document.getElementById('quizFeedback').innerHTML = '';
+  btnNext.style.display = 'none';
+}
+
+function restartTest() {
+  qIndex = 0;
+  qScore = 0;
+  location.reload();
+}
+
+// Boshlang'ich yuklash
+updateSimulation();
+calcCapacity();
+</script>
 </body>
 </html>

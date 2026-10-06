@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasalliklar va Ularning Oldini Olish — 6-sinf Tabiiy Fanlar</title>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+:root {
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --primary-light: #ccfbf1;
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --cyan: #06b6d4;
+  --green: #16a34a;
+  --emerald: #10b981;
+  --red: #ef4444;
+  --orange: #f97316;
+  --amber: #f59e0b;
+  --purple: #8b5cf6;
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.06);
+  --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.06);
+  --shadow-lg: 0 20px 30px -10px rgba(15,23,42,0.15);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+body {
+  background: #f0fdfa;
+  background-image: radial-gradient(#99f6e4 0.8px, transparent 0.8px), radial-gradient(#cbd5e1 0.8px, #f8fafc 0.8px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  color: #1e293b;
+  line-height: 1.65;
+  padding-bottom: 60px;
+}
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #042f2e 0%, #0f766e 50%, #0284c7 100%);
+  color: white;
+  text-align: center;
+  padding: 45px 20px 35px;
+  box-shadow: 0 10px 30px rgba(15, 118, 110, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 10%, transparent 60%);
+  pointer-events: none;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+header h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+header p {
+  font-size: 1.1rem;
+  opacity: 0.92;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* CONTAINER & CARD */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+.nav-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px 0 15px;
+}
+.nav-pills a {
+  text-decoration: none;
+  background: white;
+  color: var(--slate-700);
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+.nav-pills a:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15,118,110,0.25);
+}
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 30px;
+  margin: 26px 0;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+.title {
+  color: var(--slate-900);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--slate-100);
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.title i {
+  color: var(--primary);
+  background: var(--primary-light);
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.15rem;
+}
+.badge-new {
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  color: white;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-left: auto;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* GRIDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+@media (max-width: 900px) {
+  .grid, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  header h1 { font-size: 1.9rem; }
+  .card { padding: 20px; }
+}
+
+.info {
+  padding: 22px;
+  border-radius: 14px;
+  background: var(--slate-50);
+  border-left: 5px solid var(--primary);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  transition: all 0.2s ease;
+}
+.info:hover {
+  background: #f8fafc;
+  transform: translateY(-2px);
+}
+.info h3 {
+  margin-bottom: 10px;
+  color: var(--slate-900);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tag {
+  display: inline-block;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.bacteria { background: #16a34a; }
+.virus { background: #7c3aed; }
+.fungus { background: #ea580c; }
+.protozoa { background: #0891b2; }
+
+.list {
+  list-style: none;
+}
+.list li {
+  margin: 10px 0;
+  padding-left: 28px;
+  position: relative;
+  color: var(--slate-700);
+}
+.list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 900;
+  background: #dcfce7;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+/* INTERACTIVE IMMUNITY SIMULATOR */
+.sim {
+  background: linear-gradient(145deg, #091223, #0f172a);
+  border-radius: 18px;
+  color: white;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 25px rgba(0,0,0,0.5);
+  border: 1px solid #1e293b;
+}
+.sim h3 {
+  color: #67e8f9;
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+  font-family: 'Outfit', sans-serif;
+}
+.body-diagram {
+  position: relative;
+  width: 290px;
+  height: 300px;
+  margin: 15px auto;
+  background: rgba(255,255,255,0.02);
+  border-radius: 20px;
+}
+.head {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #fed7aa;
+  position: absolute;
+  top: 8px;
+  left: 109px;
+  border: 3px solid #fdba74;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.body {
+  width: 120px;
+  height: 165px;
+  background: #0284c7;
+  border-radius: 40px 40px 20px 20px;
+  position: absolute;
+  top: 76px;
+  left: 85px;
+}
+.arm {
+  position: absolute;
+  width: 32px;
+  height: 135px;
+  background: #fed7aa;
+  border-radius: 20px;
+  top: 84px;
+}
+.arm.left { left: 45px; transform: rotate(14deg); }
+.arm.right { right: 45px; transform: rotate(-14deg); }
+.leg {
+  position: absolute;
+  width: 38px;
+  height: 110px;
+  background: #334155;
+  border-radius: 18px;
+  top: 220px;
+}
+.leg.left { left: 96px; }
+.leg.right { right: 96px; }
+
+.barrier {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  border: 4px dashed #22c55e;
+  border-radius: 35px;
+  box-shadow: 0 0 20px rgba(34,197,94,0.4);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+.phagocyte {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle, #fde047 30%, #eab308 100%);
+  border-radius: 50%;
+  top: 130px;
+  left: 123px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  box-shadow: 0 0 15px #eab308;
+  animation: pulsePhago 2s infinite alternate;
+}
+@keyframes pulsePhago {
+  0% { transform: scale(0.9); }
+  100% { transform: scale(1.15); }
+}
+
+.antibody {
+  position: absolute;
+  font-size: 20px;
+  color: #38bdf8;
+  display: none;
+  animation: floatAntibody 2.5s infinite ease-in-out;
+}
+.ab1 { top: 90px; left: 60px; }
+.ab2 { top: 150px; right: 55px; animation-delay: 0.8s; }
+.ab3 { top: 210px; left: 130px; animation-delay: 1.4s; }
+
+@keyframes floatAntibody {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(20deg); }
+}
+
+.microbe {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #ec4899;
+  box-shadow: 0 0 10px #f43f5e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.5s ease;
+}
+.m1 { left: 10px; top: 70px; animation: moveM1 4s infinite linear; }
+.m2 { right: 10px; top: 130px; animation: moveM2 4.5s infinite linear; }
+.m3 { left: 20px; top: 220px; animation: moveM3 5s infinite linear; }
+
+@keyframes moveM1 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(50px, -20px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes moveM2 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-50px, 30px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes moveM3 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(40px, -40px); }
+  100% { transform: translate(0, 0); }
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 18px 0 12px;
+}
+button, .btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #334155;
+  color: white;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+button:hover, .btn:hover {
+  background: var(--cyan);
+  color: #0f172a;
+  transform: translateY(-2px);
+}
+button.active {
+  background: var(--cyan);
+  color: #0f172a;
+  box-shadow: 0 0 15px rgba(6,182,212,0.4);
+}
+.status {
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-top: 14px;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+.progress {
+  height: 10px;
+  background: #1e293b;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 14px 0 6px;
+  border: 1px solid #334155;
+}
+.progress div {
+  height: 100%;
+  width: 33%;
+  background: linear-gradient(90deg, #22c55e, #06b6d4);
+  transition: width 0.5s ease;
+}
+
+.step {
+  display: flex;
+  gap: 16px;
+  padding: 18px;
+  margin: 12px 0;
+  background: var(--slate-50);
+  border-radius: 14px;
+  border-left: 5px solid var(--emerald);
+  transition: transform 0.2s;
+}
+.step:hover {
+  transform: translateX(4px);
+  background: #f1f5f9;
+}
+.num {
+  min-width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--emerald);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(16,185,129,0.3);
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid var(--slate-200);
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.tab {
+  white-space: nowrap;
+  border-radius: 10px 10px 0 0;
+  background: var(--slate-100);
+  color: var(--slate-700);
+  padding: 12px 20px;
+  font-weight: 700;
+}
+.tab.active {
+  color: white;
+  background: var(--primary);
+}
+.content {
+  display: none;
+  padding-top: 20px;
+  animation: fadeIn 0.3s ease;
+}
+.content.active {
+  display: block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* QUIZ */
+.quiz-option {
+  padding: 14px 18px;
+  margin: 10px 0;
+  border: 2px solid var(--slate-200);
+  background: var(--slate-50);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--slate-700);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.quiz-option:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+  transform: translateX(4px);
+}
+.correct {
+  background: #dcfce7 !important;
+  border-color: #22c55e !important;
+  color: #166534 !important;
+}
+.wrong {
+  background: #fee2e2 !important;
+  border-color: #ef4444 !important;
+  color: #991b1b !important;
+}
+.score {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-top: 15px;
+  color: var(--primary);
+  font-family: 'Outfit', sans-serif;
+}
+.note {
+  background: #fffbeb;
+  border-left: 5px solid var(--amber);
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-top: 18px;
+  color: #92400e;
+}
+
+/* ========================================================
+   YANGI BO'LIM 1: YUQUMSIZ KASALLIKLAR VA ZAMONAVIY XAVFLAR
+   ======================================================== */
+.non-inf-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid var(--slate-200);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--primary);
+}
+.non-inf-icon {
+  font-size: 2.2rem;
+  margin-bottom: 4px;
+}
+.gym-timer-box {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  color: white;
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: var(--shadow-md);
+}
+.timer-display {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 2px;
+  margin: 12px 0;
+}
+.eye-target {
+  width: 44px;
+  height: 44px;
+  background: #ec4899;
+  border-radius: 50%;
+  margin: 15px auto;
+  box-shadow: 0 0 20px #f43f5e;
+  animation: eyeExercise 6s infinite ease-in-out;
+}
+@keyframes eyeExercise {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-100px, 0); }
+  50% { transform: translate(100px, 0); }
+  75% { transform: translate(0, -30px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ========================================================
+   YANGI BO'LIM 2: BIRINCHI YORDAM VA SHAXSIY GIGIYA CHEK-LISTI
+   ======================================================== */
+.aid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 15px;
+}
+.aid-item {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.aid-item:hover {
+  background: #ffffff;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+.aid-item.active {
+  border-color: var(--primary);
+  background: #f0fdfa;
+  box-shadow: 0 0 0 3px rgba(15,118,110,0.15);
+}
+.aid-item h4 {
+  font-size: 1.05rem;
+  color: var(--slate-800);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.aid-details {
+  background: #ffffff;
+  border: 2px dashed #0d9488;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 18px;
+}
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  user-select: none;
+  cursor: pointer;
+}
+.checklist-item:hover {
+  background: #f1f5f9;
+}
+.checklist-item input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--emerald);
+  cursor: pointer;
+}
+.checklist-item.checked {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+.score-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: conic-gradient(var(--emerald) 0deg, #e2e8f0 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+.score-inner {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--slate-900);
+}
+.score-inner span {
+  font-size: 0.75rem;
+  color: var(--slate-700);
+  font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  color: var(--slate-700);
+  padding: 30px 20px;
+  font-size: 0.95rem;
+  border-top: 1px solid var(--slate-200);
+  margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="badge"><i class="fa-solid fa-graduation-cap"></i> 6-Sinf Tabiiy Fanlar • Yangilangan & Kengaytirilgan</span>
+    <h1>Kasalliklar va Ularning Oldini Olish</h1>
+    <p>Yuqumli va yuqumsiz kasalliklar, interaktiv immunitet mexanizmi, shaxsiy gigiyena va birinchi yordam ko‘nikmalari</p>
+    
+    <div class="nav-pills">
+      <a href="#tushunchalar"><i class="fa-solid fa-virus"></i> 1. Mikroorganizmlar</a>
+      <a href="#oldini-olish"><i class="fa-solid fa-shield-virus"></i> 2. Profilaktika</a>
+      <a href="#simulyatsiya"><i class="fa-solid fa-flask"></i> 3. Immunitet Simulyatori</a>
+      <a href="#yuqumsiz"><i class="fa-solid fa-heart-pulse"></i> 4. Yuqumsiz Kasalliklar</a>
+      <a href="#birinchi-yordam"><i class="fa-solid fa-kit-medical"></i> 5. Birinchi Yordam & Gigiyena</a>
+      <a href="#test"><i class="fa-solid fa-clipboard-question"></i> 6. Bilim Testi</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- 1-BO'LIM: ASOSIY TUSHUNCHALAR -->
+<section id="tushunchalar" class="card">
+  <h2 class="title"><i class="fa-solid fa-virus"></i> 1. Mavzu bo‘yicha asosiy tushunchalar</h2>
+  <div class="grid">
+    <div class="info">
+      <h3><i class="fa-solid fa-bacterium" style="color:var(--green)"></i> Yuqumli kasalliklar qo‘zg‘atuvchilari</h3>
+      <p style="margin-bottom:12px">Yuqumli kasalliklar mikroskopik tirik mavjudotlar (patogenlar) tomonidan keltirib chiqariladi:</p>
+      <ul class="list">
+        <li><span class="tag bacteria">Bakteriyalar</span> — bir hujayrali tirik organizmlar (masalan, angina, vabo, sil kasalliklari).</li>
+        <li><span class="tag virus">Viruslar</span> — hujayraviy tuzilishga ega bo‘lmagan mikroskopik zarrachalar, faqat mezbon hujayra ichida ko‘payadi (gripp, COVID-19, qizamiq).</li>
+        <li><span class="tag fungus">Zamburug‘lar</span> — teri, tirnoq va sochlarda mikoz hamda temiratki kasalliklarini qo‘zg‘atadi.</li>
+        <li><span class="tag protozoa">Sodda hayvonlar</span> — bir hujayrali parazitlar (masalan, bezgak plazmodiysi, dizenteriya amyobasi).</li>
+      </ul>
+    </div>
+    
+    <div class="info" style="border-left-color: var(--blue);">
+      <h3><i class="fa-solid fa-route" style="color:var(--blue)"></i> Kasalliklarning asosiy yuqish yo‘llari</h3>
+      <ul class="list">
+        <li><strong>Havo-tomchi yo‘li:</strong> Aksirish, yo‘talish yoki so‘zlashganda mayda shilimshiq tomchilar orqali havoga tarqaladi (gripp, shamollash).</li>
+        <li><strong>Kirlangan qo‘l va buyumlar:</strong> Eshik tutqichlari, telefonlar, iflos qo‘llarni og‘iz-burunga tekkizganda.</li>
+        <li><strong>Suv va oziq-ovqat:</strong> Qaynatilmagan suv, yuvilmagan mevalar, muddati o‘tgan mahsulotlar orqali ichak infeksiyalari o‘tadi.</li>
+        <li><strong>Qon va hasharotlar orqali:</strong> Chivinlar (bezgak), kanalar (ensefalit) va nosteril tibbiy asboblar orqali.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 2-BO'LIM: PROFILAKTIKA -->
+<section id="oldini-olish" class="card">
+  <h2 class="title"><i class="fa-solid fa-shield-virus"></i> 2. Kasalliklarning oldini olishning 4 ustuni</h2>
+  <div class="grid-4">
+    <div class="info" style="border-left-color: #06b6d4;">
+      <h3>🧼 Gigiyena</h3>
+      <p style="font-size:0.92rem">Qo‘llarni kamida 20 soniya davomida sovunlab yuvish, mevalarni tozalash va xonalarni shamollatish mikroblarning 90% ini bartaraf etadi.</p>
+    </div>
+    <div class="info" style="border-left-color: #ea580c;">
+      <h3>🏠 Karantin</h3>
+      <p style="font-size:0.92rem">Bemor yoki kasallik gumon qilingan insonlarni vaqtincha jamiyatdan ajratish infeksiya zanjirini uzadi va ommaviy epidemiya tarqalishiga yo‘l qo‘ymaydi.</p>
+    </div>
+    <div class="info" style="border-left-color: #8b5cf6;">
+      <h3>💉 Vaksinatsiya</h3>
+      <p style="font-size:0.92rem">Vaksina tarkibidagi kuchsizlantirilgan yoki zararsiz mikrob zarrachalari orqali organizm oldindan mustahkam immunitet (antitanachalar) hosil qiladi.</p>
+    </div>
+    <div class="info" style="border-left-color: #10b981;">
+      <h3>🥗 Sog‘lom hayot</h3>
+      <p style="font-size:0.92rem">Vitaminlarga boy to‘g‘ri ovqatlanish, 8 soatlik to‘liq uyqu, muntazam jismoniy tarbiya va chiniqish immun tizimining faoliyatini kuchaytiradi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3-BO'LIM: INTERAKTIV SIMULYATOR -->
+<section id="simulyatsiya" class="card">
+  <h2 class="title"><i class="fa-solid fa-flask"></i> 3. Interaktiv immunitet himoya simulyatsiyasi</h2>
+  <div class="grid">
+    <div class="sim">
+      <h3>🛡️ Organizmning Mudofaa Bosqichlari</h3>
+      <p style="font-size:0.9rem; color:#cbd5e1">Himoya kuchlari mikroblarga qanday qarshilik ko‘rsatishini tugmalarni bosib tekshiring:</p>
+      
+      <div class="body-diagram">
+        <!-- Mikroblar -->
+        <div class="microbe m1" id="m1">🦠</div>
+        <div class="microbe m2" id="m2">🦠</div>
+        <div class="microbe m3" id="m3">🦠</div>
+
+        <!-- Inson silueti -->
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+
+        <!-- Tashqi to'siq -->
+        <div class="barrier" id="barrier"></div>
+
+        <!-- Leykotsit (Fagotsit) -->
+        <div class="phagocyte" id="phagocyte">⚔️</div>
+
+        <!-- Antitanachalar -->
+        <div class="antibody ab1" id="ab1">🛡️</div>
+        <div class="antibody ab2" id="ab2">🛡️</div>
+        <div class="antibody ab3" id="ab3">🛡️</div>
+      </div>
+
+      <div class="controls">
+        <button class="active" onclick="defense(1,this)"><i class="fa-solid fa-shield"></i> 1. Tashqi g‘ov (Teri)</button>
+        <button onclick="defense(2,this)"><i class="fa-solid fa-virus-slash"></i> 2. Fagotsitoz (Leykotsit)</button>
+        <button onclick="defense(3,this)"><i class="fa-solid fa-dna"></i> 3. Maxsus Antitanachalar</button>
+      </div>
+
+      <div class="progress"><div id="progress"></div></div>
+      <div class="status" id="status">
+        <strong>1-bosqich: Tashqi g‘ovlar.</strong> Teri va shilliq qavatlar mikroblarning organizm ichki a'zolariga kirishiga mustahkam qalqon bo‘lib to‘sqinlik qiladi.
+      </div>
+    </div>
+
+    <div>
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3 style="color:#0f766e; margin-bottom:4px">Tashqi to‘siqlar (Birinchi chegara)</h3>
+          <p style="font-size:0.92rem; color:var(--slate-700)">Teri butun bo‘lsa mikroblar kira olmaydi. Ko‘z yoshi tarkibidagi lizotsim fermenti, nafas yo‘llari kiprikchalari va oshqozondagi xlorid kislotasi mikroblarni nobud qiladi.</p>
+        </div>
+      </div>
+      <div class="step" style="border-left-color: #f59e0b;">
+        <div class="num" style="background: #f59e0b;">2</div>
+        <div>
+          <h3 style="color:#d97706; margin-bottom:4px">Umumiy himoya: Fagotsitoz jarayoni</h3>
+          <p style="font-size:0.92rem; color:var(--slate-700)">Mikrob tanaga kirib olgan zahoti, qondagi leykotsitlar (fagotsitlar) u tomon harakatlanadi, uni o‘rab oladi va hazm qilib yutib yuboradi (fagotsitoz).</p>
+        </div>
+      </div>
+      <div class="step" style="border-left-color: #3b82f6;">
+        <div class="num" style="background: #3b82f6;">3</div>
+        <div>
+          <h3 style="color:#2563eb; margin-bottom:4px">Maxsus immun javob: Antitanachalar</h3>
+          <p style="font-size:0.92rem; color:var(--slate-700)">Limfotsitlar aynan shu mikrob turini taniy oladigan qurol — "antitanacha" oqsillarini ishlab chiqaradi. Antitanachalar mikroblarni bir-biriga yopishtirib zararsizlantiradi.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>💡 Muhim xulosa:</strong> Olingan vaksinalar organizmda uzoq yillik xotira hujayralarini hosil qiladi, shu sababli organizm qayta kasallanganda uni bir zumda yengadi!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     YANGI BO'LIM 1: YUQUMSIZ KASALLIKLAR VA ZAMONAVIY XAVFLAR
+     ======================================================== -->
+<section id="yuqumsiz" class="card">
+  <div style="display:flex; align-items:center;">
+    <h2 class="title" style="margin-bottom:0; border:none; padding-bottom:0;">
+      <i class="fa-solid fa-heart-pulse"></i> 4. Yuqumsiz kasalliklar va zamonaviy xavflar
+    </h2>
+    <span class="badge-new">Yangi bo‘lim</span>
+  </div>
+  <p style="color:var(--slate-700); margin: 15px 0 20px;">
+    Yuqumsiz kasalliklar odamdan odamga yuqmaydi, biroq ular noto‘g‘ri turmush tarzi, kamharakatlik va zararli odatlar tufayli yuzaga keladi. 6-sinf o‘quvchilarida eng ko‘p uchraydigan 4 ta xavf:
+  </p>
+
+  <div class="grid-4">
+    <div class="non-inf-card" style="border-top-color:#ef4444;">
+      <div class="non-inf-icon">🛋️</div>
+      <h3 style="font-size:1.15rem; color:#b91c1c;">Gipodinamiya (Kamharakatlik)</h3>
+      <p style="font-size:0.88rem; color:var(--slate-700)">
+        Uzoq vaqt o‘tirish yurak-qon tomir tizimini zaiflashtiradi, moddalar almashinuvini sekinlashtiradi va qon aylanishini buzadi.
+      </p>
+      <div style="background:#fef2f2; padding:8px; border-radius:6px; font-size:0.8rem; color:#991b1b; font-weight:600;">
+        🛡️ Chora: Har kuni kamida 1 soat faol harakatlanish va piyoda yurish.
+      </div>
+    </div>
+
+    <div class="non-inf-card" style="border-top-color:#f59e0b;">
+      <div class="non-inf-icon">🍔</div>
+      <h3 style="font-size:1.15rem; color:#d97706;">Semizlik va Karies</h3>
+      <p style="font-size:0.88rem; color:var(--slate-700)">
+        Shirin gazlangan ichimliklar, chips va fast-fudni ko‘p iste'mol qilish oshqozon faoliyatini buzadi, tish emalini yemiradi.
+      </p>
+      <div style="background:#fffbeb; padding:8px; border-radius:6px; font-size:0.8rem; color:#b45309; font-weight:600;">
+        🛡️ Chora: Shirinlik o‘rniga meva-sabzavotlar, kuniga 2 mahal tish yuvish.
+      </div>
+    </div>
+
+    <div class="non-inf-card" style="border-top-color:#3b82f6;">
+      <div class="non-inf-icon">📱</div>
+      <h3 style="font-size:1.15rem; color:#1d4ed8;">Ko‘z toliqishi (Miopiya)</h3>
+      <p style="font-size:0.88rem; color:var(--slate-700)">
+        Telefon yoki kompyuter ekraniga yaqindan va qorong‘ida uzoq termilish ko‘z mushaklarini zo‘riqtiradi va ko‘rish qobiliyatini pasaytiradi.
+      </p>
+      <div style="background:#eff6ff; padding:8px; border-radius:6px; font-size:0.8rem; color:#1e40af; font-weight:600;">
+        🛡️ Chora: Har 20 daqiqada ekrandan uzoqqa (kamida 5-6 metrga) qarab dam olish.
+      </div>
+    </div>
+
+    <div class="non-inf-card" style="border-top-color:#8b5cf6;">
+      <div class="non-inf-icon">🎒</div>
+      <h3 style="font-size:1.15rem; color:#6d28d9;">Skolioz (Umurtqa egriligi)</h3>
+      <p style="font-size:0.88rem; color:var(--slate-700)">
+        Partada noto‘g‘ri bukilish, og‘ir sumkani bir yelkada ko‘tarish umurtqa pog‘onasining qiyshayishiga olib keladi.
+      </p>
+      <div style="background:#f5f3ff; padding:8px; border-radius:6px; font-size:0.8rem; color:#5b21b6; font-weight:600;">
+        🛡️ Chora: Qomatni tik tutish, sumkani ikki yelkaga barobar osish.
+      </div>
+    </div>
+  </div>
+
+  <!-- Interaktiv Ko'z va Tana Gimnastikasi Taymeri -->
+  <div class="gym-timer-box">
+    <h3 style="font-family:'Outfit',sans-serif; font-size:1.5rem;"><i class="fa-solid fa-stopwatch"></i> Interaktiv Ko‘z Gimnastikasi Simulyatori</h3>
+    <p style="font-size:0.95rem; color:#bae6fd; max-width:600px; margin: 6px auto;">
+      Ko‘zingiz toliqqan paytda ushbu harakatlanuvchi nuqtaga qarab nigohingizni mashq qildiring:
+    </p>
+    <div class="eye-target" id="eyeTarget"></div>
+    <div class="timer-display" id="timerDisplay">00:20</div>
+    <div style="display:flex; justify-content:center; gap:12px;">
+      <button onclick="startEyeExercise()" id="btnEye"><i class="fa-solid fa-play"></i> Mashqni Boshlash (20 soniya)</button>
+      <button onclick="resetEyeExercise()" style="background:#475569;"><i class="fa-solid fa-rotate-right"></i> Qayta o‘rnatish</button>
+    </div>
+    <p id="eyeStatus" style="margin-top:10px; font-size:0.88rem; color:#93c5fd;">Tugmani bosing va nuqtaning harakatiga ko‘zingiz bilan ergashing!</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     YANGI BO'LIM 2: BIRINCHI YORDAM VA SHAXSIY GIGIYA CHEK-LISTI
+     ======================================================== -->
+<section id="birinchi-yordam" class="card">
+  <div style="display:flex; align-items:center;">
+    <h2 class="title" style="margin-bottom:0; border:none; padding-bottom:0;">
+      <i class="fa-solid fa-kit-medical"></i> 5. Birinchi yordam va Shaxsiy Gigiyena laboratoriyasi
+    </h2>
+    <span class="badge-new">Yangi bo‘lim</span>
+  </div>
+  <p style="color:var(--slate-700); margin: 15px 0 20px;">
+    Favqulodda vaziyatlarda to‘g‘ri harakat qilish va kunlik gigiyenaga amal qilish orqali o‘z hayotingiz va sog‘ligingizni asrashingiz mumkin.
+  </p>
+
+  <div class="grid">
+    <!-- Birinchi yordam interaktiv kartalari -->
+    <div>
+      <h3 style="color:var(--slate-900); font-size:1.2rem; margin-bottom:12px;">
+        <i class="fa-solid fa-truck-medical" style="color:#ef4444;"></i> Tezkor birinchi yordam qoidalari:
+      </h3>
+      <p style="font-size:0.9rem; color:var(--slate-700); margin-bottom:12px;">Holatni tanlang va harakatlar ketma-ketligini bilib oling:</p>
+
+      <div class="aid-grid">
+        <div class="aid-item active" onclick="showAid('cut', this)">
+          <h4><i class="fa-solid fa-bandage" style="color:#ef4444;"></i> Barmoq kesilishi</h4>
+          <span style="font-size:0.8rem; color:#64748b;">Kichik jarohat va qon ketishi</span>
+        </div>
+        <div class="aid-item" onclick="showAid('burn', this)">
+          <h4><i class="fa-solid fa-fire" style="color:#ea580c;"></i> Issiq suvdan kuyish</h4>
+          <span style="font-size:0.8rem; color:#64748b;">1-2 darajali yengil kuyish</span>
+        </div>
+        <div class="aid-item" onclick="showAid('poison', this)">
+          <h4><i class="fa-solid fa-utensils" style="color:#eab308;"></i> Ovqatdan zaharlanish</h4>
+          <span style="font-size:0.8rem; color:#64748b;">Ko‘ngil aynishi, holsizlik</span>
+        </div>
+        <div class="aid-item" onclick="showAid('sun', this)">
+          <h4><i class="fa-solid fa-sun" style="color:#f59e0b;"></i> Quyosh urishi</h4>
+          <span style="font-size:0.8rem; color:#64748b;">Bosh og‘rig‘i, qizib ketish</span>
+        </div>
+      </div>
+
+      <div class="aid-details" id="aidDetails">
+        <h4 id="aidTitle" style="color:#0f766e; font-size:1.15rem; margin-bottom:8px;">🩹 Barmoq kesilganda nima qilish kerak?</h4>
+        <ol id="aidSteps" style="margin-left:20px; line-height:1.7; font-size:0.92rem; color:var(--slate-700);">
+          <li>Qo‘lni toza oqar sovuq suvda yuvib tozalang.</li>
+          <li>Jarohat atrofini 3% li vodorod peroksidi yoki antiseptik bilan arting.</li>
+          <li>Qonni to‘xtatish uchun toza bint yoki paxta bilan bir necha daqiqa bosib turing.</li>
+          <li>Steril bint yoki bakteritsid leykoplastir yopishtiring.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Kunlik Gigiyena va Sog'lomlik Reytingi -->
+    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:24px;">
+      <h3 style="color:var(--slate-900); font-size:1.2rem; margin-bottom:6px;">
+        <i class="fa-solid fa-list-check" style="color:var(--emerald);"></i> Kunlik Shaxsiy Gigiyena Cheklisti
+      </h3>
+      <p style="font-size:0.85rem; color:var(--slate-700); margin-bottom:16px;">
+        Bugungi bajargan amallaringizni belgilang va immunitet ballingizni bilib oling:
+      </p>
+
+      <div id="checkList">
+        <label class="checklist-item" onclick="updateChecklist()">
+          <input type="checkbox" id="c1" checked>
+          <span>Ertalab va kechqurun tishlarni tozalash (2 daqiqa)</span>
+        </label>
+        <label class="checklist-item" onclick="updateChecklist()">
+          <input type="checkbox" id="c2" checked>
+          <span>Ko‘chadan kelganda va ovqatdan oldin qo‘llarni sovunlab yuvish</span>
+        </label>
+        <label class="checklist-item" onclick="updateChecklist()">
+          <input type="checkbox" id="c3">
+          <span>Xonani kuniga kamida 2-3 marta 10 daqiqa shamollatish</span>
+        </label>
+        <label class="checklist-item" onclick="updateChecklist()">
+          <input type="checkbox" id="c4">
+          <span>Kamida 1.5 - 2 litr toza qaynatilgan yoki filtrlangan suv ichish</span>
+        </label>
+        <label class="checklist-item" onclick="updateChecklist()">
+          <input type="checkbox" id="c5">
+          <span>Kamida 8 soat yetarli va tinch uxlash</span>
+        </label>
+        <label class="checklist-item" onclick="updateChecklist()">
+          <input type="checkbox" id="c6">
+          <span>Ertalabki yengil badantarbiya mashqlarini bajarish</span>
+        </label>
+      </div>
+
+      <div style="margin-top:20px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:15px;">
+        <div class="score-circle" id="scoreCircle">
+          <div class="score-inner">
+            <span id="scorePercent">33%</span>
+            <span>Himoya kuchi</span>
+          </div>
+        </div>
+        <div style="flex:1; min-width:180px;">
+          <h4 id="scoreTitle" style="color:var(--emerald); font-size:1.05rem;">Yaxshi boshlanish!</h4>
+          <p id="scoreMessage" style="font-size:0.82rem; color:var(--slate-700); margin-top:4px;">
+            Ko‘proq sog‘lom odatlarni qo‘shib, immunitetingizni 100% ga yetkazing!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4-BO'LIM: NAZARIY MA'LUMOTLAR TABS -->
+<section class="card">
+  <h2 class="title"><i class="fa-solid fa-book-open"></i> 6. Kengaytirilgan nazariy ma’lumotlar</h2>
+  <div class="tabs">
+    <button class="tab active" onclick="tab('t1',this)"><i class="fa-solid fa-wind"></i> Nafas yo‘li infeksiyalari</button>
+    <button class="tab" onclick="tab('t2',this)"><i class="fa-solid fa-pump-soap"></i> Gigiyena va Sanitariya</button>
+    <button class="tab" onclick="tab('t3',this)"><i class="fa-solid fa-shield-halved"></i> Immun tizimi a'zolari</button>
+    <button class="tab" onclick="tab('t4',this)"><i class="fa-solid fa-syringe"></i> Vaksinatsiya tarixi va fani</button>
+  </div>
+  
+  <div id="t1" class="content active">
+    <h3>Nafas yo‘li orqali yuquvchi kasalliklar</h3>
+    <p>Gripp, O‘RVI, qizamiq va sil kasalliklari havo-tomchi yo‘li bilan tarqaladi. Aksirgan yoki yo‘talganda kasallik qo‘zg‘atuvchi mikroblar havoda 2-3 metr masofagacha sochiladi.</p>
+    <ul class="list" style="margin-top:10px">
+      <li>Kasallik alomatlari paydo bo‘lganda boshqalarni zararlamaslik uchun tibbiy niqob taqish zarur.</li>
+      <li>Yo‘talganda kaft bilan emas, tirsak bilan yoki bir martalik dastro‘mol bilan to‘sish kerak.</li>
+    </ul>
+  </div>
+  
+  <div id="t2" class="content">
+    <h3>Gigiyena qoidalari va Mikroblardan himoya</h3>
+    <p>Sanitariya va gigiyena insoniyat tarixida umr ko‘rish davomiyligini ikki baravarga oshirgan eng muhim kashfiyotdir.</p>
+    <ul class="list" style="margin-top:10px">
+      <li>Qo‘l terisidagi mayda burmalar va tirnoq ostida millionlab mikroblar yashashi mumkin.</li>
+      <li>Xom go‘sht va pishgan ovqatlarni alohida taxtalarda to‘g‘rash oziq-ovqatdan zaharlanishning oldini oladi.</li>
+      <li>Uy hayvonlari bilan o‘ynagandan so‘ng albatta qo‘lni sovun bilan yuvish talab etiladi.</li>
+    </ul>
+  </div>
+
+  <div id="t3" class="content">
+    <h3>Immun tizimi qanday tuzilgan?</h3>
+    <p>Immun tizimi faqat qon hujayralaridan iborat emas. Unda maxsus organlar ishtirok etadi:</p>
+    <ul class="list" style="margin-top:10px">
+      <li><strong>Qizil ilik:</strong> Barcha qon hujayralari, shu jumladan leykotsitlar shu yerda hosil bo‘ladi.</li>
+      <li><strong>Ayrisimon bez (Timus):</strong> T-limfotsitlarning o‘sishi va "tarbiyalanishi" joyi.</li>
+      <li><strong>Taloq va limfa tugunlari:</strong> Qon va limfa suyuqligini mikroblardan tozalovchi biologik filtrlar.</li>
+    </ul>
+  </div>
+
+  <div id="t4" class="content">
+    <h3>Vaksinatsiya — fanning eng buyuk yutug‘i</h3>
+    <p>Dunyo bo‘ylab birinchi vaksinani 1796-yilda Edvard Jenner chechakka qarshi yaratgan. Lui Paster esa quturish va kuydirgi kasalliklariga qarshi vaksinalar asoschisi bo‘lgan.</p>
+    <p style="margin-top:8px">Vaksina tufayli qora chechak kabi dahshatli kasalliklar Yer yuzidan butunlay yo‘qotilgan, poliomiyelit esa deyarli tugatilgan.</p>
+  </div>
+</section>
+
+<!-- 5-BO'LIM: BILIMNI TEKSHIRISH TESTI -->
+<section id="test" class="card">
+  <h2 class="title"><i class="fa-solid fa-graduation-cap"></i> 7. Bilimingizni tekshiring (Kengaytirilgan test)</h2>
+  <p id="question" style="font-size:1.1rem; color:var(--slate-900); margin-bottom:12px;"><b>1. Organizmning birinchi tashqi mudofaa chizig‘i nima?</b></p>
+  <div id="options">
+    <div class="quiz-option" onclick="answer(this,false)">A) Antitanachalar</div>
+    <div class="quiz-option" onclick="answer(this,true)">B) Teri va shilliq qavatlar</div>
+    <div class="quiz-option" onclick="answer(this,false)">C) Faqat yurak tomirlari</div>
+    <div class="quiz-option" onclick="answer(this,false)">D) Suyaklar va bo‘g‘imlar</div>
+  </div>
+  <div id="feedback"></div>
+  <div class="score" id="score">Natija: 0 / 7</div>
+  <button id="next" style="display:none; margin-top:15px; background:var(--primary); color:white;" onclick="nextQuestion()">
+    Keyingi savol <i class="fa-solid fa-arrow-right"></i>
+  </button>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>6-sinf Tabiiy Fanlar</strong> • Kasalliklar va Ularning Oldini Olish mavzusi bo‘yicha interaktiv o‘quv platformasi</p>
+    <p style="margin-top:6px; font-size:0.85rem; color:#94a3b8;">Zamonaviy SVG simulyatsiyalari va ko‘rgazmali animatsiyalar bilan takomillashtirilgan.</p>
+  </div>
+</footer>
+
+<script>
+// SOUND EFFECTS (Web Audio API)
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+function playBeep(type) {
+  try {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    const now = audioCtx.currentTime;
+    if (type === 'click') {
+      osc.frequency.setValueAtTime(440, now);
+      gain.gain.setValueAtTime(0.05, now);
+      osc.start(now);
+      osc.stop(now + 0.05);
+    } else if (type === 'correct') {
+      osc.frequency.setValueAtTime(523.25, now);
+      osc.frequency.setValueAtTime(659.25, now + 0.1);
+      gain.gain.setValueAtTime(0.08, now);
+      osc.start(now);
+      osc.stop(now + 0.25);
+    } else if (type === 'wrong') {
+      osc.frequency.setValueAtTime(220, now);
+      osc.frequency.setValueAtTime(180, now + 0.1);
+      gain.gain.setValueAtTime(0.08, now);
+      osc.start(now);
+      osc.stop(now + 0.25);
+    }
+  } catch(e){}
+}
+
+// 7 TA KENGAYTIRILGAN SAVOLLAR RO'YXATI
+const questions = [
+  {
+    q: "1. Organizmning birinchi tashqi mudofaa chizig‘i nima?",
+    a: ["Antitanachalar", "Teri va shilliq qavatlar", "Faqat yurak tomirlari", "Suyaklar va bo‘g‘imlar"],
+    c: 1
+  },
+  {
+    q: "2. Mikroblarni o‘rab olib, yutib yuboradigan leykotsitlar faoliyati nima deb ataladi?",
+    a: ["Fotosintez", "Fagotsitoz", "Nafas olish", "Moddalar parchalanishi"],
+    c: 1
+  },
+  {
+    q: "3. Maxsus immun javobida limfotsitlar tomonidan nima ishlab chiqariladi?",
+    a: ["Antitanachalar", "Gemoglobin", "Oshqozon shillig‘i", "Insulin gormoni"],
+    c: 0
+  },
+  {
+    q: "4. Kamharakatlik (gipodinamiya) oqibatida qanday muammo yuzaga kelishi mumkin?",
+    a: ["Qon aylanishi va yurak faoliyatining zaiflashishi", "Immunitetning haddan tashqari kuchayishi", "Xotiraning 100% ga yaxshilanishi", "Mushaklarning o‘z-o‘zidan baquvvat bo‘lishi"],
+    c: 0
+  },
+  {
+    q: "5. Vaksinatsiyaning asosiy vazifasi nima?",
+    a: ["Mikroblarni ko‘paytirish", "Organizmda oldindan himoyalovchi immun xotira hosil qilish", "Oshqozonni tozalash", "Uyqu keltirish"],
+    c: 1
+  },
+  {
+    q: "6. Barmoq kesilib qon ketganda dastlabki to‘g‘ri qadam qaysi?",
+    a: ["Darhol qorong‘i xonada uxlash", "Jarohatni toza suvda yuvib, toza bint bilan qonni to‘xtatish", "Ustiga issiq suv quyish", "E'tibor bermasdan loyda o‘ynash"],
+    c: 1
+  },
+  {
+    q: "7. Qaysi mikroorganizmlar faqat mezbon hujayra ichida ko‘payadi?",
+    a: ["Viruslar", "Zamburug‘lar", "Chivinlar", "Bakteriyalar"],
+    c: 0
+  }
+];
+
+let qi = 0, score = 0, answered = false;
+
+function answer(el, correct) {
+  if (answered) return;
+  answered = true;
+  document.querySelectorAll(".quiz-option").forEach(x => x.style.pointerEvents = "none");
+  
+  if (correct) {
+    playBeep('correct');
+    el.classList.add("correct");
+    score++;
+    document.getElementById("feedback").innerHTML = "<p style='color:#16a34a;font-weight:bold;margin-top:10px'><i class='fa-solid fa-circle-check'></i> Ajoyib! To‘g‘ri javob.</p>";
+  } else {
+    playBeep('wrong');
+    el.classList.add("wrong");
+    document.getElementById("feedback").innerHTML = "<p style='color:#dc2626;font-weight:bold;margin-top:10px'><i class='fa-solid fa-circle-xmark'></i> Noto‘g‘ri. To‘g‘ri javob: <strong>" + questions[qi].a[questions[qi].c] + "</strong></p>";
+    document.querySelectorAll(".quiz-option")[questions[qi].c].classList.add("correct");
+  }
+  
+  document.getElementById("score").innerText = "Natija: " + score + " / " + questions.length;
+  document.getElementById("next").style.display = "inline-flex";
+}
+
+function nextQuestion() {
+  playBeep('click');
+  qi++;
+  answered = false;
+  if (qi >= questions.length) {
+    document.getElementById("question").innerHTML = "<b>🎉 Test muvaffaqiyatli yakunlandi!</b>";
+    document.getElementById("options").innerHTML = `
+      <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:14px; padding:20px; text-align:center;">
+        <h3 style="color:#166534; font-size:1.4rem;">Sizning umumiy natijangiz: ${score} / ${questions.length}</h3>
+        <p style="color:#15803d; margin-top:8px;">${score >= 6 ? '🌟 A’lo daraja! Siz sog‘liq va immunitet bo‘yicha haqiqiy bilimdonsiz.' : score >= 4 ? '👍 Yaxshi natija! Mavzuni yana bir bor qaytarib ko‘ring.' : '📚 Tavsiya: Darslikdagi mavzuni diqqat bilan o‘qib chiqing.'}</p>
+        <button onclick="restartQuiz()" style="margin-top:15px; background:var(--primary); color:white;"><i class='fa-solid fa-rotate-left'></i> Testni qayta topshirish</button>
+      </div>
+    `;
+    document.getElementById("feedback").innerHTML = "";
+    document.getElementById("next").style.display = "none";
+    return;
+  }
+  
+  document.getElementById("question").innerHTML = "<b>" + questions[qi].q + "</b>";
+  document.getElementById("options").innerHTML = questions[qi].a.map((x, i) => 
+    `<div class="quiz-option" onclick="answer(this, ${i === questions[qi].c})">${String.fromCharCode(65 + i)}) ${x}</div>`
+  ).join("");
+  document.getElementById("feedback").innerHTML = "";
+  document.getElementById("next").style.display = "none";
+}
+
+function restartQuiz() {
+  qi = 0;
+  score = 0;
+  answered = false;
+  document.getElementById("score").innerText = "Natija: 0 / " + questions.length;
+  nextQuestion();
+  qi = 0;
+  document.getElementById("question").innerHTML = "<b>" + questions[0].q + "</b>";
+  document.getElementById("options").innerHTML = questions[0].a.map((x, i) => 
+    `<div class="quiz-option" onclick="answer(this, ${i === questions[0].c})">${String.fromCharCode(65 + i)}) ${x}</div>`
+  ).join("");
+}
+
+// IMMUNITET SIMULATORI BOSHQARUVI
+function defense(n, btn) {
+  playBeep('click');
+  document.querySelectorAll(".controls button").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  
+  const p = document.getElementById("progress");
+  const s = document.getElementById("status");
+  const barrier = document.getElementById("barrier");
+  const phago = document.getElementById("phagocyte");
+  const ab1 = document.getElementById("ab1");
+  const ab2 = document.getElementById("ab2");
+  const ab3 = document.getElementById("ab3");
+  const m1 = document.getElementById("m1");
+  const m2 = document.getElementById("m2");
+  const m3 = document.getElementById("m3");
+
+  if (n === 1) {
+    p.style.width = "33%";
+    barrier.style.border = "4px dashed #22c55e";
+    barrier.style.boxShadow = "0 0 20px rgba(34,197,94,0.4)";
+    phago.style.display = "none";
+    ab1.style.display = "none";
+    ab2.style.display = "none";
+    ab3.style.display = "none";
+    m1.style.opacity = "1";
+    m2.style.opacity = "1";
+    m3.style.opacity = "1";
+    s.innerHTML = "<strong>1-bosqich: Tashqi g‘ovlar.</strong> Teri va shilliq qavatlar mikroblarning organizm ichki a'zolariga kirishiga mustahkam qalqon bo‘lib to‘sqinlik qiladi.";
+  } else if (n === 2) {
+    p.style.width = "66%";
+    barrier.style.border = "2px dashed #64748b";
+    barrier.style.boxShadow = "none";
+    phago.style.display = "flex";
+    ab1.style.display = "none";
+    ab2.style.display = "none";
+    ab3.style.display = "none";
+    m1.style.opacity = "0.3";
+    m2.style.opacity = "0.7";
+    m3.style.opacity = "0.3";
+    s.innerHTML = "<strong>2-bosqich: Fagotsitoz (Leykotsitlar).</strong> Mikrob tanaga kirganda qondagi leykotsitlar ularni o‘rab olib, yutib nobud qiladi.";
+  } else if (n === 3) {
+    p.style.width = "100%";
+    barrier.style.border = "2px dashed #64748b";
+    barrier.style.boxShadow = "none";
+    phago.style.display = "none";
+    ab1.style.display = "block";
+    ab2.style.display = "block";
+    ab3.style.display = "block";
+    m1.style.opacity = "0.1";
+    m2.style.opacity = "0.1";
+    m3.style.opacity = "0.1";
+    s.innerHTML = "<strong>3-bosqich: Maxsus antitanachalar.</strong> Immun tizimi mikrobga xos antitanachalar ishlab chiqaradi. Ular mikroblarga yopishib, butunlay neytrallashtiradi!";
+  }
+}
+
+// TABLAR
+function tab(id, btn) {
+  playBeep('click');
+  document.querySelectorAll(".content").forEach(x => x.classList.remove("active"));
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  btn.classList.add("active");
+}
+
+// KO'Z GIMNASTIKASI TAYMERI
+let timerInterval = null;
+let timeLeft = 20;
+
+function startEyeExercise() {
+  playBeep('click');
+  if (timerInterval) clearInterval(timerInterval);
+  timeLeft = 20;
+  document.getElementById("btnEye").disabled = true;
+  document.getElementById("eyeStatus").innerText = "Nuqtaning harakatiga ko‘zingiz bilan qarab turing va boshingizni qimirlatmang!";
+  document.getElementById("eyeTarget").style.animationPlayState = "running";
+  
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    const str = timeLeft < 10 ? "0" + timeLeft : timeLeft;
+    document.getElementById("timerDisplay").innerText = "00:" + str;
+    
+    if (timeLeft <= 0) {
+      clearInterval(timerInterval);
+      playBeep('correct');
+      document.getElementById("timerDisplay").innerText = "00:00";
+      document.getElementById("eyeStatus").innerHTML = "🎉 <strong style='color:#38bdf8'>Barakalla!</strong> Ko‘z mushaklaringiz dam oldi va charchoq tarqaldi.";
+      document.getElementById("btnEye").disabled = false;
+    }
+  }, 1000);
+}
+
+function resetEyeExercise() {
+  playBeep('click');
+  if (timerInterval) clearInterval(timerInterval);
+  timeLeft = 20;
+  document.getElementById("timerDisplay").innerText = "00:20";
+  document.getElementById("eyeStatus").innerText = "Tugmani bosing va nuqtaning harakatiga ko‘zingiz bilan ergashing!";
+  document.getElementById("btnEye").disabled = false;
+}
+
+// BIRINCHI YORDAM MA'LUMOTLARI
+const aidData = {
+  cut: {
+    title: "🩹 Barmoq kesilganda nima qilish kerak?",
+    steps: [
+      "Qo‘lni toza oqar sovuq suvda yuvib tozalang.",
+      "Jarohat atrofini 3% li vodorod peroksidi yoki antiseptik bilan arting.",
+      "Qonni to‘xtatish uchun toza bint yoki paxta bilan bir necha daqiqa bosib turing.",
+      "Steril bint yoki bakteritsid leykoplastir yopishtiring."
+    ]
+  },
+  burn: {
+    title: "🔥 Issiq suv yoki buyumdan kuyganda birinchi yordam:",
+    steps: [
+      "Kuygan sohani zudlik bilan 10-15 daqiqa sovuq oqar suv ostida tutib turing.",
+      "Kuygan joyga hech qachon qatiq, yog‘, tish pastasi yoki spirt surtmang!",
+      "Hosil bo‘lgan pufakchalarni aslo yormang.",
+      "Steril quruq bog‘lam qo‘ying va kattalarga yoki shifokorga xabar bering."
+    ]
+  },
+  poison: {
+    title: "🤢 Oziq-ovqatdan zaharlanganda qilinadigan ishlar:",
+    steps: [
+      "Bemorni ko‘proq toza qaynatilgan iliq suv ichirishga undang.",
+      "Faollashtirilgan ko‘mir (aktivirovanniy ugol) yoki sorbent tabletkalaridan bering.",
+      "Oshqozonni yuvish orqali zararli toksinlarni chiqarib yuborishga yordam bering.",
+      "Ahvol yaxshilanmasa, zudlik bilan '103' tez tibbiy yordamga qo‘ng‘iroq qiling."
+    ]
+  },
+  sun: {
+    title: "☀️ Quyosh urishi va jaziramada yordam:",
+    steps: [
+      "Jabrlanuvchini darhol salqin va soyali joyga olib o‘ting.",
+      "Boshiga va peshonasiga sovuq suvda ho‘llangan sochiq qo‘ying.",
+      "Kiyim tugmalarini yechib, toza havo oqimini ta'minlang.",
+      "Kichik qultumlar bilan sho‘rroq yoki toza suv ichiring."
+    ]
+  }
+};
+
+function showAid(type, el) {
+  playBeep('click');
+  document.querySelectorAll(".aid-item").forEach(x => x.classList.remove("active"));
+  el.classList.add("active");
+  const data = aidData[type];
+  document.getElementById("aidTitle").innerText = data.title;
+  document.getElementById("aidSteps").innerHTML = data.steps.map(s => `<li>${s}</li>`).join("");
+}
+
+// CHECKLIST HISOBLASH
+function updateChecklist() {
+  playBeep('click');
+  const checkboxes = document.querySelectorAll("#checkList input[type='checkbox']");
+  let checkedCount = 0;
+  checkboxes.forEach(cb => {
+    if (cb.checked) {
+      checkedCount++;
+      cb.parentElement.classList.add("checked");
+    } else {
+      cb.parentElement.classList.remove("checked");
+    }
+  });
+
+  const percent = Math.round((checkedCount / checkboxes.length) * 100);
+  document.getElementById("scorePercent").innerText = percent + "%";
+  document.getElementById("scoreCircle").style.background = `conic-gradient(var(--emerald) ${percent * 3.6}deg, #e2e8f0 0deg)`;
+
+  const title = document.getElementById("scoreTitle");
+  const msg = document.getElementById("scoreMessage");
+
+  if (percent >= 80) {
+    title.innerText = "🌟 Ajoyib himoya! (A+)";
+    title.style.color = "#16a34a";
+    msg.innerText = "Siz shaxsiy gigiyenaga mukammal amal qilyapsiz. Organizm mikroblarga qarshi to‘liq tayyor!";
+  } else if (percent >= 50) {
+    title.innerText = "👍 Yaxshi himoya!";
+    title.style.color = "#0284c7";
+    msg.innerText = "Barcha qoidalarga amal qilsangiz, immunitetingiz yanada mustahkam bo‘ladi.";
+  } else {
+    title.innerText = "⚠️ E'tiborli bo‘ling!";
+    title.style.color = "#ea580c";
+    msg.innerText = "Kunlik gigiyena qoidalariga ko‘proq rioya qiling, aks holda mikroblar organizmga oson kirishi mumkin.";
+  }
+}
+
+// Boshlang'ich holatni chaqirish
+updateChecklist();
+</script>
+</body>
+</html>
