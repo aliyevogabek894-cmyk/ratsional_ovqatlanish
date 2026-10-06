@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oziqa Zanjiri va Oziq To'ri — 6-Sinf Tabiiy Fanlar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #16a34a;
+            --primary-dark: #14532d;
+            --secondary: #0284c7;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --purple: #7c3aed;
+            --bg-body: #f0fdf4;
+            --bg-card: #ffffff;
+            --bg-subtle: #f8fafc;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --radius: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #09130e;
+            --bg-card: #13241b;
+            --bg-subtle: #1a3326;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #234735;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; transition: background 0.3s, color 0.3s; }
+        body { background: var(--bg-body); color: var(--text-main); line-height: 1.6; padding-bottom: 50px; }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #14532d, #16a34a, #0d9488);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(22, 163, 74, 0.25);
+            position: relative;
+        }
+        .header-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .header-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            backdrop-filter: blur(5px);
+        }
+        .header-btn:hover { background: rgba(255, 255, 255, 0.35); transform: scale(1.05); }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        header h1 { font-size: 2.2rem; margin-bottom: 8px; font-weight: 800; }
+        header p { font-size: 1.05rem; opacity: 0.95; max-width: 700px; margin: 0 auto; }
+
+        /* NAVIGATION TABS */
+        .nav-wrapper {
+            max-width: 1100px;
+            margin: -22px auto 25px;
+            padding: 0 15px;
+            position: sticky;
+            top: 15px;
+            z-index: 100;
+        }
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 8px;
+            border-radius: 999px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+        .nav-tab-btn {
+            flex: 1;
+            white-space: nowrap;
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+        .nav-tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+        }
+
+        /* CONTAINER & CARDS */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        .title {
+            font-size: 1.45rem;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .title span { color: var(--primary); }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        @media(max-width: 850px) { .grid-2 { grid-template-columns: 1fr; } header h1 { font-size: 1.7rem; } }
+
+        .info-box {
+            background: var(--bg-subtle);
+            border-left: 5px solid var(--primary);
+            padding: 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .info-box h3 { color: var(--primary-dark); margin-bottom: 8px; }
+        [data-theme="dark"] .info-box h3 { color: #4ade80; }
+
+        /* OZIQA ZANJIRI ZANJIR BLOKLARI */
+        .chain-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .chain-node {
+            min-width: 130px;
+            text-align: center;
+            padding: 16px 12px;
+            border-radius: 14px;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .chain-node:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        .node-sun { background: linear-gradient(135deg, #eab308, #ca8a04); }
+        .node-plant { background: linear-gradient(135deg, #16a34a, #15803d); }
+        .node-herb { background: linear-gradient(135deg, #0284c7, #0369a1); }
+        .node-carn { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .node-apex { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+        .node-decomp { background: linear-gradient(135deg, #713f12, #854d0e); }
+        .flow-arrow { font-size: 1.6rem; color: var(--text-muted); font-weight: 900; }
+
+        /* JONLI OZIK TO'RI (FOOD WEB) */
+        .foodweb-container {
+            background: #0b1329;
+            border-radius: 18px;
+            padding: 24px;
+            color: white;
+            border: 2px solid #1e293b;
+            position: relative;
+            overflow: hidden;
+        }
+        .foodweb-svg {
+            width: 100%;
+            height: 420px;
+            min-width: 600px;
+        }
+        .web-node {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .web-node:hover circle {
+            filter: drop-shadow(0 0 10px #38bdf8);
+            transform: scale(1.05);
+            transform-origin: center;
+        }
+        .web-link {
+            stroke: #475569;
+            stroke-width: 2.2;
+            transition: stroke 0.3s, stroke-width 0.3s;
+        }
+        .web-link.active-link {
+            stroke: #38bdf8 !important;
+            stroke-width: 4 !important;
+            filter: drop-shadow(0 0 6px #38bdf8);
+        }
+
+        /* 10% QOIDASI PIRAMIDASI */
+        .pyramid-card {
+            background: #0f172a;
+            border-radius: 18px;
+            padding: 24px;
+            color: white;
+            border: 1px solid #1e293b;
+        }
+        .pyramid-levels {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 25px auto;
+            max-width: 580px;
+        }
+        .pyr-level {
+            border-radius: 12px;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .pyr-4 { width: 45%; margin: 0 auto; background: linear-gradient(135deg, #7c3aed, #9333ea); }
+        .pyr-3 { width: 65%; margin: 0 auto; background: linear-gradient(135deg, #2563eb, #3b82f6); }
+        .pyr-2 { width: 85%; margin: 0 auto; background: linear-gradient(135deg, #eab308, #ca8a04); }
+        .pyr-1 { width: 100%; margin: 0 auto; background: linear-gradient(135deg, #16a34a, #22c55e); }
+
+        /* BIOMAGNIFIKATSIYA */
+        .toxic-panel {
+            background: linear-gradient(145deg, #111827, #1f2937);
+            border-radius: 18px;
+            padding: 24px;
+            color: white;
+            border: 1px solid #374151;
+        }
+        .toxic-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            margin: 25px 0;
+        }
+        .toxic-card {
+            background: #1e293b;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            border: 2px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .toxic-card:hover { transform: translateY(-4px); border-color: #ef4444; }
+        .toxic-bar-wrap {
+            height: 10px;
+            background: #334155;
+            border-radius: 999px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .toxic-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #facc15, #ef4444);
+            border-radius: 999px;
+            transition: width 0.7s ease;
+        }
+
+        /* BUTTONS & CONTROLS */
+        .btn {
+            border: none;
+            border-radius: 10px;
+            padding: 10px 18px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3); }
+        .btn-subtle { background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border); }
+        .btn-subtle:hover { background: var(--border); }
+
+        /* QUIZ */
+        .quiz-opt {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .quiz-opt:hover { background: rgba(22, 163, 74, 0.08); border-color: var(--primary); }
+        .quiz-opt.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #15803d !important; }
+        .quiz-opt.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
+
+        /* DIPLOM */
+        .diploma-box {
+            border: 5px double #16a34a;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            color: #14532d;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            box-shadow: 0 10px 30px rgba(22, 163, 74, 0.2);
+        }
+        [data-theme="dark"] .diploma-box {
+            background: linear-gradient(135deg, #062412, #0d3b1e);
+            color: #86efac;
+            border-color: #22c55e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <header>
+        <div class="header-controls">
+            <button class="header-btn" onclick="toggleTheme()" title="Mavzu"><i class="fa-solid fa-moon"></i></button>
+            <button class="header-btn" onclick="toggleSound()" title="Ovoz"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+        <div class="container">
+            <span class="badge">6-Sinf Tabiiy Fanlar • 5-Katta Mavzu</span>
+            <h1>🌿 Oziqa Zanjiri va Jonli Ekotizim To'ri</h1>
+            <p>Ekotizimda energiya oqimi, 10% qoidasi, biomagnifikatsiya hamda turlarning o'zaro bog'liqligi bo'yicha interaktiv laboratoriya</p>
+        </div>
+    </header>
+
+    <!-- TABS NAVIGATION -->
+    <div class="nav-wrapper">
+        <div class="nav-tabs">
+            <button class="nav-tab-btn active" onclick="switchTab(1)"><i class="fa-solid fa-seedling"></i> 1. Oziqa Zanjiri</button>
+            <button class="nav-tab-btn" onclick="switchTab(2)"><i class="fa-solid fa-diagram-project"></i> 2. Jonli Oziq To'ri</button>
+            <button class="nav-tab-btn" onclick="switchTab(3)"><i class="fa-solid fa-bolt"></i> 3. 10% Energiya Piramidasi</button>
+            <button class="nav-tab-btn" onclick="switchTab(4)"><i class="fa-solid fa-biohazard"></i> 4. Biomagnifikatsiya</button>
+            <button class="nav-tab-btn" onclick="switchTab(5)"><i class="fa-solid fa-graduation-cap"></i> 5. Test & Diplom</button>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- TAB 1: OZIQA ZANJIRI VA INTERAKTIV ZANJIR QURUVCHI -->
+        <section class="tab-content active" id="tab-1">
+            <div class="card">
+                <h2 class="title"><i class="fa-solid fa-link"></i> <span>1. Oziqa Zanjirining Tuzilishi</span></h2>
+                <p>Oziqa zanjiri — quyosh nuridan hosil boʻlgan energiyaning bir organizmdan boshqasiga oziqlanish orqali ketma-ket oʻtish tartibidir.</p>
+
+                <div class="chain-flow">
+                    <div class="chain-node node-sun" onclick="explainNode('sun')">☀️ Quyosh<br><small>Birlamchi Manba</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-plant" onclick="explainNode('plant')">🌿 Oʻsimlik<br><small>Produtsent (Hosil qiluvchi)</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-herb" onclick="explainNode('worm')">🐛 Qurt / Hasharot<br><small>I-Konsument (Oʻtxoʻr)</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-carn" onclick="explainNode('bird')">🐦 Qush<br><small>II-Konsument (Yirtqich)</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-apex" onclick="explainNode('hawk')">🦅 Lochin<br><small>III-Konsument (Oliy yirtqich)</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-decomp" onclick="explainNode('decomp')">🍄 Zamburugʻ<br><small>Redutsent (Parchalovchi)</small></div>
+                </div>
+
+                <div id="node-info-display" class="info-box" style="margin-top:15px;">
+                    <h3>💡 Organizmni bosing:</h3>
+                    <p>Yuqoridagi har bir boʻgʻinni bosib, uning ekotizimdagi oʻrni haqida batafsil maʼlumot oling.</p>
+                </div>
+            </div>
+
+            <!-- Interaktiv Zanjir Qurgich Mini-O'yini -->
+            <div class="card">
+                <h2 class="title"><i class="fa-solid fa-puzzle-piece"></i> <span>Interaktiv Topshiriq: Zanjirni Toʻgʻri Yigʻing!</span></h2>
+                <p>Quyidagi organizmlarni oziqlanish tartibida ketma-ket bosing:</p>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap; margin:15px 0;" id="builder-pool">
+                    <button class="btn btn-subtle" onclick="pickChainItem(this, 'Quyosh', 1)">☀️ Quyosh energiyasi</button>
+                    <button class="btn btn-subtle" onclick="pickChainItem(this, 'Burgut', 5)">🦅 Burgut (Yirtqich)</button>
+                    <button class="btn btn-subtle" onclick="pickChainItem(this, 'Makkajoʻxori', 2)">🌽 Makkajoʻxori (Oʻsimlik)</button>
+                    <button class="btn btn-subtle" onclick="pickChainItem(this, 'Ilon', 4)">🐍 Ilon</button>
+                    <button class="btn btn-subtle" onclick="pickChainItem(this, 'Sichqon', 3)">🐭 Dala sichqoni</button>
+                </div>
+
+                <div style="background:var(--bg-subtle); padding:16px; border-radius:12px; border:2px dashed var(--border); min-height:60px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;" id="builder-target">
+                    <span style="color:var(--text-muted); font-size:0.9rem;" id="builder-placeholder">Boʻsh joy: Birinchi boʻlib quyosh yoki produtsentni tanlang...</span>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;">
+                    <button class="btn btn-primary" onclick="resetChainGame()"><i class="fa-solid fa-rotate-right"></i> Qayta boshlash</button>
+                    <div id="builder-status" style="font-weight:700; color:var(--primary);"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: JONLI OZIK TO'RI VA EKOTIZIM MUVOZANATI -->
+        <section class="tab-content" id="tab-2">
+            <div class="card">
+                <h2 class="title"><i class="fa-solid fa-diagram-project"></i> <span>2. 🕸️ Jonli Interaktiv Oziq Toʻri (Food Web)</span></h2>
+                <p>Tabiatda zanjirlar alohida boʻlmaydi — ular kesishib murakkab toʻr hosil qiladi. Organizm doirasini bosing va uning barcha oziqlanish aloqalarini koʻring:</p>
+
+                <div class="foodweb-container">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+                        <span style="font-size:0.85rem; color:#94a3b8;"><i class="fa-solid fa-hand-pointer"></i> Organizmga bosing yoki ekotizim muvozanatini oʻzgartiring:</span>
+                        <div style="display:flex; gap:8px;">
+                            <button class="btn" style="background:#22c55e; color:white; font-size:0.78rem;" onclick="highlightWeb('plant')">🌿 Oʻsimlik aloqalari</button>
+                            <button class="btn" style="background:#0ea5e9; color:white; font-size:0.78rem;" onclick="highlightWeb('mouse')">🐭 Sichqon aloqalari</button>
+                            <button class="btn" style="background:#7c3aed; color:white; font-size:0.78rem;" onclick="highlightWeb('hawk')">🦅 Lochin aloqalari</button>
+                            <button class="btn" style="background:#334155; color:white; font-size:0.78rem;" onclick="resetWeb()"><i class="fa-solid fa-arrows-rotate"></i> Barchasi</button>
+                        </div>
+                    </div>
+
+                    <div style="overflow-x:auto;">
+                        <svg class="foodweb-svg" viewBox="0 0 800 390">
+                            <defs>
+                                <marker id="web-arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                                    <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+                                </marker>
+                            </defs>
+                            <g stroke="#64748b" stroke-width="2.5" marker-end="url(#web-arr)" opacity=".85">
+                                <line id="l-plant-worm" class="web-link" x1="120" y1="190" x2="280" y2="90"/>
+                                <line id="l-plant-mouse" class="web-link" x1="120" y1="190" x2="280" y2="190"/>
+                                <line id="l-plant-rabbit" class="web-link" x1="120" y1="190" x2="280" y2="290"/>
+                                <line id="l-worm-bird" class="web-link" x1="330" y1="90" x2="500" y2="145"/>
+                                <line id="l-mouse-bird" class="web-link" x1="330" y1="190" x2="500" y2="145"/>
+                                <line id="l-mouse-snake" class="web-link" x1="330" y1="190" x2="500" y2="245"/>
+                                <line id="l-rabbit-snake" class="web-link" x1="330" y1="290" x2="500" y2="245"/>
+                                <line id="l-bird-hawk" class="web-link" x1="550" y1="145" x2="700" y2="190"/>
+                                <line id="l-snake-hawk" class="web-link" x1="550" y1="245" x2="700" y2="190"/>
+                            </g>
+                            <g>
+                                <g class="web-node" onclick="highlightWeb('plant')">
+                                    <circle cx="100" cy="190" r="46" fill="#16a34a"/>
+                                    <text x="100" y="195" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🌿 Oʻsimlik</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWeb('worm')">
+                                    <circle cx="305" cy="90" r="40" fill="#ca8a04"/>
+                                    <text x="305" y="95" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐛 Qurt</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWeb('mouse')">
+                                    <circle cx="305" cy="190" r="40" fill="#0ea5e9"/>
+                                    <text x="305" y="195" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐭 Sichqon</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWeb('rabbit')">
+                                    <circle cx="305" cy="290" r="40" fill="#22c55e"/>
+                                    <text x="305" y="295" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐇 Quyon</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWeb('bird')">
+                                    <circle cx="525" cy="145" r="43" fill="#2563eb"/>
+                                    <text x="525" y="150" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐦 Qush</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWeb('snake')">
+                                    <circle cx="525" cy="245" r="43" fill="#f97316"/>
+                                    <text x="525" y="250" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐍 Ilon</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWeb('hawk')">
+                                    <circle cx="700" cy="190" r="48" fill="#7c3aed"/>
+                                    <text x="700" y="195" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🦅 Lochin</text>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div id="web-status-desc" style="background:rgba(255,255,255,0.06); padding:12px; border-radius:10px; margin-top:12px; text-align:center; font-size:0.9rem; color:#cbd5e1;">
+                        👆 Yuqoridagi istalgan doirani bosing: Strelkalar kim kimni yeyishi va energiya qayerga ketishini bildiradi!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: 10% QOIDASI VA ENERGIYA PIRAMIDASI -->
+        <section class="tab-content" id="tab-3">
+            <div class="card">
+                <h2 class="title"><i class="fa-solid fa-bolt"></i> <span>3. ⚡ Energiyaning Oqimi va 10% Qoidasi</span></h2>
+                <p>Ekotizimda energiyaning keyingi boʻgʻinga faqat taxminan <strong>10 foizi</strong> oʻtadi. Qolgan <strong>90 foizi</strong> hayot faoliyati (nafas, harakat) va issiqlik sifatida havoga tarqaladi.</p>
+
+                <div class="grid-2" style="margin-top:18px;">
+                    <!-- Boshqaruv va Slayder -->
+                    <div class="info-box">
+                        <h3>⚡ Boshlangʻich Quyosh Energiyasini Tanlang:</h3>
+                        <p style="margin:8px 0; font-size:0.9rem;">Oʻsimliklar qabul qilgan energiya miqdori:</p>
+                        
+                        <input type="range" id="energyRange" min="1000" max="100000" step="1000" value="10000" oninput="calcEnergy()" style="width:100%; height:8px; accent-color:#16a34a; cursor:pointer; margin:10px 0;">
+
+                        <div style="font-size:1.4rem; font-weight:800; color:#16a34a;" id="energyDisplay">10 000 Joul (J)</div>
+
+                        <div style="display:flex; gap:6px; flex-wrap:wrap; margin:14px 0;">
+                            <button class="btn btn-subtle" onclick="setEnergyVal(1000)">1 000 J</button>
+                            <button class="btn btn-subtle" onclick="setEnergyVal(10000)">10 000 J</button>
+                            <button class="btn btn-subtle" onclick="setEnergyVal(50000)">50 000 J</button>
+                            <button class="btn btn-subtle" onclick="setEnergyVal(100000)">100 000 J</button>
+                        </div>
+
+                        <div style="background:var(--bg-card); padding:12px; border-radius:10px; border:1px solid var(--border); font-size:0.85rem;">
+                            <strong>🔥 Qolgan 90% nima boʻladi?</strong>
+                            <p style="color:var(--text-muted); margin-top:4px;">Organizm oʻsishi, harakatlanishi, koʻpayishi va nafas olishi jarayonida sarflanib, qaytarib boʻlmaydigan issiqlik energiyasiga aylanadi.</p>
+                        </div>
+                    </div>
+
+                    <!-- Piramida Vizualizatsiyasi -->
+                    <div class="pyramid-card">
+                        <h3 style="text-align:center; font-size:1.15rem; color:#38bdf8; margin-bottom:12px;">📊 Energiya Piramidasi</h3>
+                        <div class="pyramid-levels">
+                            <div class="pyr-level pyr-4">
+                                <span>🦅 Oliy Yirtqich (III)</span>
+                                <strong id="val-p4">10 J (0.1%)</strong>
+                            </div>
+                            <div class="pyr-level pyr-3">
+                                <span>🐦 Yirtqich (II)</span>
+                                <strong id="val-p3">100 J (1%)</strong>
+                            </div>
+                            <div class="pyr-level pyr-2">
+                                <span>🐛 Oʻtxoʻr (I-konsument)</span>
+                                <strong id="val-p2">1 000 J (10%)</strong>
+                            </div>
+                            <div class="pyr-level pyr-1">
+                                <span>🌿 Produtsent (Oʻsimlik)</span>
+                                <strong id="val-p1">10 000 J (100%)</strong>
+                            </div>
+                        </div>
+                        <p style="text-align:center; font-size:0.8rem; color:#94a3b8;">Yuqori trofik pogʻonaga chiqqan sari biomassasi va energiya miqdori keskin kamayadi!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: BIOMAGNIFIKATSIYA -->
+        <section class="tab-content" id="tab-4">
+            <div class="card">
+                <h2 class="title"><i class="fa-solid fa-biohazard"></i> <span>4. ☣️ Zaharli Moddalar va Biomagnifikatsiya</span></h2>
+                <p>Energiya yuqoriga chiqqan sari kamaysa-da, <strong>chidamli zaharli moddalar (pestitsidlar, ogʻir metallar, simob)</strong> aksincha yuqori boʻgʻinlarda toʻplanib, konsentratsiyasi minglab baravarga ortadi! Bu hodisa <strong>biomagnifikatsiya</strong> deb ataladi.</p>
+
+                <div class="toxic-panel">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <h3 style="color:#facc15;"><i class="fa-solid fa-triangle-exclamation"></i> Trofik Zanjirda Zahar Konsentratsiyasi:</h3>
+                        <div style="display:flex; gap:8px;">
+                            <button class="btn" style="background:#22c55e; color:white; font-size:0.8rem;" onclick="setToxicLevel('clean')">🌱 Toza tabiat</button>
+                            <button class="btn" style="background:#f97316; color:white; font-size:0.8rem;" onclick="setToxicLevel('medium')">⚠️ Oʻrta ifloslanish</button>
+                            <button class="btn" style="background:#dc2626; color:white; font-size:0.8rem;" onclick="setToxicLevel('heavy')">☣️ Kuchli ifloslanish</button>
+                        </div>
+                    </div>
+
+                    <div class="toxic-flow">
+                        <div class="toxic-card">
+                            <div style="font-size:2rem;">💧</div>
+                            <h4>1. Suv</h4>
+                            <div style="font-size:1.15rem; font-weight:800; color:#38bdf8;" id="tox-1">0.000003 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="tox-b1" style="width:2%;"></div></div>
+                            <small style="color:#94a3b8;">Atrof-muhitdagi mikromiqdor</small>
+                        </div>
+                        <div class="toxic-card">
+                            <div style="font-size:2rem;">🌿</div>
+                            <h4>2. Suvoʻtlar</h4>
+                            <div style="font-size:1.15rem; font-weight:800; color:#4ade80;" id="tox-2">0.03 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="tox-b2" style="width:10%;"></div></div>
+                            <small style="color:#94a3b8;">10 000 baravar toʻplanish</small>
+                        </div>
+                        <div class="toxic-card">
+                            <div style="font-size:2rem;">🐟</div>
+                            <h4>3. Mayda baliq</h4>
+                            <div style="font-size:1.15rem; font-weight:800; color:#facc15;" id="tox-3">0.3 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="tox-b3" style="width:25%;"></div></div>
+                            <small style="color:#94a3b8;">Koʻplab suvoʻtni yeydi</small>
+                        </div>
+                        <div class="toxic-card">
+                            <div style="font-size:2rem;">🦈</div>
+                            <h4>4. Katta baliq</h4>
+                            <div style="font-size:1.15rem; font-weight:800; color:#fb923c;" id="tox-4">3.0 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="tox-b4" style="width:55%;"></div></div>
+                            <small style="color:#94a3b8;">Oʻnlab mayda baliqni yeydi</small>
+                        </div>
+                        <div class="toxic-card">
+                            <div style="font-size:2rem;">🦅</div>
+                            <h4>5. Lochin / Qush</h4>
+                            <div style="font-size:1.15rem; font-weight:800; color:#ef4444;" id="tox-5">25.0 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="tox-b5" style="width:100%;"></div></div>
+                            <small style="color:#f87171;">Oʻta xavfli daraja! Tuxumlari moʻrtlashadi</small>
+                        </div>
+                    </div>
+
+                    <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; font-size:0.85rem; color:#cbd5e1;">
+                        💡 <strong>Xulosa:</strong> Oziqa zanjirining eng tepasida turuvchi yirtqichlar (va inson) eng yuqori darajada zaharli moddalarni qabul qilish xavfida boʻladi.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: TEST VA DIPLOM -->
+        <section class="tab-content" id="tab-5">
+            <div class="card">
+                <h2 class="title"><i class="fa-solid fa-graduation-cap"></i> <span>5. Bilimni Sinash va Ekolog Diplomi</span></h2>
+                <p>Savollarga toʻgʻri javob bering va 6-sinf Tabiiy Fanlar "Yosh Ekolog-Tadqiqotchi" diplomiga ega boʻling:</p>
+
+                <div id="quiz-container">
+                    <div id="q-text" style="font-size:1.15rem; font-weight:700; margin:16px 0;"></div>
+                    <div id="q-options"></div>
+                    <div id="q-feedback" style="margin-top:10px; font-weight:700;"></div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+                    <div id="q-score" style="font-weight:800; color:var(--primary); font-size:1.1rem;">Natija: 0 / 5</div>
+                    <button id="q-next-btn" class="btn btn-primary" style="display:none;" onclick="loadNextQ()">Keyingi savol ➔</button>
+                </div>
+
+                <!-- DIPLOM KARTASI -->
+                <div class="diploma-box" id="diploma-view">
+                    <h2>🏆 YOSH EKOLOG-TADQIQOTCHI FAXRIY DIPLOMI</h2>
+                    <p style="margin:10px 0; font-size:1.1rem;">Ushbu diplom bilan taqdirlanadi:</p>
+                    <h1 id="dip-student-name" style="color:#16a34a; text-decoration:underline; margin:8px 0;">Yosh Ekolog</h1>
+                    <p style="font-size:0.9rem; max-width:650px; margin:0 auto;">
+                        "Oziqa zanjiri, oziq toʻri, 10% energiya qoidasi va biomagnifikatsiya" mavzusi boʻyicha oʻtkazilgan sinovda aʼlo darajada bilim koʻrsatib, tabiat himoyachisi unvoniga loyiq topildi!
+                    </p>
+                </div>
+
+                <div id="name-input-box" style="display:none; text-align:center; margin-top:20px;">
+                    <input type="text" id="user-name" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 16px; border-radius:10px; border:1px solid var(--border); font-size:1rem; width:280px; margin-right:8px;">
+                    <button class="btn btn-primary" onclick="claimDiploma()">Diplomni Rasmiylashtirish 🎓</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JS MANTIQ -->
+    <script>
+        // AUDIO EFFECT
+        let soundOn = true;
+        let audioContext = null;
+        function toggleSound() {
+            soundOn = !soundOn;
+            const b = document.querySelector('.header-btn[title="Ovoz"] i');
+            if (b) b.className = soundOn ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+        }
+        function playSfx(freq = 600, type = 'sine') {
+            if (!soundOn) return;
+            try {
+                if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioContext.state === 'suspended') audioContext.resume();
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioContext.currentTime);
+                gain.gain.setValueAtTime(0.08, audioContext.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+                osc.connect(gain);
+                gain.connect(audioContext.destination);
+                osc.start();
+                osc.stop(audioContext.currentTime + 0.15);
+            } catch(e) {}
+        }
+
+        // THEME
+        function toggleTheme() {
+            const cur = document.documentElement.getAttribute('data-theme');
+            const next = cur === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            const icon = document.querySelector('.header-btn[title="Mavzu"] i');
+            if (icon) icon.className = next === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        }
+
+        // TAB SWITCH
+        function switchTab(num) {
+            playSfx(500 + num * 50);
+            document.querySelectorAll('.tab-content').forEach((t, i) => {
+                t.classList.toggle('active', i === num - 1);
+            });
+            document.querySelectorAll('.nav-tab-btn').forEach((b, i) => {
+                b.classList.toggle('active', i === num - 1);
+            });
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+        }
+
+        // NODE EXPLAIN
+        const nodeData = {
+            sun: { title: "☀️ Quyosh — Birlamchi Energiya Manbai", text: "Yer yuzidagi barcha tirik organizmlarning asosiy energiya manbai. Oʻsimliklar uning nurlaridan foydalanib organik modda sintezlaydi." },
+            plant: { title: "🌿 Produtsent (Oʻsimliklar)", text: "Fotosintez jarayoni orqali noorganik moddalardan organik oziq hosil qiluvchi tirik tabiatning birlamchi asosi." },
+            worm: { title: "🐛 I-Konsument (Oʻtxoʻr hayvonlar)", text: "Faqat oʻsimliklar bilan oziqlanadigan organizmlar (hasharotlar, kemiruvchilar, quyonlar)." },
+            bird: { title: "🐦 II-Konsument (Kichik yirtqichlar)", text: "Oʻtxoʻr hasharotlar va mayda hayvonlarni yeb hayot kechiradigan organizmlar." },
+            hawk: { title: "🦅 III-Konsument (Oliy yirtqich)", text: "Oziqa zanjirining eng choʻqqisida turadigan yirtqich. Tabiatda uni ovlaydigan boshqa tabiiy yirtqich deyarli yoʻq." },
+            decomp: { title: "🍄 Redutsentlar (Parchalovchilar)", text: "Nobud boʻlgan barcha oʻsimlik va hayvon qoldiqlarini parchalab, qaytadan tuproqqa mineral moddalar holida qaytaruvchi zamburugʻ va bakteriyalar." }
+        };
+        function explainNode(key) {
+            playSfx(750);
+            const d = nodeData[key];
+            if (!d) return;
+            const box = document.getElementById('node-info-display');
+            box.innerHTML = `<h3>${d.title}</h3><p>${d.text}</p>`;
+        }
+
+        // ZANJIR QURISH O'YINI
+        let chainStep = 1;
+        const requiredOrder = ['Quyosh', 'Makkajoʻxori', 'Sichqon', 'Ilon', 'Burgut'];
+        function pickChainItem(btn, name, order) {
+            if (order === chainStep) {
+                playSfx(850);
+                chainStep++;
+                btn.style.display = 'none';
+                const target = document.getElementById('builder-target');
+                const ph = document.getElementById('builder-placeholder');
+                if (ph) ph.style.display = 'none';
+
+                const badge = document.createElement('span');
+                badge.className = 'btn btn-primary';
+                badge.style.cursor = 'default';
+                badge.innerText = (chainStep > 2 ? ' ➔ ' : '') + name;
+                target.appendChild(badge);
+
+                if (chainStep > 5) {
+                    playSfx(1000);
+                    document.getElementById('builder-status').innerHTML = "🎉 Aʼlo! Mukammal oziqa zanjiri yigʻildi!";
+                } else {
+                    document.getElementById('builder-status').innerText = `Toʻgʻri! Keyingi ${chainStep}-boʻgʻinni toping...`;
+                }
+            } else {
+                playSfx(250, 'sawtooth');
+                document.getElementById('builder-status').innerHTML = "<span style='color:#ef4444;'>❌ Ketma-ketlik xato! Zanjir tartibiga eʼtibor bering.</span>";
+            }
+        }
+        function resetChainGame() {
+            chainStep = 1;
+            document.querySelectorAll('#builder-pool button').forEach(b => b.style.display = 'inline-flex');
+            const target = document.getElementById('builder-target');
+            target.innerHTML = '<span style="color:var(--text-muted); font-size:0.9rem;" id="builder-placeholder">Boʻsh joy: Birinchi boʻlib quyosh yoki produtsentni tanlang...</span>';
+            document.getElementById('builder-status').innerText = '';
+        }
+
+        // FOOD WEB HIGHLIGHT
+        function highlightWeb(role) {
+            playSfx(680);
+            document.querySelectorAll('.web-link').forEach(l => l.classList.remove('active-link'));
+            const desc = document.getElementById('web-status-desc');
+
+            if (role === 'plant') {
+                document.getElementById('l-plant-worm').classList.add('active-link');
+                document.getElementById('l-plant-mouse').classList.add('active-link');
+                document.getElementById('l-plant-rabbit').classList.add('active-link');
+                desc.innerHTML = "🌿 <strong>Oʻsimlik:</strong> Qurt, Sichqon va Quyonni energiya bilan taʼminlaydi (Birlamchi manba).";
+            } else if (role === 'mouse') {
+                document.getElementById('l-plant-mouse').classList.add('active-link');
+                document.getElementById('l-mouse-bird').classList.add('active-link');
+                document.getElementById('l-mouse-snake').classList.add('active-link');
+                desc.innerHTML = "🐭 <strong>Sichqon:</strong> Oʻsimlikni yeydi, uni esa Qush va Ilon ovlaydi (Toʻrning markaziy boʻgʻini).";
+            } else if (role === 'hawk') {
+                document.getElementById('l-bird-hawk').classList.add('active-link');
+                document.getElementById('l-snake-hawk').classList.add('active-link');
+                desc.innerHTML = "🦅 <strong>Lochin:</strong> Qush va Ilonni ovlovchi oliy yirtqich. Oziq toʻrining choʻqqisida turadi.";
+            } else if (role === 'worm') {
+                document.getElementById('l-plant-worm').classList.add('active-link');
+                document.getElementById('l-worm-bird').classList.add('active-link');
+                desc.innerHTML = "🐛 <strong>Qurt:</strong> Oʻsimlik bargini yeydi va Qushga yem boʻladi.";
+            } else if (role === 'rabbit') {
+                document.getElementById('l-plant-rabbit').classList.add('active-link');
+                document.getElementById('l-rabbit-snake').classList.add('active-link');
+                desc.innerHTML = "🐇 <strong>Quyon:</strong> Oʻt-oʻlanlarni yeydi va Ilon/yirtqichlarga ozuqa boʻladi.";
+            } else if (role === 'bird') {
+                document.getElementById('l-worm-bird').classList.add('active-link');
+                document.getElementById('l-mouse-bird').classList.add('active-link');
+                document.getElementById('l-bird-hawk').classList.add('active-link');
+                desc.innerHTML = "🐦 <strong>Qush:</strong> Qurt va sichqonlarni yeb, oʻzi Lochinga oʻlja boʻladi.";
+            } else if (role === 'snake') {
+                document.getElementById('l-mouse-snake').classList.add('active-link');
+                document.getElementById('l-rabbit-snake').classList.add('active-link');
+                document.getElementById('l-snake-hawk').classList.add('active-link');
+                desc.innerHTML = "🐍 <strong>Ilon:</strong> Sichqon va quyonlarni yutadi, lochin tomonidan ovlanadi.";
+            }
+        }
+        function resetWeb() {
+            document.querySelectorAll('.web-link').forEach(l => l.classList.remove('active-link'));
+            document.getElementById('web-status-desc').innerText = "👆 Doiralarni bosib organizmlarning oziq aloqalarini koʻring!";
+        }
+
+        // ENERGIYA 10% PIRAMIDASI
+        function setEnergyVal(val) {
+            document.getElementById('energyRange').value = val;
+            calcEnergy();
+        }
+        function calcEnergy() {
+            const v = Number(document.getElementById('energyRange').value);
+            document.getElementById('energyDisplay').innerText = v.toLocaleString('uz-UZ') + " Joul (J)";
+            
+            const e1 = v;
+            const e2 = Math.round(v * 0.1);
+            const e3 = Math.round(v * 0.01);
+            const e4 = Math.round(v * 0.001);
+
+            document.getElementById('val-p1').innerText = `${e1.toLocaleString()} J (100%)`;
+            document.getElementById('val-p2').innerText = `${e2.toLocaleString()} J (10%)`;
+            document.getElementById('val-p3').innerText = `${e3.toLocaleString()} J (1%)`;
+            document.getElementById('val-p4').innerText = `${e4.toLocaleString()} J (0.1%)`;
+        }
+
+        // BIOMAGNIFIKATSIYA
+        function setToxicLevel(level) {
+            playSfx(550);
+            if (level === 'clean') {
+                document.getElementById('tox-1').innerText = "0.000001 ppm";
+                document.getElementById('tox-2').innerText = "0.005 ppm";
+                document.getElementById('tox-3').innerText = "0.05 ppm";
+                document.getElementById('tox-4').innerText = "0.4 ppm";
+                document.getElementById('tox-5').innerText = "2.5 ppm";
+                document.getElementById('tox-b1').style.width = "1%";
+                document.getElementById('tox-b2').style.width = "5%";
+                document.getElementById('tox-b3').style.width = "15%";
+                document.getElementById('tox-b4').style.width = "30%";
+                document.getElementById('tox-b5').style.width = "45%";
+            } else if (level === 'medium') {
+                document.getElementById('tox-1').innerText = "0.000003 ppm";
+                document.getElementById('tox-2').innerText = "0.03 ppm";
+                document.getElementById('tox-3').innerText = "0.3 ppm";
+                document.getElementById('tox-4').innerText = "3.0 ppm";
+                document.getElementById('tox-5').innerText = "25.0 ppm";
+                document.getElementById('tox-b1').style.width = "2%";
+                document.getElementById('tox-b2').style.width = "10%";
+                document.getElementById('tox-b3').style.width = "25%";
+                document.getElementById('tox-b4').style.width = "55%";
+                document.getElementById('tox-b5').style.width = "100%";
+            } else if (level === 'heavy') {
+                document.getElementById('tox-1').innerText = "0.00002 ppm";
+                document.getElementById('tox-2').innerText = "0.2 ppm";
+                document.getElementById('tox-3').innerText = "2.5 ppm";
+                document.getElementById('tox-4').innerText = "20.0 ppm";
+                document.getElementById('tox-5').innerText = "120.0 ppm";
+                document.getElementById('tox-b1').style.width = "5%";
+                document.getElementById('tox-b2').style.width = "25%";
+                document.getElementById('tox-b3').style.width = "60%";
+                document.getElementById('tox-b4').style.width = "90%";
+                document.getElementById('tox-b5').style.width = "100%";
+            }
+        }
+
+        // QUIZ MANTIQ
+        const quizList = [
+            {
+                q: "1. Oziqa zanjirida har bir keyingi boʻgʻinga oʻrtacha qancha energiya oʻtadi?",
+                opts: ["A) 1%", "B) 10%", "C) 50%", "D) 90%"],
+                ans: 1
+            },
+            {
+                q: "2. Oziqa zanjirining eng boshlangʻich boʻgʻinida (produtsent) odatda nima turadi?",
+                opts: ["A) Oʻsimlik (fotosintez qiluvchi)", "B) Yirtqich qush", "C) Tuproqdagi chuvalchang", "D) Inson"],
+                ans: 0
+            },
+            {
+                q: "3. Bir nechta oziqa zanjirlarining oʻzaro tutashib, kesishib ketishi nima deyiladi?",
+                opts: ["A) Ekotizim piramidasi", "B) Oziq toʻri (Food Web)", "C) Biomassa kamayishi", "D) Tabiiy seleksiya"],
+                ans: 1
+            },
+            {
+                q: "4. Biomagnifikatsiya hodisasida zaharli moddalar konsentratsiyasi eng yuqori boʻladi:",
+                opts: ["A) Faqat suv tubidagi qumda", "B) Oʻsimlik barglarida", "C) Oziqa zanjirining eng yuqori boʻgʻinidagi yirtqichlarda", "D) Barcha organizmlarda bir xil"],
+                ans: 2
+            },
+            {
+                q: "5. 10% qoidasiga koʻra, 10 000 Joul oʻsimlik energiyasidan lochin (III-konsument)ga qancha yetib boradi?",
+                opts: ["A) 1 000 Joul", "B) 100 Joul", "C) 10 Joul", "D) 1 Joul"],
+                ans: 2
+            }
+        ];
+
+        let curQ = 0;
+        let score = 0;
+        let answeredQ = false;
+
+        function loadQuestion() {
+            answeredQ = false;
+            const q = quizList[curQ];
+            document.getElementById('q-text').innerText = q.q;
+            document.getElementById('q-feedback').innerText = '';
+            document.getElementById('q-next-btn').style.display = 'none';
+
+            const box = document.getElementById('q-options');
+            box.innerHTML = '';
+            q.opts.forEach((opt, idx) => {
+                const btn = document.createElement('div');
+                btn.className = 'quiz-opt';
+                btn.innerText = opt;
+                btn.onclick = () => selectOpt(btn, idx);
+                box.appendChild(btn);
+            });
+        }
+
+        function selectOpt(btn, idx) {
+            if (answeredQ) return;
+            answeredQ = true;
+            const q = quizList[curQ];
+            const allOpts = document.querySelectorAll('.quiz-opt');
+
+            if (idx === q.ans) {
+                playSfx(880);
+                score++;
+                btn.classList.add('correct');
+                document.getElementById('q-feedback').innerHTML = "<span style='color:#16a34a;'>✅ Barakalla! Toʻgʻri javob.</span>";
+            } else {
+                playSfx(250, 'sawtooth');
+                btn.classList.add('wrong');
+                allOpts[q.ans].classList.add('correct');
+                document.getElementById('q-feedback').innerHTML = `<span style='color:#ef4444;'>❌ Notoʻgʻri. Toʻgʻri javob: ${q.opts[q.ans]}</span>`;
+            }
+
+            document.getElementById('q-score').innerText = `Natija: ${score} / ${quizList.length}`;
+            if (curQ < quizList.length - 1) {
+                document.getElementById('q-next-btn').style.display = 'inline-flex';
+            } else {
+                // Test tugadi
+                document.getElementById('name-input-box').style.display = 'block';
+            }
+        }
+
+        function loadNextQ() {
+            curQ++;
+            loadQuestion();
+        }
+
+        function claimDiploma() {
+            playSfx(950);
+            const name = document.getElementById('user-name').value.trim() || "Aʼlochi Oʻquvchi";
+            document.getElementById('dip-student-name').innerText = name;
+            document.getElementById('diploma-view').style.display = 'block';
+            document.getElementById('diploma-view').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // INIT
+        calcEnergy();
+        loadQuestion();
+    </script>
+</body>
+</html>

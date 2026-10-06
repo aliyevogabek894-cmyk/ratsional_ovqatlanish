@@ -645,6 +645,108 @@
             color: #fde68a;
             border-color: #b45309;
         }
+
+        /* 5-MAVZU: OZIQA ZANJIRI VA EKOTIZIM */
+        .chain-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .chain-node {
+            min-width: 125px;
+            text-align: center;
+            padding: 16px 12px;
+            border-radius: 14px;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .chain-node:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        .node-sun { background: linear-gradient(135deg, #eab308, #ca8a04); }
+        .node-plant { background: linear-gradient(135deg, #16a34a, #15803d); }
+        .node-herb { background: linear-gradient(135deg, #0284c7, #0369a1); }
+        .node-carn { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .node-apex { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+        .node-decomp { background: linear-gradient(135deg, #713f12, #854d0e); }
+        .flow-arrow { font-size: 1.6rem; color: var(--text-muted); font-weight: 900; }
+
+        .foodweb-container {
+            background: #0b1329;
+            border-radius: 18px;
+            padding: 22px;
+            color: white;
+            border: 2px solid #1e293b;
+            position: relative;
+            overflow: hidden;
+        }
+        .foodweb-svg {
+            width: 100%;
+            height: 400px;
+            min-width: 550px;
+        }
+        .web-node { cursor: pointer; transition: all 0.3s; }
+        .web-node:hover circle { filter: drop-shadow(0 0 10px #38bdf8); }
+        .web-link { stroke: #475569; stroke-width: 2.2; transition: stroke 0.3s, stroke-width 0.3s; }
+        .web-link.active-link { stroke: #38bdf8 !important; stroke-width: 4.2 !important; filter: drop-shadow(0 0 6px #38bdf8); }
+
+        .pyramid-card {
+            background: #0f172a;
+            border-radius: 18px;
+            padding: 22px;
+            color: white;
+            border: 1px solid #1e293b;
+        }
+        .pyramid-levels {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 22px auto;
+            max-width: 580px;
+        }
+        .pyr-level {
+            border-radius: 12px;
+            padding: 13px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .pyr-4 { width: 45%; margin: 0 auto; background: linear-gradient(135deg, #7c3aed, #9333ea); }
+        .pyr-3 { width: 65%; margin: 0 auto; background: linear-gradient(135deg, #2563eb, #3b82f6); }
+        .pyr-2 { width: 85%; margin: 0 auto; background: linear-gradient(135deg, #eab308, #ca8a04); }
+        .pyr-1 { width: 100%; margin: 0 auto; background: linear-gradient(135deg, #16a34a, #22c55e); }
+
+        .toxic-panel {
+            background: linear-gradient(145deg, #111827, #1f2937);
+            border-radius: 18px;
+            padding: 22px;
+            color: white;
+            border: 1px solid #374151;
+        }
+        .toxic-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            margin: 22px 0;
+        }
+        .toxic-card {
+            background: #1e293b;
+            border-radius: 14px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .toxic-card:hover { transform: translateY(-3px); border-color: #ef4444; }
+        .toxic-bar-wrap { height: 10px; background: #334155; border-radius: 999px; overflow: hidden; margin: 10px 0; }
+        .toxic-bar-fill { height: 100%; background: linear-gradient(90deg, #facc15, #ef4444); border-radius: 999px; transition: width 0.7s ease; }
     </style>
 </head>
 <body>
@@ -685,6 +787,10 @@
             </button>
             <button class="topic-btn" id="btn-topic-4" onclick="switchMainTopic(4)">
                 <span>🩹 4-Mavzu: Birinchi Yordam & Gigiyena</span>
+                <span class="badge-new">YANGI</span>
+            </button>
+            <button class="topic-btn" id="btn-topic-5" onclick="switchMainTopic(5)">
+                <span>🌿 5-Mavzu: Oziqa Zanjiri & Ekotizim</span>
                 <span class="badge-new">YANGI</span>
             </button>
         </div>
@@ -731,6 +837,15 @@
             <button class="section-tab-btn" onclick="showTab(22)"><i class="fa-solid fa-kit-medical"></i> Tezkor Birinchi Yordam</button>
             <button class="section-tab-btn" onclick="showTab(23)"><i class="fa-solid fa-list-check"></i> Kunlik Gigiyena Cheklist</button>
             <button class="section-tab-btn" onclick="showTab(24)"><i class="fa-solid fa-graduation-cap"></i> 4-Mavzu Testi & Diplom</button>
+        </div>
+
+        <!-- 5-MAVZU TABS (5 ta) -->
+        <div class="tabs-scroller" id="scroller-topic-5" style="display:none;">
+            <button class="section-tab-btn" onclick="showTab(25)"><i class="fa-solid fa-seedling"></i> Oziqa Zanjiri & Konstruktor</button>
+            <button class="section-tab-btn" onclick="showTab(26)"><i class="fa-solid fa-diagram-project"></i> Jonli Oziq Toʻri</button>
+            <button class="section-tab-btn" onclick="showTab(27)"><i class="fa-solid fa-bolt"></i> Energiya Piramidasi (10%)</button>
+            <button class="section-tab-btn" onclick="showTab(28)"><i class="fa-solid fa-biohazard"></i> Biomagnifikatsiya Lab</button>
+            <button class="section-tab-btn" onclick="showTab(29)"><i class="fa-solid fa-trophy"></i> 5-Mavzu Testi & Diplom</button>
         </div>
     </div>
 
@@ -1871,6 +1986,312 @@
 
                 <div class="tab-nav-footer">
                     <button class="btn-tab-nav" onclick="showTab(23)">⬅️ Orqaga</button>
+                    <button class="btn-tab-nav next" onclick="switchMainTopic(5)">5-Mavzuga Oʻtish 🌿 ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!--     5-MAVZU: OZIQA ZANJIRI VA EKOTIZIM     -->
+        <!-- ========================================== -->
+
+        <!-- TAB 25: OZIQA ZANJIRI VA INTERAKTIV ZANJIR QURUVCHI -->
+        <section class="tab-section" id="tab-25">
+            <div class="content-card">
+                <span class="section-badge" style="color:#16a34a; background:rgba(22,163,74,0.15);">5-Mavzu • Ekotizim Ilmi</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <h2 class="section-title" style="margin-bottom:0;">🌿 Oziqa Zanjirining Tuzilishi & Zanjir Konstruktori</h2>
+                    <a href="Oziqa%20Zanjiri%20va%20Oziq%20Tori.html" target="_blank" class="btn-tab-nav" style="background:#16a34a; color:white; font-size:0.8rem; text-decoration:none;">
+                        Alohida Toʻliq Sahifa ↗
+                    </a>
+                </div>
+                <p class="section-desc">Oziqa zanjiri — quyosh nuridan hosil boʻlgan energiyaning bir organizmdan ikkinchisiga oziqlanish orqali ketma-ket oʻtishi:</p>
+
+                <div class="chain-flow">
+                    <div class="chain-node node-sun" onclick="explainChainNode('sun')">☀️ Quyosh<br><small>Birlamchi Manba</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-plant" onclick="explainChainNode('plant')">🌿 Oʻsimlik<br><small>Produtsent</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-herb" onclick="explainChainNode('worm')">🐛 Qurt / Hasharot<br><small>I-Konsument</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-carn" onclick="explainChainNode('bird')">🐦 Qush<br><small>II-Konsument</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-apex" onclick="explainChainNode('hawk')">🦅 Lochin<br><small>III-Konsument</small></div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="chain-node node-decomp" onclick="explainChainNode('decomp')">🍄 Zamburugʻ<br><small>Redutsent</small></div>
+                </div>
+
+                <div id="chain-node-info" style="background:var(--bg-card-subtle); border-left:5px solid #16a34a; padding:15px; border-radius:10px; margin:15px 0; border:1px solid var(--border-color);">
+                    <h3 style="color:#15803d; font-size:1.05rem; margin-bottom:5px;">💡 Boʻgʻinni bosing:</h3>
+                    <p style="font-size:0.88rem; color:var(--text-muted);">Yuqoridagi har bir organizmni bosib, uning ekotizimdagi oʻrni haqida bilib oling.</p>
+                </div>
+
+                <!-- Interaktiv Zanjir Qurgich Mini-O'yini -->
+                <div style="background:linear-gradient(135deg, rgba(22,163,74,0.06), rgba(2,132,199,0.06)); border:1px solid #bbf7d0; border-radius:14px; padding:18px; margin-top:16px;">
+                    <h3 style="color:#16a34a; font-size:1.1rem; margin-bottom:6px;"><i class="fa-solid fa-puzzle-piece"></i> Zanjirni Toʻgʻri Yigʻish Mini-Oʻyini</h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Quyidagi organizmlarni toʻgʻri ketma-ketlikda bosing:</p>
+
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;" id="chain-pool">
+                        <button class="btn-tab-nav" onclick="pickChainStep(this, 'Quyosh', 1)">☀️ Quyosh energiyasi</button>
+                        <button class="btn-tab-nav" onclick="pickChainStep(this, 'Burgut', 5)">🦅 Burgut (Yirtqich)</button>
+                        <button class="btn-tab-nav" onclick="pickChainStep(this, 'Makkajoʻxori', 2)">🌽 Makkajoʻxori (Oʻsimlik)</button>
+                        <button class="btn-tab-nav" onclick="pickChainStep(this, 'Ilon', 4)">🐍 Ilon</button>
+                        <button class="btn-tab-nav" onclick="pickChainStep(this, 'Dala sichqoni', 3)">🐭 Dala sichqoni</button>
+                    </div>
+
+                    <div style="background:var(--bg-card); padding:14px; border-radius:10px; border:2px dashed var(--border-color); min-height:50px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;" id="chain-target">
+                        <span style="color:var(--text-muted); font-size:0.85rem;" id="chain-target-hint">Birinchi boʻlib quyosh yoki oʻsimlikni bosing...</span>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
+                        <button class="btn-tab-nav" onclick="resetChainPuzzle()"><i class="fa-solid fa-rotate-right"></i> Qayta boshlash</button>
+                        <span id="chain-game-msg" style="font-weight:700; font-size:0.9rem; color:#16a34a;"></span>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="switchMainTopic(4)">⬅️ 4-Mavzuga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(26)">Jonli Oziq Toʻri ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 26: JONLI OZIK TO'RI VA EKOTIZIM MUVOZANATI -->
+        <section class="tab-section" id="tab-26">
+            <div class="content-card">
+                <span class="section-badge" style="color:#16a34a; background:rgba(22,163,74,0.15);">5-Mavzu • Oziq Toʻri</span>
+                <h2 class="section-title">🕸️ Jonli Interaktiv Oziq Toʻri (Food Web) Simulyatori</h2>
+                <p class="section-desc">Tabiatda zanjirlar kesishib toʻr hosil qiladi. Doiralarni bosib aloqalarni va energiya yoʻnalishini koʻring:</p>
+
+                <div class="foodweb-container">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+                        <span style="font-size:0.82rem; color:#94a3b8;">Organizm aloqalarini ajratib koʻrsatish:</span>
+                        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                            <button class="btn-tab-nav" style="background:#22c55e; color:white; font-size:0.75rem; padding:4px 8px;" onclick="highlightWebNode('plant')">🌿 Oʻsimlik</button>
+                            <button class="btn-tab-nav" style="background:#0ea5e9; color:white; font-size:0.75rem; padding:4px 8px;" onclick="highlightWebNode('mouse')">🐭 Sichqon</button>
+                            <button class="btn-tab-nav" style="background:#7c3aed; color:white; font-size:0.75rem; padding:4px 8px;" onclick="highlightWebNode('hawk')">🦅 Lochin</button>
+                            <button class="btn-tab-nav" style="background:#334155; color:white; font-size:0.75rem; padding:4px 8px;" onclick="resetWebNodes()"><i class="fa-solid fa-arrows-rotate"></i> Barchasi</button>
+                        </div>
+                    </div>
+
+                    <div style="overflow-x:auto;">
+                        <svg class="foodweb-svg" viewBox="0 0 800 390">
+                            <defs>
+                                <marker id="main-web-arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                                    <path d="M0,0 L8,3 L0,6 Z" fill="#94a3b8"/>
+                                </marker>
+                            </defs>
+                            <g stroke="#64748b" stroke-width="2.5" marker-end="url(#main-web-arr)" opacity=".85">
+                                <line id="ml-plant-worm" class="web-link" x1="120" y1="190" x2="280" y2="90"/>
+                                <line id="ml-plant-mouse" class="web-link" x1="120" y1="190" x2="280" y2="190"/>
+                                <line id="ml-plant-rabbit" class="web-link" x1="120" y1="190" x2="280" y2="290"/>
+                                <line id="ml-worm-bird" class="web-link" x1="330" y1="90" x2="500" y2="145"/>
+                                <line id="ml-mouse-bird" class="web-link" x1="330" y1="190" x2="500" y2="145"/>
+                                <line id="ml-mouse-snake" class="web-link" x1="330" y1="190" x2="500" y2="245"/>
+                                <line id="ml-rabbit-snake" class="web-link" x1="330" y1="290" x2="500" y2="245"/>
+                                <line id="ml-bird-hawk" class="web-link" x1="550" y1="145" x2="700" y2="190"/>
+                                <line id="ml-snake-hawk" class="web-link" x1="550" y1="245" x2="700" y2="190"/>
+                            </g>
+                            <g>
+                                <g class="web-node" onclick="highlightWebNode('plant')">
+                                    <circle cx="100" cy="190" r="46" fill="#16a34a"/>
+                                    <text x="100" y="195" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🌿 Oʻsimlik</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWebNode('worm')">
+                                    <circle cx="305" cy="90" r="40" fill="#ca8a04"/>
+                                    <text x="305" y="95" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐛 Qurt</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWebNode('mouse')">
+                                    <circle cx="305" cy="190" r="40" fill="#0ea5e9"/>
+                                    <text x="305" y="195" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐭 Sichqon</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWebNode('rabbit')">
+                                    <circle cx="305" cy="290" r="40" fill="#22c55e"/>
+                                    <text x="305" y="295" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐇 Quyon</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWebNode('bird')">
+                                    <circle cx="525" cy="145" r="43" fill="#2563eb"/>
+                                    <text x="525" y="150" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐦 Qush</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWebNode('snake')">
+                                    <circle cx="525" cy="245" r="43" fill="#f97316"/>
+                                    <text x="525" y="250" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🐍 Ilon</text>
+                                </g>
+                                <g class="web-node" onclick="highlightWebNode('hawk')">
+                                    <circle cx="700" cy="190" r="48" fill="#7c3aed"/>
+                                    <text x="700" y="195" text-anchor="middle" fill="#fff" font-weight="bold" font-size="13">🦅 Lochin</text>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div id="main-web-desc" style="background:rgba(255,255,255,0.06); padding:10px; border-radius:8px; margin-top:10px; text-align:center; font-size:0.85rem; color:#cbd5e1;">
+                        👆 Yuqoridagi organizm doiralarini bosing: Strelkalar kim kimga oziq boʻlishini koʻrsatadi!
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(25)">⬅️ Orqaga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(27)">10% Energiya Piramidasi ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 27: ENERGIYA PIRAMIDASI VA 10% QOIDASI -->
+        <section class="tab-section" id="tab-27">
+            <div class="content-card">
+                <span class="section-badge" style="color:#16a34a; background:rgba(22,163,74,0.15);">5-Mavzu • Energiya Oqimi</span>
+                <h2 class="section-title">⚡ 10% Qoidasi va Dinamik Energiya Piramidasi</h2>
+                <p class="section-desc">Har bir keyingi trofik boʻgʻinga energiyaning taxminan 10 foizi oʻtadi. Qolgan 90% hayot jarayonlarida issiqlik boʻlib tarqaladi:</p>
+
+                <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:15px;">
+                    <div style="background:var(--bg-card-subtle); border-radius:14px; padding:18px; border:1px solid var(--border-color);">
+                        <h3 style="color:#15803d; font-size:1.1rem; margin-bottom:8px;"><i class="fa-solid fa-sliders"></i> Boshlangʻich Quyosh Energiyasi</h3>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">Oʻsimliklar qabul qilgan energiya miqdorini oʻzgartiring:</p>
+
+                        <input type="range" id="mainEnergySlider" min="1000" max="100000" step="1000" value="10000" oninput="simMainEnergy()" style="width:100%; height:8px; accent-color:#16a34a; cursor:pointer; margin:12px 0;">
+
+                        <div id="mainEnergyDisplay" style="font-size:1.4rem; font-weight:800; color:#16a34a; margin-bottom:10px;">10 000 Joul (J)</div>
+
+                        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px;">
+                            <button class="btn-tab-nav" onclick="setMainEnergy(1000)">1 000 J</button>
+                            <button class="btn-tab-nav" onclick="setMainEnergy(10000)">10 000 J</button>
+                            <button class="btn-tab-nav" onclick="setMainEnergy(50000)">50 000 J</button>
+                            <button class="btn-tab-nav" onclick="setMainEnergy(100000)">100 000 J</button>
+                        </div>
+
+                        <div style="background:white; padding:12px; border-radius:10px; border:1px solid var(--border-color); font-size:0.82rem;">
+                            <strong>🔥 Nega faqat 10% oʻtadi?</strong>
+                            <p style="color:var(--text-muted); margin-top:3px;">Organizm nafas oladi, harakatlanadi, tana haroratini saqlaydi va moddalar almashinuvida energiyani issiqlik sifatida havoga chiqaradi.</p>
+                        </div>
+                    </div>
+
+                    <div class="pyramid-card">
+                        <h3 style="text-align:center; font-size:1.15rem; color:#38bdf8; margin-bottom:10px;">📊 Ekotizim Piramidasi</h3>
+                        <div class="pyramid-levels">
+                            <div class="pyr-level pyr-4">
+                                <span>🦅 Oliy Yirtqich (III)</span>
+                                <strong id="m-val-p4">10 J (0.1%)</strong>
+                            </div>
+                            <div class="pyr-level pyr-3">
+                                <span>🐦 Yirtqich (II)</span>
+                                <strong id="m-val-p3">100 J (1%)</strong>
+                            </div>
+                            <div class="pyr-level pyr-2">
+                                <span>🐛 Oʻtxoʻr (I-konsument)</span>
+                                <strong id="m-val-p2">1 000 J (10%)</strong>
+                            </div>
+                            <div class="pyr-level pyr-1">
+                                <span>🌿 Oʻsimlik (Produtsent)</span>
+                                <strong id="m-val-p1">10 000 J (100%)</strong>
+                            </div>
+                        </div>
+                        <p style="text-align:center; font-size:0.78rem; color:#94a3b8;">Har bir pogʻonada energiya 10 barobarga kamayib boradi!</p>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(26)">⬅️ Orqaga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(28)">Biomagnifikatsiya Lab ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 28: BIOMAGNIFIKATSIYA LABORATORIYASI -->
+        <section class="tab-section" id="tab-28">
+            <div class="content-card">
+                <span class="section-badge" style="color:#16a34a; background:rgba(22,163,74,0.15);">5-Mavzu • Ekologik Xavf</span>
+                <h2 class="section-title">☣️ Biomagnifikatsiya: Zaharli Moddalarning Toʻplanishi</h2>
+                <p class="section-desc">Pestitsidlar va ogʻir metallar parchalanmaydi — oziqa zanjiri yuqorisiga chiqqan sari konsentratsiyasi millionlab marta ortadi:</p>
+
+                <div class="toxic-panel">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                        <h3 style="color:#facc15; font-size:1.1rem;"><i class="fa-solid fa-triangle-exclamation"></i> Trofik Zanjirda Zahar Miqdori:</h3>
+                        <div style="display:flex; gap:6px;">
+                            <button class="btn-tab-nav active" id="btn-tox-clean" onclick="setMainToxicLevel('clean')">🌱 Toza muhit</button>
+                            <button class="btn-tab-nav" id="btn-tox-med" onclick="setMainToxicLevel('medium')">⚠️ Oʻrta ifloslanish</button>
+                            <button class="btn-tab-nav" id="btn-tox-heavy" onclick="setMainToxicLevel('heavy')">☣️ Kuchli ifloslanish</button>
+                        </div>
+                    </div>
+
+                    <div class="toxic-flow">
+                        <div class="toxic-card">
+                            <div style="font-size:1.8rem;">💧</div>
+                            <h4>1. Suv</h4>
+                            <div style="font-size:1.1rem; font-weight:800; color:#38bdf8;" id="m-tox-1">0.000003 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="m-tox-b1" style="width:2%;"></div></div>
+                            <small style="color:#94a3b8; font-size:0.75rem;">Suv havzasi</small>
+                        </div>
+                        <div class="toxic-card">
+                            <div style="font-size:1.8rem;">🌿</div>
+                            <h4>2. Suvoʻtlar</h4>
+                            <div style="font-size:1.1rem; font-weight:800; color:#4ade80;" id="m-tox-2">0.03 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="m-tox-b2" style="width:10%;"></div></div>
+                            <small style="color:#94a3b8; font-size:0.75rem;">10 000x toʻplanish</small>
+                        </div>
+                        <div class="toxic-card">
+                            <div style="font-size:1.8rem;">🐟</div>
+                            <h4>3. Mayda baliq</h4>
+                            <div style="font-size:1.1rem; font-weight:800; color:#facc15;" id="m-tox-3">0.3 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="m-tox-b3" style="width:25%;"></div></div>
+                            <small style="color:#94a3b8; font-size:0.75rem;">Koʻp suvoʻt yeydi</small>
+                        </div>
+                        <div class="toxic-card">
+                            <div style="font-size:1.8rem;">🦈</div>
+                            <h4>4. Katta baliq</h4>
+                            <div style="font-size:1.1rem; font-weight:800; color:#fb923c;" id="m-tox-4">3.0 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="m-tox-b4" style="width:55%;"></div></div>
+                            <small style="color:#94a3b8; font-size:0.75rem;">Yuzlab baliq yeydi</small>
+                        </div>
+                        <div class="toxic-card">
+                            <div style="font-size:1.8rem;">🦅</div>
+                            <h4>5. Lochin / Inson</h4>
+                            <div style="font-size:1.1rem; font-weight:800; color:#ef4444;" id="m-tox-5">25.0 ppm</div>
+                            <div class="toxic-bar-wrap"><div class="toxic-bar-fill" id="m-tox-b5" style="width:100%;"></div></div>
+                            <small style="color:#f87171; font-size:0.75rem;">Oʻta xavfli konsentratsiya!</small>
+                        </div>
+                    </div>
+
+                    <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:8px; font-size:0.82rem; color:#cbd5e1;">
+                        💡 <strong>Xulosa:</strong> Oziqa zanjirining yuqorisidagi mavjudotlar (va inson) eng yuqori dozada zaharli moddalarni oʻz tanasiga yigʻish xavfiga duchor boʻladi.
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(27)">⬅️ Orqaga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(29)">5-Mavzu Testi & Diplom ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 29: 5-MAVZU TESTI VA EKOLOG DIPLOMI -->
+        <section class="tab-section" id="tab-29">
+            <div class="content-card">
+                <span class="section-badge" style="color:#16a34a; background:rgba(22,163,74,0.15);">5-Mavzu • Oliy Sinov</span>
+                <h2 class="section-title">🏆 5-Mavzu Testi va "Yosh Ekolog-Tadqiqotchi" Diplomi</h2>
+                <p class="section-desc">Oziqa zanjiri, 10% qoidasi va biomagnifikatsiya boʻyicha yakuniy testdan oʻting:</p>
+
+                <div id="quiz-list-5"></div>
+
+                <div id="quiz-final-box-5" style="display:none; margin-top:1.2rem; padding:1.2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); text-align:center;">
+                    <h3 style="color:#16a34a;">🎉 Tabriklaymiz! 5-Mavzu boʻyicha barcha savollarni aʼlo bajardingiz!</h3>
+                    <p id="quiz-final-score-5" style="margin:6px 0; font-weight:700;"></p>
+                    <div style="margin-top:10px;">
+                        <input type="text" id="student-name-5" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <br>
+                        <button class="btn-tab-nav next" onclick="generateCertificate(5)" style="margin:0 auto; background:linear-gradient(135deg, #16a34a, #15803d);">Ekolog Diplomini Olish 🎓</button>
+                    </div>
+                </div>
+
+                <div class="cert-box" id="cert-view-5" style="border-color:#16a34a; background:linear-gradient(135deg, #f0fdf4, #dcfce7); color:#14532d;">
+                    <h2>🌟 6-SINF TABIIY FANLAR YOSH EKOLOG-TADQIQOTCHI DIPLOMI</h2>
+                    <p style="margin:8px 0; font-size:1.1rem;">Ushbu diplom sohibi:</p>
+                    <h1 id="cert-student-name-5" style="color:#15803d; text-decoration:underline; margin-bottom:8px;">Aʼlochi Oʻquvchi</h1>
+                    <p style="font-size:0.85rem;">"Oziqa zanjiri, jonli oziq toʻri, 10% energiya oqimi va biomagnifikatsiya" boʻlimlari boʻyicha barcha topshiriqlarni namunali bajarib, yuksak natija qayd etdi!</p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(28)">⬅️ Orqaga</button>
                     <button class="btn-tab-nav next" onclick="switchMainTopic(1)">1-Mavzuga qaytish 🥗 🔝</button>
                 </div>
             </div>
@@ -1886,10 +2307,10 @@
             }
         }
 
-        // KATTA MAVZUNI ALMASHTIRISH (1, 2, 3, 4-Mavzu)
+        // KATTA MAVZUNI ALMASHTIRISH (1, 2, 3, 4, 5-Mavzu)
         function switchMainTopic(topicNum) {
             triggerHaptic(40);
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 5; i++) {
                 const btn = document.getElementById('btn-topic-' + i);
                 if (btn) btn.classList.toggle('active', topicNum === i);
                 const scr = document.getElementById('scroller-topic-' + i);
@@ -1900,6 +2321,7 @@
             else if (topicNum === 2) showTab(9);
             else if (topicNum === 3) showTab(17);
             else if (topicNum === 4) showTab(21);
+            else if (topicNum === 5) showTab(25);
         }
 
         // TAB ALMASHTIRISH
@@ -1910,11 +2332,12 @@
 
             // Mavzu guruhini aniqlash va scrollerlarni moslash
             let topic = 1;
-            if (idx >= 21) topic = 4;
+            if (idx >= 25) topic = 5;
+            else if (idx >= 21) topic = 4;
             else if (idx >= 17) topic = 3;
             else if (idx >= 9) topic = 2;
 
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 5; i++) {
                 const b = document.getElementById('btn-topic-' + i);
                 if (b) b.classList.toggle('active', i === topic);
                 const scr = document.getElementById('scroller-topic-' + i);
@@ -2434,6 +2857,15 @@
             { q: "Kuniga kamida necha litr toza suv ichish meʼyor hisoblanadi?", opts: ["0.3 litr", "1.5 - 2 litr", "5 litr"], ans: 1 }
         ];
 
+        // 5-TEST MA'LUMOTLARI (OZIQA ZANJIRI VA EKOLOGIYA)
+        const quiz5 = [
+            { q: "Oziqa zanjirida har bir keyingi boʻgʻinga oʻrtacha qancha energiya oʻtadi?", opts: ["1%", "10%", "50%", "90%"], ans: 1 },
+            { q: "Oziqa zanjirining boshlangʻich boʻgʻinida (produtsent) odatda nima turadi?", opts: ["Oʻsimlik (fotosintez qiluvchi)", "Yirtqich hayvon", "Parchalovchi", "Inson"], ans: 0 },
+            { q: "Bir nechta oziqa zanjirlarining oʻzaro tutashib, kesishib ketishi nima deyiladi?", opts: ["Energiya piramidasi", "Oziq toʻri (Food Web)", "Fotosintez", "Nafas olish"], ans: 1 },
+            { q: "Biomagnifikatsiyada zaharli moddalar konsentratsiyasi eng yuqori boʻladi:", opts: ["Oziqa zanjirining eng yuqori boʻgʻinidagi yirtqichlarda", "Tuproq tubida", "Faqat oʻsimlik ildizida", "Har doim suvda"], ans: 0 },
+            { q: "10% qoidasiga koʻra, 10 000 Joul oʻsimlik energiyasidan lochin (III-konsument)ga qancha yetib boradi?", opts: ["1 000 Joul", "100 Joul", "10 Joul", "1 Joul"], ans: 2 }
+        ];
+
         function renderQuizzes() {
             // Quiz 1
             const c1 = document.getElementById('quiz-list-1');
@@ -2498,9 +2930,25 @@
                     `;
                 });
             }
+
+            // Quiz 5
+            const c5 = document.getElementById('quiz-list-5');
+            if (c5) {
+                c5.innerHTML = '';
+                quiz5.forEach((q, idx) => {
+                    c5.innerHTML += `
+                        <div style="background:var(--bg-card-subtle); padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid var(--border-color);">
+                            <b>${idx+1}. ${q.q}</b>
+                            ${q.opts.map((opt, oIdx) => `
+                                <button class="btn-tab-nav" style="display:block; width:100%; margin-top:6px; text-align:left; border-radius:8px;" onclick="ansQ5(this, ${idx}, ${oIdx})">${opt}</button>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
         }
 
-        let a1 = {}, a2 = {}, a3 = {}, a4 = {};
+        let a1 = {}, a2 = {}, a3 = {}, a4 = {}, a5 = {};
         function ansQ1(btn, qIdx, oIdx) {
             if (a1[qIdx] !== undefined) return;
             a1[qIdx] = oIdx;
@@ -2565,9 +3013,26 @@
             }
         }
 
+        function ansQ5(btn, qIdx, oIdx) {
+            if (a5[qIdx] !== undefined) return;
+            a5[qIdx] = oIdx;
+            if (oIdx === quiz5[qIdx].ans) {
+                btn.style.background = "#dcfce7"; btn.style.color = "#15803d";
+                playTone(850, 0.1);
+            } else {
+                btn.style.background = "#fee2e2"; btn.style.color = "#b91c1c";
+                playTone(250, 0.15);
+            }
+            if (Object.keys(a5).length === quiz5.length) {
+                document.getElementById('quiz-final-box-5').style.display = 'block';
+                document.getElementById('quiz-final-score-5').innerText = "5-mavzu boʻyicha barcha savollarga muvaffaqiyatli javob berdingiz!";
+            }
+        }
+
         function generateCertificate(num) {
             triggerHaptic(45);
-            const name = document.getElementById('student-name-' + num).value.trim() || "Yosh Biolog";
+            const defaultName = num === 5 ? "Yosh Ekolog" : "Yosh Biolog";
+            const name = document.getElementById('student-name-' + num).value.trim() || defaultName;
             document.getElementById('cert-student-name-' + num).innerText = name;
             document.getElementById('cert-view-' + num).style.display = 'block';
             playTone(950, 0.25);
@@ -2972,11 +3437,184 @@
             }
         }
 
+        // ==========================================
+        // 5-MAVZU: OZIQA ZANJIRI VA EKOLOGIYA
+        // ==========================================
+        const chainNodeDescriptions = {
+            sun: { title: "☀️ Quyosh — Birlamchi Energiya Manbai", text: "Yer yuzidagi barcha tirik organizmlarning asosiy quvvat manbai. Oʻsimliklar uning nurlaridan foydalanib fotosintez qiladi." },
+            plant: { title: "🌿 Produtsent (Oʻsimliklar)", text: "Fotosintez jarayoni orqali noorganik moddalardan organik oziq hosil qiluvchi tirik tabiatning birlamchi asosi." },
+            worm: { title: "🐛 I-Konsument (Oʻtxoʻr hayvonlar)", text: "Faqat oʻsimliklar bilan oziqlanadigan organizmlar (hasharotlar, kemiruvchilar, quyonlar)." },
+            bird: { title: "🐦 II-Konsument (Kichik yirtqichlar)", text: "Oʻtxoʻr hasharotlar va mayda hayvonlarni yeb hayot kechiradigan organizmlar." },
+            hawk: { title: "🦅 III-Konsument (Oliy yirtqich)", text: "Oziqa zanjirining eng choʻqqisida turadigan yirtqich. Tabiatda uni ovlaydigan boshqa tabiiy yirtqich deyarli yoʻq." },
+            decomp: { title: "🍄 Redutsentlar (Parchalovchilar)", text: "Nobud boʻlgan barcha oʻsimlik va hayvon qoldiqlarini parchalab, qaytadan tuproqqa mineral moddalar holida qaytaruvchi zamburugʻ va bakteriyalar." }
+        };
+
+        function explainChainNode(key) {
+            triggerHaptic(30);
+            playTone(700, 0.1);
+            const d = chainNodeDescriptions[key];
+            if (!d) return;
+            const box = document.getElementById('chain-node-info');
+            box.innerHTML = `<h3 style="color:#15803d; font-size:1.05rem; margin-bottom:5px;">${d.title}</h3><p style="font-size:0.88rem; color:var(--text-muted);">${d.text}</p>`;
+        }
+
+        let chainCurrentStep = 1;
+        function pickChainStep(btn, name, order) {
+            if (order === chainCurrentStep) {
+                triggerHaptic(35);
+                playTone(850, 0.1);
+                chainCurrentStep++;
+                btn.style.display = 'none';
+                const target = document.getElementById('chain-target');
+                const hint = document.getElementById('chain-target-hint');
+                if (hint) hint.style.display = 'none';
+
+                const badge = document.createElement('span');
+                badge.className = 'btn-tab-nav';
+                badge.style.background = '#16a34a';
+                badge.style.color = 'white';
+                badge.style.cursor = 'default';
+                badge.innerText = (chainCurrentStep > 2 ? ' ➔ ' : '') + name;
+                target.appendChild(badge);
+
+                if (chainCurrentStep > 5) {
+                    playTone(950, 0.25);
+                    document.getElementById('chain-game-msg').innerText = "🎉 Aʼlo! Mukammal oziqa zanjiri yigʻildi!";
+                } else {
+                    document.getElementById('chain-game-msg').innerText = `Toʻgʻri! Keyingi ${chainCurrentStep}-boʻgʻinni toping...`;
+                }
+            } else {
+                triggerHaptic(75);
+                playTone(250, 0.15);
+                document.getElementById('chain-game-msg').innerHTML = "<span style='color:#ef4444;'>❌ Ketma-ketlik xato! Zanjir tartibiga eʼtibor bering.</span>";
+            }
+        }
+
+        function resetChainPuzzle() {
+            triggerHaptic(30);
+            chainCurrentStep = 1;
+            document.querySelectorAll('#chain-pool button').forEach(b => b.style.display = 'inline-flex');
+            const target = document.getElementById('chain-target');
+            target.innerHTML = '<span style="color:var(--text-muted); font-size:0.85rem;" id="chain-target-hint">Birinchi boʻlib quyosh yoki oʻsimlikni bosing...</span>';
+            document.getElementById('chain-game-msg').innerText = '';
+        }
+
+        function highlightWebNode(role) {
+            triggerHaptic(30);
+            playTone(680, 0.1);
+            document.querySelectorAll('.web-link').forEach(l => l.classList.remove('active-link'));
+            const desc = document.getElementById('main-web-desc');
+
+            if (role === 'plant') {
+                document.getElementById('ml-plant-worm').classList.add('active-link');
+                document.getElementById('ml-plant-mouse').classList.add('active-link');
+                document.getElementById('ml-plant-rabbit').classList.add('active-link');
+                desc.innerHTML = "🌿 <strong>Oʻsimlik:</strong> Qurt, Sichqon va Quyonni energiya bilan taʼminlaydi (Birlamchi hosil qiluvchi).";
+            } else if (role === 'mouse') {
+                document.getElementById('ml-plant-mouse').classList.add('active-link');
+                document.getElementById('ml-mouse-bird').classList.add('active-link');
+                document.getElementById('ml-mouse-snake').classList.add('active-link');
+                desc.innerHTML = "🐭 <strong>Sichqon:</strong> Oʻsimlikni yeydi, oʻzi esa Qush va Ilonga yem boʻladi.";
+            } else if (role === 'hawk') {
+                document.getElementById('ml-bird-hawk').classList.add('active-link');
+                document.getElementById('ml-snake-hawk').classList.add('active-link');
+                desc.innerHTML = "🦅 <strong>Lochin:</strong> Qush va Ilonni ovlovchi oliy yirtqich. Oziq toʻrining choʻqqisida turadi.";
+            } else if (role === 'worm') {
+                document.getElementById('ml-plant-worm').classList.add('active-link');
+                document.getElementById('ml-worm-bird').classList.add('active-link');
+                desc.innerHTML = "🐛 <strong>Qurt:</strong> Oʻsimlik bargini yeydi va Qushga yem boʻladi.";
+            } else if (role === 'rabbit') {
+                document.getElementById('ml-plant-rabbit').classList.add('active-link');
+                document.getElementById('ml-rabbit-snake').classList.add('active-link');
+                desc.innerHTML = "🐇 <strong>Quyon:</strong> Oʻt-oʻlanlarni yeydi va Ilonga ozuqa boʻladi.";
+            } else if (role === 'bird') {
+                document.getElementById('ml-worm-bird').classList.add('active-link');
+                document.getElementById('ml-mouse-bird').classList.add('active-link');
+                document.getElementById('ml-bird-hawk').classList.add('active-link');
+                desc.innerHTML = "🐦 <strong>Qush:</strong> Qurt va sichqonlarni yeb, oʻzi Lochinga oʻlja boʻladi.";
+            } else if (role === 'snake') {
+                document.getElementById('ml-mouse-snake').classList.add('active-link');
+                document.getElementById('ml-rabbit-snake').classList.add('active-link');
+                document.getElementById('ml-snake-hawk').classList.add('active-link');
+                desc.innerHTML = "🐍 <strong>Ilon:</strong> Sichqon va quyonlarni yutadi, lochin tomonidan ovlanadi.";
+            }
+        }
+
+        function resetWebNodes() {
+            triggerHaptic(30);
+            document.querySelectorAll('.web-link').forEach(l => l.classList.remove('active-link'));
+            document.getElementById('main-web-desc').innerText = "👆 Doiralarni bosib organizmlarning oziq aloqalarini koʻring!";
+        }
+
+        function setMainEnergy(val) {
+            triggerHaptic(30);
+            document.getElementById('mainEnergySlider').value = val;
+            simMainEnergy();
+        }
+
+        function simMainEnergy() {
+            const v = Number(document.getElementById('mainEnergySlider').value);
+            document.getElementById('mainEnergyDisplay').innerText = v.toLocaleString('uz-UZ') + " Joul (J)";
+            const e1 = v;
+            const e2 = Math.round(v * 0.1);
+            const e3 = Math.round(v * 0.01);
+            const e4 = Math.round(v * 0.001);
+
+            document.getElementById('m-val-p1').innerText = `${e1.toLocaleString()} J (100%)`;
+            document.getElementById('m-val-p2').innerText = `${e2.toLocaleString()} J (10%)`;
+            document.getElementById('m-val-p3').innerText = `${e3.toLocaleString()} J (1%)`;
+            document.getElementById('m-val-p4').innerText = `${e4.toLocaleString()} J (0.1%)`;
+        }
+
+        function setMainToxicLevel(level) {
+            triggerHaptic(30);
+            playTone(550, 0.1);
+            document.querySelectorAll('#btn-tox-clean, #btn-tox-med, #btn-tox-heavy').forEach(b => b.classList.remove('active'));
+            if (level === 'clean') {
+                document.getElementById('btn-tox-clean').classList.add('active');
+                document.getElementById('m-tox-1').innerText = "0.000001 ppm";
+                document.getElementById('m-tox-2').innerText = "0.005 ppm";
+                document.getElementById('m-tox-3').innerText = "0.05 ppm";
+                document.getElementById('m-tox-4').innerText = "0.4 ppm";
+                document.getElementById('m-tox-5').innerText = "2.5 ppm";
+                document.getElementById('m-tox-b1').style.width = "1%";
+                document.getElementById('m-tox-b2').style.width = "5%";
+                document.getElementById('m-tox-b3').style.width = "15%";
+                document.getElementById('m-tox-b4').style.width = "30%";
+                document.getElementById('m-tox-b5').style.width = "45%";
+            } else if (level === 'medium') {
+                document.getElementById('btn-tox-med').classList.add('active');
+                document.getElementById('m-tox-1').innerText = "0.000003 ppm";
+                document.getElementById('m-tox-2').innerText = "0.03 ppm";
+                document.getElementById('m-tox-3').innerText = "0.3 ppm";
+                document.getElementById('m-tox-4').innerText = "3.0 ppm";
+                document.getElementById('m-tox-5').innerText = "25.0 ppm";
+                document.getElementById('m-tox-b1').style.width = "2%";
+                document.getElementById('m-tox-b2').style.width = "10%";
+                document.getElementById('m-tox-b3').style.width = "25%";
+                document.getElementById('m-tox-b4').style.width = "55%";
+                document.getElementById('m-tox-b5').style.width = "100%";
+            } else if (level === 'heavy') {
+                document.getElementById('btn-tox-heavy').classList.add('active');
+                document.getElementById('m-tox-1').innerText = "0.00002 ppm";
+                document.getElementById('m-tox-2').innerText = "0.2 ppm";
+                document.getElementById('m-tox-3').innerText = "2.5 ppm";
+                document.getElementById('m-tox-4').innerText = "20.0 ppm";
+                document.getElementById('m-tox-5').innerText = "120.0 ppm";
+                document.getElementById('m-tox-b1').style.width = "5%";
+                document.getElementById('m-tox-b2').style.width = "25%";
+                document.getElementById('m-tox-b3').style.width = "60%";
+                document.getElementById('m-tox-b4').style.width = "90%";
+                document.getElementById('m-tox-b5').style.width = "100%";
+            }
+        }
+
         window.onload = function() {
             initGame();
             initWater();
             renderBlitz();
             renderQuizzes();
+            simMainEnergy();
         };
     </script>
 </body>
