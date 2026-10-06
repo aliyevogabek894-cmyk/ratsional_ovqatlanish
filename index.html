@@ -151,36 +151,36 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
         .topic-switcher {
-            max-width: 1050px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 1050px) {
             .topic-switcher {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
             }
         }
-        @media (max-width: 500px) {
+        @media (max-width: 550px) {
             .topic-switcher {
                 grid-template-columns: 1fr;
             }
         }
         .topic-btn {
-            padding: 12px 14px;
-            border-radius: 14px;
+            padding: 10px 8px;
+            border-radius: 12px;
             border: 2px solid var(--border-color);
             background: var(--bg-card-subtle);
             color: var(--text-muted);
             font-weight: 800;
-            font-size: 0.92rem;
+            font-size: 0.83rem;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             text-align: center;
         }
         .topic-btn.active {
