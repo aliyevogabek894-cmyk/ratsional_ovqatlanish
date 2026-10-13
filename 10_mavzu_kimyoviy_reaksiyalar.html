@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-sinf Tabiiy Fanlar — 10-Mavzu: Kimyoviy Reaksiyalar</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--ink:#0f172a;--muted:#64748b;--bg:#f5f3ff;--card:#ffffff;--purple:#7c3aed;--border:#ddd6fe;--shadow:0 10px 25px -5px rgba(124,58,237,0.08)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+header{padding:35px 20px;background:linear-gradient(135deg,#5b21b6,#7c3aed 60%,#a855f7);color:#fff}
+.wrap{max-width:1120px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:800;opacity:.9}
+h1{font-family:'Outfit',sans-serif;font-size:clamp(2rem,5vw,3.2rem);margin:8px 0;line-height:1.15}header p{max-width:780px;color:#ede9fe;font-size:1.05rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;gap:8px;overflow-x:auto;justify-content:center}
+nav a{white-space:nowrap;text-decoration:none;color:#5b21b6;font-size:.88rem;font-weight:700;padding:8px 14px;border-radius:10px}nav a:hover{background:#ede9fe}
+main{max-width:1120px;margin:24px auto;padding:0 16px 50px}.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:clamp(16px,3vw,26px);box-shadow:var(--shadow);margin-bottom:22px}
+.btn{border:0;border-radius:11px;padding:10px 16px;background:#ede9fe;color:var(--purple);font-weight:700;cursor:pointer}.btn.primary{background:var(--purple);color:#fff}
+.reactor{height:180px;border-radius:14px;background:#0f172a;position:relative;overflow:hidden;margin:14px 0}
+.atom{position:absolute;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:white;font-weight:800;font-size:.8rem;transition:all .8s ease}
+.atom-a{background:#ef4444}.atom-b{background:#3b82f6}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:20px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">6-sinf · Tabiiy Fanlar · 10-Mavzu</div><h1>Kimyoviy Reaksiyalar</h1><p>Atomlar saqlanishi, yangi moddalar hosil bo‘lishi, reaksiya belgilari va xavfsizlik qoidalari.</p></div></header>
+<nav><a href="#atomlar">1. Atomlar Reaktori</a><a href="#belgilar">2. Reaksiya Belgilari</a><a href="#test">3. Yakuniy Test</a></nav>
+<main>
+    <section id="atomlar" class="card">
+        <h2>⚛️ 1. Kimyoviy Reaksiya & Atomlar Saqlanishi</h2>
+        <p>Reaksiyada dastlabki moddalardan yangi moddalar hosil bo‘ladi. Atomlar yo‘qolmaydi va yangidan yaratilmaydi, ular faqat yangi tartibda birikadi:</p>
+        <div class="reactor" id="reactor">
+            <div class="atom atom-a" id="a1" style="left:20%; top:30%;">A</div>
+            <div class="atom atom-a" id="a2" style="left:25%; top:65%;">A</div>
+            <div class="atom atom-b" id="b1" style="left:65%; top:30%;">B</div>
+            <div class="atom atom-b" id="b2" style="left:70%; top:65%;">B</div>
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center;">
+            <button class="btn primary" onclick="reactAtoms()">⚗️ Reaksiyaga kirishish</button>
+            <button class="btn" onclick="resetAtoms()">↺ Qayta tiklash</button>
+        </div>
+        <div id="atomMsg" style="margin-top:12px; text-align:center; font-weight:700; color:#6d28d9;">Boshlang'ich holat: Atomlar erkin harakatlanmoqda.</div>
+    </section>
+
+    <section id="belgilar" class="card">
+        <h2>🔬 2. Reaksiya Belgilari Virtual Laboratoriyasi</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin-top:12px;">
+            <div style="background:#f8fafc; border:1px solid var(--border); padding:16px; border-radius:14px; text-align:center;">
+                <b>1. Sirka + Soda</b><br><span style="font-size:2rem;">🫧</span>
+                <p style="font-size:0.85rem; color:var(--muted); margin:6px 0;">Karbonat angidrid (CO₂) gazi pufakchalari ajraladi.</p>
+                <button class="btn" onclick="alert('Sirka va sodadan shiddatli CO2 gazi ajraldi!')">Sinash</button>
+            </div>
+            <div style="background:#f8fafc; border:1px solid var(--border); padding:16px; border-radius:14px; text-align:center;">
+                <b>2. Temir zanglashi</b><br><span style="font-size:2rem;">🔩 ➡️ 🟤</span>
+                <p style="font-size:0.85rem; color:var(--muted); margin:6px 0;">Rang o‘zgaradi va to‘q qo‘ng‘ir zang paydo bo‘ladi.</p>
+                <button class="btn" onclick="alert('Temir kislorod va namlik ta'sirida zangladi!')">Sinash</button>
+            </div>
+            <div style="background:#f8fafc; border:1px solid var(--border); padding:16px; border-radius:14px; text-align:center;">
+                <b>3. Cho‘kma tushishi</b><br><span style="font-size:2rem;">🥛 ➡️ ⚪</span>
+                <p style="font-size:0.85rem; color:var(--muted); margin:6px 0;">Shaffof eritmada oq qattiq cho‘kma ajraladi.</p>
+                <button class="btn" onclick="alert('Erimaydigan oq cho'kma idish tubiga cho'kdi!')">Sinash</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="test" class="card">
+        <h2>🏆 3. Bilimni Sinash Testi</h2>
+        <div id="q10Box"></div>
+        <button class="btn primary" style="width:100%; margin-top:14px; padding:12px;" onclick="checkQ10()">Test Natijasini Ko‘rish</button>
+        <div id="res10" style="margin-top:12px; display:none; padding:16px; border-radius:12px; background:#f0fdf4; border:1px solid #86efac; text-align:center;"></div>
+    </section>
+</main>
+<footer>6-sinf Tabiiy Fanlar · 10-Mavzu · Kimyoviy Reaksiyalar</footer>
+<script>
+function reactAtoms(){
+    document.getElementById('a1').style.left = '42%'; document.getElementById('a1').style.top = '45%';
+    document.getElementById('b1').style.left = '48%'; document.getElementById('b1').style.top = '45%';
+    document.getElementById('a2').style.left = '62%'; document.getElementById('a2').style.top = '45%';
+    document.getElementById('b2').style.left = '68%'; document.getElementById('b2').style.top = '45%';
+    document.getElementById('atomMsg').innerText = "Yangi A-B molekulalari hosil bo'ldi! Atomlar saqlanadi, faqat yangi tartibda birikadi.";
+}
+function resetAtoms(){
+    document.getElementById('a1').style.left = '20%'; document.getElementById('a1').style.top = '30%';
+    document.getElementById('a2').style.left = '25%'; document.getElementById('a2').style.top = '65%';
+    document.getElementById('b1').style.left = '65%'; document.getElementById('b1').style.top = '30%';
+    document.getElementById('b2').style.left = '70%'; document.getElementById('b2').style.top = '65%';
+    document.getElementById('atomMsg').innerText = "Boshlang'ich holat: Atomlar erkin harakatlanmoqda.";
+}
+
+const q10 = [
+    { q: "1. Kimyoviy reaksiya nima?", o: ["Dastlabki moddalardan yangi moddalar hosil bo'lishi", "Faqat shakl o'zgarishi", "Muz erishi"], a: 0 },
+    { q: "2. Reaksiyada atomlar nima bo'ladi?", o: ["Yo'qolib ketadi", "Saqlanadi va qayta guruhlanadi", "Yangi atomlar yaratiladi"], a: 1 },
+    { q: "3. Sirka va soda reaksiyasida qaysi gaz ajraladi?", o: ["Karbonat angidrid (CO₂)", "Kislorod", "Azot"], a: 0 },
+    { q: "4. Noma'lum kimyoviy moddani nima qilish qat'iyan man etiladi?", o: ["Tatib ko'rish va to'g'ridan-to'g'ri hidlash", "Ko'zoynak taqish", "Qo'lni yuvish"], a: 0 }
+];
+document.getElementById('q10Box').innerHTML = q10.map((x,i)=>`
+    <div style="background:#f8fafc; padding:12px; border-radius:10px; margin:8px 0;"><p><b>${x.q}</b></p>${x.o.map((opt,j)=>`<label style="display:block; margin:4px 0;"><input type="radio" name="q10_${i}" value="${j}"> ${opt}</label>`).join('')}</div>
+`).join('');
+function checkQ10(){
+    let s = 0;
+    q10.forEach((x,i)=>{ const c = document.querySelector(`input[name="q10_${i}"]:checked`); if(c && Number(c.value)===x.a) s++; });
+    const r = document.getElementById('res10'); r.style.display = 'block';
+    r.innerHTML = `<h3>Natija: ${s} / ${q10.length} ball!</h3>`;
+}
+</script>
+</body>
+</html>

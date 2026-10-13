@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-sinf Tabiiy Fanlar — 8-Mavzu: Fizik O‘zgarishlar</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--ink:#0f172a;--muted:#64748b;--bg:#f8fafc;--card:#ffffff;--blue:#2563eb;--border:#e2e8f0;--shadow:0 10px 25px -5px rgba(0,0,0,0.06)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+header{padding:35px 20px;background:linear-gradient(135deg,#1e3a8a,#2563eb 55%,#38bdf8);color:#fff}
+.wrap{max-width:1120px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:800;opacity:.9}
+h1{font-family:'Outfit',sans-serif;font-size:clamp(2rem,5vw,3.2rem);margin:8px 0;line-height:1.15}header p{max-width:780px;color:#e0f2fe;font-size:1.05rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;gap:8px;overflow-x:auto;justify-content:center}
+nav a{white-space:nowrap;text-decoration:none;color:#1e40af;font-size:.88rem;font-weight:700;padding:8px 14px;border-radius:10px}nav a:hover{background:#eff6ff}
+main{max-width:1120px;margin:24px auto;padding:0 16px 50px}.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:clamp(16px,3vw,26px);box-shadow:var(--shadow);margin-bottom:22px}
+.btn{border:0;border-radius:11px;padding:10px 16px;background:#eff6ff;color:var(--blue);font-weight:700;cursor:pointer;transition:all .2s}.btn.primary{background:var(--blue);color:#fff}
+.stage-box{min-height:220px;background:linear-gradient(180deg,#e0f2fe,#f0fdf4);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative}
+.item-row{display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid var(--border);border-radius:12px;margin:8px 0}
+select{padding:8px 12px;border-radius:8px;border:1px solid var(--border);font-weight:700}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:20px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">6-sinf · Tabiiy Fanlar · 8-Mavzu</div><h1>Fizik O‘zgarishlar</h1><p>Moddaning kimyoviy tarkibi saqlanib, shakli, o‘lchami yoki agregat holati o‘zgaradigan jarayonlar.</p></div></header>
+<nav><a href="#faza">1. Faza Simulyatori</a><a href="#qaytar">2. Qaytar / Qaytmas Lab</a><a href="#test">3. Yakuniy Test</a></nav>
+<main>
+    <section id="faza" class="card">
+        <h2>🌡️ 1. Muz ↔ Suv ↔ Bug‘ Fazaviy O‘tishlari</h2>
+        <div class="stage-box" id="phaseVisual">🧊 Muz</div>
+        <div style="margin:16px 0;">
+            <b>Harorat: <span id="tempVal" style="color:var(--blue); font-size:1.3rem;">-10 °C</span></b>
+            <input type="range" id="tSlide" min="-20" max="120" value="-10" style="width:100%; accent-color:var(--blue);" oninput="updateT(this.value)">
+        </div>
+        <div id="phaseDesc" style="padding:12px; background:#f1f5f9; border-radius:10px; font-weight:700;">Holat: Qattiq muz. Zarrachalar o‘z o‘rni atrofida tebranadi.</div>
+    </section>
+
+    <section id="qaytar" class="card">
+        <h2>🔄 2. Qaytar yoki Qaytmas Hodisalarni Saralash</h2>
+        <div id="gameItems"></div>
+        <button class="btn primary" style="width:100%; margin-top:10px; padding:12px;" onclick="checkGame()">Tekshirish</button>
+        <div id="gameRes" style="margin-top:12px; font-weight:700;"></div>
+    </section>
+
+    <section id="test" class="card">
+        <h2>🏆 3. Bilimni Sinash Testi</h2>
+        <div id="qBox"></div>
+        <button class="btn primary" style="width:100%; margin-top:14px; padding:12px;" onclick="checkTest()">Natijani Ko‘rish</button>
+        <div id="testRes" style="margin-top:12px; display:none; padding:16px; border-radius:12px; background:#f0fdf4; border:1px solid #86efac; text-align:center;"></div>
+    </section>
+</main>
+<footer>6-sinf Tabiiy Fanlar · 8-Mavzu · Fizik O‘zgarishlar</footer>
+<script>
+function updateT(v){
+    const t = Number(v);
+    document.getElementById('tempVal').innerText = t + " °C";
+    const vis = document.getElementById('phaseVisual');
+    const desc = document.getElementById('phaseDesc');
+    if(t < 0){ vis.innerText = "🧊 Muz"; desc.innerText = "Holat: Qattiq muz (H₂O molekulalari kristall panjarada tebranadi)."; }
+    else if(t === 0){ vis.innerText = "🧊 ⇄ 💧"; desc.innerText = "Holat: Erish platosi. 0 °C da muz suvga aylanmoqda."; }
+    else if(t < 100){ vis.innerText = "💧 Suyuq suv"; desc.innerText = "Holat: Suyuq suv. Molekulalar erkin siljiydi."; }
+    else { vis.innerText = "💨 Suv bug‘i"; desc.innerText = "Holat: Gaz fazasi. Molekulalar erkin va tez uchadi."; }
+}
+
+const list = [
+    { n: "Muzning erishi", a: "q" },
+    { n: "Shishaning sinishi", a: "qm" },
+    { n: "Plastilin shaklining o'zgarishi", a: "q" },
+    { n: "Qog'ozning maydalanishi", a: "qm" }
+];
+document.getElementById('gameItems').innerHTML = list.map((x,i)=>`
+    <div class="item-row"><span>${i+1}. ${x.n}</span><select id="sel${i}"><option value="">Tanlang...</option><option value="q">Qaytar</option><option value="qm">Qaytmas</option></select></div>
+`).join('');
+function checkGame(){
+    let s = 0;
+    list.forEach((x,i)=>{ if(document.getElementById('sel'+i).value === x.a) s++; });
+    document.getElementById('gameRes').innerText = `Natija: ${s} / ${list.length} to'g'ri. Shisha sinishi fizik bo'lsa-da qaytmasdir!`;
+}
+
+const qs = [
+    { q: "1. Fizik o'zgarishda nima saqlanadi?", o: ["Kimyoviy tarkib", "Har doim shakl", "Har doim harorat"], a: 0 },
+    { q: "2. Qaysi biri qaytar jarayon?", o: ["Muz erishi", "Qog'oz yonishi", "Temir zanglashi"], a: 0 },
+    { q: "3. Shisha sinishi nima uchun fizik o'zgarish?", o: ["Yangi modda hosil bo'lmagani uchun", "Ortga qaytgani uchun", "Yonib ketgani uchun"], a: 0 }
+];
+document.getElementById('qBox').innerHTML = qs.map((x,i)=>`
+    <div style="background:#f8fafc; padding:12px; border-radius:10px; margin:8px 0;"><p><b>${x.q}</b></p>${x.o.map((opt,j)=>`<label style="display:block; margin:4px 0;"><input type="radio" name="qt${i}" value="${j}"> ${opt}</label>`).join('')}</div>
+`).join('');
+function checkTest(){
+    let s = 0;
+    qs.forEach((x,i)=>{ const c = document.querySelector(`input[name="qt${i}"]:checked`); if(c && Number(c.value)===x.a) s++; });
+    const r = document.getElementById('testRes'); r.style.display = 'block';
+    r.innerHTML = `<h3>Natija: ${s} / ${qs.length} ball!</h3>`;
+}
+</script>
+</body>
+</html>

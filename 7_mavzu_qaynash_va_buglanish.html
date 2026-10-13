@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-sinf Tabiiy Fanlar — 7-Mavzu: Qaynash va Bug‘lanish</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--ink:#0f172a;--muted:#64748b;--bg:#f0f9ff;--card:#ffffff;--blue:#0284c7;--border:#bae6fd;--shadow:0 10px 25px -5px rgba(2,132,199,0.08)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+header{padding:35px 20px;background:linear-gradient(135deg,#0369a1,#0284c7 60%,#38bdf8);color:#fff}
+.wrap{max-width:1120px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:800;opacity:.9}
+h1{font-family:'Outfit',sans-serif;font-size:clamp(2rem,5vw,3.2rem);margin:8px 0;line-height:1.15}header p{max-width:780px;color:#e0f2fe;font-size:1.05rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;gap:8px;overflow-x:auto;justify-content:center}
+nav a{white-space:nowrap;text-decoration:none;color:#0369a1;font-size:.88rem;font-weight:700;padding:8px 14px;border-radius:10px;transition:all .2s}nav a:hover{background:#e0f2fe}
+main{max-width:1120px;margin:24px auto;padding:0 16px 50px}.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:clamp(16px,3vw,26px);box-shadow:var(--shadow);margin-bottom:22px}
+.btn{border:0;border-radius:11px;padding:10px 16px;background:#e0f2fe;color:var(--blue);font-weight:700;cursor:pointer;transition:all .2s}.btn.primary{background:var(--blue);color:#fff}.btn:hover{filter:brightness(.95);transform:translateY(-1px)}
+canvas{display:block;width:100%;height:320px;background:linear-gradient(180deg,#f0f9ff,#e0f2fe);border-radius:16px;border:2px solid var(--border)}
+.compare-tbl{width:100%;border-collapse:collapse;margin:14px 0}.compare-tbl th,.compare-tbl td{padding:10px;border:1px solid var(--border);text-align:left}.compare-tbl th{background:#e0f2fe;color:#0369a1}
+.question{background:#f8fafc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:12px 0}.question p{font-weight:700;margin-bottom:8px}
+.answer{display:flex;gap:8px;padding:10px;border:1px solid var(--border);border-radius:10px;margin:6px 0;background:#fff;cursor:pointer;font-weight:600}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:20px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">6-sinf · Tabiiy Fanlar · 7-Mavzu</div><h1>Qaynash va Bug‘lanish</h1><p>Suyuqlikning gaz holatiga o‘tish mexanizmi: sirt bug‘lanishi va hajmiy qaynash pufakchalari simulyatsiyasi.</p></div></header>
+<nav><a href="#nazariya">1. Nazariya & Farqi</a><a href="#canvas">2. Dinamik Canvas Lab</a><a href="#bosim">3. Bosim & Balandlik</a><a href="#test">4. Yakuniy Test</a></nav>
+<main>
+    <section id="nazariya" class="card">
+        <h2>♨️ 1. Qaynash va Bug‘lanishning Asosiy Farqlari</h2>
+        <table class="compare-tbl">
+            <tr><th>Belgisi</th><th>Sirt Bug‘lanishi</th><th>Hajmiy Qaynash</th></tr>
+            <tr><td><b>Jarayon joyi</b></td><td>Faqat suyuqlikning ochiq sirtida</td><td>Suyuqlikning butun hajmida</td></tr>
+            <tr><td><b>Harorat sharti</b></td><td>Har qanday haroratda</td><td>Muayyan qaynash haroratida (100°C)</td></tr>
+            <tr><td><b>Pufakchalar</b></td><td>Ichki pufakchalar bo‘lmaydi</td><td>Bug‘ pufakchalari ko‘tariladi</td></tr>
+            <tr><td><b>Misol</b></td><td>Kiyimning qurishi</td><td>Choynakdagi suv qaynashi</td></tr>
+        </table>
+    </section>
+
+    <section id="canvas" class="card">
+        <h2>🔬 2. Dinamik Zarrachalar & Qaynash Pufakchalari Modeli</h2>
+        <canvas id="boilCanvas" width="700" height="320"></canvas>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin:14px 0; flex-wrap:wrap; gap:8px;">
+            <b>Harorat: <span id="tempRead" style="color:var(--blue); font-size:1.25rem;">25 °C</span></b>
+            <span id="stateRead" style="background:#e0f2fe; color:#0369a1; padding:5px 12px; border-radius:999px; font-weight:700;">Sirt bug‘lanishi</span>
+            <span>Uchib chiqqan: <b id="escRead" style="color:#f59e0b;">0</b></span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn primary" onclick="startSim()"><i class="fa-solid fa-fire"></i> ▶ Isitish</button>
+            <button class="btn" onclick="pauseSim()"><i class="fa-solid fa-pause"></i> ⏸ Pauza</button>
+            <button class="btn" onclick="resetSim()"><i class="fa-solid fa-rotate-left"></i> ↺ Qayta boshlash</button>
+        </div>
+    </section>
+
+    <section id="bosim" class="card">
+        <h2>⛰️ 3. Bosimning Qaynash Haroratiga Ta’siri</h2>
+        <p>Balandlikka ko‘tarilgan sari atmosfera bosimi pasayadi, natijada qaynash harorati ham pasayadi:</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-top:12px;">
+            <div style="background:#f0f9ff; padding:12px; border-radius:12px; border:1px solid var(--border); text-align:center;"><b>Dengiz sathi (1 atm)</b><br><span style="color:#0284c7; font-size:1.2rem; font-weight:800;">100 °C</span></div>
+            <div style="background:#f0f9ff; padding:12px; border-radius:12px; border:1px solid var(--border); text-align:center;"><b>Chimyon (2000m)</b><br><span style="color:#0284c7; font-size:1.2rem; font-weight:800;">93 °C</span></div>
+            <div style="background:#f0f9ff; padding:12px; border-radius:12px; border:1px solid var(--border); text-align:center;"><b>Everest (8848m)</b><br><span style="color:#0284c7; font-size:1.2rem; font-weight:800;">71 °C</span></div>
+            <div style="background:#f0f9ff; padding:12px; border-radius:12px; border:1px solid var(--border); text-align:center;"><b>Skorovarka (2 atm)</b><br><span style="color:#0284c7; font-size:1.2rem; font-weight:800;">120 °C</span></div>
+        </div>
+    </section>
+
+    <section id="test" class="card">
+        <h2>🏆 4. Yakuniy Test</h2>
+        <div id="quizBox"></div>
+        <button class="btn primary" style="width:100%; margin-top:14px; padding:12px;" onclick="gradeQuiz()">Natijani Ko‘rish</button>
+        <div id="quizResult" style="margin-top:12px; display:none; padding:16px; border-radius:12px; background:#f0fdf4; border:1px solid #86efac; text-align:center;"></div>
+    </section>
+</main>
+<footer>6-sinf Tabiiy Fanlar · 7-Mavzu · Qaynash va Bug‘lanish</footer>
+<script>
+let temp = 25, running = false, escaped = 0, particles = [], bubbles = [];
+const canvas = document.getElementById('boilCanvas'), ctx = canvas.getContext('2d');
+function initParticles(){
+    particles = []; bubbles = []; escaped = 0;
+    for(let i=0; i<60; i++) particles.push({ x: 60+Math.random()*580, y: 160+Math.random()*110, escaped: false });
+    draw();
+}
+function draw(){
+    ctx.clearRect(0,0,700,320);
+    ctx.fillStyle = '#bae6fd'; ctx.fillRect(40,120,620,160);
+    const g = ctx.createLinearGradient(0,140,0,280); g.addColorStop(0,'#38bdf8'); g.addColorStop(1,'#0284c7');
+    ctx.fillStyle = g; ctx.fillRect(44,140,612,136);
+    ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(40,110); ctx.lineTo(40,280); ctx.lineTo(660,280); ctx.lineTo(660,110); ctx.stroke();
+    if (running) {
+        for(let i=0; i<6; i++){
+            ctx.fillStyle = (i%2===0)?'#f97316':'#ef4444';
+            ctx.beginPath(); ctx.moveTo(120+i*80, 305); ctx.lineTo(140+i*80, 305); ctx.lineTo(130+i*80, 275); ctx.fill();
+        }
+    }
+    particles.forEach(p=>{
+        ctx.fillStyle = p.escaped ? 'rgba(56,189,248,0.5)' : '#ffffff';
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.escaped?4:5, 0, Math.PI*2); ctx.fill();
+    });
+    bubbles.forEach(b=>{
+        ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI*2); ctx.stroke();
+    });
+}
+function loop(){
+    if(!running) return;
+    if(temp < 105) { temp += 0.3; document.getElementById('tempRead').innerText = Math.round(temp) + " °C"; }
+    document.getElementById('stateRead').innerText = temp >= 100 ? "Qaynash (Pufakchalar)" : "Sirt bug'lanishi";
+    particles.forEach(p=>{
+        if(p.escaped){
+            p.y -= 2;
+            if(p.y < 30){ p.y = 145+Math.random()*100; p.x = 60+Math.random()*580; p.escaped = false; }
+            return;
+        }
+        p.x += (Math.random()-0.5)*3; p.y += (Math.random()-0.5)*3;
+        if(p.y < 145 && Math.random() < temp/350){ p.escaped = true; escaped++; document.getElementById('escRead').innerText = escaped; }
+    });
+    if(temp >= 100 && Math.random()<0.6) bubbles.push({ x: 80+Math.random()*540, y: 270, r: 4, vy: 3 });
+    bubbles.forEach(b=>{ b.y -= b.vy; b.r += 0.05; });
+    bubbles = bubbles.filter(b=>b.y > 140);
+    draw();
+    requestAnimationFrame(loop);
+}
+function startSim(){ if(!running){ running=true; loop(); } }
+function pauseSim(){ running = false; draw(); }
+function resetSim(){ running = false; temp = 25; document.getElementById('tempRead').innerText = "25 °C"; initParticles(); }
+initParticles();
+
+const qData = [
+    { q: "1. Bug'lanish asosan qayerda sodir bo'ladi?", o: ["Faqat tubida", "Suyuqlik sirtida", "Faqat 100°C da"], a: 1 },
+    { q: "2. Suv qaynaganda qanday muhim belgi kuzatiladi?", o: ["Butun hajmda bug' pufakchalari paydo bo'lishi", "Doim muzlashi", "Hech narsa bo'lmaydi"], a: 0 },
+    { q: "3. Baland tog'da suv nega pastroq haroratda qaynaydi?", o: ["Bosim past bo'lgani uchun", "Quyosh yaqinligi uchun", "Shamolsiz bo'lgani uchun"], a: 0 },
+    { q: "4. Ho'l kiyimning qurishi nimaga misol?", o: ["Qaynashga", "Bug'lanishga", "Erishga"], a: 1 }
+];
+document.getElementById('quizBox').innerHTML = qData.map((x,i)=>`
+    <div class="question"><p>${x.q}</p>${x.o.map((opt,j)=>`<label class="answer"><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`).join('')}</div>
+`).join('');
+function gradeQuiz(){
+    let s = 0;
+    qData.forEach((x,i)=>{ const c = document.querySelector(`input[name="q${i}"]:checked`); if(c && Number(c.value)===x.a) s++; });
+    const r = document.getElementById('quizResult'); r.style.display = 'block';
+    r.innerHTML = `<h3>Natija: ${s} / ${qData.length} ball!</h3><p>${s>=3?'Ajoyib natija! 🎉':'Mavzuni qayta ko‘ring.'}</p>`;
+}
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>6-sinf Tabiiy Fanlar: 1 va 2-Mavzular (Hazm, Nafas va Qon Aylanish)</title>
+    <title>6-sinf Tabiiy Fanlar: 1-10 Mavzular (Interaktiv Milliy Ta'lim Platformasi)</title>
     <meta name="description" content="6-sinf Tabiiy fanlar uchun Ratsional ovqatlanish, Nafas olish va Qon aylanish sistemalari bo'yicha interaktiv milliy ta'lim platformasi.">
     <meta name="theme-color" content="#10b981">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -747,6 +747,454 @@
         .toxic-card:hover { transform: translateY(-3px); border-color: #ef4444; }
         .toxic-bar-wrap { height: 10px; background: #334155; border-radius: 999px; overflow: hidden; margin: 10px 0; }
         .toxic-bar-fill { height: 100%; background: linear-gradient(90deg, #facc15, #ef4444); border-radius: 999px; transition: width 0.7s ease; }
+    
+        /* ========================================================== */
+        /*   ZAMONAVIY 6, 7, 8, 9, 10-MAVZULARNING MAXSUS STILLARI   */
+        /* ========================================================== */
+        .topic-switcher {
+            max-width: 1400px !important;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 8px;
+        }
+        @media (max-width: 1250px) {
+            .topic-switcher {
+                grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)) !important;
+            }
+        }
+        @media (max-width: 550px) {
+            .topic-switcher {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* 6-MAVZU: GAZLAR & MASSA, AGREGAT HOLATLAR, O'TKAZUVCHANLIK */
+        .sim-stage-gas {
+            background: linear-gradient(180deg, rgba(238, 246, 255, 0.95), rgba(224, 238, 255, 0.98));
+            border: 2px solid #bfdbfe;
+            border-radius: 18px;
+            padding: 20px;
+            position: relative;
+            min-height: 240px;
+            overflow: hidden;
+        }
+        [data-theme="dark"] .sim-stage-gas {
+            background: linear-gradient(180deg, #132238, #0f172a);
+            border-color: #1e3a8a;
+        }
+        .scale-system {
+            max-width: 440px;
+            margin: 20px auto 10px;
+            position: relative;
+        }
+        .scale-pivot {
+            width: 14px;
+            height: 52px;
+            background: #475569;
+            margin: 0 auto;
+            border-radius: 6px 6px 0 0;
+            position: relative;
+        }
+        .scale-bar {
+            height: 10px;
+            background: linear-gradient(90deg, #334155, #64748b, #334155);
+            border-radius: 6px;
+            width: 100%;
+            position: absolute;
+            top: 6px;
+            left: 0;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: center center;
+        }
+        .scale-pans {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 24px;
+        }
+        .pan-plate {
+            width: 160px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.88);
+            border: 2px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 12px 8px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            transition: transform 0.6s ease;
+        }
+        [data-theme="dark"] .pan-plate {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: #475569;
+        }
+        .balloon-item {
+            width: 72px;
+            height: 88px;
+            border-radius: 50% 50% 48% 48%;
+            margin: 0 auto 8px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 800;
+            font-size: 0.9rem;
+            position: relative;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+        .balloon-item:after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 9px solid #be123c;
+        }
+        .balloon-a {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            border: 2px solid #475569;
+        }
+        .balloon-a:after {
+            border-top-color: #475569;
+        }
+        .balloon-b {
+            background: radial-gradient(circle at 30% 30%, #ff8da1, #e11d48);
+            border: 2px solid #be123c;
+        }
+        .gas-particles-box {
+            position: relative;
+            height: 90px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #bfdbfe;
+            margin-top: 10px;
+        }
+        [data-theme="dark"] .gas-particles-box {
+            background: rgba(15,23,42,0.8);
+            border-color: #1e3a8a;
+        }
+        .gas-particle-dot {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #2563eb;
+            opacity: 0.85;
+            animation: gasDotFloat 1.8s infinite alternate ease-in-out;
+        }
+        @keyframes gasDotFloat {
+            from { transform: translate(0, 0); }
+            to { transform: translate(6px, -7px); }
+        }
+
+        /* 6-MAVZU: KINETIK ZARRALAR & O'TKAZUVCHANLIK */
+        .matter-kinetic-box {
+            position: relative;
+            height: 180px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, #f0f7ff, #e2edff);
+            border: 2px solid #cbd5e1;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+        [data-theme="dark"] .matter-kinetic-box {
+            background: linear-gradient(180deg, #0f172a, #1e293b);
+            border-color: #334155;
+        }
+        .substance-card-btn {
+            padding: 10px;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-card);
+            cursor: pointer;
+            text-align: center;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+        .substance-card-btn.active {
+            border-color: #2563eb;
+            background: #eff6ff;
+            color: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.18);
+        }
+        [data-theme="dark"] .substance-card-btn.active {
+            background: #1e3a8a;
+            color: #93c5fd;
+        }
+
+        /* ISSIQLIK TO'LQINI & ELEKTR ZANJIRI */
+        .thermal-rod {
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #2563eb, #06b6d4, #10b981);
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
+            margin: 15px 0;
+        }
+        .thermal-heat-wave {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 70px;
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.95), rgba(245, 158, 11, 0.95));
+            filter: blur(2px);
+            animation: waveFlow 2s linear infinite;
+        }
+        @keyframes waveFlow {
+            from { left: -70px; }
+            to { left: 100%; }
+        }
+        .circuit-board {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+            border: 2px solid #334155;
+            margin: 14px 0;
+            position: relative;
+        }
+        .circuit-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .circuit-node {
+            background: #334155;
+            border: 2px solid #475569;
+            border-radius: 12px;
+            padding: 10px 14px;
+            text-align: center;
+            min-width: 90px;
+        }
+        .circuit-lamp {
+            font-size: 2.8rem;
+            filter: grayscale(1);
+            transition: all 0.3s ease;
+        }
+        .circuit-lamp.active-glow {
+            filter: grayscale(0) drop-shadow(0 0 22px #facc15) drop-shadow(0 0 35px #eab308);
+            transform: scale(1.1);
+        }
+        .circuit-wire {
+            height: 6px;
+            width: 44px;
+            background: #64748b;
+            border-radius: 3px;
+            position: relative;
+        }
+        .circuit-wire.active-wire {
+            background: #38bdf8;
+            box-shadow: 0 0 10px #38bdf8;
+        }
+
+        /* 7-MAVZU: QAYNASH VA BUG'LANISH (CANVAS & PANELS) */
+        .boil-canvas-wrap {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid #bae6fd;
+            background: linear-gradient(180deg, #f0f9ff, #e0f2fe);
+            box-shadow: 0 8px 24px rgba(14,165,233,0.1);
+        }
+        [data-theme="dark"] .boil-canvas-wrap {
+            border-color: #0369a1;
+            background: linear-gradient(180deg, #082f49, #0c4a6e);
+        }
+        #boilingCanvas {
+            display: block;
+            width: 100%;
+            height: 320px;
+        }
+
+        /* 8-MAVZU: FIZIK O'ZGARISHLAR & FAZALAR */
+        .water-phase-stage {
+            min-height: 240px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #e0f2fe, #f0fdf4);
+            border: 2px solid #bae6fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+        [data-theme="dark"] .water-phase-stage {
+            background: linear-gradient(180deg, #0b192c, #0d2538);
+            border-color: #1e3a8a;
+        }
+        .cube-ice-visual {
+            width: 110px;
+            height: 110px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(186,230,253,0.8));
+            border: 3px solid #7dd3fc;
+            box-shadow: inset -6px -6px 16px rgba(56,189,248,0.4), 0 10px 25px rgba(14,165,233,0.2);
+            animation: iceBob 2.5s ease-in-out infinite alternate;
+            display: grid;
+            place-items: center;
+            font-size: 2.5rem;
+        }
+        @keyframes iceBob {
+            from { transform: translateY(0) rotate(0deg); }
+            to { transform: translateY(-8px) rotate(4deg); }
+        }
+        .liquid-water-visual {
+            width: 150px;
+            height: 95px;
+            border-radius: 16px 16px 28px 28px;
+            background: linear-gradient(180deg, rgba(56,189,248,0.65), rgba(2,132,199,0.9));
+            border: 3px solid #38bdf8;
+            box-shadow: 0 12px 25px rgba(2,132,199,0.3);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            font-size: 2.5rem;
+        }
+        .gas-steam-visual {
+            font-size: 4rem;
+            animation: steamFloat 2s infinite ease-out;
+            filter: drop-shadow(0 0 12px rgba(255,255,255,0.8));
+        }
+        @keyframes steamFloat {
+            0% { transform: translateY(15px) scale(0.8); opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-25px) scale(1.15); opacity: 0; }
+        }
+
+        /* 9-MAVZU: 3 STAKAN ERUVCHANLIK */
+        .three-cups-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 16px 0;
+        }
+        @media (max-width: 700px) {
+            .three-cups-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        .cup-glass-box {
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 14px;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .cup-glass-box:hover {
+            transform: translateY(-2px);
+        }
+        .glass-beaker {
+            width: 95px;
+            height: 120px;
+            margin: 10px auto;
+            border: 4px solid #94a3b8;
+            border-top: none;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.4);
+            overflow: hidden;
+        }
+        .glass-water {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70%;
+            background: linear-gradient(180deg, rgba(125,211,252,0.65), rgba(56,189,248,0.85));
+            transition: background 0.4s ease;
+        }
+        .crystal-sediment {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #f1f5f9;
+            border-top: 2px dashed #cbd5e1;
+            transition: height 0.4s ease;
+        }
+
+        /* 10-MAVZU: KIMYOVIY REAKSIYALAR */
+        .atom-reactor-box {
+            min-height: 190px;
+            border-radius: 16px;
+            background: radial-gradient(circle, #1e293b, #0f172a);
+            border: 2px solid #334155;
+            position: relative;
+            overflow: hidden;
+            margin: 14px 0;
+        }
+        .atom-disc {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: 800;
+            font-size: 0.8rem;
+            box-shadow: 0 0 12px rgba(255,255,255,0.3);
+            transition: all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .atom-a { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+        .atom-b { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .atom-c { background: linear-gradient(135deg, #10b981, #047857); }
+        .atom-d { background: linear-gradient(135deg, #f59e0b, #b45309); }
+
+        .chem-lab-tube {
+            width: 90px;
+            height: 125px;
+            border: 4px solid #94a3b8;
+            border-top: 0;
+            border-radius: 0 0 24px 24px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255,255,255,0.3);
+        }
+        .foam-bubbles-wrap {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        .foam-bubble-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 0 4px white;
+            animation: bubbleAscend 1.2s infinite ease-in;
+        }
+        @keyframes bubbleAscend {
+            0% { transform: translateY(110px) scale(0.5); opacity: 0; }
+            40% { opacity: 1; }
+            100% { transform: translateY(5px) scale(1.3); opacity: 0; }
+        }
+
+        .rust-metal-bar {
+            width: 140px;
+            height: 70px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            margin: 0 auto;
+            border: 2px solid #475569;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s ease;
+        }
+        .rust-metal-bar.rusted {
+            background: radial-gradient(circle at 30% 30%, #b45309 0 20%, #78350f 80%);
+            border-color: #92400e;
+            box-shadow: inset 0 0 15px rgba(120,53,15,0.8);
+        }
+
     </style>
 </head>
 <body>
@@ -793,6 +1241,28 @@
                 <span>🌿 5-Mavzu: Oziqa Zanjiri & Ekotizim</span>
                 <span class="badge-new">YANGI</span>
             </button>
+
+            <button class="topic-btn" id="btn-topic-6" onclick="switchMainTopic(6)">
+                <span>🔬 6-Mavzu: Moddaning Xossalari</span>
+                <span class="badge-new">YANGI</span>
+            </button>
+            <button class="topic-btn" id="btn-topic-7" onclick="switchMainTopic(7)">
+                <span>♨️ 7-Mavzu: Qaynash & Bug‘lanish</span>
+                <span class="badge-new">YANGI</span>
+            </button>
+            <button class="topic-btn" id="btn-topic-8" onclick="switchMainTopic(8)">
+                <span>🧊 8-Mavzu: Fizik O‘zgarishlar</span>
+                <span class="badge-new">YANGI</span>
+            </button>
+            <button class="topic-btn" id="btn-topic-9" onclick="switchMainTopic(9)">
+                <span>🥄 9-Mavzu: Erish & Eruvchanlik</span>
+                <span class="badge-new">YANGI</span>
+            </button>
+            <button class="topic-btn" id="btn-topic-10" onclick="switchMainTopic(10)">
+                <span>🧪 10-Mavzu: Kimyoviy Reaksiyalar</span>
+                <span class="badge-new">YANGI</span>
+            </button>
+    
         </div>
     </div>
 
@@ -847,6 +1317,47 @@
             <button class="section-tab-btn" onclick="showTab(28)"><i class="fa-solid fa-biohazard"></i> Biomagnifikatsiya Lab</button>
             <button class="section-tab-btn" onclick="showTab(29)"><i class="fa-solid fa-trophy"></i> 5-Mavzu Testi & Diplom</button>
         </div>
+
+        <!-- 6-MAVZU TABS (4 ta) -->
+        <div class="tabs-scroller" id="scroller-topic-6" style="display:none;">
+            <button class="section-tab-btn" onclick="showTab(30)"><i class="fa-solid fa-scale-balanced"></i> Gazlar & Massa</button>
+            <button class="section-tab-btn" onclick="showTab(31)"><i class="fa-solid fa-temperature-half"></i> Agregat Holatlar</button>
+            <button class="section-tab-btn" onclick="showTab(32)"><i class="fa-solid fa-bolt"></i> O‘tkazuvchanlik Lab</button>
+            <button class="section-tab-btn" onclick="showTab(33)"><i class="fa-solid fa-award"></i> 6-Mavzu Testi & Diplom</button>
+        </div>
+
+        <!-- 7-MAVZU TABS (4 ta) -->
+        <div class="tabs-scroller" id="scroller-topic-7" style="display:none;">
+            <button class="section-tab-btn" onclick="showTab(34)"><i class="fa-solid fa-book-open"></i> Qaynash & Bug‘lanish</button>
+            <button class="section-tab-btn" onclick="showTab(35)"><i class="fa-solid fa-fire-burner"></i> Dinamik Canvas Lab</button>
+            <button class="section-tab-btn" onclick="showTab(36)"><i class="fa-solid fa-chart-line"></i> Bosim & Faza Sirlari</button>
+            <button class="section-tab-btn" onclick="showTab(37)"><i class="fa-solid fa-award"></i> 7-Mavzu Testi & Diplom</button>
+        </div>
+
+        <!-- 8-MAVZU TABS (4 ta) -->
+        <div class="tabs-scroller" id="scroller-topic-8" style="display:none;">
+            <button class="section-tab-btn" onclick="showTab(38)"><i class="fa-solid fa-cube"></i> Fizik O‘zgarishlar</button>
+            <button class="section-tab-btn" onclick="showTab(39)"><i class="fa-solid fa-water"></i> Muz & Suv Fazasi</button>
+            <button class="section-tab-btn" onclick="showTab(40)"><i class="fa-solid fa-shuffle"></i> Qaytar / Qaytmas Lab</button>
+            <button class="section-tab-btn" onclick="showTab(41)"><i class="fa-solid fa-award"></i> 8-Mavzu Testi & Diplom</button>
+        </div>
+
+        <!-- 9-MAVZU TABS (4 ta) -->
+        <div class="tabs-scroller" id="scroller-topic-9" style="display:none;">
+            <button class="section-tab-btn" onclick="showTab(42)"><i class="fa-solid fa-icicles"></i> Erish Harorati & Plato</button>
+            <button class="section-tab-btn" onclick="showTab(43)"><i class="fa-solid fa-flask-vial"></i> 3 Stakan Eruvchanlik</button>
+            <button class="section-tab-btn" onclick="showTab(44)"><i class="fa-solid fa-snowflake"></i> Erish & Qotish Modeli</button>
+            <button class="section-tab-btn" onclick="showTab(45)"><i class="fa-solid fa-award"></i> 9-Mavzu Testi & Diplom</button>
+        </div>
+
+        <!-- 10-MAVZU TABS (4 ta) -->
+        <div class="tabs-scroller" id="scroller-topic-10" style="display:none;">
+            <button class="section-tab-btn" onclick="showTab(46)"><i class="fa-solid fa-atom"></i> Atomlar Qayta Guruhlanishi</button>
+            <button class="section-tab-btn" onclick="showTab(47)"><i class="fa-solid fa-vial-circle-check"></i> 3 Reaksiya Belgisi Lab</button>
+            <button class="section-tab-btn" onclick="showTab(48)"><i class="fa-solid fa-shield-halved"></i> Xavfsizlik Simulyatori</button>
+            <button class="section-tab-btn" onclick="showTab(49)"><i class="fa-solid fa-trophy"></i> 10-Mavzu Testi & Diplom</button>
+        </div>
+    
     </div>
 
     <!-- ASOSIY MATERALLAR KONTEYNERI -->
@@ -2297,6 +2808,1007 @@
             </div>
         </section>
 
+        <!-- ========================================================== -->
+        <!--        6-MAVZU: MODDANING XOSSALARI (TAB 30 - TAB 33)       -->
+        <!-- ========================================================== -->
+
+        <!-- TAB 30: GAZLAR VA MASSA -->
+        <section class="tab-section" id="tab-30">
+            <div class="content-card">
+                <span class="section-badge" style="color:#2563eb; background:rgba(37,99,235,0.15);">6-Mavzu • Gazlar & Massa</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <h2 class="section-title" style="margin-bottom:0;">⚖️ Gazlar ham massaga egami? Interaktiv Tarozi Laboratoriyasi</h2>
+                    <a href="6_mavzu_moddaning_xossalari.html" target="_blank" class="btn-tab-nav" style="background:#2563eb; color:white; font-size:0.8rem; text-decoration:none;">
+                        Alohida Toʻliq Sahifa ↗
+                    </a>
+                </div>
+                <p class="section-desc">Moddaning muhim belgisi uning massaga va hajmga ega boʻlishidir. Havo koʻrinmasa ham u modda boʻlib, massaga ega. 1 litr havoning massasi taxminan 1.2 grammni tashkil etadi!</p>
+
+                <div class="sim-stage-gas">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:12px;">
+                        <span style="font-weight:800; color:#1d4ed8; font-size:1.05rem;">🔬 Tajriba: Boʻsh Shar vs Havo bilan Toʻldirilgan Shar</span>
+                        <span id="gasStatusBadge" style="background:#dbeafe; color:#1e40af; font-size:0.8rem; font-weight:800; padding:4px 10px; border-radius:999px;">Tayyor holat</span>
+                    </div>
+
+                    <div class="scale-system">
+                        <div class="scale-bar" id="gasScaleBar"></div>
+                        <div class="scale-pivot"></div>
+                        <div class="scale-pans">
+                            <div class="pan-plate" id="panPlateA">
+                                <div class="balloon-item balloon-a" id="balloonAView">A</div>
+                                <div style="font-size:0.8rem; color:var(--text-muted);">Boʻsh shar A</div>
+                                <b id="massADisplay" style="color:#2563eb; font-size:1.1rem;">2.0 g</b>
+                            </div>
+                            <div class="pan-plate" id="panPlateB">
+                                <div class="balloon-item balloon-b" id="balloonBView">B</div>
+                                <div style="font-size:0.8rem; color:var(--text-muted);">Tajriba shari B</div>
+                                <b id="massBDisplay" style="color:#e11d48; font-size:1.1rem;">2.0 g</b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gas-particles-box" id="gasParticlesBox" title="Shar B ichidagi gaz zarrachalari animatsiyasi"></div>
+
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin-top:14px;">
+                        <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Havo massasi (delta)</span>
+                            <b id="gasDeltaDisplay" style="font-size:1.25rem; color:#16a34a;">0.0 g</b>
+                        </div>
+                        <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Shar hajmi</span>
+                            <b id="gasVolumeDisplay" style="font-size:1.25rem; color:#2563eb;">1.0×</b>
+                        </div>
+                        <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Tarozi holati</span>
+                            <b id="gasBalanceDisplay" style="font-size:1rem; color:#475569;">Muvozanatda</b>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; justify-content:center;">
+                        <button class="btn-tab-nav" style="background:#2563eb; color:white;" onclick="placeGasBalloons()"><i class="fa-solid fa-scale-unbalanced"></i> Taroziga qoʻyish</button>
+                        <button class="btn-tab-nav" style="background:#e11d48; color:white;" onclick="inflateGasBalloon()"><i class="fa-solid fa-lungs"></i> B sharga havo kiritish (+0.3g)</button>
+                        <button class="btn-tab-nav" style="background:#475569; color:white;" onclick="resetGasLab()"><i class="fa-solid fa-rotate-left"></i> Qayta boshlash</button>
+                    </div>
+
+                    <div id="gasConclusionBox" style="margin-top:12px; padding:12px; background:#eff6ff; border-radius:12px; border-left:4px solid #2563eb; font-size:0.9rem; color:#1e40af;">
+                        💡 <b>Ilmiy xulosa:</b> Shar ichiga havo kiritilishi bilan uning massasi tarozi orqali aniq ortgani koʻrinadi. Bu havo koʻzga koʻrinmasa ham u modda ekanligi va massaga egaligini isbotlaydi!
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="switchMainTopic(5)">⬅️ 5-Mavzuga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(31)">Agregat Holatlar 🌡️ ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 31: AGREGAT HOLATLAR VA HARORAT -->
+        <section class="tab-section" id="tab-31">
+            <div class="content-card">
+                <span class="section-badge" style="color:#2563eb; background:rgba(37,99,235,0.15);">6-Mavzu • Agregat Holatlar</span>
+                <h2 class="section-title">🌡️ Harorat va Bosimning Modda Holatiga Ta’siri (-200°C ... 1600°C)</h2>
+                <p class="section-desc">Bir xil haroratda turli moddalar turli agregat holatda boʻladi. Moddani tanlang, haroratni oʻzgartiring va mikroskopik zarrachalar kinetikasini kuzating:</p>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:8px; margin-bottom:14px;">
+                    <button class="substance-card-btn active" id="sub-water-btn" onclick="selectMatterSubstance('water')">💧 Suv (H₂O)</button>
+                    <button class="substance-card-btn" id="sub-iron-btn" onclick="selectMatterSubstance('iron')">🔩 Temir (Fe)</button>
+                    <button class="substance-card-btn" id="sub-salt-btn" onclick="selectMatterSubstance('salt')">🧂 Osh tuzi (NaCl)</button>
+                    <button class="substance-card-btn" id="sub-oxy-btn" onclick="selectMatterSubstance('oxy')">💨 Kislorod (O₂)</button>
+                </div>
+
+                <div class="sim-stage-gas">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+                        <span style="font-size:1.15rem; font-weight:800;" id="matterSubName">Suv (H₂O)</span>
+                        <span id="matterPhaseBadge" style="background:#3b82f6; color:white; padding:4px 12px; border-radius:999px; font-weight:800; font-size:0.85rem;">Suyuqlik</span>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <div style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:6px;">
+                            <span>Harorat sozlagichi:</span>
+                            <span id="matterTempDisplay" style="color:#2563eb; font-size:1.2rem;">20 °C</span>
+                        </div>
+                        <input type="range" id="matterTempSlider" min="-200" max="1600" value="20" style="width:100%; accent-color:#2563eb;" oninput="updateMatterTemperature(this.value)">
+                        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-top:3px;">
+                            <span>-200 °C (Juda sovuq)</span>
+                            <span>0 °C</span>
+                            <span>100 °C</span>
+                            <span>800 °C</span>
+                            <span>1600 °C (Juda issiq)</span>
+                        </div>
+                    </div>
+
+                    <div class="matter-kinetic-box" id="matterKineticBox"></div>
+
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;">
+                        <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color);">
+                            <span style="font-size:0.8rem; color:var(--text-muted);">Erish harorati:</span>
+                            <b id="matterMeltPoint" style="display:block; color:#0284c7; font-size:1.05rem;">0 °C</b>
+                        </div>
+                        <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color);">
+                            <span style="font-size:0.8rem; color:var(--text-muted);">Qaynash harorati:</span>
+                            <b id="matterBoilPoint" style="display:block; color:#dc2626; font-size:1.05rem;">100 °C</b>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;">
+                        <button class="btn-tab-nav" style="background:#2563eb; color:white;" onclick="stepMatterTemp(20)">🔥 Isitish (+20°C)</button>
+                        <button class="btn-tab-nav" style="background:#0284c7; color:white;" onclick="stepMatterTemp(-20)">❄️ Sovitish (-20°C)</button>
+                        <button class="btn-tab-nav" style="background:#16a34a; color:white;" onclick="compareRoomTemp()">🏠 20°C Xona Haroratida Taqqoslash</button>
+                    </div>
+
+                    <div id="matterExplainBox" style="margin-top:12px; padding:12px; background:var(--bg-card); border-radius:12px; border:1px solid var(--border-color); font-size:0.88rem;">
+                        <b>Zarrachalar holati:</b> Suyuqlikda molekulalar bir-biriga yaqin, ammo erkin siljiy oladi.
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(30)">⬅️ Gazlar & Massa</button>
+                    <button class="btn-tab-nav next" onclick="showTab(32)">O‘tkazuvchanlik ⚡ ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 32: ISSIQLIK VA ELEKTR O'TKAZUVCHANLIK -->
+        <section class="tab-section" id="tab-32">
+            <div class="content-card">
+                <span class="section-badge" style="color:#2563eb; background:rgba(37,99,235,0.15);">6-Mavzu • O‘tkazuvchanlik</span>
+                <h2 class="section-title">⚡ Issiqlik va Elektr O‘tkazuvchanlik Zanjiri Laboratoriyasi</h2>
+                <p class="section-desc">Issiqlik o‘tkazuvchanlik - ichki energiyaning harorat farqi tufayli uzatilishi. Elektr o‘tkazuvchanlik esa erkin zaryadli zarrachalar (elektronlar)ning tartibli harakatidir.</p>
+
+                <!-- 1-SIMULYATSIYA: ISSIQLIK O'TKAZUVCHANLIK -->
+                <div style="background:var(--bg-card-subtle); border-radius:16px; padding:18px; border:1px solid var(--border-color); margin-bottom:16px;">
+                    <h3 style="color:#2563eb; margin-bottom:8px;">🔥 1-Simulyatsiya: Metall va Nometallarda Issiqlik Tarqalishi</h3>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">Materialni tanlang va qizdirish toʻlqinini kuzating:</p>
+
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin:10px 0;">
+                        <button class="btn-tab-nav" style="background:#f97316; color:white;" onclick="setThermalMaterial('copper')">Mis (Juda tez)</button>
+                        <button class="btn-tab-nav" style="background:#0ea5e9; color:white;" onclick="setThermalMaterial('alu')">Alyuminiy (Tez)</button>
+                        <button class="btn-tab-nav" style="background:#64748b; color:white;" onclick="setThermalMaterial('iron')">Temir (Oʻrtacha)</button>
+                        <button class="btn-tab-nav" style="background:#854d0e; color:white;" onclick="setThermalMaterial('wood')">Yogʻoch (Yomon)</button>
+                        <button class="btn-tab-nav" style="background:#6b7280; color:white;" onclick="setThermalMaterial('plastic')">Plastmassa (Izolyator)</button>
+                    </div>
+
+                    <div class="thermal-rod">
+                        <div class="thermal-heat-wave" id="thermalWaveEl"></div>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:700;">
+                        <span id="thermalMatName">Tanlangan: Mis sterjeni</span>
+                        <span id="thermalRateLabel" style="color:#16a34a;">Oʻtkazuvchanlik: Aʼlo darajada</span>
+                    </div>
+                </div>
+
+                <!-- 2-SIMULYATSIYA: ELEKTR ZANJIRI -->
+                <div class="circuit-board">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:12px;">
+                        <h3 style="color:#38bdf8; margin:0;">💡 2-Simulyatsiya: Past Kuchlanishli (3V) Elektr Zanjiri</h3>
+                        <span id="circuitStatusText" style="background:#334155; padding:4px 10px; border-radius:999px; font-size:0.8rem; font-weight:700;">Zanjir uzilgan</span>
+                    </div>
+
+                    <div class="circuit-row">
+                        <div class="circuit-node">
+                            <span style="font-size:1.6rem; display:block;">🔋</span>
+                            <b>3V Batareya</b>
+                        </div>
+                        <div class="circuit-wire" id="wire1"></div>
+                        <div class="circuit-node" style="border-color:#38bdf8;">
+                            <span style="font-size:0.75rem; color:#94a3b8; display:block;">Sinov materiali:</span>
+                            <select id="electricMaterialSelect" style="padding:6px; border-radius:8px; border:1px solid #475569; background:#1e293b; color:white;" onchange="changeCircuitMaterial(this.value)">
+                                <option value="copper">Mis sim (Oʻtkazgich)</option>
+                                <option value="alu">Alyuminiy (Oʻtkazgich)</option>
+                                <option value="iron">Temir mix (Oʻtkazgich)</option>
+                                <option value="wood">Quruq yogʻoch (Izolyator)</option>
+                                <option value="plastic">Plastik chizgʻich (Izolyator)</option>
+                                <option value="rubber">Rezina oʻchirgʻich (Izolyator)</option>
+                            </select>
+                        </div>
+                        <div class="circuit-wire" id="wire2"></div>
+                        <div class="circuit-node">
+                            <div class="circuit-lamp" id="circuitLampIcon">💡</div>
+                            <span style="font-size:0.8rem;">Lampochka</span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:10px; justify-content:center; margin-top:16px;">
+                        <button class="btn-tab-nav" style="background:#22c55e; color:white;" onclick="connectCircuit()"><i class="fa-solid fa-toggle-on"></i> Zanjirni ulash</button>
+                        <button class="btn-tab-nav" style="background:#ef4444; color:white;" onclick="disconnectCircuit()"><i class="fa-solid fa-toggle-off"></i> Zanjirni uzish</button>
+                    </div>
+
+                    <div id="circuitFeedbackBox" style="margin-top:14px; padding:12px; border-radius:10px; background:rgba(255,255,255,0.08); font-size:0.88rem; text-align:center;">
+                        Materialni tanlang va kalitni ulang. Oʻtkazgich boʻlsa tok oʻtib lampochka yonadi!
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(31)">⬅️ Agregat Holatlar</button>
+                    <button class="btn-tab-nav next" onclick="showTab(33)">6-Mavzu Testi 🏆 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 33: 6-MAVZU TESTI VA DIPLOMI -->
+        <section class="tab-section" id="tab-33">
+            <div class="content-card">
+                <span class="section-badge" style="color:#2563eb; background:rgba(37,99,235,0.15);">6-Mavzu • Oliy Sinov</span>
+                <h2 class="section-title">🏆 6-Mavzu Testi va "Yosh Fizik-Tadqiqotchi" Diplomi</h2>
+                <p class="section-desc">Moddaning xossalari, agregat holatlar, gazlar massasi va oʻtkazuvchanlik boʻyicha bilimingizni sinang:</p>
+
+                <div id="quiz-list-6"></div>
+
+                <div id="quiz-final-box-6" style="display:none; margin-top:1.2rem; padding:1.2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); text-align:center;">
+                    <h3 style="color:#2563eb;">🎉 Tabriklaymiz! 6-Mavzu boʻyicha barcha savollarni aʼlo bajardingiz!</h3>
+                    <p id="quiz-final-score-6" style="margin:6px 0; font-weight:700;"></p>
+                    <div style="margin-top:10px;">
+                        <input type="text" id="student-name-6" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <br>
+                        <button class="btn-tab-nav next" onclick="generateCertificate(6)" style="margin:0 auto; background:linear-gradient(135deg, #2563eb, #1d4ed8);">Fizik Diplomini Olish 🎓</button>
+                    </div>
+                </div>
+
+                <div class="cert-box" id="cert-view-6" style="border-color:#2563eb; background:linear-gradient(135deg, #eff6ff, #dbeafe); color:#1e40af;">
+                    <h2>🌟 6-SINF TABIIY FANLAR YOSH FIZIK-TADQIQOTCHI DIPLOMI</h2>
+                    <p style="margin:8px 0; font-size:1.1rem;">Ushbu diplom sohibi:</p>
+                    <h1 id="cert-student-name-6" style="color:#1d4ed8; text-decoration:underline; margin-bottom:8px;">Aʼlochi Oʻquvchi</h1>
+                    <p style="font-size:0.85rem;">"Moddaning xossalari, gazlar massasi, agregat holatlar kinetikasi hamda issiqlik va elektr oʻtkazuvchanlik" boʻlimlaridan barcha sinovlarni muvaffaqiyatli yakunladi!</p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(32)">⬅️ Orqaga</button>
+                    <button class="btn-tab-nav next" onclick="switchMainTopic(7)">7-Mavzuga Oʻtish ♨️ ➡️</button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- ========================================================== -->
+        <!--      7-MAVZU: QAYNASH VA BUG'LANISH (TAB 34 - TAB 37)      -->
+        <!-- ========================================================== -->
+
+        <!-- TAB 34: QAYNASH VA BUG'LANISH ASOSLARI -->
+        <section class="tab-section" id="tab-34">
+            <div class="content-card">
+                <span class="section-badge" style="color:#0284c7; background:rgba(2,132,199,0.15);">7-Mavzu • Qaynash & Bug‘lanish</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <h2 class="section-title" style="margin-bottom:0;">♨️ Qaynash va Bug‘lanishning Mohiyati hamda Asosiy Farqlari</h2>
+                    <a href="7_mavzu_qaynash_va_buglanish.html" target="_blank" class="btn-tab-nav" style="background:#0284c7; color:white; font-size:0.8rem; text-decoration:none;">
+                        Alohida Toʻliq Sahifa ↗
+                    </a>
+                </div>
+                <p class="section-desc">Suyuqlikning gaz holatiga oʻtishi faza oʻzgarishi deb ataladi. Bugʻlanish va qaynash bir xil hodisa emas:</p>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin:16px 0;">
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border-left:4px solid #0ea5e9;">
+                        <h3 style="color:#0284c7; margin-bottom:8px;">🌊 1. Bug‘lanish nima?</h3>
+                        <p style="font-size:0.9rem;">Suyuqlik sirtidagi eng katta kinetik energiyaga ega molekulalarning suyuqlikdan uzilib chiqib, havoga gaz holida tarqalishi.</p>
+                        <ul style="padding-left:18px; font-size:0.85rem; margin-top:6px; color:var(--text-muted);">
+                            <li>Har qanday haroratda (hatto sovuq havoda ham) sodir boʻladi.</li>
+                            <li>Faqat suyuqlik sirtida roʻy beradi.</li>
+                            <li>Tashqi havo harorati, sirt yuzasi va shamol tezligi qanchalik katta boʻlsa, bugʻlanish shuncha tezlashadi.</li>
+                        </ul>
+                    </div>
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border-left:4px solid #e11d48;">
+                        <h3 style="color:#e11d48; margin-bottom:8px;">🔥 2. Qaynash nima?</h3>
+                        <p style="font-size:0.9rem;">Muayyan bosimda suyuqlikning butun hajmida shiddat bilan bugʻ pufakchalari hosil boʻlib, sirtga qalqib chiqish jarayoni.</p>
+                        <ul style="padding-left:18px; font-size:0.85rem; margin-top:6px; color:var(--text-muted);">
+                            <li>Faqat muayyan qaynash haroratida yuz beradi (suv uchun 1 atm bosimda 100 °C).</li>
+                            <li>Suyuqlikning butun hajmida (ichki qatlamlarida ham) pufakchalar hosil boʻladi.</li>
+                            <li>Qaynash davomida qoʻshilgan energiya haroratni oshirishga emas, faza oʻzgarishiga sarflanadi.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TAQQOSLASH JADVALI -->
+                <div style="overflow-x:auto; margin:16px 0;">
+                    <table style="width:100%; border-collapse:collapse; background:var(--bg-card); border-radius:12px; overflow:hidden;">
+                        <thead>
+                            <tr style="background:#0284c7; color:white;">
+                                <th style="padding:10px; text-align:left;">Belgisi</th>
+                                <th style="padding:10px; text-align:left;">Sirt Bug‘lanishi</th>
+                                <th style="padding:10px; text-align:left;">Hajmiy Qaynash</th>
+                            </tr>
+                        </thead>
+                        <tbody style="font-size:0.88rem;">
+                            <tr style="border-bottom:1px solid var(--border-color);">
+                                <td style="padding:10px; font-weight:700;">Jarayon joyi</td>
+                                <td style="padding:10px;">Faqat suyuqlikning ochiq sirtida</td>
+                                <td style="padding:10px;">Suyuqlikning butun hajmida va tubida</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border-color);">
+                                <td style="padding:10px; font-weight:700;">Harorat sharti</td>
+                                <td style="padding:10px;">Har qanday haroratda</td>
+                                <td style="padding:10px;">Faqat qaynash haroratida (suv: ~100 °C)</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid var(--border-color);">
+                                <td style="padding:10px; font-weight:700;">Pufakchalar</td>
+                                <td style="padding:10px;">Ichki pufakchalar hosil boʻlmaydi</td>
+                                <td style="padding:10px;">Koʻp sonli bugʻ pufakchalari koʻtariladi</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px; font-weight:700;">Hayotiy misol</td>
+                                <td style="padding:10px;">Hoʻl kiyimning qurishi, koʻl suvining kamayishi</td>
+                                <td style="padding:10px;">Choynakdagi suvning qaynab pishqirishi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="switchMainTopic(6)">⬅️ 6-Mavzuga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(35)">Dinamik Canvas Lab 🌊 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 35: DINAMIK CANVAS QAYNASH LAB -->
+        <section class="tab-section" id="tab-35">
+            <div class="content-card">
+                <span class="section-badge" style="color:#0284c7; background:rgba(2,132,199,0.15);">7-Mavzu • Canvas Lab</span>
+                <h2 class="section-title">🔬 Interaktiv Canvas: Zarrachalar va Qaynash Pufakchalari Simulyatori</h2>
+                <p class="section-desc">Haroratni oshiring, qizdirish tezligini va sirt maydonini boshqaring. 100°C ga yetganda suyuqlik ichida qaynash pufakchalari paydo boʻlishini kuzating:</p>
+
+                <div class="boil-canvas-wrap">
+                    <canvas id="boilingCanvas" width="700" height="320"></canvas>
+                </div>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin:14px 0;">
+                    <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                        <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Harorat</span>
+                        <b id="boilTempDisplay" style="font-size:1.25rem; color:#0284c7;">25 °C</b>
+                    </div>
+                    <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                        <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Jarayon holati</span>
+                        <b id="boilStateDisplay" style="font-size:1.1rem; color:#16a34a;">Sirt bug‘lanishi</b>
+                    </div>
+                    <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                        <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Uchib chiqqan zarrachalar</span>
+                        <b id="boilEscapedDisplay" style="font-size:1.25rem; color:#f59e0b;">0</b>
+                    </div>
+                </div>
+
+                <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border:1px solid var(--border-color);">
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+                        <div>
+                            <label style="font-size:0.85rem; font-weight:700;">Harorat: <span id="boilTempSliderVal">25</span> °C</label>
+                            <input type="range" id="boilTempSlider" min="20" max="110" value="25" style="width:100%; accent-color:#0284c7;" oninput="onBoilTempChange(this.value)">
+                        </div>
+                        <div>
+                            <label style="font-size:0.85rem; font-weight:700;">Isitish olovi kuchi:</label>
+                            <input type="range" id="boilFlamePower" min="1" max="5" value="2" style="width:100%; accent-color:#f97316;">
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; justify-content:center;">
+                        <button class="btn-tab-nav" style="background:#e11d48; color:white;" onclick="startBoilSimulation()"><i class="fa-solid fa-fire"></i> ▶ Isitishni boshlash</button>
+                        <button class="btn-tab-nav" style="background:#64748b; color:white;" onclick="pauseBoilSimulation()"><i class="fa-solid fa-pause"></i> ⏸ Pauza</button>
+                        <button class="btn-tab-nav" style="background:#0284c7; color:white;" onclick="resetBoilSimulation()"><i class="fa-solid fa-rotate-left"></i> ↺ Qayta boshlash</button>
+                    </div>
+
+                    <div id="boilExplanationBox" style="margin-top:12px; padding:10px; background:#e0f2fe; border-radius:10px; font-size:0.85rem; color:#0369a1;">
+                        💡 Harorat 100°C dan past: sirt zarrachalari uchib chiqmoqda (bugʻlanish). 100°C ga yetganda suyuqlik ichida bugʻ pufakchalari qaynaydi!
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(34)">⬅️ Nazariya</button>
+                    <button class="btn-tab-nav next" onclick="showTab(36)">Bosim & Faza Sirlari 📊 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 36: BOSIM VA FAZA SIRLARI -->
+        <section class="tab-section" id="tab-36">
+            <div class="content-card">
+                <span class="section-badge" style="color:#0284c7; background:rgba(2,132,199,0.15);">7-Mavzu • Amaliy Ilm</span>
+                <h2 class="section-title">📊 Bosim va Balandlikning Qaynash Haroratiga Ta’siri</h2>
+                <p class="section-desc">Suvning 100 °C da qaynashi faqat normal atmosfera bosimi (101.3 kPa / 1 atm) uchundir! Agar tashqi bosim oʻzgarsa, qaynash harorati ham oʻzgaradi:</p>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin:16px 0;">
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:14px; border:2px solid #0284c7; text-align:center;">
+                        <span style="font-size:2rem; display:block;">🌊</span>
+                        <b>Dengiz sathi (0 m)</b>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin:4px 0;">Bosim: 1.0 atm (101 kPa)</p>
+                        <b style="color:#0284c7; font-size:1.2rem;">100 °C</b>
+                    </div>
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:14px; border:2px solid #16a34a; text-align:center;">
+                        <span style="font-size:2rem; display:block;">🏔️</span>
+                        <b>Chimyon togʻi (2 000 m)</b>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin:4px 0;">Bosim: 0.8 atm (80 kPa)</p>
+                        <b style="color:#16a34a; font-size:1.2rem;">93 °C</b>
+                    </div>
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:14px; border:2px solid #f59e0b; text-align:center;">
+                        <span style="font-size:2rem; display:block;">⛰️</span>
+                        <b>Everest choʻqqisi (8 848 m)</b>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin:4px 0;">Bosim: 0.33 atm (33 kPa)</p>
+                        <b style="color:#f59e0b; font-size:1.2rem;">71 °C</b>
+                    </div>
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:14px; border:2px solid #dc2626; text-align:center;">
+                        <span style="font-size:2rem; display:block;">🍲</span>
+                        <b>Skorovarka (Dvigatel qozon)</b>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin:4px 0;">Bosim: 2.0 atm (200 kPa)</p>
+                        <b style="color:#dc2626; font-size:1.2rem;">120 °C</b>
+                    </div>
+                </div>
+
+                <div style="background:#eff6ff; border-radius:14px; padding:16px; border-left:4px solid #0284c7; margin-top:14px;">
+                    <h3 style="color:#0369a1; margin-bottom:6px;">❄️ Bug‘lanish nega jismni sovitadi?</h3>
+                    <p style="font-size:0.9rem;">Suyuqlik bugʻlanganda eng issiq, yuqori tezlikka ega zarrachalar uchib ketadi. Natijada suyuqlikda qolgan zarrachalarning oʻrtacha kinetik energiyasi pasayadi va jism soviydi. Inson terlaganda tana haroratining pasayishi va loy koʻzadagi suvning salqin saqlanishi aynan shu faza qonuniyatiga asoslanadi!</p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(35)">⬅️ Dinamik Canvas</button>
+                    <button class="btn-tab-nav next" onclick="showTab(37)">7-Mavzu Testi 🏆 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 37: 7-MAVZU TESTI VA DIPLOMI -->
+        <section class="tab-section" id="tab-37">
+            <div class="content-card">
+                <span class="section-badge" style="color:#0284c7; background:rgba(2,132,199,0.15);">7-Mavzu • Oliy Sinov</span>
+                <h2 class="section-title">🏆 7-Mavzu Testi va "Yosh Termofizik" Diplomi</h2>
+                <p class="section-desc">Qaynash, bug‘lanish, harorat va bosim qonuniyatlari boʻyicha yakuniy testdan oʻting:</p>
+
+                <div id="quiz-list-7"></div>
+
+                <div id="quiz-final-box-7" style="display:none; margin-top:1.2rem; padding:1.2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); text-align:center;">
+                    <h3 style="color:#0284c7;">🎉 Tabriklaymiz! 7-Mavzu boʻyicha barcha savollarni aʼlo bajardingiz!</h3>
+                    <p id="quiz-final-score-7" style="margin:6px 0; font-weight:700;"></p>
+                    <div style="margin-top:10px;">
+                        <input type="text" id="student-name-7" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <br>
+                        <button class="btn-tab-nav next" onclick="generateCertificate(7)" style="margin:0 auto; background:linear-gradient(135deg, #0284c7, #0369a1);">Termofizik Diplomini Olish 🎓</button>
+                    </div>
+                </div>
+
+                <div class="cert-box" id="cert-view-7" style="border-color:#0284c7; background:linear-gradient(135deg, #f0f9ff, #e0f2fe); color:#075985;">
+                    <h2>🌟 6-SINF TABIIY FANLAR YOSH TERMOFIZIK DIPLOMI</h2>
+                    <p style="margin:8px 0; font-size:1.1rem;">Ushbu diplom sohibi:</p>
+                    <h1 id="cert-student-name-7" style="color:#0369a1; text-decoration:underline; margin-bottom:8px;">Aʼlochi Oʻquvchi</h1>
+                    <p style="font-size:0.85rem;">"Qaynash, bug‘lanish, pufakchalar dinamikasi, bosimning qaynash chegarasiga ta’siri va faza o‘tishlari" boʻlimlaridan barcha sinovlarni muvaffaqiyatli yakunladi!</p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(36)">⬅️ Orqaga</button>
+                    <button class="btn-tab-nav next" onclick="switchMainTopic(8)">8-Mavzuga Oʻtish 🧊 ➡️</button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- ========================================================== -->
+        <!--        8-MAVZU: FIZIK O'ZGARISHLAR (TAB 38 - TAB 41)       -->
+        <!-- ========================================================== -->
+
+        <!-- TAB 38: FIZIK O'ZGARISHLAR NAZARIYASI -->
+        <section class="tab-section" id="tab-38">
+            <div class="content-card">
+                <span class="section-badge" style="color:#2563eb; background:rgba(37,99,235,0.15);">8-Mavzu • Fizik Jarayonlar</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <h2 class="section-title" style="margin-bottom:0;">🧊 Fizik O‘zgarishlar: Tarkib Saqlanishi & Qaytar-Qaytmaslik</h2>
+                    <a href="8_mavzu_fizik_ozgarishlar.html" target="_blank" class="btn-tab-nav" style="background:#2563eb; color:white; font-size:0.8rem; text-decoration:none;">
+                        Alohida Toʻliq Sahifa ↗
+                    </a>
+                </div>
+                <p class="section-desc">Fizik o‘zgarish - moddaning shakli, o‘lchami yoki agregat holati o‘zgarib, lekin uning kimyoviy tarkibi o‘zgarmay qoladigan jarayondir. Masalan, muz eriganda ham, suv bugʻlanganda ham u H₂O molekulasi boʻlib qoladi!</p>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px; margin:16px 0;">
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border-top:4px solid #2563eb;">
+                        <span style="font-size:2rem; display:block;">🧊 ⇄ 💧</span>
+                        <b>1. Agregat Holat Oʻzgarishi</b>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Muz erishi, suv muzlashi, suv bugʻlanishi va shabnam tushishi. Kimyoviy tarkib saqlanadi, harorat bilan ortga qaytarsa boʻladi (qaytar jarayon).</p>
+                    </div>
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border-top:4px solid #10b981;">
+                        <span style="font-size:2rem; display:block;">📄 ⇄ 🗂️</span>
+                        <b>2. Shakl va Oʻlcham Oʻzgarishi</b>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Qogʻozni buklash, plastilinga shakl berish, simni egish. Modda oʻzgarmaydi, shakli yangilanadi.</p>
+                    </div>
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border-top:4px solid #f59e0b;">
+                        <span style="font-size:2rem; display:block;">🥛 💥 🧩</span>
+                        <b>3. Qaytmas Fizik Oʻzgarish</b>
+                        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Shishaning sinishi yoki qogʻozni maydalash - yangi modda hosil boʻlmaydi (fizik), ammo buyumni avvalgi holiga qaytarish amalda juda qiyin!</p>
+                    </div>
+                </div>
+
+                <div style="background:#eff6ff; padding:14px; border-radius:12px; border-left:4px solid #2563eb; margin:14px 0; font-size:0.9rem;">
+                    ⚠️ <b>Katta Xato:</b> "Barcha fizik jarayonlar qaytardir" deb oʻylash xatodir! Shisha sinishi yoki yogʻochni maydalash fizik oʻzgarish boʻlsa-da, qaytmas jarayon hisoblanadi.
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="switchMainTopic(7)">⬅️ 7-Mavzuga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(39)">Muz & Suv Fazasi 🧊 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 39: MUZ VA SUV FAZAVIY LAB -->
+        <section class="tab-section" id="tab-39">
+            <div class="content-card">
+                <span class="section-badge" style="color:#2563eb; background:rgba(37,99,235,0.15);">8-Mavzu • Faza Simulyatori</span>
+                <h2 class="section-title">🌡️ Virtual Laboratoriya: Haroratning Faza O‘tishlariga Ta’siri (-20°C ... 120°C)</h2>
+                <p class="section-desc">Haroratni sozlang va moddaning qattiq (muz), suyuq (suv) va gaz (bugʻ) fazaviy holatlarga oʻtish dinamikasini kuzating:</p>
+
+                <div class="water-phase-stage">
+                    <div id="waterPhaseVisualContainer">
+                        <div class="cube-ice-visual" id="phaseVisualIce">🧊</div>
+                    </div>
+                </div>
+
+                <div style="margin:16px 0;">
+                    <div style="display:flex; justify-content:space-between; font-weight:700; margin-bottom:6px;">
+                        <span>Harorat koʻrsatkichi:</span>
+                        <b id="waterPhaseTempNum" style="color:#2563eb; font-size:1.3rem;">-10 °C</b>
+                    </div>
+                    <input type="range" id="waterPhaseSlider" min="-20" max="120" value="-10" style="width:100%; accent-color:#2563eb;" oninput="onWaterPhaseChange(this.value)">
+                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); margin-top:3px;">
+                        <span>-20 °C (Qattiq muz)</span>
+                        <span>0 °C (Erish platosi)</span>
+                        <span>50 °C (Suyuq suv)</span>
+                        <span>100 °C (Qaynash)</span>
+                        <span>120 °C (Gaz bugʻ)</span>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin:14px 0;">
+                    <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                        <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Agregat holat</span>
+                        <b id="waterPhaseStateName" style="color:#0284c7; font-size:1.15rem;">Qattiq (Muz)</b>
+                    </div>
+                    <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                        <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Molekula harakati</span>
+                        <b id="waterPhaseMoleculeKin" style="color:#16a34a; font-size:1.15rem;">Tebranma</b>
+                    </div>
+                    <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                        <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Ichki energiya</span>
+                        <b id="waterPhaseEnergyDisplay" style="color:#f59e0b; font-size:1.15rem;">Past</b>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn-tab-nav" style="background:#2563eb; color:white;" onclick="stepWaterPhase(15)">🔥 Isitish (+15°C)</button>
+                    <button class="btn-tab-nav" style="background:#0284c7; color:white;" onclick="stepWaterPhase(-15)">❄️ Sovitish (-15°C)</button>
+                    <button class="btn-tab-nav" style="background:#475569; color:white;" onclick="resetWaterPhase()">↺ Boshlangʻich holat</button>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(38)">⬅️ Nazariya</button>
+                    <button class="btn-tab-nav next" onclick="showTab(40)">Qaytar / Qaytmas Lab 🔄 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 40: QAYTAR / QAYTMAS INTERAKTIV LAB -->
+        <section class="tab-section" id="tab-40">
+            <div class="content-card">
+                <span class="section-badge" style="color:#2563eb; background:rgba(37,99,235,0.15);">8-Mavzu • Interaktiv Sinov</span>
+                <h2 class="section-title">🔄 Hodisalarni Saralash: Qaytarmi yoki Qaytmas?</h2>
+                <p class="section-desc">Kundalik hayotdagi 8 ta hodisani tahlil qiling. "Qaytar" (avvalgi holga keltirsa boʻladi) yoki "Qaytmas" (avvalgi holatga keltirib boʻlmaydi) ekanini belgilang:</p>
+
+                <div id="reversibleGameList" style="display:grid; gap:10px; margin:16px 0;"></div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <button class="btn-tab-nav next" style="background:#2563eb; color:white;" onclick="checkReversibleGame()"><i class="fa-solid fa-circle-check"></i> Javoblarni Tekshirish</button>
+                    <button class="btn-tab-nav" style="background:#64748b; color:white;" onclick="resetReversibleGame()"><i class="fa-solid fa-rotate-left"></i> Qayta ishlash</button>
+                    <span id="reversibleScorePill" style="font-weight:800; font-size:1.1rem; color:#16a34a;">0 / 8 toʻgʻri</span>
+                </div>
+
+                <div id="reversibleSummaryFeedback" style="margin-top:14px;"></div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(39)">⬅️ Faza Simulyatori</button>
+                    <button class="btn-tab-nav next" onclick="showTab(41)">8-Mavzu Testi 🏆 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 41: 8-MAVZU TESTI VA DIPLOMI -->
+        <section class="tab-section" id="tab-41">
+            <div class="content-card">
+                <span class="section-badge" style="color:#2563eb; background:rgba(37,99,235,0.15);">8-Mavzu • Oliy Sinov</span>
+                <h2 class="section-title">🏆 8-Mavzu Testi va "Fizikaviy O‘zgarishlar Bilimdoni" Diplomi</h2>
+                <p class="section-desc">Fizik o‘zgarishlar, agregat fazalar, qaytar va qaytmas jarayonlar bo‘yicha 10 ta savolga javob bering:</p>
+
+                <div id="quiz-list-8"></div>
+
+                <div id="quiz-final-box-8" style="display:none; margin-top:1.2rem; padding:1.2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); text-align:center;">
+                    <h3 style="color:#2563eb;">🎉 Tabriklaymiz! 8-Mavzu boʻyicha barcha savollarni aʼlo bajardingiz!</h3>
+                    <p id="quiz-final-score-8" style="margin:6px 0; font-weight:700;"></p>
+                    <div style="margin-top:10px;">
+                        <input type="text" id="student-name-8" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <br>
+                        <button class="btn-tab-nav next" onclick="generateCertificate(8)" style="margin:0 auto; background:linear-gradient(135deg, #2563eb, #1d4ed8);">Oliy Diplomni Olish 🎓</button>
+                    </div>
+                </div>
+
+                <div class="cert-box" id="cert-view-8" style="border-color:#2563eb; background:linear-gradient(135deg, #eff6ff, #dbeafe); color:#1e40af;">
+                    <h2>🌟 6-SINF TABIIY FANLAR FIZIKAVIY O‘ZGARISHLAR BILIMDONI DIPLOMI</h2>
+                    <p style="margin:8px 0; font-size:1.1rem;">Ushbu diplom sohibi:</p>
+                    <h1 id="cert-student-name-8" style="color:#1d4ed8; text-decoration:underline; margin-bottom:8px;">Aʼlochi Oʻquvchi</h1>
+                    <p style="font-size:0.85rem;">"Moddaning fizik o‘zgarishlari, shakl va hajm mutanosibligi, qaytar va qaytmas fizik hodisalar" boʻlimlaridan barcha sinovlarni muvaffaqiyatli yakunladi!</p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(40)">⬅️ Orqaga</button>
+                    <button class="btn-tab-nav next" onclick="switchMainTopic(9)">9-Mavzuga Oʻtish 🥄 ➡️</button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- ========================================================== -->
+        <!--    9-MAVZU: ERISH VA ERUVCHANLIK (TAB 42 - TAB 45)         -->
+        <!-- ========================================================== -->
+
+        <!-- TAB 42: ERISH JARAYONI VA ERISH HARORATI -->
+        <section class="tab-section" id="tab-42">
+            <div class="content-card">
+                <span class="section-badge" style="color:#d97706; background:rgba(217,119,6,0.15);">9-Mavzu • Erish Jarayoni</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <h2 class="section-title" style="margin-bottom:0;">🧊 Moddalarning Erish Jarayoni & Erish Harorati</h2>
+                    <a href="9_mavzu_erish_jarayoni.html" target="_blank" class="btn-tab-nav" style="background:#d97706; color:white; font-size:0.8rem; text-decoration:none;">
+                        Alohida Toʻliq Sahifa ↗
+                    </a>
+                </div>
+                <p class="section-desc">Erish - qattiq moddaning issiqlik yutib suyuq holatga o‘tishidir. Sof moddalarda erish muayyan erish haroratida kechadi. Sof muz normal bosimda 0 °C da eriydi.</p>
+
+                <div style="background:var(--bg-card-subtle); border-radius:18px; padding:20px; border:2px solid #fde68a; margin:16px 0;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:12px;">
+                        <h3 style="color:#b45309; margin:0;">🔬 Muzning Erish Simulyatori & Termometr Platosi</h3>
+                        <span id="meltSimStatusBadge" style="background:#fef3c7; color:#92400e; font-weight:800; font-size:0.8rem; padding:4px 10px; border-radius:999px;">Tayyor holat</span>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-around; align-items:center; flex-wrap:wrap; gap:16px; margin:20px 0;">
+                        <!-- Stakan -->
+                        <div style="text-align:center;">
+                            <div class="glass-beaker" style="width:130px; height:150px;">
+                                <div class="glass-water" id="meltGlassWater" style="height:25%;"></div>
+                                <div id="meltIceBlocks" style="position:absolute; bottom:6px; left:10px; right:10px; display:flex; flex-wrap:wrap; gap:4px; justify-content:center;">
+                                    <span style="font-size:1.8rem;">🧊</span>
+                                    <span style="font-size:1.8rem;">🧊</span>
+                                    <span style="font-size:1.8rem;">🧊</span>
+                                </div>
+                            </div>
+                            <b id="meltStateLabel" style="font-size:1rem; color:#b45309;">Muz erimoqda</b>
+                        </div>
+
+                        <!-- Termometr -->
+                        <div style="text-align:center;">
+                            <div style="width:24px; height:140px; border:3px solid #7890a8; border-radius:999px; position:relative; background:white; margin:0 auto;">
+                                <div id="thermoLiquidBar" style="position:absolute; bottom:4px; left:4px; right:4px; height:35%; border-radius:999px; background:#ef4444; transition:height 0.4s ease;"></div>
+                            </div>
+                            <span style="font-size:0.8rem; color:var(--text-muted); display:block; margin-top:4px;">Harorat:</span>
+                            <b id="thermoTempText" style="font-size:1.2rem; color:#dc2626;">0 °C</b>
+                        </div>
+                    </div>
+
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px;">
+                        <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Oʻtgan vaqt</span>
+                            <b id="meltTimeSec" style="font-size:1.15rem; color:#2563eb;">0 s</b>
+                        </div>
+                        <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Erigan muz ulushi</span>
+                            <b id="meltPercentNum" style="font-size:1.15rem; color:#16a34a;">0%</b>
+                        </div>
+                        <div style="background:var(--bg-card); padding:10px; border-radius:12px; border:1px solid var(--border-color); text-align:center;">
+                            <span style="font-size:0.75rem; color:var(--text-muted); display:block;">Faza holati</span>
+                            <b id="meltPhaseName" style="font-size:1rem; color:#d97706;">Qattiq muz</b>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:16px;">
+                        <button class="btn-tab-nav" style="background:#f59e0b; color:white;" onclick="startMeltSim()"><i class="fa-solid fa-play"></i> ▶ Isitishni boshlash</button>
+                        <button class="btn-tab-nav" style="background:#64748b; color:white;" onclick="pauseMeltSim()"><i class="fa-solid fa-pause"></i> ⏸ Pauza</button>
+                        <button class="btn-tab-nav" style="background:#d97706; color:white;" onclick="resetMeltSim()"><i class="fa-solid fa-rotate-left"></i> ↺ Qayta boshlash</button>
+                    </div>
+
+                    <div id="meltExplanationCallout" style="margin-top:14px; padding:12px; border-radius:12px; background:#fffbeb; font-size:0.88rem; color:#92400e;">
+                        💡 <b>Erish Platosi:</b> Muz va suv birgalikda boʻlganda, tashqaridan issiqlik berilsa ham, to barcha muz erib boʻlmaguncha harorat 0 °C da oʻzgarmay turadi!
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="switchMainTopic(8)">⬅️ 8-Mavzuga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(43)">3 Stakan Eruvchanlik 🥄 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 43: 3 STAKAN ERUVCHANLIK LAB -->
+        <section class="tab-section" id="tab-43">
+            <div class="content-card">
+                <span class="section-badge" style="color:#d97706; background:rgba(217,119,6,0.15);">9-Mavzu • Eruvchanlik Lab</span>
+                <h2 class="section-title">🥄 Haroratning Eruvchanlikka Ta’siri: Shakar vs Osh Tuzi Laboratoriyasi</h2>
+                <p class="section-desc">Eruvchanlik - moddaning ma’lum haroratda 100 g erituvchida eriy olishi mumkin bo‘lgan maksimal miqdori. Harorat oshganda qattiq moddalar eruvchanligi ortadi, ammo bu barcha moddalarda bir xil emas!</p>
+
+                <!-- Modda tanlash -->
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+                    <div style="display:flex; gap:8px;">
+                        <button class="btn-tab-nav active" id="btn-solute-sugar" style="background:#d97706; color:white;" onclick="selectSoluteType('sugar')">🍬 Shakar (Saxaroza)</button>
+                        <button class="btn-tab-nav" id="btn-solute-salt" style="background:var(--bg-card-subtle); color:var(--text-main);" onclick="selectSoluteType('salt')">🧂 Osh tuzi (NaCl)</button>
+                    </div>
+                    <span id="soluteTypeInfo" style="font-weight:700; color:#b45309; font-size:0.9rem;">Shakar: haroratga juda sezgir!</span>
+                </div>
+
+                <!-- 3 ta stakan -->
+                <div class="three-cups-row">
+                    <!-- Sovuq -->
+                    <div class="cup-glass-box">
+                        <span style="background:#bfdbfe; color:#1e40af; font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:999px;">10 °C</span>
+                        <h4 style="margin:6px 0 2px;">Sovuq suv</h4>
+                        <div class="glass-beaker">
+                            <div class="glass-water" style="background:linear-gradient(180deg, rgba(147,197,253,0.7), rgba(96,165,250,0.85));"></div>
+                            <div class="crystal-sediment" id="sedimentCold" style="height:0%;"></div>
+                        </div>
+                        <div style="font-size:0.8rem; text-align:left;">
+                            <div>Qoʻshilgan: <b id="coldAddedVal">0 g</b></div>
+                            <div>Erigan: <b id="coldDissolvedVal" style="color:#16a34a;">0 g</b></div>
+                            <div>Choʻkma: <b id="coldLeftVal" style="color:#ef4444;">0 g</b></div>
+                        </div>
+                    </div>
+
+                    <!-- Iliq -->
+                    <div class="cup-glass-box">
+                        <span style="background:#fed7aa; color:#9a3412; font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:999px;">40 °C</span>
+                        <h4 style="margin:6px 0 2px;">Iliq suv</h4>
+                        <div class="glass-beaker">
+                            <div class="glass-water" style="background:linear-gradient(180deg, rgba(253,186,116,0.65), rgba(251,146,60,0.85));"></div>
+                            <div class="crystal-sediment" id="sedimentWarm" style="height:0%;"></div>
+                        </div>
+                        <div style="font-size:0.8rem; text-align:left;">
+                            <div>Qoʻshilgan: <b id="warmAddedVal">0 g</b></div>
+                            <div>Erigan: <b id="warmDissolvedVal" style="color:#16a34a;">0 g</b></div>
+                            <div>Choʻkma: <b id="warmLeftVal" style="color:#ef4444;">0 g</b></div>
+                        </div>
+                    </div>
+
+                    <!-- Issiq -->
+                    <div class="cup-glass-box">
+                        <span style="background:#fecaca; color:#991b1b; font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:999px;">80 °C</span>
+                        <h4 style="margin:6px 0 2px;">Issiq suv</h4>
+                        <div class="glass-beaker">
+                            <div class="glass-water" style="background:linear-gradient(180deg, rgba(252,165,165,0.65), rgba(248,113,113,0.85));"></div>
+                            <div class="crystal-sediment" id="sedimentHot" style="height:0%;"></div>
+                        </div>
+                        <div style="font-size:0.8rem; text-align:left;">
+                            <div>Qoʻshilgan: <b id="hotAddedVal">0 g</b></div>
+                            <div>Erigan: <b id="hotDissolvedVal" style="color:#16a34a;">0 g</b></div>
+                            <div>Choʻkma: <b id="hotLeftVal" style="color:#ef4444;">0 g</b></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:14px 0;">
+                    <button class="btn-tab-nav" style="background:#d97706; color:white;" onclick="addSoluteToAll(10)"><i class="fa-solid fa-plus"></i> Har bir stakanga 10 g qoʻshish</button>
+                    <button class="btn-tab-nav" style="background:#16a34a; color:white;" onclick="compareSoluteCups()"><i class="fa-solid fa-chart-column"></i> Natijalarni Solishtirish</button>
+                    <button class="btn-tab-nav" style="background:#64748b; color:white;" onclick="resetSoluteCups()"><i class="fa-solid fa-rotate-left"></i> Qayta boshlash</button>
+                </div>
+
+                <div id="soluteCompareBox" style="padding:14px; border-radius:12px; background:var(--bg-card-subtle); border:1px solid var(--border-color); font-size:0.88rem;">
+                    Har bir stakanda 100 g suv bor deb olingan. Tugmani bosing va modda qoʻshing.
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(42)">⬅️ Erish Harorati</button>
+                    <button class="btn-tab-nav next" onclick="showTab(44)">Erish & Qotish Modeli ❄️ ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 44: ERISH VA QOTISH MODELI -->
+        <section class="tab-section" id="tab-44">
+            <div class="content-card">
+                <span class="section-badge" style="color:#d97706; background:rgba(217,119,6,0.15);">9-Mavzu • Termik O‘tish</span>
+                <h2 class="section-title">❄️ Erish va Qotishning Farqi: Termik Energiya Balansi</h2>
+                <p class="section-desc">Erish jarayonida modda issiqlik yutadi (endotermik). Qotishda esa suyuqlik qattiq holga o‘tayotib o‘z ichki energiyasini atrof-muhitga chiqaradi (ekzotermik):</p>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin:16px 0;">
+                    <div style="background:#fffbeb; border:2px solid #fde68a; border-radius:16px; padding:18px;">
+                        <span style="font-size:2.2rem; display:block;">🔥 ➡️ 🧊 ➡️ 💧</span>
+                        <h3 style="color:#b45309; margin:6px 0;">Erish (Issiqlik Yutish)</h3>
+                        <p style="font-size:0.88rem; color:#78350f;">Qattiq moddaga issiqlik beriladi. Zarrachalar qattiq kristall panjarani tark etib, erkinroq siljiy boshlaydi.</p>
+                        <div style="background:white; padding:10px; border-radius:10px; font-size:0.82rem; margin-top:10px;">
+                            <b>Misol:</b> Muzning erib suvga aylanishi, shokoladning iliq qoʻlda erishi, temir rudasining eritilishi.
+                        </div>
+                    </div>
+
+                    <div style="background:#eff6ff; border:2px solid #bfdbfe; border-radius:16px; padding:18px;">
+                        <span style="font-size:2.2rem; display:block;">💧 ➡️ ❄️ ➕ 🔥</span>
+                        <h3 style="color:#1d4ed8; margin:6px 0;">Qotish (Issiqlik Chiqarish)</h3>
+                        <p style="font-size:0.88rem; color:#1e40af;">Suyuqlik sovitiladi va u issiqlikni atrof-muhitga beradi. Zarrachalar tebranishi sekinlashib, tartibli panjaraga tiziladi.</p>
+                        <div style="background:white; padding:10px; border-radius:10px; font-size:0.82rem; margin-top:10px;">
+                            <b>Misol:</b> Suvning muzlatkichda muzlashi, sham erigan mumining sovib qotishi, eritilgan poʻlatning qolipda qotishi.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(43)">⬅️ 3 Stakan Eruvchanlik</button>
+                    <button class="btn-tab-nav next" onclick="showTab(45)">9-Mavzu Testi 🏆 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 45: 9-MAVZU TESTI VA DIPLOMI -->
+        <section class="tab-section" id="tab-45">
+            <div class="content-card">
+                <span class="section-badge" style="color:#d97706; background:rgba(217,119,6,0.15);">9-Mavzu • Oliy Sinov</span>
+                <h2 class="section-title">🏆 9-Mavzu Testi va "Yosh Kimyogar-Eritmalar Mutaxassisi" Diplomi</h2>
+                <p class="section-desc">Erish, eruvchanlik, to‘yingan eritmalar va qotish qonuniyatlari bo‘yicha 10 ta savolga javob bering:</p>
+
+                <div id="quiz-list-9"></div>
+
+                <div id="quiz-final-box-9" style="display:none; margin-top:1.2rem; padding:1.2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); text-align:center;">
+                    <h3 style="color:#d97706;">🎉 Tabriklaymiz! 9-Mavzu boʻyicha barcha savollarni aʼlo bajardingiz!</h3>
+                    <p id="quiz-final-score-9" style="margin:6px 0; font-weight:700;"></p>
+                    <div style="margin-top:10px;">
+                        <input type="text" id="student-name-9" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <br>
+                        <button class="btn-tab-nav next" onclick="generateCertificate(9)" style="margin:0 auto; background:linear-gradient(135deg, #d97706, #b45309);">Mutaxassis Diplomini Olish 🎓</button>
+                    </div>
+                </div>
+
+                <div class="cert-box" id="cert-view-9" style="border-color:#d97706; background:linear-gradient(135deg, #fffbeb, #fef3c7); color:#92400e;">
+                    <h2>🌟 6-SINF TABIIY FANLAR YOSH KIMYOGAR-ERITMALAR MUTAXASSISI DIPLOMI</h2>
+                    <p style="margin:8px 0; font-size:1.1rem;">Ushbu diplom sohibi:</p>
+                    <h1 id="cert-student-name-9" style="color:#b45309; text-decoration:underline; margin-bottom:8px;">Aʼlochi Oʻquvchi</h1>
+                    <p style="font-size:0.85rem;">"Erish harorati platosi, moddalarning eruvchanlik xususiyatlari, to‘yingan eritmalar va termik faza o‘tishlari" boʻlimlaridan barcha sinovlarni muvaffaqiyatli yakunladi!</p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(44)">⬅️ Orqaga</button>
+                    <button class="btn-tab-nav next" onclick="switchMainTopic(10)">10-Mavzuga Oʻtish 🧪 ➡️</button>
+                </div>
+            </div>
+        </section>
+    
+        <!-- ========================================================== -->
+        <!--    10-MAVZU: KIMYOVIY REAKSIYALAR (TAB 46 - TAB 49)        -->
+        <!-- ========================================================== -->
+
+        <!-- TAB 46: ATOM VA MOLEKULALARNING QAYTA GURUHLANISHI -->
+        <section class="tab-section" id="tab-46">
+            <div class="content-card">
+                <span class="section-badge" style="color:#7c3aed; background:rgba(124,58,237,0.15);">10-Mavzu • Kimyoviy Reaksiya</span>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <h2 class="section-title" style="margin-bottom:0;">⚛️ Kimyoviy Reaksiya & Atomlarning Qayta Tartiblanishi</h2>
+                    <a href="10_mavzu_kimyoviy_reaksiyalar.html" target="_blank" class="btn-tab-nav" style="background:#7c3aed; color:white; font-size:0.8rem; text-decoration:none;">
+                        Alohida Toʻliq Sahifa ↗
+                    </a>
+                </div>
+                <p class="section-desc">Kimyoviy reaksiya - bir yoki bir nechta dastlabki moddalardan (reagentlar) butunlay yangi xossalarga ega boʻlgan yangi moddalar (mahsulotlar) hosil boʻlish jarayonidir. Atomlar yoʻqolib ketmaydi, ular faqat yangi tartibda birikadi!</p>
+
+                <div class="atom-reactor-box">
+                    <div id="atomReactorArea" style="position:relative; width:100%; height:190px;"></div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <span id="atomReactorStatus" style="font-weight:700; color:#7c3aed; font-size:0.95rem;">Boshlangʻich holat: Atomlar erkin harakatlanmoqda</span>
+                    <div style="display:flex; gap:6px;">
+                        <button class="btn-tab-nav" style="background:#7c3aed; color:white;" onclick="triggerAtomReaction()"><i class="fa-solid fa-atom"></i> ⚗️ Reaksiyaga kirishish</button>
+                        <button class="btn-tab-nav" style="background:#475569; color:white;" onclick="resetAtomReactor()"><i class="fa-solid fa-rotate-left"></i> Qayta tiklash</button>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:16px;">
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:12px; border-left:4px solid #ef4444;">
+                        <b style="color:#ef4444;">Reagentlar (Boshlangʻich)</b>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">Reaksiyaga kirishuvchi sof moddalar. Masalan: Vodorod (H₂) va Kislorod (O₂).</p>
+                    </div>
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:12px; border-left:4px solid #10b981;">
+                        <b style="color:#10b981;">Mahsulotlar (Yangi hosil boʻlgan)</b>
+                        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:4px;">Reaksiya natijasida atomlarning yangi tartibda birikishidan hosil boʻlgan moddalar. Masalan: Suv (H₂O).</p>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="switchMainTopic(9)">⬅️ 9-Mavzuga</button>
+                    <button class="btn-tab-nav next" onclick="showTab(47)">3 Reaksiya Belgisi 🔬 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 47: 3 TA REAKSIYA BELGISI LAB -->
+        <section class="tab-section" id="tab-47">
+            <div class="content-card">
+                <span class="section-badge" style="color:#7c3aed; background:rgba(124,58,237,0.15);">10-Mavzu • Reaksiya Belgilari</span>
+                <h2 class="section-title">🔬 Kimyoviy Reaksiya Yuz Berganini Qanday Bilish Mumkin?</h2>
+                <p class="section-desc">Reaksiya paytida quyidagi belgilar kuzatiladi: gaz ajralishi, rang oʻzgarishi, choʻkma hosil boʻlishi, hid yoki harorat oʻzgarishi. 3 ta virtual tajribani ishga tushiring:</p>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:14px; margin:16px 0;">
+                    <!-- 1. Sirka + Soda -->
+                    <div style="background:var(--bg-card-subtle); border-radius:14px; padding:16px; border:1px solid var(--border-color); text-align:center;">
+                        <h4 style="color:#2563eb; margin-bottom:8px;">1. Sirka + Ichimlik Sodasi</h4>
+                        <div class="chem-lab-tube" id="tubeVinegar">
+                            <div style="position:absolute; bottom:0; width:100%; height:45%; background:rgba(224,242,254,0.8);"></div>
+                            <div class="foam-bubbles-wrap" id="vinegarBubblesArea"></div>
+                        </div>
+                        <span id="vinegarSignLabel" style="display:block; margin:8px 0; font-size:0.85rem; font-weight:700; color:#0284c7;">Belgi: Gaz (CO₂) ajralishi</span>
+                        <button class="btn-tab-nav" style="background:#2563eb; color:white; font-size:0.8rem;" onclick="runVinegarExperiment()">Arashtirish & Gazni koʻrish</button>
+                    </div>
+
+                    <!-- 2. Temir zanglashi -->
+                    <div style="background:var(--bg-card-subtle); border-radius:14px; padding:16px; border:1px solid var(--border-color); text-align:center;">
+                        <h4 style="color:#b45309; margin-bottom:8px;">2. Temirning Zanglashi</h4>
+                        <div class="rust-metal-bar" id="rustMetalBar">
+                            <span style="display:grid; place-items:center; height:100%; color:white; font-weight:800; font-size:0.8rem;">Temir plastina</span>
+                        </div>
+                        <span id="rustSignLabel" style="display:block; margin:8px 0; font-size:0.85rem; font-weight:700; color:#b45309;">Belgi: Rang va sirt oʻzgarishi</span>
+                        <button class="btn-tab-nav" style="background:#b45309; color:white; font-size:0.8rem;" onclick="runRustExperiment()">Vaqtni tezlatish (O₂ + H₂O)</button>
+                    </div>
+
+                    <!-- 3. Cho'kma hosil bo'lishi -->
+                    <div style="background:var(--bg-card-subtle); border-radius:14px; padding:16px; border:1px solid var(--border-color); text-align:center;">
+                        <h4 style="color:#7c3aed; margin-bottom:8px;">3. Cho‘kma Tushishi</h4>
+                        <div class="chem-lab-tube" id="tubePrecip">
+                            <div style="position:absolute; bottom:0; width:100%; height:55%; background:rgba(237,233,254,0.85);"></div>
+                            <div id="precipitateLayer" style="position:absolute; bottom:0; width:100%; height:0%; background:#ffffff; border-top:2px solid #cbd5e1; transition:height 0.8s ease;"></div>
+                        </div>
+                        <span id="precipSignLabel" style="display:block; margin:8px 0; font-size:0.85rem; font-weight:700; color:#7c3aed;">Belgi: Qattiq cho‘kma</span>
+                        <button class="btn-tab-nav" style="background:#7c3aed; color:white; font-size:0.8rem;" onclick="runPrecipExperiment()">2 eritmani aralashtirish</button>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(46)">⬅️ Atomlar Reaksiyasi</button>
+                    <button class="btn-tab-nav next" onclick="showTab(48)">Xavfsizlik Simulyatori 🥽 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 48: XAVFSIZLIK SIMULYATORI -->
+        <section class="tab-section" id="tab-48">
+            <div class="content-card">
+                <span class="section-badge" style="color:#7c3aed; background:rgba(124,58,237,0.15);">10-Mavzu • Xavfsizlik Qoidalari</span>
+                <h2 class="section-title">🥽 Laboratoriya Texnika Xavfsizligi Simulyatori</h2>
+                <p class="section-desc">Kimyoviy tajribalarda eng asosiy omil - hayot va salomatlik xavfsizligidir. Har bir vaziyatni o‘qing va "Xavfsiz" yoki "Xavfli" ekanligini baholang:</p>
+
+                <div id="safetyCardsContainer" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px; margin:16px 0;"></div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <span id="safetyScoreCounter" style="font-weight:800; color:#16a34a; font-size:1.05rem;">Baholangan: 0 / 6</span>
+                    <button class="btn-tab-nav" style="background:#64748b; color:white;" onclick="resetSafetyCards()"><i class="fa-solid fa-rotate-left"></i> Qayta ishlash</button>
+                </div>
+
+                <div id="safetyGeneralFeedback" style="margin-top:14px;"></div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(47)">⬅️ Reaksiya Belgilari</button>
+                    <button class="btn-tab-nav next" onclick="showTab(49)">10-Mavzu Katta Testi 🏆 ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 49: 10-MAVZU TESTI VA DIPLOMI -->
+        <section class="tab-section" id="tab-49">
+            <div class="content-card">
+                <span class="section-badge" style="color:#7c3aed; background:rgba(124,58,237,0.15);">10-Mavzu • Oliy Sinov</span>
+                <h2 class="section-title">🏆 10-Mavzu Testi va "Yosh Kimyogar-Tadqiqotchi" Oltin Diplomi</h2>
+                <p class="section-desc">Kimyoviy reaksiyalar, atomlar saqlanishi, reaksiya belgilari va xavfsizlik texnikasi bo‘yicha 12 ta yakuniy savolga javob bering:</p>
+
+                <div id="quiz-list-10"></div>
+
+                <div id="quiz-final-box-10" style="display:none; margin-top:1.2rem; padding:1.2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); text-align:center;">
+                    <h3 style="color:#7c3aed;">🎉 Tabriklaymiz! 10-Mavzu boʻyicha barcha savollarni aʼlo bajardingiz!</h3>
+                    <p id="quiz-final-score-10" style="margin:6px 0; font-weight:700;"></p>
+                    <div style="margin-top:10px;">
+                        <input type="text" id="student-name-10" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <br>
+                        <button class="btn-tab-nav next" onclick="generateCertificate(10)" style="margin:0 auto; background:linear-gradient(135deg, #7c3aed, #6d28d9);">Oltin Diplomni Olish 🎓</button>
+                    </div>
+                </div>
+
+                <div class="cert-box" id="cert-view-10" style="border-color:#7c3aed; background:linear-gradient(135deg, #f5f3ff, #ede9fe); color:#5b21b6;">
+                    <h2>🌟 6-SINF TABIIY FANLAR YOSH KIMYOGAR-TADQIQOTCHI OLTIN DIPLOMI</h2>
+                    <p style="margin:8px 0; font-size:1.1rem;">Ushbu oliy diplom sohibi:</p>
+                    <h1 id="cert-student-name-10" style="color:#6d28d9; text-decoration:underline; margin-bottom:8px;">Aʼlochi Oʻquvchi</h1>
+                    <p style="font-size:0.85rem;">"Kimyoviy reaksiyalar mexanizmi, atomlarning qayta guruhlanishi, reaksiya belgilari (gaz, choʻkma, rang) hamda laboratoriya texnika xavfsizligi" boʻyicha 10-Mavzuni toʻliq va aʼlo darajada yakunladi!</p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(48)">⬅️ Xavfsizlik</button>
+                    <button class="btn-tab-nav next" onclick="switchMainTopic(1)">1-Mavzuga qaytish 🥗 🔝</button>
+                </div>
+            </div>
+        </section>
+    
+
     </main>
 
     <!-- JAVASCRIPT LOGIC -->
@@ -2307,10 +3819,10 @@
             }
         }
 
-        // KATTA MAVZUNI ALMASHTIRISH (1, 2, 3, 4, 5-Mavzu)
+                // KATTA MAVZUNI ALMASHTIRISH (1 dan 10-Mavzugacha)
         function switchMainTopic(topicNum) {
             triggerHaptic(40);
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 10; i++) {
                 const btn = document.getElementById('btn-topic-' + i);
                 if (btn) btn.classList.toggle('active', topicNum === i);
                 const scr = document.getElementById('scroller-topic-' + i);
@@ -2322,9 +3834,14 @@
             else if (topicNum === 3) showTab(17);
             else if (topicNum === 4) showTab(21);
             else if (topicNum === 5) showTab(25);
+            else if (topicNum === 6) showTab(30);
+            else if (topicNum === 7) showTab(34);
+            else if (topicNum === 8) showTab(38);
+            else if (topicNum === 9) showTab(42);
+            else if (topicNum === 10) showTab(46);
         }
 
-        // TAB ALMASHTIRISH
+        // TAB ALMASHTIRISH (Jami 50 ta Tab: 0 dan 49 gacha)
         let currentTab = 0;
         function showTab(idx) {
             triggerHaptic(30);
@@ -2332,12 +3849,17 @@
 
             // Mavzu guruhini aniqlash va scrollerlarni moslash
             let topic = 1;
-            if (idx >= 25) topic = 5;
+            if (idx >= 46) topic = 10;
+            else if (idx >= 42) topic = 9;
+            else if (idx >= 38) topic = 8;
+            else if (idx >= 34) topic = 7;
+            else if (idx >= 30) topic = 6;
+            else if (idx >= 25) topic = 5;
             else if (idx >= 21) topic = 4;
             else if (idx >= 17) topic = 3;
             else if (idx >= 9) topic = 2;
 
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= 10; i++) {
                 const b = document.getElementById('btn-topic-' + i);
                 if (b) b.classList.toggle('active', i === topic);
                 const scr = document.getElementById('scroller-topic-' + i);
@@ -2359,7 +3881,12 @@
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            playTone(600 + (idx % 8) * 35, 0.08);
+            playTone(600 + (idx % 12) * 28, 0.08);
+
+            // Dinamik canvas / animatsiyalar ishga tushishi
+            if (idx === 35) {
+                setTimeout(initBoilingCanvas, 120);
+            }
         }
 
         // THEME
@@ -2946,6 +4473,86 @@
                     `;
                 });
             }
+            // Quiz 6
+            const c6 = document.getElementById('quiz-list-6');
+            if (c6) {
+                c6.innerHTML = '';
+                quiz6.forEach((q, idx) => {
+                    c6.innerHTML += `
+                        <div style="background:var(--bg-card-subtle); padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid var(--border-color);">
+                            <b>${idx+1}. ${q.q}</b>
+                            ${q.opts.map((opt, oIdx) => `
+                                <button class="btn-tab-nav" style="display:block; width:100%; margin-top:6px; text-align:left; border-radius:8px;" onclick="ansQ6(this, ${idx}, ${oIdx})">${opt}</button>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
+
+            // Quiz 7
+            const c7 = document.getElementById('quiz-list-7');
+            if (c7) {
+                c7.innerHTML = '';
+                quiz7.forEach((q, idx) => {
+                    c7.innerHTML += `
+                        <div style="background:var(--bg-card-subtle); padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid var(--border-color);">
+                            <b>${idx+1}. ${q.q}</b>
+                            ${q.opts.map((opt, oIdx) => `
+                                <button class="btn-tab-nav" style="display:block; width:100%; margin-top:6px; text-align:left; border-radius:8px;" onclick="ansQ7(this, ${idx}, ${oIdx})">${opt}</button>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
+
+            // Quiz 8
+            const c8 = document.getElementById('quiz-list-8');
+            if (c8) {
+                c8.innerHTML = '';
+                quiz8.forEach((q, idx) => {
+                    c8.innerHTML += `
+                        <div style="background:var(--bg-card-subtle); padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid var(--border-color);">
+                            <b>${idx+1}. ${q.q}</b>
+                            ${q.opts.map((opt, oIdx) => `
+                                <button class="btn-tab-nav" style="display:block; width:100%; margin-top:6px; text-align:left; border-radius:8px;" onclick="ansQ8(this, ${idx}, ${oIdx})">${opt}</button>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
+
+            // Quiz 9
+            const c9 = document.getElementById('quiz-list-9');
+            if (c9) {
+                c9.innerHTML = '';
+                quiz9.forEach((q, idx) => {
+                    c9.innerHTML += `
+                        <div style="background:var(--bg-card-subtle); padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid var(--border-color);">
+                            <b>${idx+1}. ${q.q}</b>
+                            ${q.opts.map((opt, oIdx) => `
+                                <button class="btn-tab-nav" style="display:block; width:100%; margin-top:6px; text-align:left; border-radius:8px;" onclick="ansQ9(this, ${idx}, ${oIdx})">${opt}</button>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
+
+            // Quiz 10
+            const c10 = document.getElementById('quiz-list-10');
+            if (c10) {
+                c10.innerHTML = '';
+                quiz10.forEach((q, idx) => {
+                    c10.innerHTML += `
+                        <div style="background:var(--bg-card-subtle); padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid var(--border-color);">
+                            <b>${idx+1}. ${q.q}</b>
+                            ${q.opts.map((opt, oIdx) => `
+                                <button class="btn-tab-nav" style="display:block; width:100%; margin-top:6px; text-align:left; border-radius:8px;" onclick="ansQ10(this, ${idx}, ${oIdx})">${opt}</button>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
+
         }
 
         let a1 = {}, a2 = {}, a3 = {}, a4 = {}, a5 = {};
@@ -3031,10 +4638,19 @@
 
         function generateCertificate(num) {
             triggerHaptic(45);
-            const defaultName = num === 5 ? "Yosh Ekolog" : "Yosh Biolog";
-            const name = document.getElementById('student-name-' + num).value.trim() || defaultName;
-            document.getElementById('cert-student-name-' + num).innerText = name;
-            document.getElementById('cert-view-' + num).style.display = 'block';
+            let defaultName = "Yosh Biolog";
+            if (num === 5) defaultName = "Yosh Ekolog";
+            else if (num === 6) defaultName = "Yosh Fizik";
+            else if (num === 7) defaultName = "Yosh Termofizik";
+            else if (num === 8) defaultName = "Yosh Tadqiqotchi";
+            else if (num === 9) defaultName = "Yosh Kimyogar";
+            else if (num === 10) defaultName = "Yosh Kimyogar-Tadqiqotchi";
+            const inputEl = document.getElementById('student-name-' + num);
+            const name = (inputEl && inputEl.value.trim()) || defaultName;
+            const certNameEl = document.getElementById('cert-student-name-' + num);
+            if (certNameEl) certNameEl.innerText = name;
+            const certViewEl = document.getElementById('cert-view-' + num);
+            if (certViewEl) certViewEl.style.display = 'block';
             playTone(950, 0.25);
         }
 
@@ -3609,6 +5225,1065 @@
             }
         }
 
+        
+        // ==========================================================
+        //        6, 7, 8, 9, 10-MAVZULAR JAVASCRIPT LOGIKASI
+        // ==========================================================
+
+        // --- 6-MAVZU: GAZLAR & MASSA ---
+        let gasCount = 0;
+        let gasPlaced = false;
+
+        function renderGasParticles() {
+            const box = document.getElementById('gasParticlesBox');
+            if (!box) return;
+            box.innerHTML = '';
+            const count = gasPlaced ? (8 + gasCount * 5) : 0;
+            for (let i = 0; i < count; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'gas-particle-dot';
+                dot.style.left = (5 + Math.random() * 88) + '%';
+                dot.style.top = (5 + Math.random() * 80) + '%';
+                dot.style.animationDelay = (-Math.random() * 2) + 's';
+                box.appendChild(dot);
+            }
+        }
+
+        function placeGasBalloons() {
+            triggerHaptic(30);
+            playTone(620, 0.1);
+            gasPlaced = true;
+            document.getElementById('gasStatusBadge').innerText = "Taroziga qo'yilgan";
+            document.getElementById('gasBalanceDisplay').innerText = "Muvozanatda (2.0g vs 2.0g)";
+            renderGasParticles();
+        }
+
+        function inflateGasBalloon() {
+            triggerHaptic(40);
+            if (!gasPlaced) {
+                placeGasBalloons();
+            }
+            if (gasCount >= 8) {
+                playTone(350, 0.15);
+                return;
+            }
+            gasCount++;
+            playTone(500 + gasCount * 50, 0.12);
+            const delta = (gasCount * 0.3).toFixed(1);
+            const totalMass = (2.0 + gasCount * 0.3).toFixed(1);
+            const scaleDeg = Math.min(12, gasCount * 1.5);
+
+            document.getElementById('massBDisplay').innerText = totalMass + " g";
+            document.getElementById('gasDeltaDisplay').innerText = "+" + delta + " g";
+            document.getElementById('gasVolumeDisplay').innerText = (1.0 + gasCount * 0.1).toFixed(1) + "×";
+            document.getElementById('gasBalanceDisplay').innerText = `B shar ${delta}g og'irroq!`;
+
+            const bView = document.getElementById('balloonBView');
+            if (bView) {
+                bView.style.transform = `scale(${1.0 + gasCount * 0.05})`;
+            }
+            const bar = document.getElementById('gasScaleBar');
+            if (bar) {
+                bar.style.transform = `rotate(${scaleDeg}deg)`;
+            }
+            renderGasParticles();
+        }
+
+        function resetGasLab() {
+            triggerHaptic(30);
+            playTone(450, 0.1);
+            gasCount = 0;
+            gasPlaced = false;
+            document.getElementById('gasStatusBadge').innerText = "Boshlang'ich holat";
+            document.getElementById('massBDisplay').innerText = "2.0 g";
+            document.getElementById('gasDeltaDisplay').innerText = "0.0 g";
+            document.getElementById('gasVolumeDisplay').innerText = "1.0×";
+            document.getElementById('gasBalanceDisplay').innerText = "Muvozanatda";
+            const bView = document.getElementById('balloonBView');
+            if (bView) bView.style.transform = "scale(1)";
+            const bar = document.getElementById('gasScaleBar');
+            if (bar) bar.style.transform = "rotate(0deg)";
+            renderGasParticles();
+        }
+
+        // --- 6-MAVZU: AGREGAT HOLATLAR KINETIKASI ---
+        const matterData = {
+            water: { name: "Suv (H₂O)", melt: 0, boil: 100, meltStr: "0 °C", boilStr: "100 °C" },
+            iron: { name: "Temir (Fe)", melt: 1538, boil: 2862, meltStr: "1538 °C", boilStr: "2862 °C" },
+            salt: { name: "Osh tuzi (NaCl)", melt: 801, boil: 1465, meltStr: "801 °C", boilStr: "1465 °C" },
+            oxy: { name: "Kislorod (O₂)", melt: -218, boil: -183, meltStr: "-218 °C", boilStr: "-183 °C" }
+        };
+        let currentSubstance = 'water';
+
+        function selectMatterSubstance(key) {
+            triggerHaptic(35);
+            playTone(650, 0.1);
+            currentSubstance = key;
+            document.querySelectorAll('#sub-water-btn, #sub-iron-btn, #sub-salt-btn, #sub-oxy-btn').forEach(b => b.classList.remove('active'));
+            const activeBtn = document.getElementById(`sub-${key}-btn`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const s = matterData[key];
+            document.getElementById('matterSubName').innerText = s.name;
+            document.getElementById('matterMeltPoint').innerText = s.meltStr;
+            document.getElementById('matterBoilPoint').innerText = s.boilStr;
+            updateMatterPhaseDisplay();
+        }
+
+        function updateMatterTemperature(val) {
+            document.getElementById('matterTempDisplay').innerText = val + " °C";
+            updateMatterPhaseDisplay();
+        }
+
+        function stepMatterTemp(delta) {
+            triggerHaptic(25);
+            const slider = document.getElementById('matterTempSlider');
+            if (!slider) return;
+            let val = Number(slider.value) + delta;
+            val = Math.max(-200, Math.min(1600, val));
+            slider.value = val;
+            updateMatterTemperature(val);
+        }
+
+        function compareRoomTemp() {
+            triggerHaptic(35);
+            const slider = document.getElementById('matterTempSlider');
+            if (slider) {
+                slider.value = 20;
+                updateMatterTemperature(20);
+            }
+            alert("20 °C Xona Haroratida:\n• Suv: Suyuq\n• Temir: Qattiq\n• Osh tuzi: Qattiq\n• Kislorod: Gaz holatida!");
+        }
+
+        function updateMatterPhaseDisplay() {
+            const slider = document.getElementById('matterTempSlider');
+            if (!slider) return;
+            const t = Number(slider.value);
+            const s = matterData[currentSubstance];
+            let phase = "";
+            let color = "";
+            let desc = "";
+
+            if (t < s.melt) {
+                phase = "Qattiq holat (Kristall)";
+                color = "#0284c7";
+                desc = "Zarrachalar tartibli joylashgan, faqat o'z o'rni atrofida tebranadi.";
+            } else if (t < s.boil) {
+                phase = "Suyuq holat";
+                color = "#16a34a";
+                desc = "Zarrachalar bir-biriga yaqin, ammo erkin siljiy oladi.";
+            } else {
+                phase = "Gaz holati";
+                color = "#dc2626";
+                desc = "Zarrachalar orasidagi masofa juda katta, tartibsiz va katta tezlikda uchadi.";
+            }
+
+            const badge = document.getElementById('matterPhaseBadge');
+            if (badge) {
+                badge.innerText = phase;
+                badge.style.background = color;
+            }
+            const exp = document.getElementById('matterExplainBox');
+            if (exp) {
+                exp.innerHTML = `<b>Zarrachalar kinetikasi (${t} °C):</b> ${desc}`;
+            }
+            renderMatterKinetic(t < s.melt ? 'solid' : (t < s.boil ? 'liquid' : 'gas'));
+        }
+
+        function renderMatterKinetic(mode = 'liquid') {
+            const box = document.getElementById('matterKineticBox');
+            if (!box) return;
+            box.innerHTML = '';
+            const count = mode === 'solid' ? 32 : (mode === 'liquid' ? 24 : 14);
+            for (let i = 0; i < count; i++) {
+                const p = document.createElement('div');
+                p.style.position = 'absolute';
+                p.style.width = '10px';
+                p.style.height = '10px';
+                p.style.borderRadius = '50%';
+                p.style.background = mode === 'solid' ? '#0284c7' : (mode === 'liquid' ? '#16a34a' : '#dc2626');
+                p.style.boxShadow = '0 0 6px rgba(0,0,0,0.2)';
+
+                if (mode === 'solid') {
+                    p.style.left = (15 + (i % 8) * 10) + '%';
+                    p.style.top = (20 + Math.floor(i / 8) * 18) + '%';
+                    p.style.transition = 'transform 0.1s infinite alternate';
+                } else if (mode === 'liquid') {
+                    p.style.left = (8 + Math.random() * 82) + '%';
+                    p.style.top = (35 + Math.random() * 55) + '%';
+                } else {
+                    p.style.left = (5 + Math.random() * 90) + '%';
+                    p.style.top = (5 + Math.random() * 85) + '%';
+                }
+                box.appendChild(p);
+            }
+        }
+
+        // --- 6-MAVZU: ISSIQLIK VA ELEKTR O'TKAZUVCHANLIK ---
+        const thermalSpeeds = {
+            copper: { name: "Mis sterjeni", rate: "A'lo darajada (O'ta tez)", dur: "0.8s" },
+            alu: { name: "Alyuminiy sterjeni", rate: "Yaxshi (Tez)", dur: "1.2s" },
+            iron: { name: "Temir sterjeni", rate: "O'rtacha", dur: "2.2s" },
+            wood: { name: "Yog'och tayoqcha", rate: "Yomon (Sust)", dur: "6s" },
+            plastic: { name: "Plastik sterjen", rate: "Juda sust (Izolyator)", dur: "10s" }
+        };
+
+        function setThermalMaterial(mat) {
+            triggerHaptic(30);
+            playTone(600, 0.08);
+            const m = thermalSpeeds[mat];
+            document.getElementById('thermalMatName').innerText = "Tanlangan: " + m.name;
+            document.getElementById('thermalRateLabel').innerText = "O'tkazuvchanlik: " + m.rate;
+            const wave = document.getElementById('thermalWaveEl');
+            if (wave) {
+                wave.style.animationDuration = m.dur;
+            }
+        }
+
+        const conductorMats = {
+            copper: true,
+            alu: true,
+            iron: true,
+            wood: false,
+            plastic: false,
+            rubber: false
+        };
+        let circuitIsClosed = false;
+
+        function changeCircuitMaterial(val) {
+            triggerHaptic(25);
+            if (circuitIsClosed) {
+                updateCircuitState();
+            }
+        }
+
+        function connectCircuit() {
+            triggerHaptic(40);
+            circuitIsClosed = true;
+            updateCircuitState();
+        }
+
+        function disconnectCircuit() {
+            triggerHaptic(30);
+            circuitIsClosed = false;
+            updateCircuitState();
+        }
+
+        function updateCircuitState() {
+            const mat = document.getElementById('electricMaterialSelect').value;
+            const isGood = conductorMats[mat];
+            const lamp = document.getElementById('circuitLampIcon');
+            const w1 = document.getElementById('wire1');
+            const w2 = document.getElementById('wire2');
+            const status = document.getElementById('circuitStatusText');
+            const fb = document.getElementById('circuitFeedbackBox');
+
+            if (!circuitIsClosed) {
+                lamp.className = 'circuit-lamp';
+                w1.className = 'circuit-wire';
+                w2.className = 'circuit-wire';
+                status.innerText = "Zanjir uzilgan";
+                status.style.background = "#334155";
+                fb.innerText = "Zanjir ochiq - tok o'tmaydi.";
+                return;
+            }
+
+            if (isGood) {
+                playTone(880, 0.2);
+                lamp.className = 'circuit-lamp active-glow';
+                w1.className = 'circuit-wire active-wire';
+                w2.className = 'circuit-wire active-wire';
+                status.innerText = "Zanjir yopiq - TOK O'TMOQDA!";
+                status.style.background = "#16a34a";
+                fb.innerHTML = `✅ <b>Ajoyib!</b> Tanlangan material elektr o'tkazgich bo'lgani uchun zanjir orqali tok o'tdi va lampochka yondi!`;
+            } else {
+                playTone(250, 0.15);
+                lamp.className = 'circuit-lamp';
+                w1.className = 'circuit-wire';
+                w2.className = 'circuit-wire';
+                status.innerText = "Zanjir yopiq, ammo izolyator ulangan";
+                status.style.background = "#dc2626";
+                fb.innerHTML = `❌ <b>Tok o'tmadi:</b> Tanlangan material elektr izolyatori bo'lgani sababli zaryadlar oqimi to'sildi, lampochka yonmaydi.`;
+            }
+        }
+
+        // --- 7-MAVZU: QAYNASH VA BUG'LANISH (CANVAS SIMULYATORI) ---
+        let boilRunning = false;
+        let boilTemp = 25;
+        let boilEscaped = 0;
+        let boilAnimId = null;
+        let boilParticles = [];
+        let boilBubbles = [];
+
+        function initBoilingCanvas() {
+            const canvas = document.getElementById('boilingCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            boilParticles = [];
+            boilBubbles = [];
+            boilEscaped = 0;
+
+            for (let i = 0; i < 60; i++) {
+                boilParticles.push({
+                    x: 60 + Math.random() * 580,
+                    y: 160 + Math.random() * 110,
+                    vx: (Math.random() - 0.5) * 1.5,
+                    vy: (Math.random() - 0.5) * 1.5,
+                    escaped: false
+                });
+            }
+            drawBoilFrame();
+        }
+
+        function drawBoilFrame() {
+            const canvas = document.getElementById('boilingCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Idish konturi
+            ctx.fillStyle = '#bae6fd';
+            ctx.fillRect(40, 120, 620, 160);
+
+            // Suv
+            const waterGrad = ctx.createLinearGradient(0, 140, 0, 280);
+            waterGrad.addColorStop(0, '#38bdf8');
+            waterGrad.addColorStop(1, '#0284c7');
+            ctx.fillStyle = waterGrad;
+            ctx.fillRect(44, 140, 612, 136);
+
+            // Shisha devor
+            ctx.strokeStyle = '#0369a1';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(40, 110);
+            ctx.lineTo(40, 280);
+            ctx.lineTo(660, 280);
+            ctx.lineTo(660, 110);
+            ctx.stroke();
+
+            // Olov (isitish bo'lsa)
+            if (boilRunning) {
+                const flamePower = Number(document.getElementById('boilFlamePower')?.value || 2);
+                for (let i = 0; i < 6; i++) {
+                    ctx.fillStyle = (i % 2 === 0) ? '#f97316' : '#ef4444';
+                    ctx.beginPath();
+                    const fx = 120 + i * 80;
+                    ctx.moveTo(fx, 305);
+                    ctx.lineTo(fx + 20, 305);
+                    ctx.lineTo(fx + 10, 280 - flamePower * 4);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+            }
+
+            // Zarrachalar
+            boilParticles.forEach(p => {
+                ctx.fillStyle = p.escaped ? 'rgba(56,189,248,0.5)' : '#ffffff';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.escaped ? 4 : 5, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Qaynash pufakchalari
+            boilBubbles.forEach(b => {
+                ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+
+            // Matn
+            ctx.fillStyle = '#0f172a';
+            ctx.font = 'bold 16px Outfit, sans-serif';
+            ctx.fillText(boilTemp >= 100 ? "🔥 QAYNASH BOSQICHI (Hajmiy pufakchalar)" : "🌊 BUG'LANISH BOSQICHI (Sirt zarrachalari)", 50, 40);
+        }
+
+        function updateBoilPhysics() {
+            if (!boilRunning) return;
+            const flamePower = Number(document.getElementById('boilFlamePower')?.value || 2);
+            if (boilTemp < 110) {
+                boilTemp = Math.min(110, boilTemp + flamePower * 0.15);
+                const slider = document.getElementById('boilTempSlider');
+                if (slider) slider.value = Math.round(boilTemp);
+                onBoilTempChange(boilTemp, false);
+            }
+
+            const agitation = 0.5 + (boilTemp / 100) * 2.5;
+
+            boilParticles.forEach(p => {
+                if (p.escaped) {
+                    p.y -= 1.8;
+                    if (p.y < 30) {
+                        p.y = 145 + Math.random() * 100;
+                        p.x = 60 + Math.random() * 580;
+                        p.escaped = false;
+                    }
+                    return;
+                }
+
+                p.x += (Math.random() - 0.5) * agitation;
+                p.y += (Math.random() - 0.5) * agitation;
+
+                if (p.x < 50) p.x = 55;
+                if (p.x > 650) p.x = 645;
+                if (p.y > 270) p.y = 265;
+
+                // Sirt bug'lanishi
+                if (p.y < 145) {
+                    if (Math.random() < (boilTemp / 350)) {
+                        p.escaped = true;
+                        boilEscaped++;
+                        const escDisp = document.getElementById('boilEscapedDisplay');
+                        if (escDisp) escDisp.innerText = boilEscaped;
+                    } else {
+                        p.y = 148;
+                    }
+                }
+            });
+
+            // 100°C da pufakchalar
+            if (boilTemp >= 100) {
+                if (Math.random() < 0.6) {
+                    boilBubbles.push({
+                        x: 80 + Math.random() * 540,
+                        y: 270,
+                        r: 3 + Math.random() * 6,
+                        vy: 2 + Math.random() * 2
+                    });
+                }
+            }
+            boilBubbles.forEach(b => {
+                b.y -= b.vy;
+                b.r += 0.05;
+            });
+            boilBubbles = boilBubbles.filter(b => b.y > 140);
+
+            drawBoilFrame();
+            boilAnimId = requestAnimationFrame(updateBoilPhysics);
+        }
+
+        function onBoilTempChange(val, updateInput = true) {
+            boilTemp = Number(val);
+            const disp = document.getElementById('boilTempDisplay');
+            if (disp) disp.innerText = Math.round(boilTemp) + " °C";
+            const sVal = document.getElementById('boilTempSliderVal');
+            if (sVal) sVal.innerText = Math.round(boilTemp);
+
+            const st = document.getElementById('boilStateDisplay');
+            if (st) {
+                if (boilTemp >= 100) {
+                    st.innerText = "Qaynash (Hajmiy pufakchalar)";
+                    st.style.color = "#dc2626";
+                } else if (boilTemp >= 60) {
+                    st.innerText = "Jadal sirt bug'lanishi";
+                    st.style.color = "#f59e0b";
+                } else {
+                    st.innerText = "Sekin sirt bug'lanishi";
+                    st.style.color = "#16a34a";
+                }
+            }
+            drawBoilFrame();
+        }
+
+        function startBoilSimulation() {
+            triggerHaptic(40);
+            playTone(700, 0.1);
+            if (boilRunning) return;
+            boilRunning = true;
+            updateBoilPhysics();
+        }
+
+        function pauseBoilSimulation() {
+            triggerHaptic(30);
+            boilRunning = false;
+            if (boilAnimId) cancelAnimationFrame(boilAnimId);
+            drawBoilFrame();
+        }
+
+        function resetBoilSimulation() {
+            triggerHaptic(30);
+            pauseBoilSimulation();
+            boilTemp = 25;
+            const slider = document.getElementById('boilTempSlider');
+            if (slider) slider.value = 25;
+            onBoilTempChange(25);
+            initBoilingCanvas();
+        }
+
+        // --- 8-MAVZU: FIZIK O'ZGARISHLAR ---
+        function onWaterPhaseChange(val) {
+            const t = Number(val);
+            document.getElementById('waterPhaseTempNum').innerText = t + " °C";
+            const container = document.getElementById('waterPhaseVisualContainer');
+            const state = document.getElementById('waterPhaseStateName');
+            const kin = document.getElementById('waterPhaseMoleculeKin');
+            const nrg = document.getElementById('waterPhaseEnergyDisplay');
+
+            if (t < 0) {
+                container.innerHTML = `<div class="cube-ice-visual">🧊</div>`;
+                state.innerText = "Qattiq (Muz)";
+                state.style.color = "#0284c7";
+                kin.innerText = "O'z o'rni atrofida tebranma";
+                nrg.innerText = "Past";
+            } else if (t === 0) {
+                container.innerHTML = `<div style="display:flex; gap:10px; align-items:center;"><div class="cube-ice-visual" style="width:75px; height:75px;">🧊</div><span style="font-size:2rem;">⇄</span><div class="liquid-water-visual" style="width:100px; height:65px;">💧</div></div>`;
+                state.innerText = "Faza o'tishi (Erish/Muzlash)";
+                state.style.color = "#f59e0b";
+                kin.innerText = "Plato (Energiyani yutmoqda)";
+                nrg.innerText = "O'rtacha";
+            } else if (t < 100) {
+                container.innerHTML = `<div class="liquid-water-visual">💧</div>`;
+                state.innerText = "Suyuq (Suv)";
+                state.style.color = "#16a34a";
+                kin.innerText = "Erkin sirg'aluvchi";
+                nrg.innerText = "O'rtacha-yuqori";
+            } else {
+                container.innerHTML = `<div class="gas-steam-visual">💨 ☁️</div>`;
+                state.innerText = "Gaz (Suv bug'i)";
+                state.style.color = "#dc2626";
+                kin.innerText = "Katta tezlikda erkin uchuvchi";
+                nrg.innerText = "Juda yuqori";
+            }
+        }
+
+        function stepWaterPhase(delta) {
+            triggerHaptic(25);
+            const slider = document.getElementById('waterPhaseSlider');
+            if (!slider) return;
+            let val = Number(slider.value) + delta;
+            val = Math.max(-20, Math.min(120, val));
+            slider.value = val;
+            onWaterPhaseChange(val);
+        }
+
+        function resetWaterPhase() {
+            triggerHaptic(30);
+            const slider = document.getElementById('waterPhaseSlider');
+            if (slider) {
+                slider.value = -10;
+                onWaterPhaseChange(-10);
+            }
+        }
+
+        // 8-Mavzu: Qaytar / Qaytmas Saralash
+        const reversibleItems = [
+            { id: 1, name: "Muzning erib suvga aylanishi", ans: "rev", exp: "Suvni sovitib yana muzlatish mumkin (Qaytar)." },
+            { id: 2, name: "Shisha stakanning yerga tushib sinishi", ans: "irrev", exp: "Shisha tarkibi o'zgarmaydi, lekin avvalgi butun holatiga keltirib bo'lmaydi (Qaytmas)." },
+            { id: 3, name: "Plastilinga yangi shakl berish", ans: "rev", exp: "Plastilinni qayta ezib boshqa shaklga keltirish oson (Qaytar)." },
+            { id: 4, name: "Qog'oz varag'ini mayda qilib yirtish", ans: "irrev", exp: "Mayda bo'laklarni avvalgi butun varaqqa aylantirish amalda imkonsiz (Qaytmas)." },
+            { id: 5, name: "Suvning bug'lanishi va sovuq oynada kondensatsiyalanishi", ans: "rev", exp: "Bug' sovib yana suyuq suvga aylanadi (Qaytar)." },
+            { id: 6, name: "Quruq yog'ochning o'choqda yonishi", ans: "irrev", exp: "Yog'och yonib kul va gazga aylanadi - bu kimyoviy va mutlaqo qaytmas jarayon." },
+            { id: 7, name: "Temir mixning nam havoda zanglashi", ans: "irrev", exp: "Yangi modda (zang) hosil bo'ladi, ortga qaytmaydi." },
+            { id: 8, name: "Sham mumining erishi va sovib qotishi", ans: "rev", exp: "Erigan mum sovishi bilan yana qattiq holatiga qaytadi (Qaytar)." }
+        ];
+
+        function renderReversibleGame() {
+            const c = document.getElementById('reversibleGameList');
+            if (!c) return;
+            c.innerHTML = '';
+            reversibleItems.forEach(item => {
+                c.innerHTML += `
+                    <div style="background:var(--bg-card); padding:12px; border-radius:12px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                        <span style="font-size:0.9rem; font-weight:700;">${item.id}. ${item.name}</span>
+                        <select id="rev-sel-${item.id}" style="padding:6px 10px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-card-subtle); color:var(--text-main); font-weight:700;">
+                            <option value="">Tanlang...</option>
+                            <option value="rev">Qaytar jarayon ↩️</option>
+                            <option value="irrev">Qaytmas jarayon 🚫</option>
+                        </select>
+                    </div>
+                `;
+            });
+        }
+
+        function checkReversibleGame() {
+            triggerHaptic(40);
+            let score = 0;
+            let feedbackHtml = '';
+
+            reversibleItems.forEach(item => {
+                const sel = document.getElementById(`rev-sel-${item.id}`);
+                if (sel && sel.value === item.ans) {
+                    score++;
+                    sel.style.borderColor = '#16a34a';
+                } else if (sel) {
+                    sel.style.borderColor = '#dc2626';
+                }
+            });
+
+            document.getElementById('reversibleScorePill').innerText = `${score} / ${reversibleItems.length} to'g'ri`;
+            playTone(score >= 6 ? 850 : 350, 0.2);
+
+            const fb = document.getElementById('reversibleSummaryFeedback');
+            if (fb) {
+                fb.innerHTML = `
+                    <div style="padding:14px; border-radius:12px; background:${score>=6?'#f0fdf4':'#fef2f2'}; border:1px solid ${score>=6?'#86efac':'#fca5a5'}; font-size:0.9rem; color:${score>=6?'#15803d':'#b91c1c'};">
+                        <b>Natija:</b> ${score} ta to'g'ri javob! Eslatma: Shisha sinishi fizik o'zgarish bo'lsa-da, qaytmas jarayon hisoblanadi.
+                    </div>
+                `;
+            }
+        }
+
+        function resetReversibleGame() {
+            triggerHaptic(30);
+            renderReversibleGame();
+            document.getElementById('reversibleScorePill').innerText = "0 / 8 to'g'ri";
+            const fb = document.getElementById('reversibleSummaryFeedback');
+            if (fb) fb.innerHTML = '';
+        }
+
+        // --- 9-MAVZU: ERISH VA ERUVCHANLIK ---
+        let meltSimTimer = null;
+        let meltSimRunning = false;
+        let meltSimSec = 0;
+
+        function startMeltSim() {
+            triggerHaptic(35);
+            playTone(680, 0.1);
+            if (meltSimRunning) return;
+            meltSimRunning = true;
+            document.getElementById('meltSimStatusBadge').innerText = "Isitilmoqda...";
+            meltSimTimer = setInterval(tickMeltSim, 400);
+        }
+
+        function pauseMeltSim() {
+            triggerHaptic(30);
+            meltSimRunning = false;
+            clearInterval(meltSimTimer);
+            document.getElementById('meltSimStatusBadge').innerText = "Pauza";
+        }
+
+        function resetMeltSim() {
+            triggerHaptic(30);
+            pauseMeltSim();
+            meltSimSec = 0;
+            document.getElementById('meltSimStatusBadge').innerText = "Tayyor holat";
+            document.getElementById('meltTimeSec').innerText = "0 s";
+            document.getElementById('meltPercentNum').innerText = "0%";
+            document.getElementById('meltPhaseName').innerText = "Qattiq muz";
+            document.getElementById('thermoTempText').innerText = "-10 °C";
+            document.getElementById('thermoLiquidBar').style.height = "20%";
+            document.getElementById('meltGlassWater').style.height = "25%";
+            const blocks = document.getElementById('meltIceBlocks');
+            if (blocks) blocks.style.display = 'flex';
+        }
+
+        function tickMeltSim() {
+            meltSimSec += 1;
+            document.getElementById('meltTimeSec').innerText = meltSimSec + " s";
+
+            let pct = Math.min(100, Math.round(meltSimSec * 4));
+            document.getElementById('meltPercentNum').innerText = pct + "%";
+            document.getElementById('meltGlassWater').style.height = (25 + pct * 0.5) + "%";
+
+            // Harorat va plato mantig'i
+            let t = 0;
+            if (meltSimSec < 5) {
+                t = -10 + meltSimSec * 2;
+                document.getElementById('meltPhaseName').innerText = "Muz qizimoqda";
+            } else if (pct < 100) {
+                t = 0; // Plato
+                document.getElementById('meltPhaseName').innerText = "Erish platosi (0 °C)";
+            } else {
+                t = Math.min(25, (meltSimSec - 25) * 2);
+                document.getElementById('meltPhaseName').innerText = "Suyuq suv isimoqda";
+                const blocks = document.getElementById('meltIceBlocks');
+                if (blocks) blocks.style.display = 'none';
+            }
+
+            document.getElementById('thermoTempText').innerText = t + " °C";
+            document.getElementById('thermoLiquidBar').style.height = (20 + (t + 10) * 2.2) + "%";
+
+            if (pct >= 100 && t >= 25) {
+                pauseMeltSim();
+                document.getElementById('meltSimStatusBadge').innerText = "To'liq eridi!";
+                playTone(900, 0.2);
+            }
+        }
+
+        // 3 Stakan Eruvchanlik
+        let soluteType = 'sugar';
+        let coldAdded = 0, warmAdded = 0, hotAdded = 0;
+
+        function selectSoluteType(type) {
+            triggerHaptic(35);
+            playTone(600, 0.08);
+            soluteType = type;
+            document.getElementById('btn-solute-sugar').classList.toggle('active', type === 'sugar');
+            document.getElementById('btn-solute-salt').classList.toggle('active', type === 'salt');
+            document.getElementById('btn-solute-sugar').style.background = type === 'sugar' ? '#d97706' : 'var(--bg-card-subtle)';
+            document.getElementById('btn-solute-sugar').style.color = type === 'sugar' ? 'white' : 'var(--text-main)';
+            document.getElementById('btn-solute-salt').style.background = type === 'salt' ? '#d97706' : 'var(--bg-card-subtle)';
+            document.getElementById('btn-solute-salt').style.color = type === 'salt' ? 'white' : 'var(--text-main)';
+
+            document.getElementById('soluteTypeInfo').innerText = type === 'sugar' ? "Shakar: Harorat oshishi bilan eruvchanlik keskin ortadi!" : "Osh tuzi: Harorat oshsa ham eruvchanlik juda kam o'zgaradi!";
+            resetSoluteCups();
+        }
+
+        function addSoluteToAll(grams = 10) {
+            triggerHaptic(30);
+            playTone(550, 0.1);
+            coldAdded += grams;
+            warmAdded += grams;
+            hotAdded += grams;
+            updateCupsDisplay();
+        }
+
+        function updateCupsDisplay() {
+            // Eruvchanlik sig'imi (100g suvda):
+            // Shakar: 10C -> 190g/100g (modelda 25g deb olinadi soddalashtirilgan holda)
+            const capCold = soluteType === 'sugar' ? 25 : 35;
+            const capWarm = soluteType === 'sugar' ? 55 : 36;
+            const capHot  = soluteType === 'sugar' ? 95 : 38;
+
+            const coldDiss = Math.min(coldAdded, capCold);
+            const coldLeft = Math.max(0, coldAdded - coldDiss);
+
+            const warmDiss = Math.min(warmAdded, capWarm);
+            const warmLeft = Math.max(0, warmAdded - warmDiss);
+
+            const hotDiss = Math.min(hotAdded, capHot);
+            const hotLeft = Math.max(0, hotAdded - hotDiss);
+
+            document.getElementById('coldAddedVal').innerText = coldAdded + " g";
+            document.getElementById('coldDissolvedVal').innerText = coldDiss + " g";
+            document.getElementById('coldLeftVal').innerText = coldLeft + " g";
+            document.getElementById('sedimentCold').style.height = Math.min(50, coldLeft * 1.5) + "%";
+
+            document.getElementById('warmAddedVal').innerText = warmAdded + " g";
+            document.getElementById('warmDissolvedVal').innerText = warmDiss + " g";
+            document.getElementById('warmLeftVal').innerText = warmLeft + " g";
+            document.getElementById('sedimentWarm').style.height = Math.min(50, warmLeft * 1.5) + "%";
+
+            document.getElementById('hotAddedVal').innerText = hotAdded + " g";
+            document.getElementById('hotDissolvedVal').innerText = hotDiss + " g";
+            document.getElementById('hotLeftVal').innerText = hotLeft + " g";
+            document.getElementById('sedimentHot').style.height = Math.min(50, hotLeft * 1.5) + "%";
+        }
+
+        function compareSoluteCups() {
+            triggerHaptic(35);
+            playTone(720, 0.15);
+            const box = document.getElementById('soluteCompareBox');
+            if (box) {
+                if (soluteType === 'sugar') {
+                    box.innerHTML = `📊 <b>Shakar Tahlili:</b> Sovuq suvda ortiqcha shakar tez cho'kma hosil qildi, issiq suvda esa to'liq erib ketdi! Demak, harorat oshishi shakarning eruvchanligini keskin oshiradi.`;
+                } else {
+                    box.innerHTML = `📊 <b>Osh Tuzi Tahlili:</b> Osh tuzi issiq suvda ham sovuq suvda ham deyarli bir xil miqdorda (~36-38g) eriydi. Osh tuzining eruvchanligi haroratga deyarli bog'liq emas!`;
+                }
+            }
+        }
+
+        function resetSoluteCups() {
+            triggerHaptic(30);
+            coldAdded = 0; warmAdded = 0; hotAdded = 0;
+            updateCupsDisplay();
+            const box = document.getElementById('soluteCompareBox');
+            if (box) box.innerText = "Har bir stakanda 100 g suv bor deb olingan. Tugmani bosing va modda qo'shing.";
+        }
+
+        // --- 10-MAVZU: KIMYOVIY REAKSIYALAR ---
+        function renderAtomsInitial() {
+            const area = document.getElementById('atomReactorArea');
+            if (!area) return;
+            area.innerHTML = '';
+            const coords = [
+                { x: 15, y: 30, cls: 'atom-a', t: 'A' },
+                { x: 25, y: 70, cls: 'atom-a', t: 'A' },
+                { x: 45, y: 25, cls: 'atom-b', t: 'B' },
+                { x: 55, y: 65, cls: 'atom-b', t: 'B' },
+                { x: 75, y: 35, cls: 'atom-c', t: 'C' },
+                { x: 85, y: 70, cls: 'atom-c', t: 'C' }
+            ];
+            coords.forEach((c, idx) => {
+                const el = document.createElement('div');
+                el.className = `atom-disc ${c.cls}`;
+                el.id = `atom-${idx}`;
+                el.innerText = c.t;
+                el.style.left = c.x + '%';
+                el.style.top = c.y + '%';
+                area.appendChild(el);
+            });
+            document.getElementById('atomReactorStatus').innerText = "Boshlang'ich holat: Atomlar erkin harakatlanmoqda";
+        }
+
+        function triggerAtomReaction() {
+            triggerHaptic(45);
+            playTone(850, 0.2);
+            // Atomlar A va B juftlashadi:
+            const a0 = document.getElementById('atom-0');
+            const a2 = document.getElementById('atom-2');
+            if (a0 && a2) {
+                a0.style.left = '28%'; a0.style.top = '40%';
+                a2.style.left = '34%'; a2.style.top = '40%';
+            }
+            const a1 = document.getElementById('atom-1');
+            const a3 = document.getElementById('atom-3');
+            if (a1 && a3) {
+                a1.style.left = '60%'; a1.style.top = '40%';
+                a3.style.left = '66%'; a3.style.top = '40%';
+            }
+            document.getElementById('atomReactorStatus').innerHTML = "✨ <b>Reaksiya yakunlandi:</b> Yangi A-B molekulalari hosil bo'ldi! Atomlar soni o'zgarmadi, bog'lanishi yangilandi.";
+        }
+
+        function resetAtomReactor() {
+            triggerHaptic(30);
+            renderAtomsInitial();
+        }
+
+        // 3 Reaksiya Belgisi
+        function runVinegarExperiment() {
+            triggerHaptic(40);
+            playTone(600, 0.15);
+            const area = document.getElementById('vinegarBubblesArea');
+            if (!area) return;
+            area.innerHTML = '';
+            for (let i = 0; i < 16; i++) {
+                const b = document.createElement('div');
+                b.className = 'foam-bubble-dot';
+                b.style.left = (15 + Math.random() * 70) + '%';
+                b.style.animationDelay = (Math.random() * 1) + 's';
+                area.appendChild(b);
+            }
+            document.getElementById('vinegarSignLabel').innerHTML = "✅ <b>Gaz ajralishi:</b> CO₂ gazi pufakchalari ko'pik hosil qilmoqda!";
+        }
+
+        function runRustExperiment() {
+            triggerHaptic(40);
+            playTone(500, 0.15);
+            const bar = document.getElementById('rustMetalBar');
+            if (bar) bar.classList.toggle('rusted');
+            document.getElementById('rustSignLabel').innerHTML = "✅ <b>Rang va sirt o'zgarishi:</b> Kislorod va suv ta'sirida temir oksidlanib, to'q qo'ng'ir zang hosil bo'ldi!";
+        }
+
+        function runPrecipExperiment() {
+            triggerHaptic(40);
+            playTone(650, 0.15);
+            const p = document.getElementById('precipitateLayer');
+            if (p) p.style.height = "25%";
+            document.getElementById('precipSignLabel').innerHTML = "✅ <b>Cho'kma tushishi:</b> Suyuqlikda erimaydigan yangi oq qattiq modda hosil bo'lib, tubga cho'kdi!";
+        }
+
+        // Xavfsizlik kartalari
+        const safetyCases = [
+            { id: 1, title: "Himoya ko'zoynagini taqish", icon: "🥽", safe: true, why: "Ko'zni xavfli sachrashlardan asraydi (Xavfsiz)." },
+            { id: 2, title: "Noma'lum moddani to'g'ridan-to'g'ri hidlash", icon: "👃", safe: false, why: "Zaharli bug' nafas yo'llarini kuydirishi mumkin (Juda Xavfli!)." },
+            { id: 3, title: "Probirkadagi moddani tatib ko'rish", icon: "👅", safe: false, why: "Laboratoriyada hech bir moddani og'izga solish mumkin emas (Xavfli!)." },
+            { id: 4, title: "Tajribani faqat o'qituvchi ruxsati bilan qilish", icon: "🧑‍🏫", safe: true, why: "Nazoratsiz tajribalar portlash yoki yong'inga olib kelishi mumkin (Xavfsiz)." },
+            { id: 5, title: "Moddalarni ruxsatsiz o'zaro aralashtirish", icon: "💥", safe: false, why: "Kutilmagan shiddatli reaksiyalar xavf tug'diradi (Xavfli!)." },
+            { id: 6, title: "Tajribadan so'ng qo'llarni sovunlab yuvish", icon: "🧼", safe: true, why: "Kimyoviy qoldiqlarni tanadan ketkazadi (Xavfsiz)." }
+        ];
+        let safetyEvaluated = {};
+
+        function renderSafetyCards() {
+            const c = document.getElementById('safetyCardsContainer');
+            if (!c) return;
+            c.innerHTML = '';
+            safetyCases.forEach(item => {
+                c.innerHTML += `
+                    <div style="background:var(--bg-card); padding:14px; border-radius:14px; border:1px solid var(--border-color); text-align:center;">
+                        <span style="font-size:2.2rem; display:block;">${item.icon}</span>
+                        <b style="font-size:0.9rem; display:block; margin:6px 0;">${item.id}. ${item.title}</b>
+                        <div style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
+                            <button class="btn-tab-nav" style="background:#16a34a; color:white; padding:4px 10px; font-size:0.75rem;" onclick="evalSafety(${item.id}, true)">Xavfsiz ✅</button>
+                            <button class="btn-tab-nav" style="background:#dc2626; color:white; padding:4px 10px; font-size:0.75rem;" onclick="evalSafety(${item.id}, false)">Xavfli 🚫</button>
+                        </div>
+                        <div id="safety-fb-${item.id}" style="margin-top:6px; font-size:0.8rem; font-weight:700;"></div>
+                    </div>
+                `;
+            });
+        }
+
+        function evalSafety(id, choice) {
+            triggerHaptic(30);
+            const item = safetyCases.find(x => x.id === id);
+            const isCorrect = choice === item.safe;
+            safetyEvaluated[id] = isCorrect;
+            playTone(isCorrect ? 850 : 300, 0.1);
+
+            const fb = document.getElementById(`safety-fb-${id}`);
+            if (fb) {
+                fb.innerText = isCorrect ? "To'g'ri baholandi! " + item.why : "Xato! " + item.why;
+                fb.style.color = isCorrect ? "#16a34a" : "#dc2626";
+            }
+
+            const count = Object.keys(safetyEvaluated).length;
+            document.getElementById('safetyScoreCounter').innerText = `Baholangan: ${count} / ${safetyCases.length}`;
+            if (count === safetyCases.length) {
+                const correctCount = Object.values(safetyEvaluated).filter(Boolean).length;
+                document.getElementById('safetyGeneralFeedback').innerHTML = `
+                    <div style="padding:12px; border-radius:12px; background:#f0fdf4; border:1px solid #86efac; color:#15803d; font-weight:700;">
+                        🎉 Barcha xavfsizlik vaziyatlari tahlil qilindi! Natija: ${correctCount} / ${safetyCases.length} to'g'ri. Laboratoriyada doim hushyor bo'ling!
+                    </div>
+                `;
+            }
+        }
+
+        function resetSafetyCards() {
+            triggerHaptic(30);
+            safetyEvaluated = {};
+            renderSafetyCards();
+            document.getElementById('safetyScoreCounter').innerText = "Baholangan: 0 / 6";
+            const fb = document.getElementById('safetyGeneralFeedback');
+            if (fb) fb.innerHTML = '';
+        }
+    
+
+        // ==========================================================
+        //        TEST SAVOLLARI: 6, 7, 8, 9, 10-MAVZULAR
+        // ==========================================================
+
+        const quiz6 = [
+            { q: "Massa nima?", opts: ["Jismdagi modda miqdorini tavsiflovchi kattalik", "Faqat jismning rangi", "Faqat suyuqlik harorati"], ans: 0 },
+            { q: "Xalqaro birliklar tizimida (SI) massaning asosiy birligi nima?", opts: ["Litr (l)", "Kilogramm (kg)", "Selsiy darajasi (°C)"], ans: 1 },
+            { q: "Havo haqida qaysi fikr to'g'ri?", opts: ["U ko'rinmagani uchun massaga ega emas", "Havoning massasi va hajmi bor (1 litr ~1.2 g)", "Havo faqat bo'shliqdan iborat"], ans: 1 },
+            { q: "Bir xil ikkita shardan biriga havo to'ldirilsa, tarozida nima kuzatiladi?", opts: ["Havo to'ldirilgan shar og'irroq keladi", "Bo'sh shar og'irroq keladi", "Tarozi hech narsani ko'rsatmaydi"], ans: 0 },
+            { q: "Normal atmosfera bosimida suv necha gradusda muzlaydi/eriydi?", opts: ["100 °C", "0 °C", "801 °C"], ans: 1 },
+            { q: "Xona haroratida (20 °C) kislorod qaysi agregat holatda bo'ladi?", opts: ["Qattiq", "Suyuq", "Gaz"], ans: 2 },
+            { q: "Qattiq moddada zarrachalar qanday harakatlanadi?", opts: ["O'z o'rni atrofida faqat tebranadi", "Butun hajmda juda katta tezlikda uchadi", "Umuman harakat qilmaydi"], ans: 0 },
+            { q: "Issiqlik o'tkazuvchanlik nimani anglatadi?", opts: ["Zaryadli elektronlar oqimi", "Harorat farqi sabab ichki energiya uzatilishi", "Jism massasining yo'qolishi"], ans: 1 },
+            { q: "Quyidagilardan qaysi biri elektr tokini yaxshi o'tkazadi?", opts: ["Quruq yog'och", "Plastmassa", "Mis sim"], ans: 2 },
+            { q: "Nega elektr simlarining tashqarisi plastmassa bilan qoplanadi?", opts: ["Plastmassa tokni oson o'tkazgani uchun", "Plastmassa elektr izolyatori bo'lib odamni tok urishidan asraydi", "Sim og'irroq bo'lishi uchun"], ans: 1 }
+        ];
+
+        const quiz7 = [
+            { q: "Bug'lanish jarayoni asosan qayerda sodir bo'ladi?", opts: ["Suyuqlikning faqat tubida", "Suyuqlikning ochiq sirtida", "Faqat 100 °C haroratda"], ans: 1 },
+            { q: "Qaynashning bug'lanishdan asosiy farqi nimada?", opts: ["Faqat qishda bo'lishida", "Suyuqlikning butun hajmida bug' pufakchalari hosil bo'lishida", "Rangining o'zgarishida"], ans: 1 },
+            { q: "Normal atmosfera bosimida toza suv necha gradusda qaynaydi?", opts: ["0 °C", "50 °C", "100 °C"], ans: 2 },
+            { q: "Baland tog' cho'qqisiga (Everest) chiqqanda suvning qaynash harorati nega pasayadi?", opts: ["Tog'da atmosfera bosimi past bo'lgani sababli", "Tog'da havo juda issiqligi sababli", "Suv tog'da muzlab qolgani uchun"], ans: 0 },
+            { q: "Qaysi holat sirt bug'lanishiga misol bo'ladi?", opts: ["Ho'l kiyimning havoda qurishi", "Choynakdagi suvning pufakchalar bilan qaynashi", "Temirning erishi"], ans: 0 },
+            { q: "Bug'lanish jarayoni jism haroratiga qanday ta'sir qiladi?", opts: ["Jismni har doim qizdiradi", "Eng tez molekulalar uchib ketishi hisobiga jismni sovitadi", "Hech qanday ta'sir qilmaydi"], ans: 1 },
+            { q: "Skorovarka (bosimli qozon)da ovqat nega tez pishadi?", opts: ["Ichidagi bosim yuqori bo'lib, suv 120 °C da qaynaydi", "Ichida suv umuman qaynamaydi", "Qozon faqat sovitadi"], ans: 0 },
+            { q: "Suv qaynab turgan paytda unga berilgan issiqlik energiyasi qayerga sarflanadi?", opts: ["Haroratni 200 °C gacha ko'tarishga", "Suyuqlikni bug' fazasiga aylantirishga", "Suv massasini 2 barobar oshirishga"], ans: 1 }
+        ];
+
+        const quiz8 = [
+            { q: "Fizik o'zgarishda moddaning nima xususiyati odatda saqlanadi?", opts: ["Kimyoviy tarkibi (molekulasi)", "Har doim faqat shakli", "Har doim faqat harorati"], ans: 0 },
+            { q: "Quyidagilardan qaysi biri qaytar fizik o'zgarishga misol?", opts: ["Muzning erishi va suvning qayta muzlashi", "Qog'ozning o'choqda yonishi", "Temirning zanglashi"], ans: 0 },
+            { q: "Shishaning yerga tushib sinishi qanday o'zgarish?", opts: ["Kimyoviy va qaytar", "Fizik, ammo amalda qaytmas jarayon", "Biologik jarayon"], ans: 1 },
+            { q: "Suv muzlaganda nima yuz beradi?", opts: ["Yangi modda hosil bo'ladi", "Suyuq H₂O qattiq kristall H₂O ga o'tadi", "Suv gazi hosil bo'ladi"], ans: 1 },
+            { q: "Qog'ozni maydalash nima uchun fizik o'zgarish?", opts: ["Yangi modda hosil bo'lmaydi, faqat o'lchami o'zgaradi", "Qog'oz gazga aylanadi", "Qog'oz yonib kul bo'ladi"], ans: 0 },
+            { q: "Bug' sovib suyuq tomchilarga aylanishi nima deyiladi?", opts: ["Bug'lanish", "Kondensatsiyalanish", "Yonish"], ans: 1 },
+            { q: "Barcha fizik jarayonlar qaytar bo'ladimi?", opts: ["Ha, mutlaqo barchasi", "Yo'q, sinish va maydalanish amalda qaytmas bo'lishi mumkin", "Faqat suv qaytar bo'ladi"], ans: 1 },
+            { q: "Muz eriyotgan paytda uning harorati qanday bo'ladi?", opts: ["Har sekundda 10 darajaga ortadi", "To barcha muz eriguncha taxminan 0 °C da qoladi", "Har doim -50 °C bo'ladi"], ans: 1 },
+            { q: "Plastilin bilan ishlash qanday o'zgarishga misol?", opts: ["Shakl o'zgarishi (Fizik va qaytar)", "Kimyoviy reaksiya", "Atomlarning yo'qolishi"], ans: 0 },
+            { q: "Fizik o'zgarishlarni bilish hayotda nega kerak?", opts: ["Oziq-ovqatni muzlatish, kiyim quritish va qurilish loyihalarini to'g'ri tashkil etish uchun", "Faqat baho olish uchun", "Moddalarni yo'q qilib yuborish uchun"], ans: 0 }
+        ];
+
+        const quiz9 = [
+            { q: "Erish deb nimaga aytiladi?", opts: ["Suyuqlikning gazga aylanishi", "Qattiq moddaning issiqlik yutib suyuq holatga o'tishi", "Gazning muzlashi"], ans: 1 },
+            { q: "Eruvchanlik nima?", opts: ["Moddaning 100 g erituvchida eriy olishi mumkin bo'lgan maksimal miqdori", "Moddaning qattiqligi", "Moddaning elektr o'tkazishi"], ans: 0 },
+            { q: "Erish va eruvchanlikning asosiy farqi nima?", opts: ["Ular mutlaqo bir xil so'z", "Muz o'zi eriydi (faza o'tishi), shakar esa suvda eriydi (eritma hosil qiladi)", "Faqat tuz erishi mumkin"], ans: 1 },
+            { q: "Harorat ko'tarilganda shakarning suvdagi eruvchanligi qanday o'zgaradi?", opts: ["Keskin ortadi", "Umuman erimay qoladi", "O'zgarmaydi"], ans: 0 },
+            { q: "Osh tuzining (NaCl) suvdagi eruvchanligi harorat oshganda qanday o'zgaradi?", opts: ["10 barobar ortadi", "Juda kam, deyarli o'zgarmaydi", "Nolga tushib qoladi"], ans: 1 },
+            { q: "To'yingan eritma qanday eritma?", opts: ["Umuman modda erimagan suyuqlik", "Berilgan haroratda boshqa modda eritib bo'lmaydigan chegaradagi eritma", "Faqat muzdan iborat suv"], ans: 1 },
+            { q: "Qotish jarayonida suyuqlik issiqlikni qanday almashadi?", opts: ["Atrof-muhitga issiqlik chiqaradi (ekzotermik)", "Faqat issiqlik yutadi", "Issiqlik umuman ishtirok etmaydi"], ans: 0 },
+            { q: "Sof kristall moddaning erish va qotish harorati bir xil bosimda qanday bo'ladi?", opts: ["Turlicha bo'ladi", "Bir xil bo'ladi (suv uchun 0 °C)", "Faqat 100 °C bo'ladi"], ans: 1 },
+            { q: "Eritmani qoshiq bilan aralashtirish nimaga yordam beradi?", opts: ["Eruvchanlik chegarasini 5 barobar oshirishga", "Erish tezligini tezlashtirishga", "Suvni muzlatishga"], ans: 1 },
+            { q: "To'yingan issiq shakar eritmasi sovutilsa nima kuzatiladi?", opts: ["Ortiqcha shakar kristall bo'lib idish tubiga ajraladi", "Shakar yo'qolib ketadi", "Suv gazga aylanadi"], ans: 0 }
+        ];
+
+        const quiz10 = [
+            { q: "Kimyoviy reaksiya deb nimaga aytiladi?", opts: ["Faqat shakl o'zgarishiga", "Dastlabki moddalardan yangi xossalarga ega yangi moddalar hosil bo'lish jarayoniga", "Faqat muzning erishiga"], ans: 1 },
+            { q: "Kimyoviy reaksiyada atomlar nima bo'ladi?", opts: ["Butunlay yo'qolib ketadi", "Atomlar saqlanadi, faqat qayta tartiblanib yangi molekulalar hosil qiladi", "Atomlar yangidan yaratiladi"], ans: 1 },
+            { q: "Quyidagilardan qaysi biri kimyoviy o'zgarishga misol?", opts: ["Muzning erishi", "Qog'ozning yirtilishi", "Temirning zanglashi"], ans: 2 },
+            { q: "Sirka va ichimlik sodasi aralashtirilganda qaysi reaksiya belgisi kuzatiladi?", opts: ["Shiddatli pufakchalar bilan karbonat angidrid (CO₂) gazi ajralishi", "Muz hosil bo'lishi", "Rangning qorayishi"], ans: 0 },
+            { q: "Cho'kma deganda nima tushuniladi?", opts: ["Suyuqlikda erimaydigan yangi qattiq moddaning hosil bo'lishi", "Faqat suv bug'i", "Chiqayotgan alanga"], ans: 0 },
+            { q: "Temir zanglashi uchun qanday omillar zarur?", opts: ["Faqat qorong'ulik", "Kislorod va namlik (suv)", "Faqat sovuq harorat"], ans: 1 },
+            { q: "Yog'och yonishi qanday jarayon?", opts: ["Fizik va qaytar", "Kimyoviy va qaytmas jarayon (kul va gaz hosil bo'ladi)", "Faqat shakl o'zgarishi"], ans: 1 },
+            { q: "Laboratoriyada noma'lum moddani qanday hidlash kerak?", opts: ["Idishni burunga taqab chuqur nafas olish", "Kaft bilan havoni o'ziga qarab sekin yelpig'ichlab hidlash", "Umuman hidlab bo'lmaydi, og'iz bilan tatib ko'rish kerak"], ans: 1 },
+            { q: "Kimyo xonasida moddalarni tatib ko'rish nima uchun qat'iyan taqiqlanadi?", opts: ["Ular shirin bo'lmagani uchun", "Ko'p moddalar zaharli yoki kuydiruvchi bo'lishi mumkinligi uchun", "Qimmat turgani uchun"], ans: 1 },
+            { q: "Kimyoviy modda tasodifan teriga yoki ko'zga sachrasa birinchi nima qilish kerak?", opts: ["Kutib turish", "Darhol ko'p miqdorda oqiq suv bilan yuvish va o'qituvchiga aytish", "Ustiga spirt quyish"], ans: 1 },
+            { q: "Quyidagilardan qaysi biri fizik o'zgarish hisoblanadi?", opts: ["Sutning achishi", "Shakarning suvda erishi", "Tuxumning qovurilishi"], ans: 1 },
+            { q: "Tajriba yakunlangach qanday qoidaga rioya qilish shart?", opts: ["Qo'llarni sovunlab yuvish va ish joyini tartibga keltirish", "Idishlarni qoldirib ketish", "Qolgan kislotalarni yerga to'kish"], ans: 0 }
+        ];
+
+        let a6 = {}, a7 = {}, a8 = {}, a9 = {}, a10 = {};
+
+        function ansQ6(btn, qIdx, oIdx) {
+            if (a6[qIdx] !== undefined) return;
+            a6[qIdx] = oIdx;
+            if (oIdx === quiz6[qIdx].ans) {
+                btn.style.background = "#dcfce7"; btn.style.color = "#15803d";
+                playTone(850, 0.1);
+            } else {
+                btn.style.background = "#fee2e2"; btn.style.color = "#b91c1c";
+                playTone(250, 0.15);
+            }
+            if (Object.keys(a6).length === quiz6.length) {
+                document.getElementById('quiz-final-box-6').style.display = 'block';
+                document.getElementById('quiz-final-score-6').innerText = "6-mavzu boʻyicha barcha savollarga muvaffaqiyatli javob berdingiz!";
+            }
+        }
+
+        function ansQ7(btn, qIdx, oIdx) {
+            if (a7[qIdx] !== undefined) return;
+            a7[qIdx] = oIdx;
+            if (oIdx === quiz7[qIdx].ans) {
+                btn.style.background = "#dcfce7"; btn.style.color = "#15803d";
+                playTone(850, 0.1);
+            } else {
+                btn.style.background = "#fee2e2"; btn.style.color = "#b91c1c";
+                playTone(250, 0.15);
+            }
+            if (Object.keys(a7).length === quiz7.length) {
+                document.getElementById('quiz-final-box-7').style.display = 'block';
+                document.getElementById('quiz-final-score-7').innerText = "7-mavzu boʻyicha barcha savollarga muvaffaqiyatli javob berdingiz!";
+            }
+        }
+
+        function ansQ8(btn, qIdx, oIdx) {
+            if (a8[qIdx] !== undefined) return;
+            a8[qIdx] = oIdx;
+            if (oIdx === quiz8[qIdx].ans) {
+                btn.style.background = "#dcfce7"; btn.style.color = "#15803d";
+                playTone(850, 0.1);
+            } else {
+                btn.style.background = "#fee2e2"; btn.style.color = "#b91c1c";
+                playTone(250, 0.15);
+            }
+            if (Object.keys(a8).length === quiz8.length) {
+                document.getElementById('quiz-final-box-8').style.display = 'block';
+                document.getElementById('quiz-final-score-8').innerText = "8-mavzu boʻyicha barcha savollarga muvaffaqiyatli javob berdingiz!";
+            }
+        }
+
+        function ansQ9(btn, qIdx, oIdx) {
+            if (a9[qIdx] !== undefined) return;
+            a9[qIdx] = oIdx;
+            if (oIdx === quiz9[qIdx].ans) {
+                btn.style.background = "#dcfce7"; btn.style.color = "#15803d";
+                playTone(850, 0.1);
+            } else {
+                btn.style.background = "#fee2e2"; btn.style.color = "#b91c1c";
+                playTone(250, 0.15);
+            }
+            if (Object.keys(a9).length === quiz9.length) {
+                document.getElementById('quiz-final-box-9').style.display = 'block';
+                document.getElementById('quiz-final-score-9').innerText = "9-mavzu boʻyicha barcha savollarga muvaffaqiyatli javob berdingiz!";
+            }
+        }
+
+        function ansQ10(btn, qIdx, oIdx) {
+            if (a10[qIdx] !== undefined) return;
+            a10[qIdx] = oIdx;
+            if (oIdx === quiz10[qIdx].ans) {
+                btn.style.background = "#dcfce7"; btn.style.color = "#15803d";
+                playTone(850, 0.1);
+            } else {
+                btn.style.background = "#fee2e2"; btn.style.color = "#b91c1c";
+                playTone(250, 0.15);
+            }
+            if (Object.keys(a10).length === quiz10.length) {
+                document.getElementById('quiz-final-box-10').style.display = 'block';
+                document.getElementById('quiz-final-score-10').innerText = "10-mavzu boʻyicha barcha savollarga muvaffaqiyatli javob berdingiz!";
+            }
+        }
+    
         window.onload = function() {
             initGame();
             initWater();

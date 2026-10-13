@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-sinf Tabiiy Fanlar — 6-Mavzu: Moddaning Xossalari</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--ink:#0f172a;--muted:#64748b;--bg:#f8fafc;--card:#ffffff;--blue:#2563eb;--rose:#e11d48;--border:#e2e8f0;--shadow:0 10px 25px -5px rgba(0,0,0,0.06)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+header{padding:35px 20px;background:linear-gradient(135deg,#1e3a8a,#2563eb 55%,#06b6d4);color:#fff}
+.hero{max-width:1120px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:800;opacity:.9}.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2rem,5vw,3.2rem);margin:8px 0;line-height:1.15}.hero p{max-width:780px;color:#e0f2fe;font-size:1.05rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;gap:8px;overflow-x:auto;justify-content:center}
+nav a{white-space:nowrap;text-decoration:none;color:#334155;font-size:.88rem;font-weight:700;padding:8px 14px;border-radius:10px;transition:all .2s}nav a:hover{background:#eff6ff;color:var(--blue)}
+main{max-width:1120px;margin:24px auto;padding:0 16px 50px}.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:clamp(16px,3vw,26px);box-shadow:var(--shadow);margin-bottom:22px}
+.sectionhead{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}.number{flex:0 0 44px;height:44px;border-radius:14px;background:#dbeafe;color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:1.2rem}
+.sectionhead h2{font-family:'Outfit',sans-serif;margin:0;font-size:clamp(1.4rem,3vw,2rem);line-height:1.2}.sub{color:var(--muted);margin:4px 0 0}
+.btn{border:0;border-radius:11px;padding:10px 16px;background:#eff6ff;color:var(--blue);font-weight:700;cursor:pointer;transition:all .2s;font-size:.9rem}.btn.primary{background:var(--blue);color:#fff}.btn.danger{background:var(--rose);color:#fff}
+.scale-system{max-width:440px;margin:20px auto 10px;position:relative}.scale-pivot{width:14px;height:52px;background:#475569;margin:0 auto;border-radius:6px 6px 0 0;position:relative}
+.scale-bar{height:10px;background:linear-gradient(90deg,#334155,#64748b,#334155);border-radius:6px;width:100%;position:absolute;top:6px;left:0;transition:transform .6s cubic-bezier(.34,1.56,.64,1);transform-origin:center center}
+.scale-pans{display:flex;justify-content:space-between;margin-top:24px}.pan-plate{width:160px;text-align:center;background:rgba(255,255,255,0.9);border:2px solid #cbd5e1;border-radius:14px;padding:12px 8px;box-shadow:0 4px 14px rgba(0,0,0,0.06)}
+.balloon-item{width:72px;height:88px;border-radius:50% 50% 48% 48%;margin:0 auto 8px;display:grid;place-items:center;color:white;font-weight:800;position:relative;transition:transform .4s ease}
+.balloon-a{background:linear-gradient(135deg,#94a3b8,#64748b);border:2px solid #475569}.balloon-b{background:radial-gradient(circle at 30% 30%,#ff8da1,#e11d48);border:2px solid #be123c}
+.matter-box{height:180px;border-radius:14px;background:#f0f7ff;border:2px solid #cbd5e1;position:relative;overflow:hidden;margin:14px 0}
+.circuit-box{background:#0f172a;border-radius:16px;padding:20px;color:white;border:2px solid #334155;margin:16px 0;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.circuit-lamp{font-size:2.8rem;filter:grayscale(1);transition:all .3s}.circuit-lamp.glow{filter:grayscale(0) drop-shadow(0 0 24px #facc15);transform:scale(1.1)}
+.question{background:#f8fafc;border:1px solid var(--border);border-radius:14px;padding:14px;margin:12px 0}.question p{font-weight:700;margin-bottom:8px}
+.answer{display:flex;gap:8px;padding:10px;border:1px solid var(--border);border-radius:10px;margin:6px 0;background:#fff;cursor:pointer;font-weight:600}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<div class="hero">
+    <div class="eyebrow">6-sinf · Tabiiy Fanlar · 6-Mavzu</div>
+    <h1>Moddaning Xossalari</h1>
+    <p>Gazlarning massasi, harorat ta'sirida agregat holatlarning o‘zgarishi, issiqlik va elektr o‘tkazuvchanlik sirlarini virtual tajribalarda o‘rganing.</p>
+</div>
+</header>
+<nav>
+    <a href="#gazlar">1. Gazlar & Massa</a>
+    <a href="#agregat">2. Agregat Holatlar</a>
+    <a href="#otkazuvchanlik">3. O‘tkazuvchanlik</a>
+    <a href="#test">4. Yakuniy Test</a>
+</nav>
+<main>
+    <section id="gazlar" class="card">
+        <div class="sectionhead"><div class="number">1</div><div><h2>Gazlar ham massaga egami?</h2><p class="sub">Havo ko‘rinmasa ham massaga va hajmga ega bo‘lgan moddadir.</p></div></div>
+        <p>Havo gazlar aralashmasi (asosan azot va kislorod)dan iborat. 1 litr havoning massasi normal sharoitda taxminan <b>1.2 gramm</b> bo‘ladi. Bir xil sharlarni tarozi yordamida taqqoslab, gaz massasini tekshiramiz:</p>
+        
+        <div class="scale-system">
+            <div class="scale-bar" id="scaleBar"></div>
+            <div class="scale-pivot"></div>
+            <div class="scale-pans">
+                <div class="pan-plate">
+                    <div class="balloon-item balloon-a">A</div>
+                    <small>Bo‘sh shar A</small><br><b id="massA" style="color:var(--blue); font-size:1.15rem;">2.0 g</b>
+                </div>
+                <div class="pan-plate">
+                    <div class="balloon-item balloon-b" id="balloonB">B</div>
+                    <small>Tajriba shari B</small><br><b id="massB" style="color:var(--rose); font-size:1.15rem;">2.0 g</b>
+                </div>
+            </div>
+        </div>
+
+        <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:14px;">
+            <button class="btn primary" onclick="inflateB()"><i class="fa-solid fa-lungs"></i> B sharga havo kiritish (+0.3g)</button>
+            <button class="btn" onclick="resetB()"><i class="fa-solid fa-rotate-left"></i> Qayta boshlash</button>
+        </div>
+        <div id="gasMsg" style="margin-top:12px; padding:12px; background:#eff6ff; border-radius:10px; font-size:.9rem; color:#1e40af; text-align:center;">
+            Tugmani bosing va B shar og‘irlashib tarozi pallasining pastga og‘ishini kuzating.
+        </div>
+    </section>
+
+    <section id="agregat" class="card">
+        <div class="sectionhead"><div class="number">2</div><div><h2>Agregat holatlar va harorat</h2><p class="sub">Harorat o‘zgarganda moddalarning qattiq, suyuq va gaz fazalari qanday o‘zgaradi?</p></div></div>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:10px;">
+            <b>Harorat: <span id="tempNum" style="color:var(--blue); font-size:1.3rem;">20 °C</span></b>
+            <select id="matterSel" style="padding:8px 12px; border-radius:10px; border:1px solid var(--border);" onchange="renderMatter()">
+                <option value="water">Suv (H₂O) — Erish: 0°C, Qaynash: 100°C</option>
+                <option value="iron">Temir (Fe) — Erish: 1538°C, Qaynash: 2862°C</option>
+                <option value="salt">Osh tuzi (NaCl) — Erish: 801°C</option>
+                <option value="oxy">Kislorod (O₂) — Qaynash: -183°C</option>
+            </select>
+        </div>
+        <input type="range" id="tempSlider" min="-200" max="1600" value="20" style="width:100%; accent-color:var(--blue);" oninput="onTempChange(this.value)">
+        <div class="matter-box" id="matterBox"></div>
+        <div id="matterStateCard" style="padding:12px; background:#f1f5f9; border-radius:12px; font-weight:700;">
+            Holat: Suyuq suv (Zarrachalar bir-biriga yaqin, erkin sirg‘aladi).
+        </div>
+    </section>
+
+    <section id="otkazuvchanlik" class="card">
+        <div class="sectionhead"><div class="number">3</div><div><h2>Issiqlik va elektr o‘tkazuvchanlik</h2><p class="sub">Metall va nometallarning xususiyatlari.</p></div></div>
+        <p>Elektr o‘tkazgichlar (mis, alyuminiy, temir) orqali tok o‘tadi, izolyatorlar (yog‘och, plastmassa, rezina) esa tok o‘tkazmaydi:</p>
+        <div class="circuit-box">
+            <div style="text-align:center;"><span style="font-size:2rem;">🔋</span><br><small>3V Batareya</small></div>
+            <div style="width:40px; height:4px; background:#38bdf8;"></div>
+            <div style="background:#1e293b; padding:10px; border-radius:10px; border:1px solid #475569;">
+                <select id="matCircuit" style="padding:6px; border-radius:8px; background:#0f172a; color:#fff;" onchange="testCircuit()">
+                    <option value="copper">Mis sim (O‘tkazgich)</option>
+                    <option value="alu">Alyuminiy (O‘tkazgich)</option>
+                    <option value="iron">Temir mix (O‘tkazgich)</option>
+                    <option value="wood">Quruq yog‘och (Izolyator)</option>
+                    <option value="plastic">Plastmassa (Izolyator)</option>
+                </select>
+            </div>
+            <div style="width:40px; height:4px; background:#38bdf8;"></div>
+            <div style="text-align:center;"><div class="circuit-lamp glow" id="lamp">💡</div><small>Lampochka</small></div>
+        </div>
+        <div id="circuitMsg" style="text-align:center; font-weight:700; color:#16a34a;">Mis metall o‘tkazgich bo‘lgani sababli lampochka yondi!</div>
+    </section>
+
+    <section id="test" class="card">
+        <div class="sectionhead"><div class="number">✓</div><div><h2>Yakuniy test</h2><p class="sub">Bilimingizni sinang va natijani ko‘ring.</p></div></div>
+        <div id="quizContainer"></div>
+        <button class="btn primary" style="width:100%; margin-top:14px; padding:12px; font-size:1rem;" onclick="checkFinalQuiz()">Test Natijasini Ko‘rish</button>
+        <div id="quizResultBox" style="margin-top:14px; display:none; padding:16px; border-radius:12px; background:#f0fdf4; border:1px solid #86efac; text-align:center;"></div>
+    </section>
+</main>
+<footer>6-sinf Tabiiy Fanlar · 6-Mavzu · Moddaning Xossalari</footer>
+<script>
+let gCount = 0;
+function inflateB(){
+    gCount++;
+    const delta = (gCount * 0.3).toFixed(1);
+    document.getElementById('massB').innerText = (2.0 + gCount * 0.3).toFixed(1) + " g";
+    document.getElementById('scaleBar').style.transform = `rotate(${Math.min(14, gCount * 2)}deg)`;
+    document.getElementById('balloonB').style.transform = `scale(${1 + gCount * 0.06})`;
+    document.getElementById('gasMsg').innerText = `B sharga havo kiritildi: massa +${delta}g ga ortdi va tarozi B tomoniga og'di! Havo massaga ega.`;
+}
+function resetB(){
+    gCount = 0;
+    document.getElementById('massB').innerText = "2.0 g";
+    document.getElementById('scaleBar').style.transform = "rotate(0deg)";
+    document.getElementById('balloonB').style.transform = "scale(1)";
+    document.getElementById('gasMsg').innerText = "Boshlang'ich holat: sharlar bir xil massada (2.0g).";
+}
+
+const matters = {
+    water: { melt: 0, boil: 100, name: "Suv" },
+    iron: { melt: 1538, boil: 2862, name: "Temir" },
+    salt: { melt: 801, boil: 1465, name: "Osh tuzi" },
+    oxy: { melt: -218, boil: -183, name: "Kislorod" }
+};
+function onTempChange(val){
+    document.getElementById('tempNum').innerText = val + " °C";
+    renderMatter();
+}
+function renderMatter(){
+    const t = Number(document.getElementById('tempSlider').value);
+    const key = document.getElementById('matterSel').value;
+    const m = matters[key];
+    const box = document.getElementById('matterBox');
+    box.innerHTML = '';
+    let st = "";
+    if (t < m.melt) st = "Qattiq kristall holat (Zarrachalar o'z o'rnida tebranadi)";
+    else if (t < m.boil) st = "Suyuq holat (Zarrachalar yaqin, erkin sirg'aladi)";
+    else st = "Gaz holati (Zarrachalar katta tezlikda uchadi)";
+
+    document.getElementById('matterStateCard').innerText = `Holat: ${m.name} — ${st}`;
+    for(let i=0; i<25; i++){
+        const p = document.createElement('div');
+        p.style.position = 'absolute';
+        p.style.width = '10px'; p.style.height = '10px'; p.style.borderRadius = '50%';
+        p.style.background = t < m.melt ? '#0284c7' : (t < m.boil ? '#16a34a' : '#dc2626');
+        p.style.left = (10 + (i%5)*18 + (t<m.melt?0:Math.random()*5)) + '%';
+        p.style.top = (15 + Math.floor(i/5)*16 + (t<m.melt?0:Math.random()*5)) + '%';
+        box.appendChild(p);
+    }
+}
+renderMatter();
+
+function testCircuit(){
+    const v = document.getElementById('matCircuit').value;
+    const ok = (v === 'copper' || v === 'alu' || v === 'iron');
+    const lamp = document.getElementById('lamp');
+    const msg = document.getElementById('circuitMsg');
+    if (ok) {
+        lamp.className = 'circuit-lamp glow';
+        msg.innerText = "Tanlangan metall o'tkazgich - elektr toki o'tib lampochka yondi!";
+        msg.style.color = "#16a34a";
+    } else {
+        lamp.className = 'circuit-lamp';
+        msg.innerText = "Tanlangan material izolyator - tok o'tmadi, lampochka yonmaydi.";
+        msg.style.color = "#dc2626";
+    }
+}
+
+const quiz = [
+    { q: "1. Massaning SI tizimidagi asosiy birligi qaysi?", o: ["Litr", "Kilogramm", "Selsiy"], a: 1 },
+    { q: "2. Havo massaga egami?", o: ["Ha, 1 litr havo ~1.2 gramm", "Yo'q, gazlarning massasi bo'lmaydi", "Faqat muzlaganda massaga ega bo'ladi"], a: 0 },
+    { q: "3. Suv normal bosimda necha gradusda qaynaydi?", o: ["0 °C", "50 °C", "100 °C"], a: 2 },
+    { q: "4. Qaysi modda elektr tokini yaxshi o'tkazadi?", o: ["Mis", "Quruq yog'och", "Plastmassa"], a: 0 },
+    { q: "5. Qattiq jismda zarrachalar qanday harakatlanadi?", o: ["Erkin uchadi", "Faqat tebranadi", "Har doim oqadi"], a: 1 }
+];
+document.getElementById('quizContainer').innerHTML = quiz.map((item, idx) => `
+    <div class="question">
+        <p>${item.q}</p>
+        ${item.o.map((opt, oIdx) => `
+            <label class="answer">
+                <input type="radio" name="q${idx}" value="${oIdx}"> ${opt}
+            </label>
+        `).join('')}
+    </div>
+`).join('');
+
+function checkFinalQuiz(){
+    let score = 0;
+    quiz.forEach((item, idx) => {
+        const checked = document.querySelector(`input[name="q${idx}"]:checked`);
+        if (checked && Number(checked.value) === item.a) score++;
+    });
+    const box = document.getElementById('quizResultBox');
+    box.style.display = 'block';
+    box.innerHTML = `<h3>Natija: ${score} / ${quiz.length} ball!</h3><p>${score>=4?'Aʼlo darajada oʻzlashtirdingiz! 🎉':'Mavzuni qayta koʻrib chiqing.'}</p>`;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-sinf Tabiiy Fanlar — 9-Mavzu: Moddalarning Erish Jarayoni va Eruvchanlik</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--ink:#0f172a;--muted:#64748b;--bg:#fffbeb;--card:#ffffff;--orange:#d97706;--border:#fde68a;--shadow:0 10px 25px -5px rgba(217,119,6,0.08)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+header{padding:35px 20px;background:linear-gradient(135deg,#b45309,#d97706 60%,#f59e0b);color:#fff}
+.wrap{max-width:1120px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:800;opacity:.9}
+h1{font-family:'Outfit',sans-serif;font-size:clamp(2rem,5vw,3.2rem);margin:8px 0;line-height:1.15}header p{max-width:780px;color:#fef3c7;font-size:1.05rem}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 14px;display:flex;gap:8px;overflow-x:auto;justify-content:center}
+nav a{white-space:nowrap;text-decoration:none;color:#b45309;font-size:.88rem;font-weight:700;padding:8px 14px;border-radius:10px}nav a:hover{background:#fef3c7}
+main{max-width:1120px;margin:24px auto;padding:0 16px 50px}.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:clamp(16px,3vw,26px);box-shadow:var(--shadow);margin-bottom:22px}
+.btn{border:0;border-radius:11px;padding:10px 16px;background:#fef3c7;color:var(--orange);font-weight:700;cursor:pointer}.btn.primary{background:var(--orange);color:#fff}
+.cups-row{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:14px;margin:16px 0}
+.cup-card{border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;background:#fff}
+.beaker{width:90px;height:120px;border:3px solid #94a3b8;border-top:0;border-radius:0 0 20px 20px;margin:10px auto;position:relative;overflow:hidden;background:rgba(255,255,255,0.5)}
+.water-fill{position:absolute;bottom:0;width:100%;height:65%;background:#7dd3fc}
+.sediment{position:absolute;bottom:0;width:100%;background:#f1f5f9;border-top:2px dashed #cbd5e1;transition:height .3s}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:20px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="eyebrow">6-sinf · Tabiiy Fanlar · 9-Mavzu</div><h1>Moddalarning Erish Jarayoni va Eruvchanlik</h1><p>Erish harorati, to‘yingan eritmalar va haroratning shakar hamda tuz eruvchanligiga ta’siri.</p></div></header>
+<nav><a href="#erish">1. Erish Harorati</a><a href="#stakan">2. 3 Stakan Eruvchanlik</a><a href="#test">3. Yakuniy Test</a></nav>
+<main>
+    <section id="erish" class="card">
+        <h2>🧊 1. Erish Harorati va Erish Platosi</h2>
+        <p>Sof muz 0 °C da eriydi. Muz eriyotgan vaqtda harorat to barcha muz eriguncha 0 °C bo‘lib qoladi (erish platosi). Barcha muz erib bo‘lgach, suv isishda davom etadi.</p>
+        <div style="background:#fffbeb; padding:16px; border-radius:14px; border:2px solid var(--border); text-align:center;">
+            <span style="font-size:3rem;">🧊 ➡️ 💧</span>
+            <div style="margin-top:10px; font-weight:700; color:#b45309;">Erishda issiqlik yutiladi (endotermik). Qotishda esa issiqlik atrof-muhitga chiqariladi (ekzotermik).</div>
+        </div>
+    </section>
+
+    <section id="stakan" class="card">
+        <h2>🥄 2. Haroratning Eruvchanlikka Ta’siri (3 Stakan Lab)</h2>
+        <div class="cups-row">
+            <div class="cup-card">
+                <b>Sovuq suv (10 °C)</b>
+                <div class="beaker"><div class="water-fill"></div><div class="sediment" id="sedC"></div></div>
+                <small>Cho'kma: <b id="leftC">0 g</b></small>
+            </div>
+            <div class="cup-card">
+                <b>Iliq suv (40 °C)</b>
+                <div class="beaker"><div class="water-fill"></div><div class="sediment" id="sedW"></div></div>
+                <small>Cho'kma: <b id="leftW">0 g</b></small>
+            </div>
+            <div class="cup-card">
+                <b>Issiq suv (80 °C)</b>
+                <div class="beaker"><div class="water-fill"></div><div class="sediment" id="sedH"></div></div>
+                <small>Cho'kma: <b id="leftH">0 g</b></small>
+            </div>
+        </div>
+        <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+            <button class="btn primary" onclick="add10()"><i class="fa-solid fa-plus"></i> Har biriga 10 g shakar qo'shish</button>
+            <button class="btn" onclick="resetCups()"><i class="fa-solid fa-rotate-left"></i> Qayta boshlash</button>
+        </div>
+        <div id="cupInfo" style="margin-top:12px; text-align:center; font-weight:700; color:#b45309;">Issiq suvda shakar ko'proq eriydi!</div>
+    </section>
+
+    <section id="test" class="card">
+        <h2>🏆 3. Bilimni Sinash Testi</h2>
+        <div id="quiz9Box"></div>
+        <button class="btn primary" style="width:100%; margin-top:14px; padding:12px;" onclick="checkQ9()">Test Natijasini Ko‘rish</button>
+        <div id="res9" style="margin-top:12px; display:none; padding:16px; border-radius:12px; background:#f0fdf4; border:1px solid #86efac; text-align:center;"></div>
+    </section>
+</main>
+<footer>6-sinf Tabiiy Fanlar · 9-Mavzu · Moddalarning Erish Jarayoni</footer>
+<script>
+let added = 0;
+function add10(){
+    added += 10;
+    const leftC = Math.max(0, added - 25);
+    const leftW = Math.max(0, added - 55);
+    const leftH = Math.max(0, added - 95);
+    document.getElementById('leftC').innerText = leftC + " g";
+    document.getElementById('leftW').innerText = leftW + " g";
+    document.getElementById('leftH').innerText = leftH + " g";
+    document.getElementById('sedC').style.height = Math.min(50, leftC*1.5) + "%";
+    document.getElementById('sedW').style.height = Math.min(50, leftW*1.5) + "%";
+    document.getElementById('sedH').style.height = Math.min(50, leftH*1.5) + "%";
+    document.getElementById('cupInfo').innerText = `Qo'shildi: ${added} g. Sovuq suvda ortiqcha modda tubga cho'kdi, issiq suvda to'liq eridi!`;
+}
+function resetCups(){
+    added = 0;
+    document.getElementById('leftC').innerText = "0 g"; document.getElementById('leftW').innerText = "0 g"; document.getElementById('leftH').innerText = "0 g";
+    document.getElementById('sedC').style.height = "0%"; document.getElementById('sedW').style.height = "0%"; document.getElementById('sedH').style.height = "0%";
+}
+
+const q9 = [
+    { q: "1. Erish nima?", o: ["Qattiq moddaning suyuq holatga o'tishi", "Gazning muzlashi", "Faqat suv bug'lanishi"], a: 0 },
+    { q: "2. Harorat oshganda shakarning eruvchanligi qanday o'zgaradi?", o: ["Keskin ortadi", "Kamayadi", "O'zgarmaydi"], a: 0 },
+    { q: "3. To'yingan eritma qanday eritma?", o: ["Boshqa modda eritib bo'lmaydigan chegaradagi eritma", "Umuman modda erimagan suv", "Faqat muz"], a: 0 }
+];
+document.getElementById('quiz9Box').innerHTML = q9.map((x,i)=>`
+    <div style="background:#f8fafc; padding:12px; border-radius:10px; margin:8px 0;"><p><b>${x.q}</b></p>${x.o.map((opt,j)=>`<label style="display:block; margin:4px 0;"><input type="radio" name="q9_${i}" value="${j}"> ${opt}</label>`).join('')}</div>
+`).join('');
+function checkQ9(){
+    let s = 0;
+    q9.forEach((x,i)=>{ const c = document.querySelector(`input[name="q9_${i}"]:checked`); if(c && Number(c.value)===x.a) s++; });
+    const r = document.getElementById('res9'); r.style.display = 'block';
+    r.innerHTML = `<h3>Natija: ${s} / ${q9.length} ball!</h3>`;
+}
+</script>
+</body>
+</html>
