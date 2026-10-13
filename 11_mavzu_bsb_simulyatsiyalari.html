@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-Mavzu: 6-Sinf BSB Simulyatsiyalari</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-subtle: #f1f5f9;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-md: 16px;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .header h1 {
+            color: #059669;
+            margin-bottom: 6px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #059669;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .content-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        .section-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: 1.25rem;
+            margin: 0 0 8px 0;
+            color: var(--text-main);
+        }
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        .btn-tab-nav {
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            background: #059669;
+            color: white;
+            transition: 0.2s;
+        }
+        .btn-tab-nav:hover {
+            opacity: 0.9;
+        }
+        .tab-section {
+            display: block !important;
+            margin-bottom: 30px;
+        }
+        .tab-nav-footer {
+            display: none;
+        }
+        .cert-box {
+            display: none;
+            border: 4px double #059669;
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 16px;
+        }
+        .quiz-item {
+            background: var(--bg-card-subtle);
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .quiz-question {
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .btn-quiz-opt {
+            text-align: left;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Bosh sahifaga qaytish</a>
+        <div class="header">
+            <h1>🧪 11-Mavzu: 6-Sinf Tabiiy Fanlar BSB Simulyatsiyalari</h1>
+            <p>Interaktiv O'quv va Amaliyot Platformasi</p>
+        </div>
+        
+        <!-- ======================================================== -->
+        <!--   11-MAVZU: 6-SINF TABIIY FANLAR BSB SIMULYATSIYALARI   -->
+        <!--   (Tabs 70 dan 77 gacha)                                 -->
+        <!-- ======================================================== -->
+
+        <!-- TAB 70: Hazm Yo'lidagi Sayohat -->
+        <section class="tab-section" id="tab-70">
+            <div class="content-card">
+                <span class="section-badge" style="color:#059669; background:rgba(5,150,105,0.15);">11-Mavzu BSB • 1-Bo‘lim</span>
+                <h2 class="section-title">🍏 1. Hazm Yo‘lidagi Sayohat (Interaktiv 3D Bosqichlar)</h2>
+                <p class="section-desc">Olma bo‘lagining og‘iz bo‘shlig‘idan boshlab ingichka ichakkacha bo‘lgan safarini boshqaring, fermentlar va harakatlarni faollashtiring.</p>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; background:var(--bg-card-subtle); padding:10px 16px; border-radius:12px;">
+                    <span style="font-weight:700; color:#059669; font-size:0.95rem;">BSB Bosqichi: <span id="bsb-step-num">1</span> / 4</span>
+                    <span id="bsb-score-badge" style="background:#059669; color:white; padding:4px 12px; border-radius:20px; font-weight:700; font-size:0.85rem;">0 ball</span>
+                </div>
+
+                <div style="background:linear-gradient(145deg, #0f172a, #1e293b); color:white; border-radius:20px; padding:24px; text-align:center; position:relative; min-height:300px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 12px 30px rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1);">
+                    <!-- Stage 1 -->
+                    <div id="bsb-stage-1" class="bsb-stage-item" style="max-width:480px;">
+                        <div style="font-size:3.6rem; animation:floatAnim 2s infinite ease-in-out;">🍎 👄</div>
+                        <h3 style="color:#34d399; font-size:1.3rem; margin:10px 0;">1-Bosqich: Og‘iz Bo‘shlig‘i</h3>
+                        <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.5;">Olma tishlar yordamida mexanik maydalanadi. So‘lak bezlari ajratgan amilaza fermenti uglevodlarni parchalashni boshlaydi.</p>
+                        <div style="display:flex; justify-content:center; gap:10px; margin-top:16px;">
+                            <button class="btn-tab-nav" style="background:#059669; color:white;" onclick="actBSBDigest(1, 'chew')">🦷 Tishlar bilan Chaynash</button>
+                            <button class="btn-tab-nav" style="background:#0284c7; color:white;" onclick="actBSBDigest(1, 'saliva')">💧 So‘lak Ajratish</button>
+                        </div>
+                        <div id="bsb-stage-fb-1" style="margin-top:12px; font-size:0.85rem; font-weight:700; color:#fde047; min-height:22px;"></div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div id="bsb-stage-2" class="bsb-stage-item" style="display:none; max-width:480px;">
+                        <div style="font-size:3.6rem; animation:pulseSlow 1.8s infinite;">🫁 ⬇️ 🫀</div>
+                        <h3 style="color:#34d399; font-size:1.3rem; margin:10px 0;">2-Bosqich: Qizilo‘ngach (Peristaltika)</h3>
+                        <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.5;">Ovqat luqmasi tortishish kuchi hisobiga emas, balki qizilo‘ngach devorlarining to‘lqinsimon (peristaltik) mushak qisqarishi bilan pastga siljiydi.</p>
+                        <div style="margin-top:16px;">
+                            <button class="btn-tab-nav" style="background:#059669; color:white;" onclick="actBSBDigest(2, 'wave')">〰️ Peristaltik To‘lqinni Boshlash</button>
+                        </div>
+                        <div id="bsb-stage-fb-2" style="margin-top:12px; font-size:0.85rem; font-weight:700; color:#fde047; min-height:22px;"></div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div id="bsb-stage-3" class="bsb-stage-item" style="display:none; max-width:480px;">
+                        <div style="font-size:3.6rem; animation:bounceAnim 2s infinite;">🥣 ⚗️</div>
+                        <h3 style="color:#34d399; font-size:1.3rem; margin:10px 0;">3-Bosqich: Oshqozon (Kislotali Muhit)</h3>
+                        <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.5;">Oshqozon shirasidagi xlorid kislota (HCl) va pepsin fermenti oqsillarni parchalab, bakteriyalarni o‘ldiradi hamda ovqatni ximus (bulamaq)ga aylantiradi.</p>
+                        <div style="margin-top:16px;">
+                            <button class="btn-tab-nav" style="background:#059669; color:white;" onclick="actBSBDigest(3, 'acid')">🧪 Oshqozon Shirasi & HCl Qo‘shish</button>
+                        </div>
+                        <div id="bsb-stage-fb-3" style="margin-top:12px; font-size:0.85rem; font-weight:700; color:#fde047; min-height:22px;"></div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div id="bsb-stage-4" class="bsb-stage-item" style="display:none; max-width:480px;">
+                        <div style="font-size:3.6rem; animation:scaleUp 1.5s infinite alternate;">🩸 ✨ 🧬</div>
+                        <h3 style="color:#34d399; font-size:1.3rem; margin:10px 0;">4-Bosqich: Ingichka Ichak & Qonga So‘rilish</h3>
+                        <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.5;">Ichak devoridagi millionlab mikro-tukchalar (villi) orqali ozuqa moddalari qon tomirlariga so‘riladi va butun tana hujayralariga yetkaziladi!</p>
+                        <div style="margin-top:16px;">
+                            <button class="btn-tab-nav" style="background:#f59e0b; color:#0f172a; font-weight:700;" onclick="actBSBDigest(4, 'absorb')">🏆 Villilar Orqali So‘rish (+25 Ball)</button>
+                        </div>
+                        <div id="bsb-stage-fb-4" style="margin-top:12px; font-size:0.85rem; font-weight:700; color:#fde047; min-height:22px;"></div>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+                    <button class="btn-tab-nav" id="btn-prev-bsb" onclick="prevBSBStep()" disabled>⬅️ Oldingi Bosqich</button>
+                    <button class="btn-tab-nav next" id="btn-next-bsb" onclick="nextBSBStep()">Keyingi Bosqich ➡️</button>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(69)">⬅️ 10-Mavzu Oliy Testi</button>
+                    <button class="btn-tab-nav next" onclick="showTab(71)">2. Mushuk vs Odam Trakti ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 71: Mushuk vs Odam Trakti -->
+        <section class="tab-section" id="tab-71">
+            <div class="content-card">
+                <span class="section-badge" style="color:#059669; background:rgba(5,150,105,0.15);">11-Mavzu BSB • 2-Bo‘lim</span>
+                <h2 class="section-title">🐾 2. Mushuk va Odam: Anatomik Taqqoslash & Kislotalilik Lab</h2>
+                <p class="section-desc">Yirtqich (go‘shtxo‘r) mushuk va hamma narsa yeyuvchi odam hazm tizimidagi fiziologik farqlarni o‘rganing.</p>
+
+                <div class="interactive-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; margin:16px 0;">
+                    <!-- Mushuk Card -->
+                    <div style="background:var(--bg-card-subtle); padding:18px; border-radius:16px; border:2px solid #10b981;">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+                            <span style="font-size:2.2rem;">🐱</span>
+                            <div>
+                                <h3 style="color:#059669; font-size:1.15rem; margin:0;">Mushuk (Yirtqich Hayvon)</h3>
+                                <span style="font-size:0.75rem; color:var(--text-muted);">Faqat go‘sht va oqsil bilan oziqlanadi</span>
+                            </div>
+                        </div>
+                        <ul style="font-size:0.85rem; line-height:1.7; padding-left:18px; color:var(--text-main);">
+                            <li><b>Oshqozon pH darajasi:</b> Juda nordon (pH 1.0 - 2.0). Xom go‘sht, suyak va mikroblarni bir zumda eritadi.</li>
+                            <li><b>Ichak uzunligi:</b> Tana uzunligiga nisbatan juda qisqa (~1:3 nisbat). Go‘sht ichakda chirimasligi uchun tezda tashqariga chiqariladi.</li>
+                            <li><b>Ko‘richak (So‘qir ichak):</b> Deyarli rivojlanmagan yoki yo‘q (kletchatka parchalash talab etilmaydi).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Odam Card -->
+                    <div style="background:var(--bg-card-subtle); padding:18px; border-radius:16px; border:2px solid #3b82f6;">
+                        <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+                            <span style="font-size:2.2rem;">🧑</span>
+                            <div>
+                                <h3 style="color:#2563eb; font-size:1.15rem; margin:0;">Odam (Hammaxo‘r Organizm)</h3>
+                                <span style="font-size:0.75rem; color:var(--text-muted);">Go‘sht, sabzavot, meva va g‘allani hazm qiladi</span>
+                            </div>
+                        </div>
+                        <ul style="font-size:0.85rem; line-height:1.7; padding-left:18px; color:var(--text-main);">
+                            <li><b>Oshqozon pH darajasi:</b> O‘rtacha nordon (pH 1.5 - 2.5). Aralash taomlarni yumshatish uchun moslashgan.</li>
+                            <li><b>Ichak uzunligi:</b> Tana uzunligiga nisbatan uzun (~1:5 - 1:6 nisbat, 7-8 metr). O‘simlik tolalari sekin so‘riladi.</li>
+                            <li><b>Mikroflora:</b> Ichakda o‘simlik kletchatkasini parchalovchi foydali bakteriyalar yashaydi.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interaktiv pH Simulyatori -->
+                <div style="background:var(--bg-card); padding:20px; border-radius:16px; border:1px solid var(--border-color); margin-top:16px;">
+                    <h3 style="color:#059669; font-size:1rem; margin-bottom:10px;">🧪 Kislotalilik va Ichak Taqqoslash Kalkulyatori</h3>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px;">
+                        <button class="btn-tab-nav" style="background:#10b981; color:white;" onclick="simCatHuman('cat')">🐾 Mushuk Oshqozonini Tekshirish</button>
+                        <button class="btn-tab-nav" style="background:#3b82f6; color:white;" onclick="simCatHuman('human')">🧑 Odam Oshqozonini Tekshirish</button>
+                    </div>
+                    <div id="cat-human-sim-box" style="padding:14px; background:var(--bg-card-subtle); border-radius:12px; font-size:0.9rem; font-weight:600; color:var(--text-main);">
+                        Yuqoridagi tugmalardan birini bosing va oshqozon muhitini solishtiring.
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(70)">⬅️ 1. Hazm Yo‘li</button>
+                    <button class="btn-tab-nav next" onclick="showTab(72)">3. Organlar & Moslashtirish ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 72: Organlar va Funksiyalar Moslashtirish -->
+        <section class="tab-section" id="tab-72">
+            <div class="content-card">
+                <span class="section-badge" style="color:#059669; background:rgba(5,150,105,0.15);">11-Mavzu BSB • 3-Bo‘lim</span>
+                <h2 class="section-title">🧩 3. Hazm Organlari va Funksiyalarini Moslashtirish Trenajyori</h2>
+                <p class="section-desc">Har bir hazm organiga uning asosiy biologik vazifasini to‘g‘ri moslang va mustahkamlang.</p>
+
+                <div id="bsb-match-container" style="display:flex; flex-direction:column; gap:12px; margin:16px 0;">
+                    <!-- Savollar -->
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:12px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <span style="font-weight:700;">1. Og‘iz bo‘shlig‘i</span>
+                        <select id="bsb-sel-1" style="padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-card); color:var(--text-main); font-weight:600;">
+                            <option value="">-- Funksiyasini tanlang --</option>
+                            <option value="correct">Tishlar bilan chaynash va so‘lak amilazasi bilan parchalash</option>
+                            <option value="w1">Oziq moddalarni qonga to‘liq so‘rish</option>
+                            <option value="w2">Kislotali shira bilan ximus hosil qilish</option>
+                        </select>
+                    </div>
+
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:12px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <span style="font-weight:700;">2. Qizilo‘ngach</span>
+                        <select id="bsb-sel-2" style="padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-card); color:var(--text-main); font-weight:600;">
+                            <option value="">-- Funksiyasini tanlang --</option>
+                            <option value="w1">Ovqatni saqlash va aralashtirish</option>
+                            <option value="correct">Peristaltik qisqarishlar orqali luqmani oshqozonga yetkazish</option>
+                            <option value="w2">Suv va tuzlarni shimib olish</option>
+                        </select>
+                    </div>
+
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:12px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <span style="font-weight:700;">3. Oshqozon</span>
+                        <select id="bsb-sel-3" style="padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-card); color:var(--text-main); font-weight:600;">
+                            <option value="">-- Funksiyasini tanlang --</option>
+                            <option value="w1">Uglevodlarni yakuniy parchalash</option>
+                            <option value="w2">Faqat suvni so‘rish</option>
+                            <option value="correct">Xlorid kislota va pepsin yordamida oqsillarni eritib bulamaq qilish</option>
+                        </select>
+                    </div>
+
+                    <div style="background:var(--bg-card-subtle); padding:14px; border-radius:12px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <span style="font-weight:700;">4. Ingichka ichak</span>
+                        <select id="bsb-sel-4" style="padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-card); color:var(--text-main); font-weight:600;">
+                            <option value="">-- Funksiyasini tanlang --</option>
+                            <option value="correct">Villilar (tukchalar) orqali ozuqa moddalarini qonga to‘liq so‘rish</option>
+                            <option value="w1">Mexanik maydalash</option>
+                            <option value="w2">Ovqat qoldiqlarini shakllantirish</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+                    <button class="btn-tab-nav" style="background:#059669; color:white;" onclick="checkBSBMatch()">Tekshirish va Ball Olish ✅</button>
+                    <span id="bsb-match-status" style="font-weight:700; font-size:0.9rem; color:#d97706;">Barcha javoblarni belgilang...</span>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(71)">⬅️ 2. Mushuk vs Odam</button>
+                    <button class="btn-tab-nav next" onclick="showTab(73)">4. Sirka & Soda Reaktori ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 73: Sirka va Soda Reaktori -->
+        <section class="tab-section" id="tab-73">
+            <div class="content-card">
+                <span class="section-badge" style="color:#d97706; background:rgba(217,119,6,0.15);">11-Mavzu BSB • 4-Bo‘lim</span>
+                <h2 class="section-title">🧪 4. Virtual Kimyo Lab: Sirka va Soda Reaktori ($CO_2$)</h2>
+                <p class="section-desc">Uy sharoitida oson topiladigan moddalar: Sirka kislotasi ($CH_3COOH$) va isteʼmol sodasi ($NaHCO_3$) reaksiyasini sinab ko‘ring.</p>
+
+                <div style="background:linear-gradient(145deg, #1e1b4b, #312e81); border-radius:20px; padding:24px; color:white; text-align:center; position:relative; min-height:280px; box-shadow:0 12px 30px rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1);">
+                    <div id="reaction-flask-icon" style="font-size:4.5rem; transition:transform 0.4s ease;">🧪</div>
+                    <h3 style="color:#fde047; font-size:1.3rem; margin:10px 0;">Karbonat Angidrid ($CO_2$) Generatori</h3>
+                    <p id="reaction-flask-desc" style="font-size:0.88rem; color:#c7d2fe; max-width:480px; margin:0 auto;">Idishga sirka quyilgan. Soda kukunini solish tugmasini bosing va gaz ajralishini kuzating!</p>
+
+                    <div style="display:flex; justify-content:center; gap:12px; margin-top:20px; flex-wrap:wrap;">
+                        <button class="btn-tab-nav" style="background:#f59e0b; color:#0f172a; font-weight:700;" onclick="triggerSodaReaction()">🥄 Soda Solish (Reaksiyani boshlash)</button>
+                        <button class="btn-tab-nav" style="background:#ef4444; color:white;" onclick="extinguishCandleTest()">🕯️ Olovni Gaz Bilan O‘chirish</button>
+                    </div>
+
+                    <div id="reaction-result-box" style="margin-top:16px; font-size:0.95rem; font-weight:700; color:#4ade80; min-height:24px;"></div>
+                </div>
+
+                <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; margin-top:16px; border:1px solid var(--border-color);">
+                    <h4 style="color:#d97706; margin-bottom:6px;">🔬 Reaksiya Tenglamasi va Mohiyati:</h4>
+                    <p style="font-size:0.85rem; line-height:1.6; color:var(--text-main);">
+                        <b>CH₃COOH + NaHCO₃ → CH₃COONa + H₂O + CO₂↑</b><br>
+                        Ajralib chiqqan <b>CO₂ (karbonat angidrid)</b> havoga nisbatan og‘ir bo‘lib, yonishni qo‘llab-quvvatlamaydi. Shuning uchun o‘t o‘chirgichlarda shu gazdan foydalaniladi!
+                    </p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(72)">⬅️ 3. Organlar Moslashtirish</button>
+                    <button class="btn-tab-nav next" onclick="showTab(74)">5. Olma Oksidlanishi ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 74: Olma Oksidlanishi -->
+        <section class="tab-section" id="tab-74">
+            <div class="content-card">
+                <span class="section-badge" style="color:#d97706; background:rgba(217,119,6,0.15);">11-Mavzu BSB • 5-Bo‘lim</span>
+                <h2 class="section-title">🍏 5. Olma va Kartoshka Oksidlanishi (Taymlaps & Antioksidant)</h2>
+                <p class="section-desc">Kesilgan olma nima uchun qorayadi? Havodagi kislorod va polifenoloksidaza fermenti ishtirokidagi kimyoviy jarayonni o‘rganing.</p>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin:16px 0;">
+                    <!-- Taymlaps simulator -->
+                    <div style="background:var(--bg-card-subtle); padding:20px; border-radius:16px; border:1px solid var(--border-color); text-align:center;">
+                        <div id="apple-visual-icon" style="font-size:4.5rem; margin-bottom:8px;">🍏</div>
+                        <h3 id="apple-time-title" style="color:#10b981; font-size:1.15rem; margin-bottom:6px;">Yangi Kesilgan Olma (0 daqiqa)</h3>
+                        <p id="apple-time-desc" style="font-size:0.82rem; color:var(--text-muted); min-height:38px;">Hujayralar endigina ochildi, kislorod bilan kontakt boshlanmoqda.</p>
+
+                        <div style="margin:14px 0;">
+                            <label style="font-size:0.8rem; font-weight:700; color:var(--text-main); display:block; margin-bottom:6px;">Vaqtni siljiting (Taymlaps):</label>
+                            <input type="range" id="apple-time-slider" min="0" max="3" value="0" style="width:80%;" oninput="changeAppleTime(this.value)">
+                            <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-muted); width:80%; margin:0 auto;">
+                                <span>0 daq</span>
+                                <span>30 daq</span>
+                                <span>2 soat</span>
+                                <span>6 soat</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Antioksidant Limon tajribasi -->
+                    <div style="background:var(--bg-card-subtle); padding:20px; border-radius:16px; border:1px solid var(--border-color); text-align:center;">
+                        <div style="font-size:4.5rem; margin-bottom:8px;">🍋 🛡️</div>
+                        <h3 style="color:#d97706; font-size:1.15rem; margin-bottom:6px;">Antioksidant Himoya (Limon Sharbati)</h3>
+                        <p style="font-size:0.82rem; color:var(--text-muted); min-height:38px;">Limon tarkibidagi S vitamini (askorbin kislota) kuchli antioksidant bo‘lib, kislorodni o‘ziga bog‘laydi va qorayishni to‘xtatadi.</p>
+
+                        <div style="margin-top:14px;">
+                            <button class="btn-tab-nav" style="background:#eab308; color:#0f172a; font-weight:700;" onclick="testLemonShield()">🍋 Limon Sharbati Surtish</button>
+                        </div>
+                        <div id="lemon-shield-result" style="margin-top:10px; font-size:0.85rem; font-weight:700; color:#16a34a; min-height:20px;"></div>
+                    </div>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(73)">⬅️ 4. Sirka & Soda</button>
+                    <button class="btn-tab-nav next" onclick="showTab(75)">6. Temir Zanglashi Lab ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 75: Temir Zanglashi Lab -->
+        <section class="tab-section" id="tab-75">
+            <div class="content-card">
+                <span class="section-badge" style="color:#d97706; background:rgba(217,119,6,0.15);">11-Mavzu BSB • 6-Bo‘lim</span>
+                <h2 class="section-title">🔩 6. Temir Zanglashi va Korroziya: 4 Probirka Tajribasi</h2>
+                <p class="section-desc">Temir zanglashi uchun nimalar kerak? Suv, kislorod va tuzlarning taʼsirini 4 ta maxsus probirkada sinab ko‘ring.</p>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin:16px 0;">
+                    <!-- Probirka 1 -->
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border:2px solid var(--border-color); text-align:center; cursor:pointer;" onclick="selectRustTube(1)" id="rust-tube-card-1">
+                        <div style="font-size:3rem;">🧪 🔩</div>
+                        <h4 style="font-size:0.95rem; margin:8px 0; color:var(--text-main);">1-Probirka: Quruq Havo</h4>
+                        <span style="font-size:0.75rem; color:#16a34a; font-weight:700;">Zanglamaydi (0%)</span>
+                    </div>
+
+                    <!-- Probirka 2 -->
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border:2px solid var(--border-color); text-align:center; cursor:pointer;" onclick="selectRustTube(2)" id="rust-tube-card-2">
+                        <div style="font-size:3rem;">🧪 💧</div>
+                        <h4 style="font-size:0.95rem; margin:8px 0; color:var(--text-main);">2-Probirka: Qaynatilgan Suv + Yog‘</h4>
+                        <span style="font-size:0.75rem; color:#16a34a; font-weight:700;">Zanglamaydi (0%)</span>
+                    </div>
+
+                    <!-- Probirka 3 -->
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border:2px solid var(--border-color); text-align:center; cursor:pointer;" onclick="selectRustTube(3)" id="rust-tube-card-3">
+                        <div style="font-size:3rem;">🧪 🟤</div>
+                        <h4 style="font-size:0.95rem; margin:8px 0; color:var(--text-main);">3-Probirka: Oddiy Suv + Havo</h4>
+                        <span style="font-size:0.75rem; color:#d97706; font-weight:700;">Zanglaydi (70%)</span>
+                    </div>
+
+                    <!-- Probirka 4 -->
+                    <div style="background:var(--bg-card-subtle); padding:16px; border-radius:14px; border:2px solid var(--border-color); text-align:center; cursor:pointer;" onclick="selectRustTube(4)" id="rust-tube-card-4">
+                        <div style="font-size:3rem;">🧪 💥</div>
+                        <h4 style="font-size:0.95rem; margin:8px 0; color:var(--text-main);">4-Probirka: Sho‘r Suv (Tuz)</h4>
+                        <span style="font-size:0.75rem; color:#dc2626; font-weight:700;">Shiddatli Korroziya (100%)</span>
+                    </div>
+                </div>
+
+                <div id="rust-tube-detail-box" style="padding:16px; background:var(--bg-card); border-radius:14px; border:1px solid var(--border-color); font-size:0.9rem; line-height:1.6; color:var(--text-main);">
+                    Yuqoridagi probirkalardan birini bosing va korroziya qonuniyatini bilib oling!
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(74)">⬅️ 5. Oksidlanish</button>
+                    <button class="btn-tab-nav next" onclick="showTab(76)">7. BSB Molekulyar Mikroskop ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 76: BSB Molekulyar Mikroskop -->
+        <section class="tab-section" id="tab-76">
+            <div class="content-card">
+                <span class="section-badge" style="color:#0284c7; background:rgba(2,132,199,0.15);">11-Mavzu BSB • 7-Bo‘lim</span>
+                <h2 class="section-title">🔬 7. BSB Molekulyar Mikroskopi (Atomlarning Qayta Guruhlanishi)</h2>
+                <p class="section-desc">Kimyoviy reaksiyalarda atomlar yo‘qolmaydi va yangidan paydo bo‘lmaydi — ular faqat yangi molekulalar hosil qilib qayta bog‘lanadi!</p>
+
+                <div style="display:flex; justify-content:center; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+                    <button class="btn-tab-nav active" id="btn-bmicro-1" onclick="switchBSBMicro(1)">🧪 Soda + Sirka ($CO_2$)</button>
+                    <button class="btn-tab-nav" id="btn-bmicro-2" onclick="switchBSBMicro(2)">🔩 Temir + Kislorod ($Fe_2O_3$)</button>
+                    <button class="btn-tab-nav" id="btn-bmicro-3" onclick="switchBSBMicro(3)">🍞 Glyukoza Parchalanishi</button>
+                </div>
+
+                <div style="background:linear-gradient(145deg, #0f172a, #0369a1); border-radius:20px; padding:24px; color:white; text-align:center; min-height:280px; display:flex; flex-direction:column; justify-content:center; align-items:center; box-shadow:0 12px 30px rgba(0,0,0,0.3);">
+                    <div id="bsb-micro-atoms-display" style="display:flex; align-items:center; gap:16px; font-size:3rem; margin-bottom:14px;">
+                        <span style="background:rgba(255,255,255,0.15); padding:10px 18px; border-radius:16px;">🔴🔵</span>
+                        <span style="color:#38bdf8; font-size:2rem;">➔</span>
+                        <span style="background:rgba(255,255,255,0.15); padding:10px 18px; border-radius:16px;">⚪🟢⚪</span>
+                    </div>
+
+                    <h3 id="bsb-micro-title" style="color:#7dd3fc; font-size:1.25rem; margin-bottom:6px;">Sirka va Soda Molekulalari Qayta Guruhlanishi</h3>
+                    <p id="bsb-micro-desc" style="font-size:0.88rem; color:#e0f2fe; max-width:540px; line-height:1.5;">
+                        Natriy gidrokarbonat va sirka kislotasidagi vodorod, uglerod va kislorod atomlari qayta birikib, suv va havoga uchib chiquvchi karbonat angidrid ($CO_2$) gazini hosil qiladi.
+                    </p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(75)">⬅️ 6. Zanglash Lab</button>
+                    <button class="btn-tab-nav next" onclick="showTab(77)">8. BSB Imtihon & Oltin Diplom ➡️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 77: BSB Katta Imtihon & Oltin Diplom -->
+        <section class="tab-section" id="tab-77">
+            <div class="content-card">
+                <span class="section-badge" style="color:#059669; background:rgba(5,150,105,0.15);">11-Mavzu BSB • 8-Bo‘lim</span>
+                <h2 class="section-title">🏆 8. 6-Sinf BSB Katta Imtihoni va "Yosh Olim" Oltin Faxriy Diplomi</h2>
+                <p class="section-desc">BSB bo‘yicha o‘zlashtirgan bilimlaringizni sinab ko‘ring va rasmiy Oltin Diplomni qo‘lga kiriting!</p>
+
+                <div id="quiz-list-11"></div>
+
+                <div id="quiz-final-box-11" style="display:none; margin-top:1.2rem; padding:1.2rem; background:var(--bg-card-subtle); border-radius:var(--radius-md); text-align:center;">
+                    <h3 style="color:#059669;">🎉 Qoyilmaqom! BSB bo‘yicha barcha savollarga to‘g‘ri javob berdingiz!</h3>
+                    <p id="quiz-final-score-11" style="margin:6px 0; font-weight:700;"></p>
+                    <div style="margin-top:10px;">
+                        <input type="text" id="student-name-11" placeholder="Ism va Familiyangizni kiriting" style="padding:10px 14px; border-radius:8px; border:1px solid var(--border-color); width:80%; max-width:280px; margin-bottom:8px;">
+                        <br>
+                        <button class="btn-tab-nav next" onclick="generateCertificate(11)" style="margin:0 auto; background:linear-gradient(135deg, #059669, #047857);">BSB Oltin Diplomini Olish 🎓</button>
+                    </div>
+                </div>
+
+                <div class="cert-box" id="cert-view-11" style="border-color:#059669; background:linear-gradient(135deg, #ecfdf5, #d1fae5); color:#065f46;">
+                    <h2>🌟 6-SINF TABIIY FANLAR BSB AMALIYOTI OLTIN DIPLOMI</h2>
+                    <p style="margin:8px 0; font-size:1.1rem;">Ushbu oliy diplom sohibi:</p>
+                    <h1 id="cert-student-name-11" style="color:#047857; text-decoration:underline; margin-bottom:8px;">Aʼlochi Oʻquvchi</h1>
+                    <p style="font-size:0.85rem;">"Hazm qilish yo‘li sayohati, hayvonlar va odam anatomiyasi, uy kimyoviy reaksiyalari hamda molekulyar darajadagi kashfiyotlar" bo‘yicha 6-Sinf BSB amaliyotini namunali yakunladi!</p>
+                </div>
+
+                <div class="tab-nav-footer">
+                    <button class="btn-tab-nav" onclick="showTab(76)">⬅️ 7. Molekulyar Mikroskop</button>
+                    <button class="btn-tab-nav next" onclick="switchMainTopic(1)">1-Mavzuga qaytish 🥗 🔝</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function triggerHaptic() {}
+        function playTone() {}
+        
+        // ========================================================
+        //   11-MAVZU BSB INTERAKTIV SIMULYATSIYA MANTIQI
+        // ========================================================
+        let bsbCurrentStep = 1;
+        let bsbTotalScore = 0;
+
+        function actBSBDigest(step, action) {
+            triggerHaptic(35);
+            const fb = document.getElementById(`bsb-stage-fb-${step}`);
+            if (step === 1) {
+                if (action === 'chew') {
+                    playTone(550, 0.12);
+                    fb.innerHTML = "✅ Tishlar olma bo‘lagini maydaladi va ozuqa yuzasi kengaytirildi!";
+                } else {
+                    playTone(720, 0.12);
+                    fb.innerHTML = "✅ So‘lak bezlari amilaza fermentini ajratdi. Uglevodlar parchalana boshladi!";
+                }
+            } else if (step === 2) {
+                playTone(600, 0.15);
+                fb.innerHTML = "✅ Qizilo‘ngach devorlari to‘lqinsimon qisqarib (peristaltika), luqmani oshqozonga itardi!";
+            } else if (step === 3) {
+                playTone(450, 0.2);
+                fb.innerHTML = "✅ Xlorid kislota va pepsin ovqatni quyuq ximus (bulamaq) holatiga keltirdi!";
+            } else if (step === 4) {
+                playTone(850, 0.25);
+                fb.innerHTML = "🎉 Ozuqa moddalari qonga so‘rildi! Hujayralar energiya bilan taʼminlandi (+25 ball).";
+                bsbTotalScore += 25;
+                document.getElementById('bsb-score-badge').innerText = bsbTotalScore + " ball";
+            }
+        }
+
+        function nextBSBStep() {
+            if (bsbCurrentStep < 4) {
+                document.getElementById(`bsb-stage-${bsbCurrentStep}`).style.display = 'none';
+                bsbCurrentStep++;
+                document.getElementById(`bsb-stage-${bsbCurrentStep}`).style.display = 'block';
+                document.getElementById('bsb-step-num').innerText = bsbCurrentStep;
+                document.getElementById('btn-prev-bsb').disabled = false;
+                if (bsbCurrentStep === 4) {
+                    document.getElementById('btn-next-bsb').disabled = true;
+                }
+            }
+        }
+
+        function prevBSBStep() {
+            if (bsbCurrentStep > 1) {
+                document.getElementById(`bsb-stage-${bsbCurrentStep}`).style.display = 'none';
+                bsbCurrentStep--;
+                document.getElementById(`bsb-stage-${bsbCurrentStep}`).style.display = 'block';
+                document.getElementById('bsb-step-num').innerText = bsbCurrentStep;
+                document.getElementById('btn-next-bsb').disabled = false;
+                if (bsbCurrentStep === 1) {
+                    document.getElementById('btn-prev-bsb').disabled = true;
+                }
+            }
+        }
+
+        function simCatHuman(type) {
+            triggerHaptic(30);
+            playTone(type === 'cat' ? 700 : 500, 0.12);
+            const box = document.getElementById('cat-human-sim-box');
+            if (type === 'cat') {
+                box.innerHTML = `
+                    <div style="color:#059669;">
+                        <b>🐱 Mushuk Oshqozon-Ichak Muhiti:</b><br>
+                        • <b>pH = 1.2</b> (O‘ta kuchli kislotali — xom go‘shtdagi patogen mikroblarni qirib tashlaydi).<br>
+                        • <b>Ichak uzunligi:</b> ~1.2 metr (Tana uzunligidan atigi 3 barobar uzun — go‘sht tez o‘tib ketadi).
+                    </div>
+                `;
+            } else {
+                box.innerHTML = `
+                    <div style="color:#2563eb;">
+                        <b>🧑 Odam Oshqozon-Ichak Muhiti:</b><br>
+                        • <b>pH = 2.0</b> (Mo‘tadil kislotali — turfa xil oziq-ovqatlarni hazm qilishga moslashgan).<br>
+                        • <b>Ichak uzunligi:</b> ~7.5 metr (Tana uzunligidan 5-6 barobar uzun — kletchatka va o‘simlik tolalari asta-sekin parchalanadi).
+                    </div>
+                `;
+            }
+        }
+
+        function checkBSBMatch() {
+            triggerHaptic(35);
+            let s1 = document.getElementById('bsb-sel-1').value;
+            let s2 = document.getElementById('bsb-sel-2').value;
+            let s3 = document.getElementById('bsb-sel-3').value;
+            let s4 = document.getElementById('bsb-sel-4').value;
+
+            let score = 0;
+            if (s1 === 'correct') score++;
+            if (s2 === 'correct') score++;
+            if (s3 === 'correct') score++;
+            if (s4 === 'correct') score++;
+
+            playTone(score === 4 ? 850 : 350, 0.2);
+            const st = document.getElementById('bsb-match-status');
+            if (score === 4) {
+                st.innerHTML = `<span style="color:#16a34a;">🎉 Aʼlo natija: 4 / 4 to‘g‘ri! (+30 ball)</span>`;
+                bsbTotalScore += 30;
+                document.getElementById('bsb-score-badge').innerText = bsbTotalScore + " ball";
+            } else {
+                st.innerHTML = `<span style="color:#dc2626;">⚠️ Natija: ${score} / 4 to‘g‘ri. Qayta tekshirib ko‘ring!</span>`;
+            }
+        }
+
+        // Sirka & Soda Reaktori
+        function triggerSodaReaction() {
+            triggerHaptic(40);
+            playTone(900, 0.2);
+            const flask = document.getElementById('reaction-flask-icon');
+            flask.style.transform = 'scale(1.3) rotate(8deg)';
+            flask.innerText = '🫧💥🥤';
+            setTimeout(() => {
+                flask.style.transform = 'scale(1) rotate(0deg)';
+            }, 600);
+
+            document.getElementById('reaction-result-box').innerHTML = `
+                ✅ Shiddatli ko‘piklanish boshlandi! CO₂ gazi pufakchalari ajralib chiqmoqda va idish tubi soviydi (Endotermik effekt)!
+            `;
+        }
+
+        function extinguishCandleTest() {
+            triggerHaptic(40);
+            playTone(400, 0.2);
+            document.getElementById('reaction-flask-icon').innerText = '💨🕯️❌';
+            document.getElementById('reaction-result-box').innerHTML = `
+                ✅ CO₂ gazi havoga nisbatan 1.5 barobar og‘ir bo‘lgani uchun kislorodni siqib chiqardi va sham olovi darhol o‘chdi!
+            `;
+        }
+
+        // Olma Oksidlanishi
+        const appleStages = [
+            { icon: "🍏", title: "Yangi Kesilgan Olma (0 daqiqa)", desc: "Hujayralar endigina ochildi, kislorod bilan kontakt boshlanmoqda." },
+            { icon: "🍎", title: "Oksidlanish Boshlanishi (30 daqiqa)", desc: "Polifenoloksidaza fermenti kislorod bilan birikib, melanin pigmentini hosil qila boshladi." },
+            { icon: "🍂", title: "Jigarrang Tus (2 soat)", desc: "Olma yuzasi to‘q sariq-jigarrang tusga kirdi, ozuqaviy taʼmi biroz o‘zgardi." },
+            { icon: "🪵", title: "Kuchli Oksidlangan (6 soat)", desc: "Olma to‘q jigarrang bo‘lib qotdi, barcha erkin fenollar to‘liq oksidlandi." }
+        ];
+
+        function changeAppleTime(val) {
+            triggerHaptic(25);
+            playTone(400 + val * 100, 0.08);
+            const item = appleStages[val];
+            document.getElementById('apple-visual-icon').innerText = item.icon;
+            document.getElementById('apple-time-title').innerText = item.title;
+            document.getElementById('apple-time-desc').innerText = item.desc;
+        }
+
+        function testLemonShield() {
+            triggerHaptic(30);
+            playTone(750, 0.15);
+            document.getElementById('lemon-shield-result').innerHTML = `
+                ✅ Ajoyib! Limon sharbati surtilgan olma 6 soatdan keyin ham oq va yangidek saqlanib qoldi!
+            `;
+        }
+
+        // Zanglash 4 Probirka
+        const rustData = {
+            1: "<b>1-Probirka (Quruq havo):</b> Probirkaga namlikni tortib oluvchi silikagel solingan. Suvsiz temir hech qachon zanglamaydi!",
+            2: "<b>2-Probirka (Kislorodsiz suv + yog‘):</b> Suv qaynatilib, undagi barcha erigan kislorod chiqarib yuborilgan va ustiga yog‘ qatlami quyilgan. Kislorodsiz zanglash ro‘y bermaydi!",
+            3: "<b>3-Probirka (Oddiy suv + havo):</b> Suv va kislorod birgalikda temir bilan taʼsirlashib, qizg‘ish temir (III) gidroksid zangini hosil qiladi.",
+            4: "<b>4-Probirka (Sho‘r suv):</b> Osh tuzi (NaCl) suvdagi ionli elektr o‘tkazuvchanlikni oshiradi va elektrokimyoviy korroziyani bir necha barobar tezlashtiradi!"
+        };
+
+        function selectRustTube(num) {
+            triggerHaptic(30);
+            playTone(600, 0.1);
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById(`rust-tube-card-${i}`);
+                if (el) el.style.borderColor = (i === num) ? '#d97706' : 'var(--border-color)';
+            }
+            document.getElementById('rust-tube-detail-box').innerHTML = rustData[num];
+        }
+
+        // Molekulyar Mikroskop
+        const bsbMicroReactions = {
+            1: {
+                atoms: "<span>🔴🔵</span> <span style='color:#38bdf8;'>➔</span> <span>⚪🟢⚪</span>",
+                title: "Sirka va Soda Molekulalari Qayta Guruhlanishi",
+                desc: "NaHCO₃ + CH₃COOH → CH₃COONa + H₂O + CO₂↑. Atomlar yo‘qolmaydi, faqat qayta guruhlanadi!"
+            },
+            2: {
+                atoms: "<span>🔩⚪</span> <span style='color:#38bdf8;'>➔</span> <span>🟠🟠</span>",
+                title: "Temir va Kislorod Oksidlanishi (Zanglash)",
+                desc: "4Fe + 3O₂ → 2Fe₂O₃. Temir atomlari havoda uchib yurgan erkin kislorod atomlarini o‘ziga mustahkam biriktiradi."
+            },
+            3: {
+                atoms: "<span>🍎⚡</span> <span style='color:#38bdf8;'>➔</span> <span>🫧💧⚡</span>",
+                title: "Hazm Jarayonida Glyukoza Parchalanishi",
+                desc: "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + Energiya (ATF). Hujayralar nafas olish orqali ozuqani parchalab hayotiy quvvat oladi."
+            }
+        };
+
+        function switchBSBMicro(id) {
+            triggerHaptic(30);
+            playTone(700, 0.1);
+            for (let i = 1; i <= 3; i++) {
+                const btn = document.getElementById(`btn-bmicro-${i}`);
+                if (btn) btn.classList.toggle('active', i === id);
+            }
+            const data = bsbMicroReactions[id];
+            document.getElementById('bsb-micro-atoms-display').innerHTML = data.atoms;
+            document.getElementById('bsb-micro-title').innerText = data.data_title || data.title;
+            document.getElementById('bsb-micro-desc').innerText = data.desc;
+        }
+
+        // 11-Mavzu BSB Quiz Data
+        const quiz11 = [
+            {
+                q: "1. Oziq moddalar qaysi organda mayda qon tomirlariga (villilar orqali) to‘liq so‘riladi?",
+                opts: ["Og‘iz bo‘shlig‘ida", "Qizilo‘ngachda", "Ingichka ichakda", "Oshqozonda"],
+                ans: 2
+            },
+            {
+                q: "2. Mushuk oshqozonining muhiti nima sababli odamnikiga qaraganda ancha nordon (pH 1.0 - 2.0)?",
+                opts: ["O‘simliklarni parchalash uchun", "Xom go‘sht, suyak va bakteriyalarni tez eritish uchun", "Suvni shimib olish uchun", "So‘lak ajratish uchun"],
+                ans: 1
+            },
+            {
+                q: "3. Isteʼmol sodasi va sirka kislotasi reaksiyaga kirishganda qaysi gaz ajralib chiqadi?",
+                opts: ["Kislorod (O₂)", "Karbonat angidrid (CO₂)", "Vodorod (H₂)", "Azot (N₂)"],
+                ans: 1
+            },
+            {
+                q: "4. Nima uchun kesilgan olma yuzasiga limon sharbati surtilsa, u qoraymaydi?",
+                opts: ["Limon olmani muzlatadi", "Limon tarkibidagi S vitamini kislorod bilan oksidlanishni to‘xtatadi", "Limon olmani quritadi", "Limon rangsizlantiruvchi bo‘yoqdir"],
+                ans: 1
+            },
+            {
+                q: "5. Qaynatilgan (kislorodsiz) suv ustiga moy qatlami quyilgan probirkadagi temir mix nima uchun zanglamaydi?",
+                opts: ["Suv juda issiq bo‘lgani uchun", "Moy temirni eritib yuborgani uchun", "Suvda erigan kislorod yo‘qligi va havo kirmasligi sababli", "Temir suzib yurgani uchun"],
+                ans: 2
+            }
+        ];
+
+        let a11 = {};
+        function renderQuiz11() {
+            const list = document.getElementById('quiz-list-11');
+            if (!list) return;
+            list.innerHTML = '';
+            quiz11.forEach((item, qIdx) => {
+                let optsHtml = '';
+                item.opts.forEach((opt, oIdx) => {
+                    optsHtml += `<button class="btn-quiz-opt" onclick="ansQ11(this, ${qIdx}, ${oIdx})">${opt}</button>`;
+                });
+                list.innerHTML += `
+                    <div class="quiz-item">
+                        <p class="quiz-question">${item.q}</p>
+                        <div class="quiz-options">${optsHtml}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function ansQ11(btn, qIdx, oIdx) {
+            if (a11[qIdx] !== undefined) return;
+            a11[qIdx] = oIdx;
+            if (oIdx === quiz11[qIdx].ans) {
+                btn.style.background = "#dcfce7"; btn.style.color = "#15803d";
+                playTone(850, 0.1);
+            } else {
+                btn.style.background = "#fee2e2"; btn.style.color = "#b91c1c";
+                playTone(250, 0.15);
+            }
+            if (Object.keys(a11).length === quiz11.length) {
+                document.getElementById('quiz-final-box-11').style.display = 'block';
+                document.getElementById('quiz-final-score-11').innerText = "11-Mavzu BSB boʻyicha barcha savollarga muvaffaqiyatli javob berdingiz!";
+            }
+        }
+
+
+        function generateCertificate(num) {
+            const nameInput = document.getElementById('student-name-11');
+            const certName = document.getElementById('cert-student-name-11');
+            const certView = document.getElementById('cert-view-11');
+            if (nameInput && nameInput.value.trim() !== '') {
+                certName.innerText = nameInput.value.trim();
+            }
+            certView.style.display = 'block';
+        }
+
+        window.onload = function() {
+            renderQuiz11();
+        };
+    </script>
+</body>
+</html>
